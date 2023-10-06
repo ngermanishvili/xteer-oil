@@ -5,6 +5,10 @@ import SwiperHeading from "../components/Swiper";
 import { motion } from "framer-motion";
 import { Col, Divider, Row } from "antd";
 import CenteredImages from "../components/CenteredImages";
+import Parallax from "../components/animate/parallax";
+import Companies from "../components/Companies";
+import SwiperHeading2 from "../components/Swiper2";
+import AccordionComponent from "../components/Accordion";
 
 // const Home = () => (
 //   <>
@@ -93,11 +97,12 @@ const Home = () => (
         width: "100vw",
         height: "auto",
         textAlign: "center",
-        backgroundColor: "#097d4f",
+        backgroundColor: "#000000",
       }}
     >
       <SwiperHeading />
     </div>
+    {/* <IntroDuction /> */}
     <div>
       <motion.div
         initial={{ opacity: 0, y: 40 }} // Initial animation state
@@ -108,32 +113,30 @@ const Home = () => (
           textAlign: "center",
           color: "#000000",
           marginTop: "20px",
-          padding: "40px",
         }}
       >
-        <h1
-          style={{
-            fontSize: "36px",
-            fontWeight: "900",
-            fontStyle: "normal",
-            color: "#666464",
-          }}
-        >
-          XTEER საქართველო
-        </h1>
-        <p
-          class="text-8xl/[32px]"
-          style={{
-            fontSize: "22px",
-            fontWeight: "900",
-            fontStyle: "normal",
-            color: "#666464",
-          }}
-        ></p>
-        <a href="https://lukoil.ge">xteergeorgia.ge</a>
+        <Divider />
       </motion.div>
     </div>
+
     <CenteredImages />
+
+    <div className="p-5"></div>
+    <Divider
+      style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
+    >
+      პარტნიორი კომპანიები
+    </Divider>
+    <Companies />
+    <Divider
+      style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
+    >
+      რატომ ჩვენ?
+    </Divider>
+    <div className="p-5"></div>
+
+    <AccordionComponent />
+    {/* <SwiperHeading2 /> */}
   </>
 );
 

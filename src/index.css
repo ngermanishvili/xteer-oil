@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #f5ecec;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Cairo", sans-serif;
-  height: 120vh;
 }
 
 .heading {
@@ -52,4 +53,58 @@ body {
 .loading-screen h1 {
   font-size: 24px;
   margin-top: 16px;
+}
+
+.swiper-slide-content {
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  object-fit: cover;
+  height: 400px;
+}
+
+.slide-text {
+  width: 30%;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 28%;
+  left: 68%;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 900;
+  font-family: "Cairo", sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  .image-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  .slide-text {
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: 900;
+    font-family: "Cairo", sans-serif;
+  }
+}
+
+.span-reseller {
+  font-size: 16px;
 }
