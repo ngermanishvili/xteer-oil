@@ -136,7 +136,6 @@ const Home = () => (
     <div className="p-5"></div>
 
     <AccordionComponent />
-    {/* <SwiperHeading2 /> */}
   </>
 );
 

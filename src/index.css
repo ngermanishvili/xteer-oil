@@ -70,14 +70,15 @@
 }
 
 .slide-text {
-  width: 30%;
+  width: 78%;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 28%;
-  left: 68%;
+  top: 30%;
+  left: 10%;
+  right: 50%;
   color: #fff;
-  font-size: 24px;
+  font-size: 48px;
   text-align: center;
   font-weight: 900;
   font-family: "Cairo", sans-serif;
@@ -107,4 +108,76 @@
 
 .span-reseller {
   font-size: 16px;
+}
+
+.swiper {
+  max-width: 100%;
+  width: 400px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.mySwiper {
+  width: 100%;
+  height: 500px;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide .title {
+  font-size: 41px;
+  font-weight: 300;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.swiper-slide .subtitle {
+  font-size: 21px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.swiper-slide .text {
+  font-size: 28px;
+  max-width: 600px;
+  line-height: 1.3;
+}
+
+.swiper-slide .text2 {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  font-size: 24px;
 }

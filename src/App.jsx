@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/DesktopNavbar";
 import MobileNavbar from "./components/MobileNavbar";
+import Footer from "./components/Footer";
 import LoadingScreen from "./components/LazyLoading"; // Import the loading screen component
 
 // Your route components
@@ -20,7 +21,7 @@ const App = () => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 4000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -79,6 +80,7 @@ const App = () => {
           </Routes>
         </>
       )}
+      <Footer />
     </BrowserRouter>
   );
 };
