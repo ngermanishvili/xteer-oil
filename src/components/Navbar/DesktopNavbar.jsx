@@ -5,7 +5,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
   DropdownItem,
   DropdownTrigger,
@@ -23,7 +22,7 @@ import {
 } from "../IconsNavbar/Icons.jsx";
 import { AcmeLogo } from "../HeaderLogo/AcmeLogo.jsx";
 import styled from "styled-components";
-import Parralax from "../animate/parallax.jsx";
+import { Link } from "react-router-dom";
 
 export default function DesktopNavbar() {
   const icons = {
@@ -42,9 +41,11 @@ export default function DesktopNavbar() {
     <Navbar>
       <NavbarBrand>
         <AcmeLogo />
-        <Fonts className="font-family: 'Cairo', sans-serif; text-inherit">
-          GENTO TRADING
-        </Fonts>
+        <Link to="/">
+          <Fonts className="font-family: 'Cairo', sans-serif; text-inherit cursor-pointer">
+            GENTO TRADING
+          </Fonts>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="sm:flex gap-4" justify="center">
         <NavbarItem>
@@ -83,7 +84,8 @@ export default function DesktopNavbar() {
         <Dropdown>
           <NavbarItem>
             <DropdownTrigger>
-              <Button
+              <Link
+                to="/product"
                 disableRipple
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent"
                 endContent={icons.chevron}
@@ -99,7 +101,7 @@ export default function DesktopNavbar() {
                 }}
               >
                 პროდუქტი
-              </Button>
+              </Link>
             </DropdownTrigger>
           </NavbarItem>
           <DropdownMenu
