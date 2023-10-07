@@ -1,7 +1,6 @@
 import React from "react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import styled from "styled-components";
-import Swiper2 from "../components/Swiper2";
 
 export default function AccordionComponent() {
   const defaultContent =
@@ -55,9 +54,6 @@ export default function AccordionComponent() {
           </AccordionItem>
         </Accordion>
       </AccordionContainer>
-      <ImageContainer>
-        <Swiper2 />
-      </ImageContainer>
     </Wrapper>
   );
 }

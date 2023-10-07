@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Svg1 from "../assets/svg1.png";
-import Svg2 from "../assets/svg2.png";
-import Svg3 from "../assets/svg3.png";
-import Svg4 from "../assets/svg4.png";
+import Svg1 from "../../assets/svg1.png";
+import Svg2 from "../../assets/svg2.png";
+import Svg3 from "../../assets/svg3.png";
+import Svg4 from "../../assets/svg4.png";
 
 // Define media queries for different screen sizes
 const tablet = "768px"; // Adjust this value as needed

@@ -1,6 +1,6 @@
 // LoadingScreen.js
 import React from "react";
-import AnimationText from "./animate/AnimationText";
+import AnimationText from "../animate/AnimationText";
 
 const LoadingScreen = () => {
   return (

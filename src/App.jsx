@@ -1,10 +1,10 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import DesktopNavbar from "./components/DesktopNavbar";
-import MobileNavbar from "./components/MobileNavbar";
-import Footer from "./components/Footer";
-import LoadingScreen from "./components/LazyLoading"; // Import the loading screen component
+import DesktopNavbar from "./components/Navbar/DesktopNavbar";
+import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
+import Footer from "./components/Footer/Footer";
+import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
 
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
@@ -80,7 +80,6 @@ const App = () => {
           </Routes>
         </>
       )}
-      <Footer />
     </BrowserRouter>
   );
 };

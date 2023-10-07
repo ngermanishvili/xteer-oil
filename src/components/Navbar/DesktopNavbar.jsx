@@ -20,10 +20,10 @@ import {
   Server,
   TagUser,
   Scale,
-} from "./Icons.jsx";
-import { AcmeLogo } from "./AcmeLogo.jsx";
+} from "../IconsNavbar/Icons.jsx";
+import { AcmeLogo } from "../HeaderLogo/AcmeLogo.jsx";
 import styled from "styled-components";
-import Parralax from "./animate/parallax.jsx";
+import Parralax from "../animate/parallax.jsx";
 
 export default function DesktopNavbar() {
   const icons = {

@@ -10,7 +10,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import { AcmeLogo } from "./AcmeLogo.jsx";
+import { AcmeLogo } from "../../HeaderLogo/AcmeLogo.jsx";
 
 export default function MobileNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
