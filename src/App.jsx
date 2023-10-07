@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
-import Footer from "./components/Footer/Footer";
 import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
+import FindMyOil from "./Pages/FindMyOil";
 
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
@@ -74,6 +74,14 @@ const App = () => {
               element={
                 <Suspense fallback={<div>Loading...</div>}>
                   <Product />
+                </Suspense>
+              }
+            />
+            <Route
+              path="product/find-my-oil"
+              element={
+                <Suspense fallback={<div>Loading...</div>}>
+                  <FindMyOil />
                 </Suspense>
               }
             />

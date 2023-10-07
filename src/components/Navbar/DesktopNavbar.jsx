@@ -132,6 +132,7 @@ export default function DesktopNavbar() {
             >
               რატომ ჩვენ?
             </DropdownItem>
+
             <DropdownItem
               key="99_uptime"
               description="დაათვალიერეთ კატალოგები"
@@ -147,9 +148,11 @@ export default function DesktopNavbar() {
           <Link href="#">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            კატალოგი
-          </Button>
+          <Link to="/product/find-my-oil">
+            <Button color="primary" variant="flat">
+              კატალოგი
+            </Button>
+          </Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">
