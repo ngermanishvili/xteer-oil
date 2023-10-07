@@ -86,9 +86,8 @@ export default function DesktopNavbar() {
             <DropdownTrigger>
               <Link
                 to="/product"
-                disableRipple
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                endContent={icons.chevron}
+                // endContent={icons.chevron}
                 radius="sm"
                 variant="light"
                 style={{
