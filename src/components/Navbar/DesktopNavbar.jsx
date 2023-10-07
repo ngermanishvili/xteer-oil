@@ -84,10 +84,8 @@ export default function DesktopNavbar() {
         <Dropdown>
           <NavbarItem>
             <DropdownTrigger>
-              <Link
-                to="/product"
+              <Button
                 className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                // endContent={icons.chevron}
                 radius="sm"
                 variant="light"
                 style={{
@@ -100,7 +98,7 @@ export default function DesktopNavbar() {
                 }}
               >
                 პროდუქტი
-              </Link>
+              </Button>
             </DropdownTrigger>
           </NavbarItem>
           <DropdownMenu
@@ -147,7 +145,7 @@ export default function DesktopNavbar() {
           <Link href="#">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/product/find-my-oil">
+          <Link to="/find-my-oil">
             <Button color="primary" variant="flat">
               კატალოგი
             </Button>

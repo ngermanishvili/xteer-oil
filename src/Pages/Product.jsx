@@ -1,17 +1,47 @@
-import React from "react";
-
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-const { Content, Footer, Sider } = Layout;
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Breadcrumb, Layout, theme } from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
 import Specifications from "../components/ProductPage/Specification";
 import CaModal from "../components/ProductPage/CaModal";
+import axios from "axios";
 
-const Product = () => {
+const { Content, Footer } = Layout;
+
+const ProductDetail = () => {
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("Fetching product for ID:", productId);
+        const response = await axios.get(`http://localhost:8000/oils/`);
+        console.log("API response:", response.data);
+        const productData = response.data.find(
+          (item) => item._id === productId
+        );
+        console.log("Selected product:", productData);
+        setProduct(productData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [productId]);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
     <Layout>
       <Content
@@ -39,15 +69,26 @@ const Product = () => {
               minHeight: 280,
             }}
           >
-            <div className="gento-img">
-              <ImageContent />
-            </div>
+            {loading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>Error loading data. Please try again later.</p>
+            ) : product ? ( // Check if product is not null
+              <div className="gento-img">
+                <ImageContent
+                  imageUrl={product.imageUrl}
+                  altText={product.productName}
+                />
+              </div>
+            ) : (
+              <p>Product not found</p>
+            )}
             <DownloadPdS />
-            <CaModal />
+            <CaModal pdfUrls={product?.pdfUrls} /> <div className="p-5"></div>
+            {
+              product ? <BadgeContent product={product} /> : null //
+            }
             <div className="p-5"></div>
-            <BadgeContent />
-            <div className="p-5"></div>
-            <Specifications />
           </Content>
         </Layout>
       </Content>
@@ -61,4 +102,5 @@ const Product = () => {
     </Layout>
   );
 };
-export default Product;
+
+export default ProductDetail;

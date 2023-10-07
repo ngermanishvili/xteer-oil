@@ -5,6 +5,7 @@ import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
 import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
 import FindMyOil from "./Pages/FindMyOil";
+import ProductDetail from "./Pages/Product";
 
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
@@ -70,15 +71,15 @@ const App = () => {
               }
             />
             <Route
-              path="product"
+              path="/product/:productId"
               element={
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Product />
+                  <ProductDetail />
                 </Suspense>
               }
             />
             <Route
-              path="product/find-my-oil"
+              path="find-my-oil"
               element={
                 <Suspense fallback={<div>Loading...</div>}>
                   <FindMyOil />

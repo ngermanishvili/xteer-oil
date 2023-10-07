@@ -1,76 +1,74 @@
 import React from "react";
-import { Badge, Card, Space } from "antd";
-import { Divider, List, Typography } from "antd";
+import { Badge, Card, Col, Row, Space } from "antd";
+import { List, Typography } from "antd";
+import styled from "styled-components";
 
-const data = [
-  "Racing car sprays burning fuel into crowd.",
-  "Japanese princess to wed commoner.",
-  "Australian walks 100km after outback crash.",
-  "Man charged over missing wedding girl.",
-  "Los Angeles battles huge wildfires.",
-];
-const data2 = [
-  "Racing car sprays burning fuel into crowd.",
-  "Japanese princess to wed commoner.",
-  "Australian walks 100km after outback crash.",
-  "Man charged over missing wedding girl.",
-  "Los Angeles battles huge wildfires.",
-];
-const data3 = [
-  "Racing car sprays burning fuel into crowd.",
-  "Japanese princess to wed commoner.",
-  "Australian walks 100km after outback crash.",
-  "Man charged over missing wedding girl.",
-  "Los Angeles battles huge wildfires.",
-];
+const BadgeContent = ({ product }) => {
+  const allSpecs = [];
+  for (const [property, values] of Object.entries(product.specs)) {
+    allSpecs.push({ property, values });
+  }
 
-const BadgeContent = () => (
-  <Space
-    direction="vertical"
-    size="middle"
-    style={{
-      width: "100%",
-    }}
-  >
-    <Badge.Ribbon text="GENTO">
-      <Card title="Features and Benefits" size="small">
-        <List
-          dataSource={data}
-          renderItem={(item) => (
-            <List.Item>
-              <Typography.Text mark>[GENTO]</Typography.Text> {item}
-            </List.Item>
-          )}
-        />
-      </Card>
-    </Badge.Ribbon>
-    <Badge.Ribbon text="Hippies" color="blue">
-      <Card title="Applications" size="small">
-        <List
-          dataSource={data2}
-          renderItem={(item) => (
-            <List.Item>
-              <Typography.Text mark>[GENTO]</Typography.Text> {item}
-            </List.Item>
-          )}
-        />
-      </Card>
-    </Badge.Ribbon>
-    <Badge.Ribbon text="Hippies" color="blue">
-      <Card
-        title="Certification / Approval / Performance Standard"
-        size="small"
-      >
-        <List
-          dataSource={data3}
-          renderItem={(item) => (
-            <List.Item>
-              <Typography.Text mark>[GENTO]</Typography.Text> {item}
-            </List.Item>
-          )}
-        />
-      </Card>
-    </Badge.Ribbon>
-  </Space>
-);
+  return (
+    <Wrapper>
+      <Row gutter={[16, 16]}>
+        <Col span={12}>
+          <Badge.Ribbon text="Applications">
+            <Card title="Applications" size="large">
+              <List
+                dataSource={product.applications}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+              />
+            </Card>
+          </Badge.Ribbon>
+        </Col>
+        <Col span={12}>
+          <Badge.Ribbon text="Features and benefits">
+            <Card title="Features and Benefits" size="large">
+              <List
+                dataSource={product.featuresAndBenefits}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+              />
+            </Card>
+          </Badge.Ribbon>
+        </Col>
+        <Col span={12}>
+          <Badge.Ribbon text="Certifications">
+            <Card
+              title="Certification / Approval / Performance Standard"
+              size="large"
+            >
+              <List
+                dataSource={product.certsAndApps}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+              />
+            </Card>
+          </Badge.Ribbon>
+        </Col>
+        <Col span={12}>
+          <Badge.Ribbon text="Specs">
+            <Card title="Specifications" size="large">
+              <List
+                dataSource={allSpecs}
+                renderItem={(item) => (
+                  <List.Item>
+                    <Typography.Text mark>[aLO]</Typography.Text>{" "}
+                    {item.property}: {item.values.join(", ")}
+                  </List.Item>
+                )}
+              />
+            </Card>
+          </Badge.Ribbon>
+        </Col>
+      </Row>
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  width: 100%;
+  max-width: 1920px;
+  height: auto;
+`;
+
 export default BadgeContent;
