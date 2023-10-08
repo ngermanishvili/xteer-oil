@@ -39,6 +39,7 @@ const IntroDuction = () => {
             კონტეინერების წარმოებაში ფართო ასორტიმენტში
           </strong>
         </span>
+        .
       </h2>
       <h3 className="lead" style={{ textAlign: "center" }}>
         <span style={{ color: "#666464" }}>
