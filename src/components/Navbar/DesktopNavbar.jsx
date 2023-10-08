@@ -66,7 +66,7 @@ export default function DesktopNavbar() {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link
+          <Button
             color="foreground"
             href="#"
             style={{
@@ -79,7 +79,7 @@ export default function DesktopNavbar() {
             }}
           >
             კონტაქტი
-          </Link>
+          </Button>
         </NavbarItem>
         <Dropdown>
           <NavbarItem>
@@ -109,6 +109,7 @@ export default function DesktopNavbar() {
             }}
           >
             <DropdownItem
+              to="/find-my-oil"
               key="autoscaling"
               description="ზეთები და მასალები მაღალი ხარისხით"
               startContent={icons.scale}
