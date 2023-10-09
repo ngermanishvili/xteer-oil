@@ -5,6 +5,7 @@ const { Header, Sider, Content } = Layout;
 import { Link } from "react-router-dom";
 import OilContent from "./OilContent";
 import SiderTabs from "./SiderTabs";
+import PaginationComponent from "../Pagination/Pagination";
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -24,6 +25,12 @@ const App = () => {
           }}
         >
           <OilContent />
+          <div
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+            className="p-5 w-full"
+          >
+            <PaginationComponent />
+          </div>
         </Content>
       </Layout>
     </Layout>
