@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Layout, Menu, Button, theme } from "antd";
-const { Header, Sider, Content } = Layout;
+import { Layout, theme } from "antd";
+const { Content } = Layout;
 import { Link } from "react-router-dom";
 import OilContent from "./OilContent";
 import SiderTabs from "./SiderTabs";

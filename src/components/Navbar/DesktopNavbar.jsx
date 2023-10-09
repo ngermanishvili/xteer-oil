@@ -38,7 +38,7 @@ export default function DesktopNavbar() {
   };
 
   return (
-    <Navbar>
+    <Navbar className="absolute fixed ">
       <NavbarBrand>
         <AcmeLogo />
         <Link to="/">

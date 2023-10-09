@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Breadcrumb, Layout, theme } from "antd";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {Breadcrumb, Layout, theme} from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
@@ -8,14 +8,14 @@ import Specifications from "../components/ProductPage/Specification";
 import CaModal from "../components/ProductPage/CaModal";
 import axios from "axios";
 
-const { Content, Footer } = Layout;
+const {Content, Footer} = Layout;
 
 const ProductDetail = () => {
-  const { productId } = useParams();
-  const [product, setProduct] = useState(null);
+  const {productId} = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  
+  const [product, setProduct] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -38,8 +38,9 @@ const ProductDetail = () => {
     fetchData();
   }, [productId]);
 
+  console.log(product);
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
 
   return (

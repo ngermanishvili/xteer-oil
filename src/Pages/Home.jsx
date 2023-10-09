@@ -5,7 +5,7 @@ import { Divider, Row } from "antd";
 import CenteredImages from "../components/CenteredSvg/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import AccordionComponent from "../components/Accordion/Accordion";
-
+import BasicSlider from "../components/demoSlider/DemoSlider";
 const Home = () => (
   <>
     <div
@@ -17,7 +17,7 @@ const Home = () => (
         backgroundColor: "#000000",
       }}
     >
-      <SwiperHeading />
+      <BasicSlider />
     </div>
     {/* <IntroDuction /> */}
     <div>
