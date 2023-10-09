@@ -147,7 +147,7 @@ export default function Companies() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Card style={{ width: "250px" }} className="py-4">
+          <Card style={{ width: "250px", background: "#ccc" }} className="py-4">
             <CardHeader className="pb-0 pt-2 px-4 flex-col ">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
