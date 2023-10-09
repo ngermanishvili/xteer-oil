@@ -1,4 +1,4 @@
-import HeroSlider, { Overlay, Slide } from "hero-slider";
+import HeroSlider, {Overlay, Slide} from "hero-slider";
 
 import bogliasco from "../../assets/bannerslider1.jpg";
 import countyClare from "../../assets/bannerslidr2.jpeg";
@@ -7,6 +7,7 @@ import craterRock from "../../assets/bannertest.jpg";
 export default function BasicSlider() {
   return (
     <HeroSlider
+      
       height={"70vh"}
       autoplay={{
         autoplayDuration: 6000,
@@ -61,7 +62,7 @@ export default function BasicSlider() {
       </Overlay>
 
       <Slide
-        style={{ objectFit: "contain" }}
+        style={{objectFit: "contain"}}
         shouldRenderMask
         background={{
           backgroundImageSrc: bogliasco,
@@ -96,7 +97,7 @@ export default function BasicSlider() {
       </Slide>
 
       <Slide
-        style={{ objectFit: "contain" }}
+        style={{objectFit: "contain"}}
         shouldRenderMask
         background={{
           backgroundImageSrc: craterRock,
@@ -132,7 +133,7 @@ export default function BasicSlider() {
       </Slide>
 
       <Slide
-        style={{ objectFit: "contain" }}
+        style={{objectFit: "contain"}}
         shouldRenderMask
         background={{
           backgroundImageSrc: craterRock,
