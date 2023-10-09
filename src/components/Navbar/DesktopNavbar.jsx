@@ -20,9 +20,9 @@ import {
   TagUser,
   Scale,
 } from "../IconsNavbar/Icons.jsx";
-import { AcmeLogo } from "../HeaderLogo/AcmeLogo.jsx";
+import {AcmeLogo} from "../HeaderLogo/AcmeLogo.jsx";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function DesktopNavbar() {
   const icons = {
@@ -38,7 +38,7 @@ export default function DesktopNavbar() {
   };
 
   return (
-    <Navbar>
+    <Navbar style={{backgroundColor: "transparent"}}>
       <NavbarBrand>
         <AcmeLogo />
         <Link to="/">

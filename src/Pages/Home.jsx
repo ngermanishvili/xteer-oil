@@ -5,7 +5,7 @@ import { Divider, Row } from "antd";
 import CenteredImages from "../components/CenteredSvg/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import AccordionComponent from "../components/Accordion/Accordion";
-
+import BasicSlider from "../components/demoSlider/DemoSlider";
 const Home = () => (
   <>
     <div
@@ -17,15 +17,15 @@ const Home = () => (
         backgroundColor: "#000000",
       }}
     >
-      <SwiperHeading />
+      <BasicSlider/>
     </div>
     {/* <IntroDuction /> */}
     <div>
       <motion.div
-        initial={{ opacity: 0, y: 40 }} // Initial animation state
-        animate={{ opacity: 1, y: 0 }} // Animation on mount
-        exit={{ opacity: 0, y: 40 }} // Animation on unmount
-        transition={{ duration: 2 }}
+        initial={{opacity: 0, y: 40}} // Initial animation state
+        animate={{opacity: 1, y: 0}} // Animation on mount
+        exit={{opacity: 0, y: 40}} // Animation on unmount
+        transition={{duration: 2}}
         style={{
           textAlign: "center",
           color: "#000000",
@@ -40,13 +40,13 @@ const Home = () => (
 
     <div className="p-5"></div>
     <Divider
-      style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
+      style={{backgroundColor: "#fff", fontSize: "20px", fontWeight: "800"}}
     >
       პარტნიორი კომპანიები
     </Divider>
     <Companies />
     <Divider
-      style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
+      style={{backgroundColor: "#fff", fontSize: "20px", fontWeight: "800"}}
     >
       რატომ ჩვენ?
     </Divider>
