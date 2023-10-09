@@ -44,7 +44,9 @@ const Home = () => (
     >
       პარტნიორი კომპანიები
     </Divider>
-    <Companies />
+    <div className="companies-container">
+      <Companies />
+    </div>
     <Divider
       style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
     >
