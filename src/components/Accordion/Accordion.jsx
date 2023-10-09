@@ -1,5 +1,5 @@
 import React from "react";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import {Accordion, AccordionItem} from "@nextui-org/react";
 import styled from "styled-components";
 
 export default function AccordionComponent() {
@@ -68,11 +68,17 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    margin-top: 100px;
+  }
 `;
 
 const AccordionContainer = styled.div`
   width: 60%;
   padding: 20px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ImageContainer = styled.div`
