@@ -19,22 +19,6 @@ const Home = () => (
     >
       <BasicSlider />
     </div>
-    {/* <IntroDuction /> */}
-    <div>
-      <motion.div
-        initial={{opacity: 0, y: 40}} // Initial animation state
-        animate={{opacity: 1, y: 0}} // Animation on mount
-        exit={{opacity: 0, y: 40}} // Animation on unmount
-        transition={{duration: 2}}
-        style={{
-          textAlign: "center",
-          color: "#000000",
-          marginTop: "20px",
-        }}
-      >
-        <Divider />
-      </motion.div>
-    </div>
 
     <CenteredImages />
 

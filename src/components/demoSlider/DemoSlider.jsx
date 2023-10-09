@@ -1,4 +1,4 @@
-import HeroSlider, { Overlay, Slide } from "hero-slider";
+import HeroSlider, {Overlay, Slide} from "hero-slider";
 
 import bogliasco from "../../assets/bannerslider1.jpg";
 import countyClare from "../../assets/bannerslidr2.jpeg";
@@ -9,7 +9,7 @@ export default function BasicSlider() {
     <HeroSlider
       height={"70vh"}
       autoplay={{
-        autoplayDuration: 6000,
+        autoplayDuration: 5000,
         autoplayDebounce: 0,
       }}
       animations={{
@@ -35,33 +35,10 @@ export default function BasicSlider() {
           console.debug("onAfterSliding(nextSlide): ", nextSlide),
       }}
     >
-      <Overlay>
-        {/* <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <h2
-            style={{
-              position: "absolute",
-              top: 65,
-              width: "100%",
-              fontSize: "64px",
-              color: "#fff",
-              background: "#000",
-              opacity: 0.8,
-              alignSelf: "right",
-            }}
-          >
-            GENTO TRADING OIL PRODUCT
-          </h2>
-        </div> */}
-      </Overlay>
+      <Overlay></Overlay>
 
       <Slide
-        style={{ objectFit: "contain" }}
+        style={{objectFit: "contain"}}
         shouldRenderMask
         background={{
           backgroundImageSrc: bogliasco,
@@ -96,7 +73,7 @@ export default function BasicSlider() {
       </Slide>
 
       <Slide
-        style={{ objectFit: "contain" }}
+        style={{objectFit: "contain"}}
         shouldRenderMask
         background={{
           backgroundImageSrc: craterRock,
@@ -132,7 +109,7 @@ export default function BasicSlider() {
       </Slide>
 
       <Slide
-        style={{ objectFit: "contain" }}
+        style={{objectFit: "contain"}}
         shouldRenderMask
         background={{
           backgroundImageSrc: craterRock,

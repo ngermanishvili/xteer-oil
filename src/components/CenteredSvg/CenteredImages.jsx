@@ -57,8 +57,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   width: 100%;
+  margin-top:  2%;
 
   @media (max-width: ${tablet}) {
     flex-direction: column;

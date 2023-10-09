@@ -1,12 +1,13 @@
-import React, { useState, useEffect, Suspense } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import React, {useState, useEffect, Suspense} from "react";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {useMediaQuery} from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
 import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
-import FindMyOil from "./Pages/FindMyOil";
+import FindMyOil from "./components/FindMyOil/FindMyOil";
 import ProductDetail from "./Pages/Product";
-
+import {RingLoader} from "react-spinners";
+import {Footer} from "antd/es/layout/layout";
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
@@ -15,14 +16,14 @@ const Information = React.lazy(() => import("./Pages/Information"));
 const Product = React.lazy(() => import("./Pages/Product"));
 
 const App = () => {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({maxWidth: 768});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 0);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -89,6 +90,13 @@ const App = () => {
           </Routes>
         </>
       )}
+      <Footer
+        style={{
+          textAlign: "center",
+        }}
+      >
+        ©2023 Created by Gento Trading
+      </Footer>
     </BrowserRouter>
   );
 };

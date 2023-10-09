@@ -20,9 +20,9 @@ import {
   TagUser,
   Scale,
 } from "../IconsNavbar/Icons.jsx";
-import { AcmeLogo } from "../HeaderLogo/AcmeLogo.jsx";
+import {AcmeLogo} from "../HeaderLogo/AcmeLogo.jsx";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function DesktopNavbar() {
   const icons = {
@@ -149,9 +149,7 @@ export default function DesktopNavbar() {
         </NavbarItem>
         <NavbarItem>
           <Link to="/find-my-oil">
-            <Button color="primary" variant="flat">
               კატალოგი
-            </Button>
           </Link>
         </NavbarItem>
         <NavbarItem>
