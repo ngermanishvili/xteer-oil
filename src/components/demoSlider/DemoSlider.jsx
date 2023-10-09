@@ -1,28 +1,31 @@
 import HeroSlider, {Overlay, Slide} from "hero-slider";
-
-import bogliasco from "../../assets/bannerslider1.jpg";
-import countyClare from "../../assets/bannerslidr2.jpeg";
-import craterRock from "../../assets/bannertest.jpg";
+import styled from "styled-components";
+import Slide1 from "../../assets/banner.jpeg";
+import Slide3 from "../../assets/bannerslider1.jpg";
+import Slide2 from "../../assets/xteerbanner2.jpeg";
+// import Slide4 from "../../assets/Slide4.jpg";
 
 export default function BasicSlider() {
+  // const Slide1 = "https://i.imgur.com/Gu5Cznz.jpg";
+  // const Slide2 = "https://i.imgur.com/idjXzVQ.jpg";
+  // const Slide3 = "https://i.imgur.com/8DYumaY.jpg";
+  const Slide4 = "https://i.imgur.com/8IuucQZ.jpg";
   return (
     <HeroSlider
       height={"70vh"}
       autoplay={{
-        autoplayDuration: 5000,
         autoplayDebounce: 0,
+        autoplayDuration: 4500,
       }}
-      animations={{
-        slidingAnimation: "fade",
-      }}
+      animations={{slidingAnimation: "fade"}}
       accessibility={{
         shouldDisplayButtons: false,
         shouldSlideOnArrowKeypress: false,
       }}
       controller={{
         initialSlide: 1,
-        slidingDuration: 700,
-        slidingDelay: 100,
+        slidingDuration: 1000,
+        slidingDelay: 0,
         onSliding: (nextSlide) =>
           console.debug("onSliding(nextSlide): ", nextSlide),
         onBeforeSliding: (previousSlide, nextSlide) =>
@@ -35,116 +38,61 @@ export default function BasicSlider() {
           console.debug("onAfterSliding(nextSlide): ", nextSlide),
       }}
     >
-      <Overlay></Overlay>
-
       <Slide
-        style={{objectFit: "contain"}}
-        shouldRenderMask
+        label="Bogliasco - Italy"
         background={{
-          backgroundImageSrc: bogliasco,
+          backgroundImageSrc: Slide1,
         }}
       >
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            background: "linear-gradient(rgba(0, 0, 0, 0), #131212)",
-          }}
-        >
-          <h2
-            style={{
-              position: "absolute",
-              bottom: "50px",
-              width: "90%",
-              fontSize: "42px",
-              fontWeight: "700",
-              color: "#fff",
-              opacity: 0.9,
-              alignSelf: "center",
-            }}
-          >
-            სპეციალიზირებულია მაღალი ხარისხის ლუბრიკანტებისა და ლითონის
-            კონტეინერების წარმოებაში ფართო ასორტიმენტში
-          </h2>
-        </div>
+        <Wrapper>
+          <p className="Text">Only The Best Quality With Us</p>
+        </Wrapper>
       </Slide>
-
       <Slide
-        style={{objectFit: "contain"}}
-        shouldRenderMask
+        label="Bogliasco - Italy"
         background={{
-          backgroundImageSrc: craterRock,
+          backgroundImageSrc: Slide2,
         }}
       >
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            background: "linear-gradient(rgba(0, 0, 0, 0), #131212)",
-          }}
-        >
-          <h2
-            style={{
-              position: "absolute",
-              bottom: "50px",
-              width: "90%",
-              fontSize: "42px",
-              fontWeight: "700",
-              color: "#fff",
-              alignSelf: "center",
-              opacity: 0.9,
-            }}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            vitae dolor ex veritatis inventore fugit nesciunt eos fugiat alias
-            dolorum, sed debitis, delectus ipsa possimus.
-          </h2>
-        </div>
+        <Wrapper>
+          <p className="Text">Only The Best Quality With Us</p>
+        </Wrapper>
       </Slide>
-
       <Slide
-        style={{objectFit: "contain"}}
         shouldRenderMask
+        label="County Clare - Ireland"
         background={{
-          backgroundImageSrc: craterRock,
+          backgroundImageSrc: Slide3,
         }}
       >
-        <div
-          style={{
-            position: "relative",
-
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            justifyContent: "center",
-            background: "linear-gradient(rgba(0, 0, 0, 0), #131212)",
-          }}
-        >
-          {" "}
-          <h2
-            style={{
-              position: "absolute",
-              bottom: "50px",
-              width: "90%",
-              fontSize: "42px",
-              fontWeight: "700",
-              color: "#fff",
-              alignSelf: "center",
-              opacity: 0.9,
-            }}
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            vitae dolor ex veritatis inventore fugit nesciunt eos fugiat alias
-            dolorum, sed debitis, delectus ipsa possimus.
-          </h2>
-        </div>
+        <Wrapper>
+          <p className="Text">Only The Best Quality With Us</p>
+        </Wrapper>
+      </Slide>
+      <Slide
+        shouldRenderMask
+        label="Crater Rock, OR - United States"
+        background={{
+          backgroundImageSrc: Slide4,
+        }}
+      >
+        <Wrapper>
+          <p className="Text">Only The Best Quality With Us</p>
+        </Wrapper>
       </Slide>
     </HeroSlider>
   );
 }
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  background: linear-gradient(rgba(0, 0, 0, 0), #131212);
+  .Text {
+    font-size: 40px;
+    color: white;
+  }
+`;

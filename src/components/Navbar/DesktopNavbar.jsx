@@ -40,7 +40,7 @@ export default function DesktopNavbar() {
   };
 
   return (
-    <Navbar className="absolute fixed ">
+    <Navbar>
       <NavbarBrand>
         <AcmeLogo />
         <Link to="/">
@@ -148,9 +148,7 @@ export default function DesktopNavbar() {
           <Link href="#">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/find-my-oil">
-              კატალოგი
-          </Link>
+          <Link to="/find-my-oil">კატალოგი</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">
