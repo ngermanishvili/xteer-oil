@@ -125,14 +125,14 @@
 // }
 
 import React from "react";
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
 import Logo1 from "../../assets/energopro.png";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import {Pagination} from "swiper/modules";
 
 export default function Companies() {
   return (
@@ -147,8 +147,25 @@ export default function Companies() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <Card style={{ width: "250px", background: "#ccc" }} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col ">
+          <Card
+            style={{
+              width: "50%",
+              margin: "0 auto",
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                style={{margin: "0 auto"}}
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
               </p>
@@ -157,19 +174,27 @@ export default function Companies() {
                 მფლობელი.
               </small>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src={Logo1}
-                width={250}
-              />
-            </CardBody>
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-          <Card style={{ width: "300px" }} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <Card
+            style={{
+              width: "50%",
+              margin: "0 auto",
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
               </p>
@@ -178,19 +203,27 @@ export default function Companies() {
                 მფლობელი.
               </small>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src={Logo1}
-                width={250}
-              />
-            </CardBody>
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-          <Card style={{ width: "300px" }} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <Card
+            style={{
+              width: "50%",
+              margin: "0 auto",
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
               </p>
@@ -199,19 +232,27 @@ export default function Companies() {
                 მფლობელი.
               </small>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src={Logo1}
-                width={250}
-              />
-            </CardBody>
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-          <Card style={{ width: "300px" }} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <Card
+            style={{
+              width: "50%",
+              margin: "0 auto",
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
               </p>
@@ -220,19 +261,27 @@ export default function Companies() {
                 მფლობელი.
               </small>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src={Logo1}
-                width={250}
-              />
-            </CardBody>
           </Card>
         </SwiperSlide>
         <SwiperSlide>
-          <Card style={{ width: "300px" }} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <Card
+            style={{
+              width: "50%",
+              margin: "0 auto",
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
               </p>
@@ -241,20 +290,29 @@ export default function Companies() {
                 მფლობელი.
               </small>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src={Logo1}
-                width={250}
-              />
-            </CardBody>
           </Card>
         </SwiperSlide>
         <SwiperSlide>
           {" "}
-          <Card style={{ width: "300px" }} className="py-4">
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+          <Card
+            style={{
+              width: "50%",
+              margin: "0 auto",
+
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
+            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
               <p className="text-tiny uppercase font-bold">
                 სს „ენერგო-პრო ჯორჯია“
               </p>
@@ -263,14 +321,6 @@ export default function Companies() {
                 მფლობელი.
               </small>
             </CardHeader>
-            <CardBody className="overflow-visible py-2">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl"
-                src={Logo1}
-                width={250}
-              />
-            </CardBody>
           </Card>
         </SwiperSlide>
       </Swiper>
