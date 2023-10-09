@@ -27,6 +27,8 @@ import { Link } from "react-router-dom";
 export default function DesktopNavbar() {
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />,
+
+    chevron: <ChevronDown fill="currentColor" size={16} />,
     scale: <Scale className="text-warning" fill="currentColor" size={30} />,
     lock: <Lock className="text-success" fill="currentColor" size={30} />,
     activity: (

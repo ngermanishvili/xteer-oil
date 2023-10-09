@@ -273,9 +273,6 @@ export default function Companies() {
             </CardBody>
           </Card>
         </SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
     </>
   );
