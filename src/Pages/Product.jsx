@@ -4,17 +4,16 @@ import {Breadcrumb, Layout, theme} from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
-import Specifications from "../components/ProductPage/Specification";
 import CaModal from "../components/ProductPage/CaModal";
 import axios from "axios";
-
+import {SyncLoader} from "react-spinners";
 const {Content, Footer} = Layout;
 
 const ProductDetail = () => {
   const {productId} = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   const [product, setProduct] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
@@ -70,36 +69,37 @@ const ProductDetail = () => {
               minHeight: 280,
             }}
           >
-            {loading ? (
-              <p>Loading...</p>
-            ) : error ? (
-              <p>Error loading data. Please try again later.</p>
-            ) : product ? ( // Check if product is not null
-              <div className="gento-img">
-                <ImageContent
-                  imageUrl={product.imageUrl}
-                  altText={product.productName}
-                />
-              </div>
+            {product ? (
+              <>
+                <div className="gento-img">
+                  <ImageContent
+                    imageUrl={product.imageUrl}
+                    altText={product.productName}
+                  />
+                </div>
+                <DownloadPdS />
+                <CaModal pdfUrls={product?.pdfUrls} />{" "}
+                <div className="p-5"></div>
+                <BadgeContent product={product} />
+              </>
             ) : (
-              <p>Product not found</p>
+              <div
+                style={{
+                  width: "100%",
+                  height: "100vh",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <SyncLoader size={18} color="dodgerblue" />
+              </div>
             )}
-            <DownloadPdS />
-            <CaModal pdfUrls={product?.pdfUrls} /> <div className="p-5"></div>
-            {
-              product ? <BadgeContent product={product} /> : null //
-            }
+
             <div className="p-5"></div>
           </Content>
         </Layout>
       </Content>
-      <Footer
-        style={{
-          textAlign: "center",
-        }}
-      >
-        ©2023 Created by Gento Trading
-      </Footer>
     </Layout>
   );
 };

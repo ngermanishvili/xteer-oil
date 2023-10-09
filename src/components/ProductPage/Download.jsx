@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { DownloadOutlined } from "@ant-design/icons";
-import { Button, Radio, Space, Divider } from "antd";
+import React, {useState} from "react";
+import {DownloadOutlined} from "@ant-design/icons";
+import {Button, Radio, Space, Divider} from "antd";
 const App = () => {
   const [size, setSize] = useState("medium");
 

@@ -20,12 +20,14 @@ import {
   TagUser,
   Scale,
 } from "../IconsNavbar/Icons.jsx";
-import { AcmeLogo } from "../HeaderLogo/AcmeLogo.jsx";
+import {AcmeLogo} from "../HeaderLogo/AcmeLogo.jsx";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function DesktopNavbar() {
   const icons = {
+    chevron: <ChevronDown fill="currentColor" size={16} />,
+
     chevron: <ChevronDown fill="currentColor" size={16} />,
     scale: <Scale className="text-warning" fill="currentColor" size={30} />,
     lock: <Lock className="text-success" fill="currentColor" size={30} />,
@@ -146,11 +148,7 @@ export default function DesktopNavbar() {
           <Link href="#">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Link to="/find-my-oil">
-            <Button color="primary" variant="flat">
-              კატალოგი
-            </Button>
-          </Link>
+          <Link to="/find-my-oil">კატალოგი</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="warning" href="#" variant="flat">

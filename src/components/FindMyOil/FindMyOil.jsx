@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Layout, theme } from "antd";
-const { Content } = Layout;
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {Layout, theme} from "antd";
+const {Content} = Layout;
+import {Link} from "react-router-dom";
 import OilContent from "./OilContent";
 import SiderTabs from "./SiderTabs";
 import PaginationComponent from "../Pagination/Pagination";
@@ -9,7 +9,7 @@ import PaginationComponent from "../Pagination/Pagination";
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
   return (
     <Layout>
@@ -25,7 +25,7 @@ const App = () => {
         >
           <OilContent />
           <div
-            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+            style={{width: "100%", display: "flex", justifyContent: "center"}}
             className="p-5 w-full"
           >
             <PaginationComponent />
