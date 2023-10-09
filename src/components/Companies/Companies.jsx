@@ -16,6 +16,23 @@ export default function Companies() {
           clickable: true,
         }}
         className="mySwiper"
+        breakpoints={{
+          // when window width is >= 640px
+          1320: {
+            slidesPerView: 3,
+            spaceBetween: 0,
+          },
+          900: {
+            slidesPerView: 2,
+            spaceBetween: 0,
+          },
+          // when window width is <= 640px
+          
+          220: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+        }}
       >
         <SwiperSlide>
           <Card
