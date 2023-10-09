@@ -1,54 +1,54 @@
-const {ObjectId} = require("mongodb");
+const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const oilSchema = new mongoose.Schema({
   _id: {
     type: ObjectId,
-    required: true,
+    required: false,
   },
   category: {
     type: String,
-    required: true,
+    required: false,
   },
   type: {
     type: String,
-    required: true,
+    required: false,
   },
   productName: {
     type: String,
-    required: true,
+    required: false,
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   packageSizes: {
     type: [String],
-    required: true,
+    required: false,
   },
   featuresAndBenefits: {
     type: [String],
-    required: true,
+    required: false,
   },
   applications: {
     type: [String],
-    required: true,
+    required: false,
   },
   certsAndApps: {
     type: [String],
-    required: true,
+    required: false,
   },
   pdfUrl: {
     type: String,
-    required: true,
+    required: false,
   },
   imageUrl: {
     type: String,
-    required: true,
+    required: false,
   },
   specs: {
     type: Object,
-    required: true,
+    required: false,
   },
 });
 
