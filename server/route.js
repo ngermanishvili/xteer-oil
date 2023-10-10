@@ -4,7 +4,6 @@ const Oils = require("./model");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  console.log("sssss");
   try {
     const oils = await Oils.find();
     res.send(oils);

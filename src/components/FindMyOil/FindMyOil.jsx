@@ -1,15 +1,12 @@
-import React, {useState} from "react";
-import {Layout, theme} from "antd";
-const {Content} = Layout;
-import {Link} from "react-router-dom";
-import OilContent from "./OilContent";
+import React from "react";
+import { Layout, theme } from "antd";
 import SiderTabs from "./SiderTabs";
-import PaginationComponent from "../Pagination/Pagination";
+import CardContent from "./CardContent";
 
+const { Content } = Layout;
 const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
-    token: {colorBgContainer},
+    token: { colorBgContainer },
   } = theme.useToken();
   return (
     <Layout>
@@ -23,13 +20,11 @@ const App = () => {
             background: colorBgContainer,
           }}
         >
-          <OilContent />
+          <CardContent />
           <div
-            style={{width: "100%", display: "flex", justifyContent: "center"}}
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
             className="p-5 w-full"
-          >
-            <PaginationComponent />
-          </div>
+          ></div>
         </Content>
       </Layout>
     </Layout>

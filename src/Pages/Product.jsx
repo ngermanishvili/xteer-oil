@@ -1,45 +1,30 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {Breadcrumb, Layout, theme} from "antd";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Breadcrumb, Layout, theme } from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
 import CaModal from "../components/ProductPage/CaModal";
-import axios from "axios";
-import {SyncLoader} from "react-spinners";
-const {Content, Footer} = Layout;
+import { dataStore } from "../zustand/store";
+import { SyncLoader } from "react-spinners";
+const { Content } = Layout;
 
 const ProductDetail = () => {
-  const {productId} = useParams();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const { productId } = useParams();
+  const data = dataStore((state) => state.data);
   const [product, setProduct] = useState(null);
+
+  const singleProductFilter = () => {
+    const singleProduct = data.find((item) => item._id === productId);
+    setProduct(singleProduct);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log("Fetching product for ID:", productId);
-        const response = await axios.get(`http://localhost:8000/oils/`);
-        console.log("API response:", response.data);
-        const productData = response.data.find(
-          (item) => item._id === productId
-        );
-        console.log("Selected product:", productData);
-        setProduct(productData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    singleProductFilter();
+  }, [productId, data]);
 
-    fetchData();
-  }, [productId]);
-
-  console.log(product);
   const {
-    token: {colorBgContainer},
+    token: { colorBgContainer },
   } = theme.useToken();
 
   return (
@@ -55,7 +40,7 @@ const ProductDetail = () => {
           }}
         >
           <Breadcrumb.Item>მთავარი</Breadcrumb.Item>
-          <Breadcrumb.Item>პროდუქტები</Breadcrumb.Item>
+          <Breadcrumb.Item>პროდუქტი</Breadcrumb.Item>
         </Breadcrumb>
         <Layout
           style={{
