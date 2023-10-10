@@ -8,12 +8,12 @@ const { Meta } = Card;
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
   // Calculate the start and end indices for the current page

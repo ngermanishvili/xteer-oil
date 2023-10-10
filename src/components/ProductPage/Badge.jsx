@@ -52,8 +52,9 @@ const BadgeContent = ({ product }) => {
                 dataSource={allSpecs}
                 renderItem={(item) => (
                   <List.Item>
-                    <Typography.Text mark>[aLO]</Typography.Text>{" "}
-                    {item.property}: {item.values.join(", ")}
+                    <Typography.Text mark>[aLO]</Typography.Text>
+                    {item.property}: {/* {item.values.join(", ")} */}
+                    {/* ეს რა სიკვდილია? რაღაც ფეიჯებზე აბაგინებს რისთვისარის ??? */}
                   </List.Item>
                 )}
               />
