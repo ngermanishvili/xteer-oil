@@ -27,7 +27,7 @@ export default function Companies() {
             spaceBetween: 0,
           },
           // when window width is <= 640px
-          
+
           220: {
             slidesPerView: 1,
             spaceBetween: 0,
@@ -38,6 +38,7 @@ export default function Companies() {
           <Card
             style={{
               width: "50%",
+              height: "200px",
               margin: "0 auto",
               background: "#ccc",
               display: "flex",
@@ -53,21 +54,13 @@ export default function Companies() {
                 src={Logo1}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-              <p className="text-tiny uppercase font-bold">
-                სს „ენერგო-პრო ჯორჯია“
-              </p>
-              <small className="text-default-600">
-                ელექტროენერგიის სადისტრიბუციო ქსელის ყველაზე მსხვილი კერძო
-                მფლობელი.
-              </small>
-            </CardHeader>
           </Card>
         </SwiperSlide>
         <SwiperSlide>
           <Card
             style={{
               width: "50%",
+              height: "200px",
               margin: "0 auto",
               background: "#ccc",
               display: "flex",
@@ -77,26 +70,19 @@ export default function Companies() {
           >
             <CardBody className="overflow-visible py-2 flex flex-col justify-center">
               <Image
+                style={{margin: "0 auto"}}
                 alt="Card background"
                 className="object-cover rounded-xl"
                 src={Logo1}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-              <p className="text-tiny uppercase font-bold">
-                სს „ენერგო-პრო ჯორჯია“
-              </p>
-              <small className="text-default-600">
-                ელექტროენერგიის სადისტრიბუციო ქსელის ყველაზე მსხვილი კერძო
-                მფლობელი.
-              </small>
-            </CardHeader>
           </Card>
-        </SwiperSlide>
+        </SwiperSlide>{" "}
         <SwiperSlide>
           <Card
             style={{
               width: "50%",
+              height: "200px",
               margin: "0 auto",
               background: "#ccc",
               display: "flex",
@@ -106,26 +92,19 @@ export default function Companies() {
           >
             <CardBody className="overflow-visible py-2 flex flex-col justify-center">
               <Image
+                style={{margin: "0 auto"}}
                 alt="Card background"
                 className="object-cover rounded-xl"
                 src={Logo1}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-              <p className="text-tiny uppercase font-bold">
-                სს „ენერგო-პრო ჯორჯია“
-              </p>
-              <small className="text-default-600">
-                ელექტროენერგიის სადისტრიბუციო ქსელის ყველაზე მსხვილი კერძო
-                მფლობელი.
-              </small>
-            </CardHeader>
           </Card>
-        </SwiperSlide>
+        </SwiperSlide>{" "}
         <SwiperSlide>
           <Card
             style={{
               width: "50%",
+              height: "200px",
               margin: "0 auto",
               background: "#ccc",
               display: "flex",
@@ -135,26 +114,19 @@ export default function Companies() {
           >
             <CardBody className="overflow-visible py-2 flex flex-col justify-center">
               <Image
+                style={{margin: "0 auto"}}
                 alt="Card background"
                 className="object-cover rounded-xl"
                 src={Logo1}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-              <p className="text-tiny uppercase font-bold">
-                სს „ენერგო-პრო ჯორჯია“
-              </p>
-              <small className="text-default-600">
-                ელექტროენერგიის სადისტრიბუციო ქსელის ყველაზე მსხვილი კერძო
-                მფლობელი.
-              </small>
-            </CardHeader>
           </Card>
-        </SwiperSlide>
+        </SwiperSlide>{" "}
         <SwiperSlide>
           <Card
             style={{
               width: "50%",
+              height: "200px",
               margin: "0 auto",
               background: "#ccc",
               display: "flex",
@@ -164,29 +136,20 @@ export default function Companies() {
           >
             <CardBody className="overflow-visible py-2 flex flex-col justify-center">
               <Image
+                style={{margin: "0 auto"}}
                 alt="Card background"
                 className="object-cover rounded-xl"
                 src={Logo1}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-              <p className="text-tiny uppercase font-bold">
-                სს „ენერგო-პრო ჯორჯია“
-              </p>
-              <small className="text-default-600">
-                ელექტროენერგიის სადისტრიბუციო ქსელის ყველაზე მსხვილი კერძო
-                მფლობელი.
-              </small>
-            </CardHeader>
           </Card>
-        </SwiperSlide>
+        </SwiperSlide>{" "}
         <SwiperSlide>
-          {" "}
           <Card
             style={{
               width: "50%",
+              height: "200px",
               margin: "0 auto",
-
               background: "#ccc",
               display: "flex",
               justifyContent: "center",
@@ -195,20 +158,34 @@ export default function Companies() {
           >
             <CardBody className="overflow-visible py-2 flex flex-col justify-center">
               <Image
+                style={{margin: "0 auto"}}
                 alt="Card background"
                 className="object-cover rounded-xl"
                 src={Logo1}
               />
             </CardBody>
-            <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
-              <p className="text-tiny uppercase font-bold">
-                სს „ენერგო-პრო ჯორჯია“
-              </p>
-              <small className="text-default-600">
-                ელექტროენერგიის სადისტრიბუციო ქსელის ყველაზე მსხვილი კერძო
-                მფლობელი.
-              </small>
-            </CardHeader>
+          </Card>
+        </SwiperSlide>{" "}
+        <SwiperSlide>
+          <Card
+            style={{
+              width: "50%",
+              height: "200px",
+              margin: "0 auto",
+              background: "#ccc",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            className="py-4"
+          >
+            <CardBody className="overflow-visible py-2 flex flex-col justify-center">
+              <Image
+                style={{margin: "0 auto"}}
+                alt="Card background"
+                className="object-cover rounded-xl"
+                src={Logo1}
+              />
+            </CardBody>
           </Card>
         </SwiperSlide>
       </Swiper>

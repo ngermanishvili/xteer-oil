@@ -2,7 +2,7 @@ import React from "react";
 import SwiperHeading from "../components/Swiper/Swiper";
 import {motion} from "framer-motion";
 import {Divider, Row} from "antd";
-import CenteredImages from "../components/CenteredSvg/CenteredImages";
+import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import AccordionComponent from "../components/Accordion/Accordion";
 import BasicSlider from "../components/demoSlider/DemoSlider";
@@ -24,7 +24,7 @@ const Home = () => (
 
     <div className="p-5"></div>
     <Divider
-      style={{backgroundColor: "#fff", fontSize: "20px", fontWeight: "800"}}
+      style={{backgroundColor: "#fff", fontSize: "2rem", fontWeight: "800"}}
     >
       პარტნიორი კომპანიები
     </Divider>

@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Svg1 from "../../assets/svg1.png";
-import Svg2 from "../../assets/svg2.png";
-import Svg3 from "../../assets/svg3.png";
+import Svg1 from "../../assets/agrinol.png";
+import Svg2 from "../../assets/xteerlogo.png";
+import Svg3 from "../../assets/azmol.png";
 import Svg4 from "../../assets/svg4.png";
-
+import Link from "antd/es/typography/Link";
 // Define media queries for different screen sizes
 const tablet = "768px"; // Adjust this value as needed
 const mobile = "480px"; // Adjust this value as needed
@@ -22,6 +22,7 @@ const ImageContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 15px;
   margin: 10px;
+  background-color: #ccc;
 
   h2 {
     font-size: 1rem;
@@ -36,8 +37,8 @@ const ImageContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
@@ -58,8 +59,21 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 1%;
-
+  margin-top: 0.5%;
+  flex-direction: column;
+  p {
+    font-size: 2rem;
+    font-family: "Cairo", sans-serif;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.88);
+  }
+  .logowrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 80px;
+  }
   @media (max-width: ${tablet}) {
     flex-direction: column;
   }
@@ -72,26 +86,29 @@ const Container = styled.div`
 const CenteredImages = () => {
   return (
     <Container>
-      <ImageContainer>
-        <Image src={Svg1} alt="SVG 1" />
-        <h2>სამრეწველო დიაპაზონი</h2>
-        <Button>პროდუქტის აღწერა</Button>
-      </ImageContainer>
-      <ImageContainer>
-        <Image src={Svg2} alt="SVG 2" />
-        <h2>ATF/GEAR OIL</h2>
-        <Button>პროდუქტის აღწერა</Button>
-      </ImageContainer>
-      <ImageContainer>
-        <Image src={Svg3} alt="SVG 3" />
-        <h2>დიზელი/HEAVY DUTY</h2>
-        <Button>პროდუქტის აღწერა</Button>
-      </ImageContainer>
-      <ImageContainer>
-        <Image src={Svg4} alt="SVG 4" />
-        <h2>ბენზინი</h2>
-        <Button>პროდუქტის აღწერა</Button>
-      </ImageContainer>
+      <p>ჩვენი პროდუქტი</p>
+      <div className="logowrapper">
+        <ImageContainer>
+          <Link to="/find-my-oil">
+            <Image src={Svg1} alt="SVG 1" />
+          </Link>
+        </ImageContainer>
+        <ImageContainer>
+          <Link to="/find-my-oil">
+            <Image src={Svg2} alt="SVG 1" />
+          </Link>
+        </ImageContainer>
+        <ImageContainer>
+          <Link to="/find-my-oil">
+            <Image src={Svg3} alt="SVG 1" />
+          </Link>
+        </ImageContainer>
+        <ImageContainer>
+          <Link to="/find-my-oil">
+            <Image src={Svg1} alt="SVG 1" />
+          </Link>
+        </ImageContainer>
+      </div>
     </Container>
   );
 };
