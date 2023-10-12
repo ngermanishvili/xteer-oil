@@ -1,9 +1,11 @@
 import React from "react";
 import {Tabs} from "antd";
+import {tabStore} from "../../zustand/fitlerStore";
 
 const {TabPane} = Tabs;
 
-const TabSelector = ({onTabChange, size}) => {
+const TabSelector = ({size}) => {
+  const setTab = tabStore((state) => state.setTab);
   const tabItems = [
     {
       label: "ყველა",
@@ -40,7 +42,7 @@ const TabSelector = ({onTabChange, size}) => {
       size={size}
       onChange={(key) => {
         console.log(key);
-        onTabChange(key);
+        setTab(key);
       }}
     >
       {tabItems.map((item) => (

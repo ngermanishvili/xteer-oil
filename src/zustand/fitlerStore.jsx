@@ -1,24 +1,29 @@
-// categorizeDataStore.jsx
 import {create} from "zustand";
-import {fetchDataStore} from "./store";
+import {dataStore} from "./store";
 
-export const categorizeDataStore = create((set) => ({
-  categorizedData: {},
-  categorizeData: () => {
-    const data = fetchDataStore.getState().data;
-
-    const categorizedData = data.reduce((acc, product) => {
-      const category = product.category;
-      if (!acc[category]) {
-        acc[category] = [];
-      }
-      acc[category].push(product);
-      return acc;
-    }, {});
-
-    set({categorizedData});
+export const tabStore = create((set, get) => ({
+  currentTab: "all",
+  setTab: (tab) => set({currentTab: tab}),
+  itemsPerPage: 10,
+  currentPage: 1,
+  setCurrentPage: (page) => set({currentPage: page}),
+  startIndex: () => (get().currentPage - 1) * get().itemsPerPage,
+  endIndex: () => get().startIndex() + get().itemsPerPage,
+  displayedProducts: () => {
+    const currentTab = get().currentTab;
+    const data = dataStore.getState().data;
+    if (currentTab === "all") {
+      return data;
+    } else {
+      return data.filter((product) => product.category === currentTab);
+    }
   },
-  getProductsByCategory: (category) => {
-    return categorizeDataStore.getState().categorizedData[category] || [];
+  currentData: () => {
+    const displayedProductsValue = get().displayedProducts();
+    const sliceStart = get().startIndex();
+    const sliceEnd = get().endIndex();
+    if (Array.isArray(displayedProductsValue)) {
+      return displayedProductsValue.slice(sliceStart, sliceEnd);
+    }
   },
 }));
