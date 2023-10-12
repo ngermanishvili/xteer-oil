@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
 import {dataStore} from "../../zustand/store";
 import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination} from "antd";
+import {Card, Pagination, Result} from "antd";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
-
+import Search from "./Search";
 const {Meta} = Card;
+import {searchStore} from "../../zustand/searchStore";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -15,10 +16,11 @@ const CardContent = () => {
   const itemsPerPage = tabStore((state) => state.itemsPerPage);
   const currentPage = tabStore((state) => state.currentPage);
   const setCurrentPage = tabStore((state) => state.setCurrentPage);
-  const startIndex = tabStore((state) => state.startIndex);
-  const endIndex = tabStore((state) => state.endIndex);
-  const displayedProducts = tabStore((state) => state.displayedProducts);
+  const displayedProducts = tabStore((state) => state.displayedProducts());
   const currentData = tabStore((state) => state.currentData)() || [];
+  const filteredData = searchStore((state) => state.filteredData);
+  const productsToDisplay = filteredData.length ? filteredData : currentData;
+  const setFilteredData = searchStore((state) => state.setFilteredData);
 
   useEffect(() => {
     fetchData();
@@ -26,6 +28,7 @@ const CardContent = () => {
 
   useEffect(() => {
     setCurrentPage(1);
+    setFilteredData();
   }, [currentTab]);
 
   const smoothScrollToTop = () => {
@@ -34,16 +37,34 @@ const CardContent = () => {
       behavior: "smooth",
     });
   };
-
+  console.log(filteredData);
   const handlePageChange = (page) => {
     smoothScrollToTop();
     setCurrentPage(page);
   };
+  if (filteredData.length === 0) {
+    return (
+      <React.Fragment>
+        <Search />
 
+        <Result
+          status="404"
+          title="მოხდა შეცდომა"
+          subTitle="აღნიშნული პროდუქცია ვერ მოიძებნა..."
+          extra={
+            <Link className="buttonText" to="/find-my-oil" type="primary">
+              უკან დაბრუნება
+            </Link>
+          }
+        />
+      </React.Fragment>
+    );
+  }
   return (
     <div>
+      <Search />
       <Wrapper>
-        {currentData.map((product) => (
+        {productsToDisplay.map((product) => (
           <Card
             className="cards"
             key={product._id}
