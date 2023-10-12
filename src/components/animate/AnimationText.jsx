@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 import styled from "styled-components";
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Spinner } from "@nextui-org/react";
+import {useAnimation, motion} from "framer-motion";
+import {useInView} from "react-intersection-observer";
+import {Spinner} from "@nextui-org/react";
 
 const Title = styled.h2`
   font-size: 5rem;
@@ -31,7 +31,7 @@ export default function AnimatedTitle() {
   const text = "GENTO TRADING LTD - ჯენტო თრეიდინგი";
   const ctrls = useAnimation();
 
-  const { ref, inView } = useInView({
+  const {ref, inView} = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
@@ -96,9 +96,6 @@ export default function AnimatedTitle() {
             </Word>
           );
         })}
-        {/* <div className="flex gap-4 justify-center align-middle mt-10">
-          <Spinner size="lg" />
-        </div> */}
       </Title>
     </BackgroundImageContainer>
   );

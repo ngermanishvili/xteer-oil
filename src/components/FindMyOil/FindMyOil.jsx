@@ -1,16 +1,19 @@
-import React from "react";
-import { Layout, theme } from "antd";
-import SiderTabs from "./SiderTabs";
+import React, {useState} from "react";
+import {Layout, theme} from "antd";
 import CardContent from "./CardContent";
+import TabSelector from "./TabSelector";
 
-const { Content } = Layout;
-const App = () => {
+const {Content} = Layout;
+
+const MainLayout = () => {
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
+
+  const [selectedTab, setSelectedTab] = useState("all");
+
   return (
-    <Layout>
-      <SiderTabs />
+    <Layout style={{marginTop: "2.5%"}}>
       <Layout>
         <Content
           style={{
@@ -20,14 +23,12 @@ const App = () => {
             background: colorBgContainer,
           }}
         >
-          <CardContent />
-          <div
-            style={{ width: "100%", display: "flex", justifyContent: "center" }}
-            className="p-5 w-full"
-          ></div>
+          <TabSelector onTabChange={setSelectedTab} />
+          <CardContent selectedTab={selectedTab} />
         </Content>
       </Layout>
     </Layout>
   );
 };
-export default App;
+
+export default MainLayout;

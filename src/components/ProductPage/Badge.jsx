@@ -1,18 +1,18 @@
 import React from "react";
-import { Badge, Card, Col, Row, Space } from "antd";
-import { List, Typography } from "antd";
+import {Badge, Card, Col, Row, Space} from "antd";
+import {List, Typography} from "antd";
 import styled from "styled-components";
 
-const BadgeContent = ({ product }) => {
+const BadgeContent = ({product}) => {
   const allSpecs = [];
   for (const [property, values] of Object.entries(product.specs)) {
-    allSpecs.push({ property, values });
+    allSpecs.push({property, values});
   }
 
   return (
     <Wrapper>
       <Row gutter={[16, 16]}>
-        <Col span={12}>
+        <Col span={6}>
           <Badge.Ribbon text="Applications">
             <Card title="Applications" size="large">
               <List
@@ -22,7 +22,8 @@ const BadgeContent = ({ product }) => {
             </Card>
           </Badge.Ribbon>
         </Col>
-        <Col span={12}>
+        <Col span={6}>
+          /*{" "}
           <Badge.Ribbon text="Features and benefits">
             <Card title="Features and Benefits" size="large">
               <List
@@ -30,9 +31,10 @@ const BadgeContent = ({ product }) => {
                 renderItem={(item) => <List.Item>{item}</List.Item>}
               />
             </Card>
-          </Badge.Ribbon>
+          </Badge.Ribbon>{" "}
+          */
         </Col>
-        <Col span={12}>
+        <Col span={6}>
           <Badge.Ribbon text="Certifications">
             <Card
               title="Certification / Approval / Performance Standard"
@@ -45,16 +47,15 @@ const BadgeContent = ({ product }) => {
             </Card>
           </Badge.Ribbon>
         </Col>
-        <Col span={12}>
+        <Col span={6}>
           <Badge.Ribbon text="Specs">
             <Card title="Specifications" size="large">
               <List
                 dataSource={allSpecs}
                 renderItem={(item) => (
                   <List.Item>
-                    <Typography.Text mark>[aLO]</Typography.Text>
+                    <Typography.Text mark></Typography.Text>
                     {item.property}: {/* {item.values.join(", ")} */}
-                    {/* ეს რა სიკვდილია? რაღაც ფეიჯებზე აბაგინებს რისთვისარის ??? */}
                   </List.Item>
                 )}
               />
