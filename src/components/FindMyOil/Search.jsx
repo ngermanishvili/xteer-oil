@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import {Input, Button} from "antd";
+import React from "react";
+import { Input } from "antd";
 import styled from "styled-components";
-const {Search} = Input;
-import {searchStore} from "../../zustand/searchStore";
+const { Search } = Input;
+import { searchStore } from "../../zustand/searchStore";
 const StyledSearch = styled(Search)`
   .ant-input {
     border-color: initial;
@@ -25,12 +25,11 @@ const SearchComponent = () => {
 
     // Prevent adding whitespace at the beginning if there's no text
     if (value.length > 0 && value.trim() === "") return;
-
     setSearchQuery(value);
   };
 
   return (
-    <div style={{marginBottom: "24px"}}>
+    <div style={{ marginBottom: "24px" }}>
       <StyledSearch
         placeholder="მოძებნე პროდუქცია"
         size="large"

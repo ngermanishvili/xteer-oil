@@ -1,18 +1,16 @@
-import React, {useState, useEffect} from "react";
-import {dataStore} from "../../zustand/store";
-import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination, Result} from "antd";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { Card, Pagination, Result } from "antd";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const {Meta} = Card;
-import {searchStore} from "../../zustand/searchStore";
+const { Meta } = Card;
+import { searchStore } from "../../zustand/searchStore";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
-  const data = dataStore((state) => state.data);
   const currentTab = tabStore((state) => state.currentTab);
-  const setTab = tabStore((state) => state.setTab);
   const itemsPerPage = tabStore((state) => state.itemsPerPage);
   const currentPage = tabStore((state) => state.currentPage);
   const setCurrentPage = tabStore((state) => state.setCurrentPage);
@@ -46,7 +44,6 @@ const CardContent = () => {
     return (
       <React.Fragment>
         <Search />
-
         <Result
           status="404"
           title="მოხდა შეცდომა"
@@ -70,7 +67,7 @@ const CardContent = () => {
             key={product._id}
             cover={
               <img
-                style={{width: "200px", height: "200px"}}
+                style={{ width: "200px", height: "200px" }}
                 alt={product.productName}
                 src={product.imageUrl || "default_image_url"}
               />
@@ -80,7 +77,7 @@ const CardContent = () => {
               title={product.productName}
               description={product.productLine}
             />
-            <ul style={{display: "flex"}}>
+            <ul style={{ display: "flex" }}>
               {product.pdfUrls.map((viscosity, index, array) => (
                 <li className="li" key={viscosity.viscosityGrade}>
                   {viscosity.viscosityGrade}

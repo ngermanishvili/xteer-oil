@@ -1,12 +1,11 @@
 import React from "react";
-import {Tabs} from "antd";
-import {tabStore} from "../../zustand/fitlerStore";
-import {searchStore} from "../../zustand/searchStore";
-const {TabPane} = Tabs;
+import { Tabs } from "antd";
+import { tabStore } from "../../zustand/fitlerStore";
+import { searchStore } from "../../zustand/searchStore";
+const { TabPane } = Tabs;
 
-const TabSelector = ({size}) => {
+const TabSelector = ({ size }) => {
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
-  const setFilteredData = searchStore((state) => state.setFilteredData);
   const setTab = tabStore((state) => state.setTab);
   const tabItems = [
     {
