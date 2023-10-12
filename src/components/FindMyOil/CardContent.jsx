@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { Card, Pagination } from "antd";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {dataStore} from "../../zustand/store";
+import {Card, Pagination} from "antd";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
-const { Meta } = Card;
-const CardContent = () => {
+const {Meta} = Card;
+
+const CardContent = ({selectedTab}) => {
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,15 +14,21 @@ const CardContent = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  //sets page to 1 when category is changed toooo
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedTab]);
   const itemsPerPage = 10;
-
-  // Calculate the start and end indices for the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  // Slice the data to get the items for the current page
-  const currentData = data.slice(startIndex, endIndex);
+  // Filter products based on the selectedTab
+  const displayedProducts =
+    selectedTab === "all"
+      ? data
+      : data.filter((product) => product.category === selectedTab);
+
+  const currentData = displayedProducts.slice(startIndex, endIndex);
 
   const smoothScrollToTop = () => {
     window.scrollTo({
@@ -32,7 +39,6 @@ const CardContent = () => {
 
   const handlePageChange = (page) => {
     smoothScrollToTop();
-    // Set the new page
     setCurrentPage(page);
   };
 
@@ -45,7 +51,7 @@ const CardContent = () => {
             key={product._id}
             cover={
               <img
-                style={{ width: "200px", height: "200px" }}
+                style={{width: "200px", height: "200px"}}
                 alt={product.productName}
                 src={product.imageUrl || "default_image_url"}
               />
@@ -56,7 +62,7 @@ const CardContent = () => {
               title={product.productName}
               description={product.productLine}
             />
-            <ul style={{ display: "flex" }}>
+            <ul style={{display: "flex"}}>
               {product.pdfUrls.map((viscosity, index, array) => (
                 <li className="li" key={viscosity.viscosityGrade}>
                   {viscosity.viscosityGrade}
@@ -65,7 +71,6 @@ const CardContent = () => {
               ))}
             </ul>
             <div className="LinkContent">
-              {/* Pass only the _id as a parameter in the URL */}
               <Link
                 onClick={handlePageChange}
                 className="seeDetails"
@@ -81,7 +86,7 @@ const CardContent = () => {
         <Pagination
           current={currentPage}
           onChange={handlePageChange}
-          total={data.length}
+          total={displayedProducts.length}
           pageSize={itemsPerPage}
           showSizeChanger={false}
         />

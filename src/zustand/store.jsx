@@ -1,5 +1,5 @@
 // store.jsx
-import create from "zustand";
+import {create} from "zustand";
 import axios from "axios";
 
 export const dataStore = create((set) => ({

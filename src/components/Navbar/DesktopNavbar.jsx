@@ -20,14 +20,13 @@ import {
   TagUser,
   Scale,
 } from "../IconsNavbar/Icons.jsx";
-import { AcmeLogo } from "../HeaderLogo/AcmeLogo.jsx";
+import logo from "../../assets/LOGO.png";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export default function DesktopNavbar() {
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />,
-
     scale: <Scale className="text-warning" fill="currentColor" size={30} />,
     lock: <Lock className="text-success" fill="currentColor" size={30} />,
     activity: (
@@ -39,13 +38,10 @@ export default function DesktopNavbar() {
   };
 
   return (
-    <Navbar>
+    <Navbar className="absolute fixed ">
       <NavbarBrand>
-        <AcmeLogo />
         <Link to="/">
-          <Fonts className="font-family: 'Cairo', sans-serif; text-inherit cursor-pointer">
-            GENTO TRADING
-          </Fonts>
+          <img src={logo} style={{width: "100%  "}} />
         </Link>
       </NavbarBrand>
       <NavbarContent className="sm:flex gap-4" justify="center">

@@ -23,7 +23,7 @@ const App = () => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
