@@ -10,28 +10,23 @@ const {Meta} = Card;
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
-  const [currentPage, setCurrentPage] = useState(1);
-
   const currentTab = tabStore((state) => state.currentTab);
+  const setTab = tabStore((state) => state.setTab);
+  const itemsPerPage = tabStore((state) => state.itemsPerPage);
+  const currentPage = tabStore((state) => state.currentPage);
+  const setCurrentPage = tabStore((state) => state.setCurrentPage);
+  const startIndex = tabStore((state) => state.startIndex);
+  const endIndex = tabStore((state) => state.endIndex);
+  const displayedProducts = tabStore((state) => state.displayedProducts);
+  const currentData = tabStore((state) => state.currentData)() || [];
+
   useEffect(() => {
     fetchData();
   }, []);
-  //sets page to 1 when category is changed toooo
+
   useEffect(() => {
     setCurrentPage(1);
   }, [currentTab]);
-
-  const itemsPerPage = 10;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  // Filter products based on the selectedTab
-  const displayedProducts =
-    currentTab === "all"
-      ? data
-      : data.filter((product) => product.category === currentTab);
-
-  const currentData = displayedProducts.slice(startIndex, endIndex);
 
   const smoothScrollToTop = () => {
     window.scrollTo({
@@ -60,7 +55,6 @@ const CardContent = () => {
               />
             }
           >
-            <div></div>
             <Meta
               title={product.productName}
               description={product.productLine}
@@ -133,4 +127,5 @@ const PaginationContainer = styled.div`
   justify-content: center;
   margin-top: 50px;
 `;
+
 export default CardContent;
