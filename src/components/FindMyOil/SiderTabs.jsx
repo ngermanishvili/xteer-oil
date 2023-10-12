@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Radio, Tabs } from "antd";
+import styled from "styled-components";
 
 const App = () => {
   const [size, setSize] = useState("large");
@@ -11,48 +12,53 @@ const App = () => {
     {
       label: "ყველა",
       key: "all",
-      children: "ფილტრი ყველა",
       path: "/",
     },
     {
       label: "ავტომობილები",
-      key: "automotive",
-      children: "ფილტრი ავტომობილები",
+      key: "Automotive Lubricants",
     },
     {
       label: "ჰიდრავლიკა",
-      key: "hydraulic",
-      children: "ფილტრი ჰიდრავლიკა",
+      key: "Hydraulic Fluid",
     },
     {
       label: "ინდუსტრია",
-      key: "industrial",
-      children: "ფილტრი ინდუსტრია",
+      key: "Industrial Lubricants",
     },
     {
       label: "მარინა",
-      key: "marine",
-      children: "ფილტრი მარინა",
+      key: "Marine Lubricants",
     },
     {
       label: "სპეციალური",
       key: "specialty",
-      children: "ფილტრი სპეციალური",
     },
   ];
 
   return (
-    <div>
+    <Wrapper>
       <Radio.Group
+    
         value={size}
         onChange={onChange}
         style={{
           marginBottom: 16,
         }}
       ></Radio.Group>
-      <Tabs defaultActiveKey="all" type="card" size={size} items={tabItems} />
-    </div>
+      <Tabs className="tabItems" defaultActiveKey="all" type="card" size={size} items={tabItems} />
+    </Wrapper>
   );
 };
 
 export default App;
+
+const Wrapper = styled.div`
+width: 100%;
+background-color: transparent;
+
+.tabItems {
+  margin-left: 20px;
+  font-weight: 700;
+}
+`

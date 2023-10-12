@@ -16,16 +16,9 @@ export default function MobileNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
+    "მთავარი",
+    "კონტაქტი",
+    "პროდუქტი",
   ];
 
   return (
@@ -41,51 +34,16 @@ export default function MobileNavbar() {
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
           <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">GENTO TRADING</p>
         </NavbarBrand>
-      </NavbarContent>
-
-      {/* Desktop Navbar */}
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
-        </NavbarBrand>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-
-      {/* Desktop Login and Sign Up */}
-      <NavbarContent justify="end" className="hidden lg:flex">
-        <NavbarItem>
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
       </NavbarContent>
 
       {/* Mobile Menu */}
-      <NavbarMenu>
+      <NavbarMenu style={{display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700' }}>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              className="w-full"
+              className=""
               color={
                 index === 2
                   ? "warning"
@@ -93,7 +51,7 @@ export default function MobileNavbar() {
                   ? "danger"
                   : "foreground"
               }
-              href="#"
+              to="/find-my-oil"
               size="lg"
             >
               {item}

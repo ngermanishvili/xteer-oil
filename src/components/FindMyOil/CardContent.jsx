@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { dataStore } from "../../zustand/store";
-import { Card, Pagination } from "antd";
-import { Link } from "react-router-dom";
+import { Card, Pagination, Button, Result  } from "antd";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
-const CardContent = () => {
+
+const CardContent = ({ searchQuery }) => {
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,13 +16,29 @@ const CardContent = () => {
   }, []);
 
   const itemsPerPage = 10;
-
-  // Calculate the start and end indices for the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  // Slice the data to get the items for the current page
-  const currentData = data.slice(startIndex, endIndex);
+  // regex for search query
+  const escapedQuery = searchQuery.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+  const regexPattern = new RegExp(escapedQuery.split('').join('.*'), 'i');
+
+  const filteredData = data.filter((product) =>
+  regexPattern.test(product.productName)
+  );
+
+  if (filteredData.length === 0) {
+    return (
+      <Result
+        status="404"
+        title="მოხდა შეცდომა"
+        subTitle="აღნიშნული პროდუქცია ვერ მოიძებნა..."
+        extra={<Link className="buttonText" to='/' type="primary">უკან დაბრუნება</Link>}
+      />
+    );
+  }
+
+  const currentData = filteredData.slice(startIndex, endIndex);
 
   const smoothScrollToTop = () => {
     window.scrollTo({
@@ -65,7 +82,6 @@ const CardContent = () => {
               ))}
             </ul>
             <div className="LinkContent">
-              {/* Pass only the _id as a parameter in the URL */}
               <Link
                 onClick={handlePageChange}
                 className="seeDetails"
@@ -81,7 +97,7 @@ const CardContent = () => {
         <Pagination
           current={currentPage}
           onChange={handlePageChange}
-          total={data.length}
+          total={filteredData.length}
           pageSize={itemsPerPage}
           showSizeChanger={false}
         />

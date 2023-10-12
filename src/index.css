@@ -219,3 +219,12 @@
   justify-content: space-between;
   width: 100%;
 }
+
+.buttonText{
+  background-color: #1890ff; 
+  border-color: #1890ff; 
+  color: #fff;
+  border-radius: 5px;
+  padding: 4px;
+  width: 100%;
+}
