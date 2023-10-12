@@ -114,9 +114,6 @@ const Wrapper = styled.div`
   .li {
     margin-top: 4px;
   }
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
 `;
 
 const PaginationContainer = styled.div`
