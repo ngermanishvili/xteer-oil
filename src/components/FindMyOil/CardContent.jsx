@@ -1,32 +1,35 @@
 import React, {useState, useEffect} from "react";
 import {dataStore} from "../../zustand/store";
+import {tabStore} from "../../zustand/fitlerStore";
 import {Card, Pagination} from "antd";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 
 const {Meta} = Card;
 
-const CardContent = ({selectedTab}) => {
+const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const currentTab = tabStore((state) => state.currentTab);
   useEffect(() => {
     fetchData();
   }, []);
   //sets page to 1 when category is changed toooo
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedTab]);
+  }, [currentTab]);
+
   const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
   // Filter products based on the selectedTab
   const displayedProducts =
-    selectedTab === "all"
+    currentTab === "all"
       ? data
-      : data.filter((product) => product.category === selectedTab);
+      : data.filter((product) => product.category === currentTab);
 
   const currentData = displayedProducts.slice(startIndex, endIndex);
 
