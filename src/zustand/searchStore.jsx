@@ -20,11 +20,10 @@ export const searchStore = create((set, get) => ({
 
     set({
       filteredData: filtered,
-      currentPage: 1 // Reset the current page
+      currentPage: 1,
     });
   },
-  
-  // Pagination-related states and methods
+
   itemsPerPage: 10,
   currentPage: 1,
   setCurrentPage: (page) => set({currentPage: page}),

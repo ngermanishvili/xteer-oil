@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Button, Modal } from "antd";
+import React, {useState} from "react";
+import {Button, Modal} from "antd";
 import PdfViewer from "../Pdf/PdfViewer";
 
-const CaModal = ({ pdfUrls }) => {
+const CaModal = ({pdfUrls}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPdfUrl, setSelectedPdfUrl] = useState(null);
 
@@ -28,13 +28,13 @@ const CaModal = ({ pdfUrls }) => {
       <Button
         type="primary"
         onClick={() => openPdf(pdfUrls[0]?.pdsUrl)} // You can pass the appropriate PDF URL here
-        style={{ color: "#fff", backgroundColor: "red" }}
+        style={{color: "#fff", backgroundColor: "red"}}
       >
         დეტალური ინფორმაცია
       </Button>
       <Modal
         title="დეტალური ინფორმაცია"
-        visible={isModalOpen}
+        open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >

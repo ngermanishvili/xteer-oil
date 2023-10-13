@@ -29,7 +29,10 @@ const ProductDetail = () => {
   const {
     token: {colorBgContainer},
   } = theme.useToken();
-
+  const breadcrumbItems = [
+    {path: "/", breadcrumbName: "მთავარი"},
+    {path: "/product", breadcrumbName: "პროდუქტი"},
+  ];
   return (
     <Layout>
       <Content
@@ -38,13 +41,17 @@ const ProductDetail = () => {
         }}
       >
         <Breadcrumb
-          style={{
-            margin: "16px 0",
+          style={{margin: "16px 0"}}
+         
+          itemRender={(route, params, routes, paths) => {
+            const isLastItem = routes.indexOf(route) === routes.length - 1;
+            return isLastItem ? (
+              <span>{route.breadcrumbName}</span>
+            ) : (
+              <a href={route.path}>{route.breadcrumbName}</a>
+            );
           }}
-        >
-          <Breadcrumb.Item>მთავარი</Breadcrumb.Item>
-          <Breadcrumb.Item>პროდუქტი</Breadcrumb.Item>
-        </Breadcrumb>
+        />
         <Layout
           style={{
             padding: "24px 0",

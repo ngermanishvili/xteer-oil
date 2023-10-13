@@ -8,6 +8,7 @@ import Search from "./Search";
 const {Meta} = Card;
 import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
+import {useLocation} from "react-router-dom";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -15,6 +16,7 @@ const CardContent = () => {
   const itemsPerPage = tabStore((state) => state.itemsPerPage);
   const currentPage = tabStore((state) => state.currentPage);
   const setCurrentPage = tabStore((state) => state.setCurrentPage);
+  const setTab = tabStore((state) => state.setTab);
   const displayedProducts = tabStore((state) => state.displayedProducts());
   const currentData = tabStore((state) => state.currentData)() || [];
   const filteredData = searchStore((state) => state.filteredData);
@@ -29,6 +31,14 @@ const CardContent = () => {
   const productsToDisplay =
     searchQuery.length >= 1 ? currentFilteredData : currentData;
 
+  const location = useLocation();
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setFilteredData();
+    setTab("all");
+  }, [location]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,7 +46,6 @@ const CardContent = () => {
     setCurrentPage(1);
     setFilteredData();
   }, [currentTab]);
-  console.log("aloo");
   const smoothScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -91,6 +100,7 @@ const CardContent = () => {
       </Wrapper>
       <PaginationContainer>
         <Pagination
+          key={currentPage}
           current={currentPage}
           onChange={handlePageChange}
           total={productsSize}
