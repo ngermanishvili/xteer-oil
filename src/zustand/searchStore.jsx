@@ -1,6 +1,6 @@
 import {create} from "zustand";
-import {dataStore} from "./store";
 import {tabStore} from "./fitlerStore";
+
 export const searchStore = create((set, get) => ({
   searchQuery: "",
   setSearchQuery: (query) => set({searchQuery: query}),
@@ -17,8 +17,22 @@ export const searchStore = create((set, get) => ({
     const filtered = data.filter((product) =>
       pattern.test(product.productName)
     );
-    set({filteredData: filtered});
-    let data2 = tabStore.getState().currentData();
-    set({data2: get.filteredData});
+
+    set({
+      filteredData: filtered,
+      currentPage: 1 // Reset the current page
+    });
+  },
+  
+  // Pagination-related states and methods
+  itemsPerPage: 10,
+  currentPage: 1,
+  setCurrentPage: (page) => set({currentPage: page}),
+  startIndex: () => (get().currentPage - 1) * get().itemsPerPage,
+  endIndex: () => get().startIndex() + get().itemsPerPage,
+  currentFilteredData: () => {
+    const sliceStart = get().startIndex();
+    const sliceEnd = get().endIndex();
+    return get().filteredData.slice(sliceStart, sliceEnd);
   },
 }));

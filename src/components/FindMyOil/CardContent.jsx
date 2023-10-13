@@ -7,6 +7,7 @@ import styled from "styled-components";
 import Search from "./Search";
 const {Meta} = Card;
 import {searchStore} from "../../zustand/searchStore";
+import ItemNotFound from "./ItemNotFound";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -20,15 +21,20 @@ const CardContent = () => {
   const currentData = tabStore((state) => state.currentData)() || [];
   const filteredData = searchStore((state) => state.filteredData);
   const searchQuery = searchStore((state) => state.searchQuery);
-
-  const productsToDisplay =
-    searchQuery.length >= 1 ? filteredData : currentData;
   const setFilteredData = searchStore((state) => state.setFilteredData);
+  const currentFilteredData = searchStore((state) =>
+    state.currentFilteredData()
+  );
+
+  const productsSize =
+    searchQuery.length >= 1 ? filteredData.length : displayedProducts.length;
+  const productsToDisplay =
+    searchQuery.length >= 1 ? currentFilteredData : currentData;
 
   useEffect(() => {
     fetchData();
   }, []);
-
+  console.log(currentFilteredData);
   useEffect(() => {
     setCurrentPage(1);
     setFilteredData();
@@ -44,71 +50,55 @@ const CardContent = () => {
     smoothScrollToTop();
     setCurrentPage(page);
   };
-  console.log(productsToDisplay, filteredData, currentData);
-  if (filteredData.length === 0) {
-    return (
-      <React.Fragment>
-        <Search />
 
-        <Result
-          status="404"
-          title="მოხდა შეცდომა"
-          subTitle="აღნიშნული პროდუქცია ვერ მოიძებნა..."
-          extra={
-            <Link className="buttonText" to="/find-my-oil" type="primary">
-              უკან დაბრუნება
-            </Link>
-          }
-        />
-      </React.Fragment>
-    );
-  }
   return (
     <div>
+      <Search />
+      <ItemNotFound />
       <Wrapper>
-        <Search />
-
         {productsToDisplay.map((product) => (
-          <Card
-            className="cards"
-            key={product._id}
-            cover={
-              <img
-                style={{width: "200px", height: "200px"}}
-                alt={product.productName}
-                src={product.imageUrl || "default_image_url"}
+          <React.Fragment>
+            <Card
+              className="cards"
+              key={product._id}
+              cover={
+                <img
+                  style={{width: "200px", height: "200px"}}
+                  alt={product.productName}
+                  src={product.imageUrl || "default_image_url"}
+                />
+              }
+            >
+              <Meta
+                title={product.productName}
+                description={product.productLine}
               />
-            }
-          >
-            <Meta
-              title={product.productName}
-              description={product.productLine}
-            />
-            <ul style={{display: "flex"}}>
-              {product.pdfUrls.map((viscosity, index, array) => (
-                <li className="li" key={viscosity.viscosityGrade}>
-                  {viscosity.viscosityGrade}
-                  {index !== array.length - 1 && "/"}
-                </li>
-              ))}
-            </ul>
-            <div className="LinkContent">
-              <Link
-                onClick={handlePageChange}
-                className="seeDetails"
-                to={`/product/${product._id}`}
-              >
-                See Details
-              </Link>
-            </div>
-          </Card>
+              <ul style={{display: "flex"}}>
+                {product.pdfUrls.map((viscosity, index, array) => (
+                  <li className="li" key={viscosity.viscosityGrade}>
+                    {viscosity.viscosityGrade}
+                    {index !== array.length - 1 && "/"}
+                  </li>
+                ))}
+              </ul>
+              <div className="LinkContent">
+                <Link
+                  onClick={handlePageChange}
+                  className="seeDetails"
+                  to={`/product/${product._id}`}
+                >
+                  See Details
+                </Link>
+              </div>
+            </Card>
+          </React.Fragment>
         ))}
       </Wrapper>
       <PaginationContainer>
         <Pagination
           current={currentPage}
           onChange={handlePageChange}
-          total={filteredData.length}
+          total={productsSize}
           pageSize={itemsPerPage}
           showSizeChanger={false}
         />
