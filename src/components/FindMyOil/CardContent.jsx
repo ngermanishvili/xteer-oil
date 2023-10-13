@@ -19,7 +19,10 @@ const CardContent = () => {
   const displayedProducts = tabStore((state) => state.displayedProducts());
   const currentData = tabStore((state) => state.currentData)() || [];
   const filteredData = searchStore((state) => state.filteredData);
-  const productsToDisplay = filteredData.length ? filteredData : currentData;
+  const searchQuery = searchStore((state) => state.searchQuery);
+
+  const productsToDisplay =
+    searchQuery.length >= 1 ? filteredData : currentData;
   const setFilteredData = searchStore((state) => state.setFilteredData);
 
   useEffect(() => {
@@ -37,11 +40,11 @@ const CardContent = () => {
       behavior: "smooth",
     });
   };
-  console.log(filteredData);
   const handlePageChange = (page) => {
     smoothScrollToTop();
     setCurrentPage(page);
   };
+  console.log(productsToDisplay, filteredData, currentData);
   if (filteredData.length === 0) {
     return (
       <React.Fragment>
@@ -62,8 +65,9 @@ const CardContent = () => {
   }
   return (
     <div>
-      <Search />
       <Wrapper>
+        <Search />
+
         {productsToDisplay.map((product) => (
           <Card
             className="cards"
@@ -104,7 +108,7 @@ const CardContent = () => {
         <Pagination
           current={currentPage}
           onChange={handlePageChange}
-          total={displayedProducts.length}
+          total={filteredData.length}
           pageSize={itemsPerPage}
           showSizeChanger={false}
         />

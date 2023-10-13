@@ -18,5 +18,7 @@ export const searchStore = create((set, get) => ({
       pattern.test(product.productName)
     );
     set({filteredData: filtered});
+    let data2 = tabStore.getState().currentData();
+    set({data2: get.filteredData});
   },
 }));
