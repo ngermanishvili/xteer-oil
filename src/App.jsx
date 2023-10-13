@@ -6,7 +6,6 @@ import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
 import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
 import FindMyOil from "./components/FindMyOil/FindMyOil";
 import ProductDetail from "./Pages/Product";
-import {RingLoader} from "react-spinners";
 import {Footer} from "antd/es/layout/layout";
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));

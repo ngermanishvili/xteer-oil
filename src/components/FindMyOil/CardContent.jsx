@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { dataStore } from "../../zustand/store";
 import { tabStore } from "../../zustand/fitlerStore";
 import { Card, Pagination, Result } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const {Meta} = Card;
-import {searchStore} from "../../zustand/searchStore";
+const { Meta } = Card;
+import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
 
 const CardContent = () => {
@@ -32,7 +32,7 @@ const CardContent = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(currentFilteredData);
+
   useEffect(() => {
     setCurrentPage(1);
     setFilteredData();
@@ -55,45 +55,44 @@ const CardContent = () => {
       <ItemNotFound />
       <Wrapper>
         {productsToDisplay.map((product) => (
-          <React.Fragment>
-            <Card
-              className="cards"
-              key={product._id}
-              cover={
-                <img
-                  style={{width: "200px", height: "200px"}}
-                  alt={product.productName}
-                  src={product.imageUrl || "default_image_url"}
-                />
-              }
-            >
-              <Meta
-                title={product.productName}
-                description={product.productLine}
+          <Card
+            className="cards"
+            key={product._id}
+            cover={
+              <img
+                style={{ width: "200px", height: "200px" }}
+                alt={product.productName}
+                src={product.imageUrl || "default_image_url"}
               />
-              <ul style={{display: "flex"}}>
-                {product.pdfUrls.map((viscosity, index, array) => (
-                  <li className="li" key={viscosity.viscosityGrade}>
-                    {viscosity.viscosityGrade}
-                    {index !== array.length - 1 && "/"}
-                  </li>
-                ))}
-              </ul>
-              <div className="LinkContent">
-                <Link
-                  onClick={handlePageChange}
-                  className="seeDetails"
-                  to={`/product/${product._id}`}
-                >
-                  See Details
-                </Link>
-              </div>
-            </Card>
-          </React.Fragment>
+            }
+          >
+            <Meta
+              title={product.productName}
+              description={product.productLine}
+            />
+            <ul style={{ display: "flex" }}>
+              {product.pdfUrls.map((viscosity, index, array) => (
+                <li className="li" key={viscosity.viscosityGrade}>
+                  {viscosity.viscosityGrade}
+                  {index !== array.length - 1 && "/"}
+                </li>
+              ))}
+            </ul>
+            <div className="LinkContent">
+              <Link
+                onClick={handlePageChange}
+                className="seeDetails"
+                to={`/product/${product._id}`}
+              >
+                See Details
+              </Link>
+            </div>
+          </Card>
         ))}
       </Wrapper>
       <PaginationContainer>
         <Pagination
+          key={currentPage}
           current={currentPage}
           onChange={handlePageChange}
           total={productsSize}
@@ -128,6 +127,9 @@ const Wrapper = styled.div`
   }
   .li {
     margin-top: 4px;
+  }
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 `;
 
