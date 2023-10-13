@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 const ItemNotFound = () => {
   const filteredData = searchStore((state) => state.filteredData);
   const searchQuery = searchStore((state) => state.searchQuery);
+  const setSearchQuery = searchStore((state) => state.setSearchQuery);
 
   if (filteredData.length === 0 && searchQuery.length > 0) {
     return (
@@ -16,9 +17,16 @@ const ItemNotFound = () => {
             title="მოხდა შეცდომა"
             subTitle="აღნიშნული პროდუქცია ვერ მოიძებნა..."
             extra={
-              <Link className="buttonText" to="/find-my-oil" type="primary">
+              <button
+                className="buttonText"
+                to="/find-my-oil"
+                onClick={() => {
+                  setSearchQuery("");
+                }}
+                type="primary"
+              >
                 უკან დაბრუნება
-              </Link>
+              </button>
             }
           />
         </div>

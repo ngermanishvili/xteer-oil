@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Breadcrumb, Layout, theme } from "antd";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {Breadcrumb, Layout, theme} from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
 import CaModal from "../components/ProductPage/CaModal";
-import { dataStore } from "../zustand/store";
-import { SyncLoader } from "react-spinners";
-const { Content } = Layout;
+import {dataStore} from "../zustand/store";
+import {SyncLoader} from "react-spinners";
+const {Content} = Layout;
 
 const ProductDetail = () => {
-  const { productId } = useParams();
+  const {productId} = useParams();
   const data = dataStore((state) => state.data);
   const [product, setProduct] = useState(null);
 
@@ -18,13 +18,16 @@ const ProductDetail = () => {
     const singleProduct = data.find((item) => item._id === productId);
     setProduct(singleProduct);
   };
+  const fetchData = dataStore((state) => state.fetchData);
 
   useEffect(() => {
     singleProductFilter();
   }, [productId, data]);
-
+  useEffect(() => {
+    fetchData();
+  }, []);
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
 
   return (

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {dataStore} from "../../zustand/store";
 import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination, Result} from "antd";
+import {Card, Pagination} from "antd";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
@@ -11,9 +11,7 @@ import ItemNotFound from "./ItemNotFound";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
-  const data = dataStore((state) => state.data);
   const currentTab = tabStore((state) => state.currentTab);
-  const setTab = tabStore((state) => state.setTab);
   const itemsPerPage = tabStore((state) => state.itemsPerPage);
   const currentPage = tabStore((state) => state.currentPage);
   const setCurrentPage = tabStore((state) => state.setCurrentPage);
@@ -34,12 +32,11 @@ const CardContent = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(currentFilteredData);
   useEffect(() => {
     setCurrentPage(1);
     setFilteredData();
   }, [currentTab]);
-
+  console.log("aloo");
   const smoothScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -57,41 +54,39 @@ const CardContent = () => {
       <ItemNotFound />
       <Wrapper>
         {productsToDisplay.map((product) => (
-          <React.Fragment>
-            <Card
-              className="cards"
-              key={product._id}
-              cover={
-                <img
-                  style={{width: "200px", height: "200px"}}
-                  alt={product.productName}
-                  src={product.imageUrl || "default_image_url"}
-                />
-              }
-            >
-              <Meta
-                title={product.productName}
-                description={product.productLine}
+          <Card
+            className="cards"
+            key={product._id}
+            cover={
+              <img
+                style={{width: "200px", height: "200px"}}
+                alt={product.productName}
+                src={product.imageUrl || "default_image_url"}
               />
-              <ul style={{display: "flex"}}>
-                {product.pdfUrls.map((viscosity, index, array) => (
-                  <li className="li" key={viscosity.viscosityGrade}>
-                    {viscosity.viscosityGrade}
-                    {index !== array.length - 1 && "/"}
-                  </li>
-                ))}
-              </ul>
-              <div className="LinkContent">
-                <Link
-                  onClick={handlePageChange}
-                  className="seeDetails"
-                  to={`/product/${product._id}`}
-                >
-                  See Details
-                </Link>
-              </div>
-            </Card>
-          </React.Fragment>
+            }
+          >
+            <Meta
+              title={product.productName}
+              description={product.productLine}
+            />
+            <ul style={{display: "flex"}}>
+              {product.pdfUrls.map((viscosity, index, array) => (
+                <li className="li" key={viscosity.viscosityGrade}>
+                  {viscosity.viscosityGrade}
+                  {index !== array.length - 1 && "/"}
+                </li>
+              ))}
+            </ul>
+            <div className="LinkContent">
+              <Link
+                onClick={handlePageChange}
+                className="seeDetails"
+                to={`/product/${product._id}`}
+              >
+                See Details
+              </Link>
+            </div>
+          </Card>
         ))}
       </Wrapper>
       <PaginationContainer>
