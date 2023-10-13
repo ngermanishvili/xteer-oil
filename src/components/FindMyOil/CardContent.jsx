@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { tabStore } from "../../zustand/fitlerStore";
-import { Card, Pagination, Result } from "antd";
-import { Link } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {dataStore} from "../../zustand/store";
+import {tabStore} from "../../zustand/fitlerStore";
+import {Card, Pagination} from "antd";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
 const { Meta } = Card;
 import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
+import {useLocation} from "react-router-dom";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -15,6 +16,7 @@ const CardContent = () => {
   const itemsPerPage = tabStore((state) => state.itemsPerPage);
   const currentPage = tabStore((state) => state.currentPage);
   const setCurrentPage = tabStore((state) => state.setCurrentPage);
+  const setTab = tabStore((state) => state.setTab);
   const displayedProducts = tabStore((state) => state.displayedProducts());
   const currentData = tabStore((state) => state.currentData)() || [];
   const filteredData = searchStore((state) => state.filteredData);
@@ -29,15 +31,21 @@ const CardContent = () => {
   const productsToDisplay =
     searchQuery.length >= 1 ? currentFilteredData : currentData;
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const location = useLocation();
 
   useEffect(() => {
     setCurrentPage(1);
     setFilteredData();
-  }, [currentTab]);
+    setTab("all");
+  }, [location]);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+  useEffect(() => {
+    setCurrentPage(1);
+    setFilteredData();
+  }, [currentTab]);
   const smoothScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -60,7 +68,7 @@ const CardContent = () => {
             key={product._id}
             cover={
               <img
-                style={{ width: "200px", height: "200px" }}
+                style={{width: "200px", height: "200px"}}
                 alt={product.productName}
                 src={product.imageUrl || "default_image_url"}
               />
@@ -70,7 +78,7 @@ const CardContent = () => {
               title={product.productName}
               description={product.productLine}
             />
-            <ul style={{ display: "flex" }}>
+            <ul style={{display: "flex"}}>
               {product.pdfUrls.map((viscosity, index, array) => (
                 <li className="li" key={viscosity.viscosityGrade}>
                   {viscosity.viscosityGrade}

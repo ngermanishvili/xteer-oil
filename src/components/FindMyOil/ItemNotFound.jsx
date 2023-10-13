@@ -6,6 +6,7 @@ const ItemNotFound = () => {
   const filteredData = searchStore((state) => state.filteredData);
   const searchQuery = searchStore((state) => state.searchQuery);
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
+
   if (filteredData.length === 0 && searchQuery.length > 0) {
     return (
       <React.Fragment>
@@ -17,7 +18,10 @@ const ItemNotFound = () => {
             extra={
               <button
                 className="buttonText"
-                onClick={() => setSearchQuery("")}
+                to="/find-my-oil"
+                onClick={() => {
+                  setSearchQuery("");
+                }}
                 type="primary"
               >
                 უკან დაბრუნება
