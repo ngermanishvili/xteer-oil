@@ -22,9 +22,11 @@ import {
 } from "../IconsNavbar/Icons.jsx";
 import logo from "../../assets/LOGO.png";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { searchStore } from "../../zustand/searchStore.jsx";
+import { Link } from "react-router-dom";
 
 export default function DesktopNavbar() {
+  const setSearchQuery = searchStore((state) => state.setSearchQuery);
   const icons = {
     chevron: <ChevronDown fill="currentColor" size={16} />,
     scale: <Scale className="text-warning" fill="currentColor" size={30} />,
@@ -40,8 +42,8 @@ export default function DesktopNavbar() {
   return (
     <Navbar className="absolute fixed ">
       <NavbarBrand>
-        <Link to="/">
-          <img src={logo} style={{width: "100%  "}} />
+        <Link to="/" onClick={() => setSearchQuery("")}>
+          <img src={logo} style={{ width: "100%  " }} />
         </Link>
       </NavbarBrand>
       <NavbarContent className="sm:flex gap-4" justify="center">

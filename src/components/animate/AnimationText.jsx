@@ -21,7 +21,7 @@ const Character = styled(motion.span)`
 `;
 
 const BackgroundImageContainer = styled.div`
-  background-image: url("../../assets/gento.jpg");
+  /*  background-image: url("../../assets/gento.jpg"); */
   background-size: cover;
   background-position: center;
   // Add any other background styles you need here
