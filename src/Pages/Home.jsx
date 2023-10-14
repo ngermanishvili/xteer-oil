@@ -1,7 +1,7 @@
 import React from "react";
 import SwiperHeading from "../components/Swiper/Swiper";
-import {motion} from "framer-motion";
-import {Divider, Row} from "antd";
+import { motion } from "framer-motion";
+import { Divider, Row } from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import AccordionComponent from "../components/Accordion/Accordion";
@@ -19,23 +19,25 @@ const Home = () => (
     >
       <BasicSlider />
     </div>
-
+    <div className="p-5"></div>
+    <Divider
+      style={{ backgroundColor: "#fff", fontSize: "2rem", fontWeight: "800" }}
+    >
+      პროდუქცია
+    </Divider>
     <CenteredImages />
 
     <div className="p-5"></div>
-    <Divider
-      style={{backgroundColor: "#fff", fontSize: "2rem", fontWeight: "800"}}
-    >
-      პარტნიორი კომპანიები
-    </Divider>
+
     <div className="companies-container">
       <Companies />
     </div>
     <Divider
-      style={{backgroundColor: "#fff", fontSize: "20px", fontWeight: "800"}}
+      style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
     >
       რატომ ჩვენ?
     </Divider>
+
     <div className="p-5"></div>
 
     <AccordionComponent />
