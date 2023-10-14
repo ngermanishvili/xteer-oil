@@ -1,32 +1,17 @@
-import React, { useState } from "react";
-import { Layout, theme } from "antd";
-import SiderTabs from "./SiderTabs";
+import React, {useState} from "react";
+import {Layout, theme} from "antd";
 import CardContent from "./CardContent";
-import SearchComponent from "./Serch";
-const { Content } = Layout;
-import Banner from '../../assets/bannerslider1.jpg'
+import TabSelector from "./TabSelector";
+import {tabStore} from "../../zustand/fitlerStore";
+const {Content} = Layout;
 
-const App = () => {
+const MainLayout = () => {
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
-
-  const [searchQuery, setSearchQuery] = useState(''); // State for search query
-
   return (
-    <Layout>
-         <div
-      id="part-1"
-      style={{
-        width: "100%",
-        height: "200px",
-      }}
-    >
-     <img src={Banner} alt="banner" />
-    </div>
-   
+    <Layout style={{marginTop: "2.5%"}}>
       <Layout>
-      <SiderTabs />
         <Content
           style={{
             margin: "24px 16px",
@@ -35,16 +20,12 @@ const App = () => {
             background: colorBgContainer,
           }}
         >
-          <SearchComponent onSearch={setSearchQuery} />
-          <CardContent searchQuery={searchQuery} /> 
-          <div
-            style={{ width: "100%", display: "flex", justifyContent: "center" }}
-            className="p-5 w-full"
-          ></div>
+          <TabSelector />
+          <CardContent />
         </Content>
       </Layout>
     </Layout>
   );
 };
 
-export default App;
+export default MainLayout;

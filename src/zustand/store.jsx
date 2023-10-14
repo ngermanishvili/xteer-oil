@@ -10,15 +10,15 @@ export const dataStore = create((set) => ({
   loading: true,
   fetchData: async () => {
     try {
-      const {data} = await axios.get("http://localhost:8000/oils");
+      const { data } = await axios.get("http://localhost:8000/oils");
 
       // Store the data in localStorage to persist it
       sessionStorage.setItem("productData", JSON.stringify(data));
 
-      set({data: data, error: null, loading: false});
+      set({ data: data, error: null, loading: false });
     } catch (error) {
       console.error("Error fetching data:", error);
-      set({error, loading: false});
+      set({ error, loading: false });
     }
   },
 }));

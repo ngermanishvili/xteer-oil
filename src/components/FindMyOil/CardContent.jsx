@@ -1,44 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { Card, Pagination, Button, Result  } from "antd";
-import styled from "styled-components";
+import { Card, Pagination, Result } from "antd";
 import { Link } from "react-router-dom";
-
+import styled from "styled-components";
+import Search from "./Search";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { searchStore } from "../../zustand/searchStore";
 const { Meta } = Card;
 
-const CardContent = ({ searchQuery }) => {
-  const fetchData = dataStore((state) => state.fetchData);
-  const data = dataStore((state) => state.data);
-  const [currentPage, setCurrentPage] = useState(1);
+const CardContent = () => {
+  const {
+    currentTab,
+    setTab,
+    itemsPerPage,
+    currentPage,
+    setCurrentPage,
+    displayedProducts,
+  } = tabStore();
+
+  const { fetchData, data } = dataStore();
+  const { filteredData } = searchStore();
 
   useEffect(() => {
+    console.log("Filtered data sheicvala:", filteredData);
     fetchData();
-  }, []);
+  }, [filteredData]);
 
-  const itemsPerPage = 10;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-
-  // regex for search query
-  const escapedQuery = searchQuery.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
-  const regexPattern = new RegExp(escapedQuery.split('').join('.*'), 'i');
-
-  const filteredData = data.filter((product) =>
-  regexPattern.test(product.productName)
-  );
-
-  if (filteredData.length === 0) {
-    return (
-      <Result
-        status="404"
-        title="მოხდა შეცდომა"
-        subTitle="აღნიშნული პროდუქცია ვერ მოიძებნა..."
-        extra={<Link className="buttonText" to='/' type="primary">უკან დაბრუნება</Link>}
-      />
-    );
-  }
-
-  const currentData = filteredData.slice(startIndex, endIndex);
+  useEffect(() => {
+    console.log("Current tab sheicvala:", currentTab);
+    setCurrentPage(1);
+  }, [currentTab]);
 
   const smoothScrollToTop = () => {
     window.scrollTo({
@@ -49,14 +40,16 @@ const CardContent = ({ searchQuery }) => {
 
   const handlePageChange = (page) => {
     smoothScrollToTop();
-    // Set the new page
     setCurrentPage(page);
   };
 
+  const productsToDisplay = filteredData || displayedProducts;
+
   return (
     <div>
+      <Search />
       <Wrapper>
-        {currentData.map((product) => (
+        {productsToDisplay.map((product) => (
           <Card
             className="cards"
             key={product._id}
@@ -68,7 +61,6 @@ const CardContent = ({ searchQuery }) => {
               />
             }
           >
-            <div></div>
             <Meta
               title={product.productName}
               description={product.productLine}
@@ -97,7 +89,7 @@ const CardContent = ({ searchQuery }) => {
         <Pagination
           current={currentPage}
           onChange={handlePageChange}
-          total={filteredData.length}
+          total={productsToDisplay.length}
           pageSize={itemsPerPage}
           showSizeChanger={false}
         />
@@ -141,4 +133,5 @@ const PaginationContainer = styled.div`
   justify-content: center;
   margin-top: 50px;
 `;
+
 export default CardContent;
