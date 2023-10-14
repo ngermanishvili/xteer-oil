@@ -34,7 +34,7 @@ const CaModal = ({ pdfUrls }) => {
       </Button>
       <Modal
         title="დეტალური ინფორმაცია"
-        visible={isModalOpen}
+        open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >

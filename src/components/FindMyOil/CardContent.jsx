@@ -1,53 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { Card, Pagination, Result } from "antd";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { Card, Pagination } from "antd";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-import { dataStore } from "../../zustand/store";
-import { tabStore } from "../../zustand/fitlerStore";
-import { searchStore } from "../../zustand/searchStore";
 const { Meta } = Card;
+import { searchStore } from "../../zustand/searchStore";
+import ItemNotFound from "./ItemNotFound";
+import { useLocation } from "react-router-dom";
 
 const CardContent = () => {
-  const {
-    currentTab,
-    setTab,
-    itemsPerPage,
-    currentPage,
-    setCurrentPage,
-    displayedProducts,
-  } = tabStore();
+  const fetchData = dataStore((state) => state.fetchData);
+  const currentTab = tabStore((state) => state.currentTab);
+  const itemsPerPage = tabStore((state) => state.itemsPerPage);
+  const currentPage = tabStore((state) => state.currentPage);
+  const setCurrentPage = tabStore((state) => state.setCurrentPage);
+  const setTab = tabStore((state) => state.setTab);
+  const displayedProducts = tabStore((state) => state.displayedProducts());
+  const currentData = tabStore((state) => state.currentData)() || [];
+  const filteredData = searchStore((state) => state.filteredData);
+  const searchQuery = searchStore((state) => state.searchQuery);
+  const setFilteredData = searchStore((state) => state.setFilteredData);
+  const currentFilteredData = searchStore((state) =>
+    state.currentFilteredData()
+  );
 
-  const { fetchData, data } = dataStore();
-  const { filteredData } = searchStore();
+  const productsSize =
+    searchQuery.length >= 1 ? filteredData.length : displayedProducts.length;
+  const productsToDisplay =
+    searchQuery.length >= 1 ? currentFilteredData : currentData;
+
+  const location = useLocation();
 
   useEffect(() => {
-    console.log("Filtered data sheicvala:", filteredData);
-    fetchData();
-  }, [filteredData]);
-
-  useEffect(() => {
-    console.log("Current tab sheicvala:", currentTab);
     setCurrentPage(1);
-  }, [currentTab]);
+    setFilteredData();
+    setTab("all");
+  }, [location]);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    setFilteredData();
+  }, [currentTab]);
   const smoothScrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
-
   const handlePageChange = (page) => {
     smoothScrollToTop();
     setCurrentPage(page);
   };
 
-  const productsToDisplay = filteredData || displayedProducts;
-
   return (
     <div>
       <Search />
+      <ItemNotFound />
       <Wrapper>
         {productsToDisplay.map((product) => (
           <Card
@@ -87,9 +101,10 @@ const CardContent = () => {
       </Wrapper>
       <PaginationContainer>
         <Pagination
+          key={currentPage}
           current={currentPage}
           onChange={handlePageChange}
-          total={productsToDisplay.length}
+          total={productsSize}
           pageSize={itemsPerPage}
           showSizeChanger={false}
         />

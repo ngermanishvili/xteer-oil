@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 import { dataStore } from "./store";
 
 export const tabStore = create((set, get) => ({
