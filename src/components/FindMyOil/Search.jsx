@@ -15,15 +15,12 @@ const SearchComponent = () => {
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
   const setFilteredData = searchStore((state) => state.setFilteredData);
   const handleSearch = () => {
-    // Prevent searching if the search query is just whitespace
-
-    setFilteredData(); // This will refresh the filteredData based on the current searchQuery
+    setFilteredData();
   };
 
   const handleChange = (e) => {
     const value = e.target.value;
 
-    // Prevent adding whitespace at the beginning if there's no text
     if (value.length > 0 && value.trim() === "") return;
     setSearchQuery(value);
   };

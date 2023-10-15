@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {Breadcrumb, Layout, theme} from "antd";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Breadcrumb, Layout, theme } from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
 import CaModal from "../components/ProductPage/CaModal";
-import {dataStore} from "../zustand/store";
-import {SyncLoader} from "react-spinners";
-const {Content} = Layout;
+import { dataStore } from "../zustand/store";
+import { SyncLoader } from "react-spinners";
+const { Content } = Layout;
 
 const ProductDetail = () => {
-  const {productId} = useParams();
+  const { productId } = useParams();
   const data = dataStore((state) => state.data);
   const [product, setProduct] = useState(null);
 
@@ -27,11 +27,11 @@ const ProductDetail = () => {
     fetchData();
   }, []);
   const {
-    token: {colorBgContainer},
+    token: { colorBgContainer },
   } = theme.useToken();
   const breadcrumbItems = [
-    {path: "/", breadcrumbName: "მთავარი"},
-    {path: "/product", breadcrumbName: "პროდუქტი"},
+    { path: "/", breadcrumbName: "მთავარი" },
+    { path: "/product", breadcrumbName: "პროდუქტი" },
   ];
   return (
     <Layout>
@@ -41,8 +41,7 @@ const ProductDetail = () => {
         }}
       >
         <Breadcrumb
-          style={{margin: "16px 0"}}
-         
+          style={{ margin: "16px 0" }}
           itemRender={(route, params, routes, paths) => {
             const isLastItem = routes.indexOf(route) === routes.length - 1;
             return isLastItem ? (

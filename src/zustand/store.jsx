@@ -1,5 +1,6 @@
 // store.jsx
 import { create } from "zustand";
+import { create } from "zustand";
 import axios from "axios";
 
 export const dataStore = create((set) => ({
@@ -12,6 +13,7 @@ export const dataStore = create((set) => ({
       set({ data: data, error: null, loading: false });
     } catch (error) {
       console.error("Error fetching data:", error);
+      set({ error, loading: false });
       set({ error, loading: false });
     }
   },

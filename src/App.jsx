@@ -7,6 +7,7 @@ import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the 
 import FindMyOil from "./components/FindMyOil/FindMyOil";
 import ProductDetail from "./Pages/Product";
 import Footer from "./components/Footer/Footer";
+
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
