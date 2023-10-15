@@ -23,14 +23,12 @@
   justify-content: center;
   align-items: center;
 }
-// navbar bg color
-.bg-background\/70 {
+navbar bg color .bg-background\/70 {
   background-color: transparent;
   color: #fff;
 }
-// navbar font color
-.bg-background\/70 a {
-  /* color: #fff; */
+navbar font color .bg-background\/70 a {
+  color: #fff;
 }
 .bg-background\/70 button {
   color: #000;

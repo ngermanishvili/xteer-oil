@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from "react";
-import {dataStore} from "../../zustand/store";
-import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination} from "antd";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { Card, Flex, Pagination } from "antd";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
 const { Meta } = Card;
 import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -25,6 +26,7 @@ const CardContent = () => {
   const currentFilteredData = searchStore((state) =>
     state.currentFilteredData()
   );
+  const loading = dataStore((state) => state.loading);
 
   const productsSize =
     searchQuery.length >= 1 ? filteredData.length : displayedProducts.length;
@@ -58,57 +60,71 @@ const CardContent = () => {
   };
 
   return (
-    <div>
-      <Search />
-      <ItemNotFound />
-      <Wrapper>
-        {productsToDisplay.map((product) => (
-          <Card
-            className="cards"
-            key={product._id}
-            cover={
-              <img
-                style={{width: "200px", height: "200px"}}
-                alt={product.productName}
-                src={product.imageUrl || "default_image_url"}
-              />
-            }
-          >
-            <Meta
-              title={product.productName}
-              description={product.productLine}
-            />
-            <ul style={{display: "flex"}}>
-              {product.pdfUrls.map((viscosity, index, array) => (
-                <li className="li" key={viscosity.viscosityGrade}>
-                  {viscosity.viscosityGrade}
-                  {index !== array.length - 1 && "/"}
-                </li>
-              ))}
-            </ul>
-            <div className="LinkContent">
-              <Link
-                onClick={handlePageChange}
-                className="seeDetails"
-                to={`/product/${product._id}`}
+    <>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SyncLoader size={18} color="dodgerblue" />
+        </div>
+      ) : (
+        <>
+          <Search />
+          <ItemNotFound />
+          <Wrapper>
+            {productsToDisplay.map((product) => (
+              <Card
+                className="cards"
+                key={product._id}
+                cover={
+                  <img
+                    style={{ width: "200px", height: "200px" }}
+                    alt={product.productName}
+                    src={product.imageUrl || "default_image_url"}
+                  />
+                }
               >
-                See Details
-              </Link>
-            </div>
-          </Card>
-        ))}
-      </Wrapper>
-      <PaginationContainer>
-        <Pagination
-          key={currentPage}
-          current={currentPage}
-          onChange={handlePageChange}
-          total={productsSize}
-          pageSize={itemsPerPage}
-          showSizeChanger={false}
-        />
-      </PaginationContainer>
-    </div>
+                <Meta
+                  title={product.productName}
+                  description={product.productLine}
+                />
+                <ul style={{ display: "flex" }}>
+                  {product.pdfUrls.map((viscosity, index, array) => (
+                    <li className="li" key={viscosity.viscosityGrade}>
+                      {viscosity.viscosityGrade}
+                      {index !== array.length - 1 && "/"}
+                    </li>
+                  ))}
+                </ul>
+                <div className="LinkContent">
+                  <Link
+                    onClick={handlePageChange}
+                    className="seeDetails"
+                    to={`/product/${product._id}`}
+                  >
+                    See Details
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </Wrapper>
+          <PaginationContainer>
+            <Pagination
+              key={currentPage}
+              current={currentPage}
+              onChange={handlePageChange}
+              total={productsSize}
+              pageSize={itemsPerPage}
+              showSizeChanger={false}
+            />
+          </PaginationContainer>
+        </>
+      )}
+    </>
   );
 };
 
