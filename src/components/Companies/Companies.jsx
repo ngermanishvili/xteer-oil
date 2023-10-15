@@ -14,7 +14,7 @@ function Companies() {
   return (
     <AppContainer>
       <Wrapper>
-        <Text>GENTO TRADING</Text>
+        {/* <Text>GENTO TRADING</Text> */}
         <Note>პარტნიორი კომპანიები</Note>
         <Marquee>
           <MarqueeGroup>
@@ -135,5 +135,5 @@ const Image = styled.img`
   border-radius: 0.5rem;
   aspect-ratio: 16/9;
   padding: 5px 20px;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px;
 `;

@@ -20,7 +20,7 @@ const CenteredImages = () => (
       </Col>
       <Col span={8}>
         <Card className="coll" bordered={false}>
-          <img src={Logo2} alt="samxar she kleo" />
+          <img src={Logo1} alt="samxar she kleo" />
         </Card>
       </Col>
     </Row>
@@ -32,14 +32,15 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     padding: 0 50px;
   }
   .coll {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: #eceaea;
+    margin: 50px auto;
+    background-color: #ffffff;
   }
 `;
 export default CenteredImages;
