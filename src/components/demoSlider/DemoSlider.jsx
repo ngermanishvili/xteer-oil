@@ -12,7 +12,6 @@ export default function BasicSlider() {
   const Slide4 = "https://i.imgur.com/8IuucQZ.jpg";
   return (
     <HeroSlider
-      
       height={"70vh"}
       autoplay={{
         autoplayDebounce: 0,

@@ -6,16 +6,18 @@ import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
 import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
 import FindMyOil from "./components/FindMyOil/FindMyOil";
 import ProductDetail from "./Pages/Product";
-import {RingLoader} from "react-spinners";
 import {Footer} from "antd/es/layout/layout";
+
+import Lottie from "react-lottie";
+import animationData from "./lotties/Animation.json";
+
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
 const Comunication = React.lazy(() => import("./Pages/Comunication"));
 const Information = React.lazy(() => import("./Pages/Information"));
 const Product = React.lazy(() => import("./Pages/Product"));
-import Lottie from "react-lottie";
-import animationData from "./lotties/Animation.json";
+
 const App = () => {
   const isMobile = useMediaQuery({maxWidth: 768});
   const [isLoading, setIsLoading] = useState(true);
