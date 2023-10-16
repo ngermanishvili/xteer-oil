@@ -1,12 +1,12 @@
 import React from "react";
-import {Badge, Card, Col, Row, Space} from "antd";
-import {List, Typography} from "antd";
+import { Badge, Card, Col, Row, Space } from "antd";
+import { List, Typography } from "antd";
 import styled from "styled-components";
 
-const BadgeContent = ({product}) => {
+const BadgeContent = ({ product }) => {
   const allSpecs = [];
   for (const [property, values] of Object.entries(product.specs)) {
-    allSpecs.push({property, values});
+    allSpecs.push({ property, values });
   }
 
   return (
@@ -23,7 +23,6 @@ const BadgeContent = ({product}) => {
           </Badge.Ribbon>
         </Col>
         <Col span={6}>
-          /*{" "}
           <Badge.Ribbon text="Features and benefits">
             <Card title="Features and Benefits" size="large">
               <List
@@ -31,7 +30,7 @@ const BadgeContent = ({product}) => {
                 renderItem={(item) => <List.Item>{item}</List.Item>}
               />
             </Card>
-          </Badge.Ribbon>{" "}
+          </Badge.Ribbon>
           */
         </Col>
         <Col span={6}>

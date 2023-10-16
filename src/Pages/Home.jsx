@@ -1,12 +1,8 @@
 import React from "react";
-import SwiperHeading from "../components/Swiper/Swiper";
-import { motion } from "framer-motion";
-import { Divider, Row } from "antd";
+import { Divider } from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
-import AccordionComponent from "../components/Accordion/Accordion";
 import BasicSlider from "../components/demoSlider/DemoSlider";
-import AboutUs from "../components/AboutUs/About";
 
 const Home = () => (
   <>
@@ -50,10 +46,7 @@ const Home = () => (
       >
         რატომ ჩვენ?
       </Divider>
-
       <div className="p-5"></div>
-
-      <AboutUs />
     </div>
   </>
 );

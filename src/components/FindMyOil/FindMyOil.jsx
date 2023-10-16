@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout, theme } from "antd";
 import CardContent from "./CardContent";
 import TabSelector from "./TabSelector";

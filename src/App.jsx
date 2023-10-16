@@ -1,9 +1,8 @@
-import React, {useState, useEffect, Suspense} from "react";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {useMediaQuery} from "react-responsive";
+import React, { useState, useEffect, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
-import LoadingScreen from "./components/LazyLoading/LazyLoading"; // Import the loading screen component
 import FindMyOil from "./components/FindMyOil/FindMyOil";
 import ProductDetail from "./Pages/Product";
 
@@ -15,11 +14,10 @@ import Footer from "./components/Footer/Footer";
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
-const Comunication = React.lazy(() => import("./Pages/Comunication"));
-const Information = React.lazy(() => import("./Pages/Information"));
+const Contact = React.lazy(() => import("./Pages/Contact"));
 
 const App = () => {
-  const isMobile = useMediaQuery({maxWidth: 768});
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [isLoading, setIsLoading] = useState(true);
   const defaultOptions = {
     loop: true,
@@ -39,12 +37,14 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <BrowserRouter>
         {/* Conditionally render the loading screen or the app content */}
         {isLoading ? (
           <Lottie
-            style={{marginTop: "10%"}}
+            style={{ marginTop: "10%" }}
             options={defaultOptions}
             height={400}
             width={400}
@@ -72,18 +72,10 @@ const App = () => {
                 }
               />
               <Route
-                path="communication"
+                path="contact"
                 element={
                   <Suspense fallback={<div>Loading...</div>}>
-                    <Comunication />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="information"
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <Information />
+                    <Contact />
                   </Suspense>
                 }
               />

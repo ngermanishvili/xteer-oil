@@ -3,23 +3,17 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   Link,
-  Button,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import { AcmeLogo } from "../../HeaderLogo/AcmeLogo.jsx";
+import gentoLogo from "../../../assets/LOGO.png";
 
 export default function MobileNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = [
-    "მთავარი",
-    "კონტაქტი",
-    "პროდუქტი",
-  ];
+  const menuItems = ["მთავარი", "კონტაქტი", "პროდუქტი"];
 
   return (
     <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
@@ -33,13 +27,19 @@ export default function MobileNavbar() {
       {/* Mobile Logo */}
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">GENTO TRADING</p>
+          <img src={gentoLogo} alt="gentologo" />
         </NavbarBrand>
       </NavbarContent>
 
       {/* Mobile Menu */}
-      <NavbarMenu style={{display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700' }}>
+      <NavbarMenu
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontWeight: "700",
+        }}
+      >
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link

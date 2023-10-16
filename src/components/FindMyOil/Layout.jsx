@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Layout, Menu, Button, theme } from "antd";
-const { Header, Sider, Content } = Layout;
-import { Link } from "react-router-dom";
+import React from "react";
+import { Layout, theme } from "antd";
+const { Content } = Layout;
 import OilContent from "./OilContent";
 import SiderTabs from "./SiderTabs";
 
 const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
