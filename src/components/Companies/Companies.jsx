@@ -37,13 +37,10 @@ function Companies() {
   );
 }
 
-export default Companies;
-
 const AppContainer = styled.div`
   width: 100vw;
   height: auto;
   color: #000000;
-
   position: relative;
   display: flex;
   align-items: center;
@@ -77,6 +74,7 @@ const Note = styled.div`
 const Marquee = styled.div`
   display: flex;
   max-width: 1200px;
+  width: 100%;
   overflow: hidden;
   user-select: none;
 
@@ -121,6 +119,7 @@ const MarqueeGroup2 = styled.div`
 `;
 
 const ImageGroup = styled.div`
+  min-width: 160px;
   display: grid;
   place-items: center;
   width: clamp(10rem, 1rem + 40vmin, 30rem);
@@ -137,3 +136,5 @@ const Image = styled.img`
   padding: 5px 20px;
   box-shadow: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px;
 `;
+
+export default Companies;
