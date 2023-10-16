@@ -44,6 +44,7 @@ const CardContent = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
   useEffect(() => {
     setCurrentPage(1);
     setFilteredData();

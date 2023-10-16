@@ -11,6 +11,7 @@ import Lottie from "react-lottie";
 import animationData from "./lotties/Animation.json";
 
 import Footer from "./components/Footer/Footer";
+
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));

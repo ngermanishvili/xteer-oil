@@ -1,4 +1,4 @@
-import HeroSlider, {Overlay, Slide} from "hero-slider";
+import HeroSlider, { Overlay, Slide } from "hero-slider";
 import styled from "styled-components";
 import Slide1 from "../../assets/banner.jpeg";
 import Slide3 from "../../assets/bannerslider1.jpg";
@@ -6,9 +6,6 @@ import Slide2 from "../../assets/xteerbanner2.jpeg";
 // import Slide4 from "../../assets/Slide4.jpg";
 
 export default function BasicSlider() {
-  // const Slide1 = "https://i.imgur.com/Gu5Cznz.jpg";
-  // const Slide2 = "https://i.imgur.com/idjXzVQ.jpg";
-  // const Slide3 = "https://i.imgur.com/8DYumaY.jpg";
   const Slide4 = "https://i.imgur.com/8IuucQZ.jpg";
   return (
     <HeroSlider
@@ -17,7 +14,7 @@ export default function BasicSlider() {
         autoplayDebounce: 0,
         autoplayDuration: 4500,
       }}
-      animations={{slidingAnimation: "fade"}}
+      animations={{ slidingAnimation: "fade" }}
       accessibility={{
         shouldDisplayButtons: false,
         shouldSlideOnArrowKeypress: false,

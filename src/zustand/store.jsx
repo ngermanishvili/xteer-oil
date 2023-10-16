@@ -13,6 +13,7 @@ export const dataStore = create((set) => ({
     } catch (error) {
       console.error("Error fetching data:", error);
       set({ error, loading: false });
+      set({ error, loading: false });
     }
   },
 }));
