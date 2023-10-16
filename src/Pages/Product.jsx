@@ -33,6 +33,7 @@ const ProductDetail = () => {
     {path: "/", breadcrumbName: "მთავარი"},
     {path: "/product", breadcrumbName: "პროდუქტი"},
   ];
+  console.log(product);
   return (
     <Layout>
       <Content
@@ -42,7 +43,6 @@ const ProductDetail = () => {
       >
         <Breadcrumb
           style={{margin: "16px 0"}}
-         
           itemRender={(route, params, routes, paths) => {
             const isLastItem = routes.indexOf(route) === routes.length - 1;
             return isLastItem ? (
@@ -72,8 +72,15 @@ const ProductDetail = () => {
                     altText={product.productName}
                   />
                 </div>
-                <DownloadPdS />
-                <CaModal pdfUrls={product?.pdfUrls} />{" "}
+                {product.pdfUrls.length > 0 ? (
+                  <>
+                    <DownloadPdS />
+                    <CaModal pdfUrls={product?.pdfUrls} />
+                  </>
+                ) : (
+                  ""
+                )}
+
                 <div className="p-5"></div>
                 <BadgeContent product={product} />
               </>

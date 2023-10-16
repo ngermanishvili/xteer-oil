@@ -9,9 +9,10 @@ const {Meta} = Card;
 import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
 import {useLocation} from "react-router-dom";
-
+import {SyncLoader} from "react-spinners";
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
+  const loading = dataStore((state) => state.loading);
   const currentTab = tabStore((state) => state.currentTab);
   const itemsPerPage = tabStore((state) => state.itemsPerPage);
   const currentPage = tabStore((state) => state.currentPage);
@@ -59,55 +60,71 @@ const CardContent = () => {
 
   return (
     <div>
-      <Search />
-      <ItemNotFound />
-      <Wrapper>
-        {productsToDisplay.map((product) => (
-          <Card
-            className="cards"
-            key={product._id}
-            cover={
-              <img
-                style={{width: "200px", height: "200px"}}
-                alt={product.productName}
-                src={product.imageUrl || "default_image_url"}
-              />
-            }
-          >
-            <Meta
-              title={product.productName}
-              description={product.productLine}
-            />
-            <ul style={{display: "flex"}}>
-              {product.pdfUrls.map((viscosity, index, array) => (
-                <li className="li" key={viscosity.viscosityGrade}>
-                  {viscosity.viscosityGrade}
-                  {index !== array.length - 1 && "/"}
-                </li>
-              ))}
-            </ul>
-            <div className="LinkContent">
-              <Link
-                onClick={handlePageChange}
-                className="seeDetails"
-                to={`/product/${product._id}`}
+      {loading ? (
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SyncLoader size={18} color="dodgerblue" />
+        </div>
+      ) : (
+        <React.Fragment>
+          <Search />
+          <ItemNotFound />
+          <Wrapper>
+            {productsToDisplay.map((product) => (
+              <Card
+                className="cards"
+                key={product._id}
+                cover={
+                  <img
+                    style={{width: "200px", height: "200px"}}
+                    alt={product.productName}
+                    src={product.imageUrl || "default_image_url"}
+                  />
+                }
               >
-                See Details
-              </Link>
-            </div>
-          </Card>
-        ))}
-      </Wrapper>
-      <PaginationContainer>
-        <Pagination
-          key={currentPage}
-          current={currentPage}
-          onChange={handlePageChange}
-          total={productsSize}
-          pageSize={itemsPerPage}
-          showSizeChanger={false}
-        />
-      </PaginationContainer>
+                <Meta
+                  title={product.productName}
+                  description={product.productLine}
+                />
+                <ul style={{display: "flex"}}>
+                  {product.pdfUrls.map((viscosity, index, array) => (
+                    <li className="li" key={viscosity.viscosityGrade}>
+                      {viscosity.viscosityGrade}
+                      {index !== array.length - 1 && "/"}
+                    </li>
+                  ))}
+                </ul>
+                <div className="LinkContent">
+                  <Link
+                    onClick={handlePageChange}
+                    className="seeDetails"
+                    to={`/product/${product._id}`}
+                  >
+                    See Details
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </Wrapper>
+          <PaginationContainer>
+            <Pagination
+              key={currentPage}
+              current={currentPage}
+              onChange={handlePageChange}
+              total={productsSize}
+              pageSize={itemsPerPage}
+              showSizeChanger={false}
+            />
+          </PaginationContainer>
+        </React.Fragment>
+      )}
     </div>
   );
 };

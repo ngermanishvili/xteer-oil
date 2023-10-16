@@ -30,9 +30,17 @@ const ImageContainer = styled.div`
     font-weight: 700;
     color: #5f5e5e;
   }
+  img {
+    width: 100%;
+  }
 
   @media (max-width: ${tablet}) {
     width: 70%;
+  }
+
+  @media (max-width: ${mobile}) {
+    width: 90%;
+    padding: 5px;
   }
 `;
 
@@ -76,8 +84,22 @@ const Container = styled.div`
   }
   @media (max-width: ${tablet}) {
     flex-direction: column;
+    .logowrapper {
+      padding: 0 50px;
+    }
   }
-
+  @media (max-width: 660px) {
+    flex-direction: column;
+    .logowrapper {
+      padding: 0 20px;
+    }
+  }
+  @media (max-width: 560px) {
+    flex-direction: column;
+    .logowrapper {
+      padding: 0 10px;
+    }
+  }
   @media (max-width: ${mobile}) {
     flex-direction: column;
   }

@@ -14,16 +14,24 @@ const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
 const Comunication = React.lazy(() => import("./Pages/Comunication"));
 const Information = React.lazy(() => import("./Pages/Information"));
 const Product = React.lazy(() => import("./Pages/Product"));
-
+import Lottie from "react-lottie";
+import animationData from "./lotties/Animation.json";
 const App = () => {
   const isMobile = useMediaQuery({maxWidth: 768});
   const [isLoading, setIsLoading] = useState(true);
-
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   useEffect(() => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -32,7 +40,12 @@ const App = () => {
     <BrowserRouter>
       {/* Conditionally render the loading screen or the app content */}
       {isLoading ? (
-        <LoadingScreen />
+        <Lottie
+          style={{marginTop: "10%"}}
+          options={defaultOptions}
+          height={400}
+          width={400}
+        />
       ) : (
         <>
           {/* Conditionally render the appropriate navigation based on screen size */}
@@ -88,15 +101,15 @@ const App = () => {
               }
             />
           </Routes>
+          <Footer
+            style={{
+              textAlign: "center",
+            }}
+          >
+            ©2023 Created by Gento Trading
+          </Footer>{" "}
         </>
       )}
-      <Footer
-        style={{
-          textAlign: "center",
-        }}
-      >
-        ©2023 Created by Gento Trading
-      </Footer>
     </BrowserRouter>
   );
 };
