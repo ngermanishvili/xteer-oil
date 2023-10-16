@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Breadcrumb, Layout, theme } from "antd";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {Breadcrumb, Layout, theme} from "antd";
 import BadgeContent from "../components/ProductPage/Badge";
 import ImageContent from "../components/ProductPage/ImageContent";
 import DownloadPdS from "../components/ProductPage/Download";
-import CaModal from "../components/ProductPage/CaModal";
-import { dataStore } from "../zustand/store";
-import { SyncLoader } from "react-spinners";
-const { Content } = Layout;
+import {dataStore} from "../zustand/store";
+import {SyncLoader} from "react-spinners";
+const {Content} = Layout;
 
 const ProductDetail = () => {
-  const { productId } = useParams();
+  const {productId} = useParams();
   const data = dataStore((state) => state.data);
   const [product, setProduct] = useState(null);
-
   const singleProductFilter = () => {
     const singleProduct = data.find((item) => item._id === productId);
     setProduct(singleProduct);
@@ -29,7 +27,7 @@ const ProductDetail = () => {
   }, []);
 
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
 
   return (
@@ -59,28 +57,15 @@ const ProductDetail = () => {
           <Content
             style={{
               padding: "0 24px",
-              minHeight: 280,
             }}
           >
             {product ? (
               <>
-                <div className="gento-img">
-                  <ImageContent
-                    imageUrl={product.imageUrl}
-                    altText={product.productName}
-                  />
-                </div>
-                {product.pdfUrls.length > 0 ? (
-                  <>
-                    <DownloadPdS />
-                    <CaModal pdfUrls={product?.pdfUrls} />
-                  </>
-                ) : (
-                  ""
-                )}
+                <>
+                  <DownloadPdS productId={product._id} />
+                </>
 
                 <div className="p-5"></div>
-                <BadgeContent product={product} />
               </>
             ) : (
               <div
