@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {dataStore} from "../../zustand/store";
 import {tabStore} from "../../zustand/fitlerStore";
 import {Card, Pagination} from "antd";
@@ -10,6 +10,7 @@ import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
 import {useLocation} from "react-router-dom";
 import {SyncLoader} from "react-spinners";
+
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
   const loading = dataStore((state) => state.loading);
@@ -115,6 +116,7 @@ const CardContent = () => {
           </Wrapper>
           <PaginationContainer>
             <Pagination
+              // size="small"
               key={currentPage}
               current={currentPage}
               onChange={handlePageChange}

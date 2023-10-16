@@ -1,53 +1,41 @@
 import React from "react";
 import { Row, Col } from "antd";
+import styled from "styled-components";
 
 function Footer() {
   return (
     <footer
       id="footer"
       style={{
-        width: "90%",
-        height: "50px",
-        background: "transparent",
-        display: "flex",
-        alignItems: "right",
+        flexShrink: 0,
+        backgroundColor: "rgb(0,0,0)",
         right: "20",
+        color: "whitesmoke",
+        textAlign: "center",
       }}
     >
       <Row className="p-5">
-        <Col lg={4} sm={24} />
-        <Col lg={20} sm={24}>
-          <span
-            style={{
-              lineHeight: "16px",
-              paddingRight: 12,
-              marginRight: 11,
-              borderRight: "1px solid rgba(255, 255, 255, 0.55)",
-            }}
-          >
-            <a
-              href="https://docs.alipay.com/policies/privacy/antfin"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              隐私权政策
-            </a>
-          </span>
-          <span style={{ marginRight: 24 }}>
-            <a
-              href="https://render.alipay.com/p/f/fd-izto3cem/index.html"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              权益保障承诺书
-            </a>
-          </span>
-          <span style={{ marginRight: 12 }}>ICP 证浙 B2-2-100257</span>
-          <span style={{ marginRight: 12 }}>Copyright © 蚂蚁金融服务集团</span>
+        <Col lg={20} sm={24} style={{ inlineSize: "100px" }}>
+          <StyleSpan>
+            Georgia, Kutaisi Avtomshenebeli 88 (Free Industrial Zone), 4600
+          </StyleSpan>
+          <StyleSpan>©2023 Created by Gento Trading</StyleSpan>
+        </Col>
+        <Col lg={4} sm={24}>
+          <div>
+            <StyleSpan>Phone : +995 551 627 551</StyleSpan>
+            <span>E-mail info@uglubricants.com</span>
+          </div>
         </Col>
       </Row>
     </footer>
   );
 }
 
+const StyleSpan = styled.span`
+  line-height: 16px;
+  margin-right: 11px;
+  padding-right: 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+`;
 export default Footer;
