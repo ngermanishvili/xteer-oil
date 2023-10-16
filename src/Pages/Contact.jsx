@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import bridge from "../assets/s.jpg";
-
+import Companies from "../components/Companies/Companies";
 const Contact = () => {
   return (
     <ContactContainer>
@@ -30,15 +30,16 @@ const Contact = () => {
           </ContactMethods>
         </ContactInfo>
       </ImageContainer>
+      <CompaniesSliderContainer>
+        <Companies />
+      </CompaniesSliderContainer>
     </ContactContainer>
   );
 };
 
 const ContactContainer = styled.div`
   min-height: 92vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: 10%;
   color: #fff;
 `;
 
@@ -93,7 +94,9 @@ const ContactMethods = styled.div`
     font-size: 1.5rem;
   }
 `;
-
+const CompaniesSliderContainer = styled.div`
+  margin-top: 25px;
+`;
 const ContactMethod = styled.div`
   p {
     margin: 5px 0;

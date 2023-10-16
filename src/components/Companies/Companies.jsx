@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {keyframes, css} from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 function Companies() {
   const row1 = [
@@ -21,7 +21,10 @@ function Companies() {
             {row1.map((el, index) => (
               <ImageGroup key={index}>
                 <Image>
-                  <img style={{width: "100%", objectFit: "contain"}} src={el} />
+                  <img
+                    style={{ width: "100%", objectFit: "contain" }}
+                    src={el}
+                  />
                 </Image>
               </ImageGroup>
             ))}
@@ -30,7 +33,10 @@ function Companies() {
             {row1.map((el, index) => (
               <ImageGroup key={index}>
                 <Image src={el}>
-                  <img style={{width: "100%", objectFit: "contain"}} src={el} />
+                  <img
+                    style={{ width: "100%", objectFit: "contain" }}
+                    src={el}
+                  />
                 </Image>
               </ImageGroup>
             ))}
@@ -42,7 +48,7 @@ function Companies() {
 }
 
 const AppContainer = styled.div`
-  width: 100vw;
+  width: 99vw;
   height: auto;
   color: #000000;
   position: relative;
