@@ -20,23 +20,18 @@ const Home = () => (
       }}
     >
       <BasicSlider />
-      <div className="p-5"></div>
-      <div
-        id="part-1"
+      {/* <div className="p-5"></div> */}
+      <Divider
         style={{
-          width: "100%",
-          height: "50vh",
-          textAlign: "center",
-          backgroundColor: "#f9f9f9",
+          marginBottom: "25px",
+          color: "#000",
+          fontSize: "2rem",
+          fontWeight: "800",
         }}
       >
-        <Divider style={{ color: "#000", fontSize: "2rem", fontWeight: "800" }}>
-          პროდუქცია
-        </Divider>
-
-        <CenteredImages />
-      </div>
-
+        პროდუქცია
+      </Divider>
+      <CenteredImages />
       <div
         id="part-2"
         style={{

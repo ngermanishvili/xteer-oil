@@ -23,9 +23,11 @@ const ProductDetail = () => {
   useEffect(() => {
     singleProductFilter();
   }, [productId, data]);
+
   useEffect(() => {
     fetchData();
   }, []);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();

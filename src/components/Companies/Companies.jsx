@@ -18,15 +18,15 @@ function Companies() {
         <Note>პარტნიორი კომპანიები</Note>
         <Marquee>
           <MarqueeGroup>
-            {row1.map((el) => (
-              <ImageGroup>
+            {row1.map((el, index) => (
+              <ImageGroup key={index}>
                 <Image src={el} />
               </ImageGroup>
             ))}
           </MarqueeGroup>
           <MarqueeGroup>
-            {row1.map((el) => (
-              <ImageGroup>
+            {row1.map((el, index) => (
+              <ImageGroup key={index}>
                 <Image src={el} />
               </ImageGroup>
             ))}

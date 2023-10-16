@@ -1,53 +1,48 @@
 import React from "react";
-import { Card, Col, Row } from "antd";
-import Logo1 from "../../assets/agrinolpng.png";
-import Logo2 from "../../assets/azmolas.png";
-import Logo3 from "../../assets/azot.png";
+import agrinolpng from "../../assets/agrinolpng.png";
+import azmolas from "../../assets/azmolas.png";
+import xteerlogo from "../../assets/xteerlogo.png";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const CenteredImages = () => (
   <Wrapper>
-    <Row className="rowcontainer" gutter={16}>
-      <Col span={8}>
-        <Card className="coll2" bordered={false}>
-          <img src={Logo1} alt="samxar she kleo" />
-        </Card>
-      </Col>
-      <Col span={8}>
-        <Card className="coll" bordered={false}>
-          <img src={Logo2} alt="samxar she kleo" />
-        </Card>
-      </Col>
-      <Col span={8}>
-        <Card className="coll2" bordered={false}>
-          <img src={Logo1} alt="samxar she kleo" />
-        </Card>
-      </Col>
-    </Row>
+    <div className="coll">
+      <Link to="">
+        <img className="image" src={agrinolpng} alt="agrinolpng" />
+      </Link>
+    </div>
+    <div className="coll">
+      <Link to="find-my-oil">
+        <img src={xteerlogo} alt="xteer logo" />
+      </Link>
+    </div>
+    <div className="coll">
+      <a href="https://azmol.ge/" target="_blank">
+        <img className="image" src={azmolas} alt="azmolas" />
+      </a>
+    </div>
   </Wrapper>
 );
 
 const Wrapper = styled.div`
-  .rowcontainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0 50px;
-  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(16, 45, 49);
   .coll {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 50px auto;
-    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    height: 200px;
   }
-  .coll2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px auto;
-    background-color: rgb(16, 45, 49);
+  .image {
+    border-radius: 10px;
+    background-color: white;
   }
 `;
 export default CenteredImages;
