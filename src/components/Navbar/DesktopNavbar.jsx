@@ -57,9 +57,6 @@ export default function DesktopNavbar() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
         <NavbarItem>
           <Link to="/find-my-oil">კატალოგი</Link>
         </NavbarItem>
