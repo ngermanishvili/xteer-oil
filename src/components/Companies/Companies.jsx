@@ -20,14 +20,24 @@ function Companies() {
           <MarqueeGroup>
             {row1.map((el, index) => (
               <ImageGroup key={index}>
-                <Image src={el} />
+                <Image>
+                  <img
+                    style={{ width: "100%", objectFit: "contain" }}
+                    src={el}
+                  />
+                </Image>
               </ImageGroup>
             ))}
           </MarqueeGroup>
           <MarqueeGroup>
             {row1.map((el, index) => (
               <ImageGroup key={index}>
-                <Image src={el} />
+                <Image src={el}>
+                  <img
+                    style={{ width: "100%", objectFit: "contain" }}
+                    src={el}
+                  />
+                </Image>
               </ImageGroup>
             ))}
           </MarqueeGroup>
@@ -37,13 +47,10 @@ function Companies() {
   );
 }
 
-export default Companies;
-
 const AppContainer = styled.div`
-  width: 100vw;
+  width: 95vw;
   height: auto;
   color: #000000;
-
   position: relative;
   display: flex;
   align-items: center;
@@ -53,7 +60,8 @@ const AppContainer = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   height: fit-content;
-
+  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,19 +84,48 @@ const Note = styled.div`
 
 const Marquee = styled.div`
   display: flex;
-  max-width: 1200px;
-  overflow: hidden;
+  width: 1500px;
+  overflow-x: hidden;
   user-select: none;
 
   mask-image: linear-gradient(
     to right,
     hsl(0 0% 0% / 0),
-    hsl(0 0% 0% / 1) 10%,
-    hsl(0 0% 0% / 1) 90%,
+    hsl(0 0% 0% / 1) 5%,
+    hsl(0 0% 0% / 1) 95%,
     hsl(0 0% 0% / 0)
   );
-  @media (max-width: 768px) {
-    width: 80%;
+`;
+const ImageGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 1500px; // increased the width
+  margin-left: 50px; // increased the margin
+  margin-right: 50px; // increased the margin
+
+  padding: 5px;
+  width: 160px;
+  margin-left: 30px;
+  margin-right: 30px;
+
+  @media (max-width: 600px) {
+    width: 120px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+`;
+const Image = styled.div`
+  max-width: 100%;
+  max-height: 100%;
+  width: 200px;
+  height: auto;
+  border-radius: 0.5rem;
+
+  @media (max-width: 600px) {
+    max-width: 80%;
+    max-height: 80%;
   }
 `;
 
@@ -113,6 +150,11 @@ const common = css`
 
 const MarqueeGroup = styled.div`
   ${common}
+  animation: ${scrollX} 30s linear infinite; // increased the animation duration
+
+  @media (max-width: 600px) {
+    animation: ${scrollX} 10s linear infinite;
+  }
 `;
 const MarqueeGroup2 = styled.div`
   ${common}
@@ -120,20 +162,4 @@ const MarqueeGroup2 = styled.div`
   animation-delay: -3s;
 `;
 
-const ImageGroup = styled.div`
-  display: grid;
-  place-items: center;
-  width: clamp(10rem, 1rem + 40vmin, 30rem);
-  padding: calc(clamp(10rem, 1rem + 30vmin, 30rem) / 10);
-`;
-
-const Image = styled.img`
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  /* border: 1px solid black; */
-  border-radius: 0.5rem;
-  aspect-ratio: 16/9;
-  padding: 5px 20px;
-  box-shadow: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px;
-`;
+export default Companies;

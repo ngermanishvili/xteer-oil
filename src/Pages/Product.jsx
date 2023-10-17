@@ -31,11 +31,7 @@ const ProductDetail = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const breadcrumbItems = [
-    { path: "/", breadcrumbName: "მთავარი" },
-    { path: "/product", breadcrumbName: "პროდუქტი" },
-  ];
-  console.log(product);
+
   return (
     <Layout>
       <Content

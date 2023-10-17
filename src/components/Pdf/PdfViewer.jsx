@@ -7,7 +7,7 @@ const PdfViewer = ({ pdfUrl }) => {
       src={pdfUrl}
       width="100%"
       height="500px" // You can adjust the height as needed
-    ></iframe>
+    />
   );
 };
 
