@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Divider, Row } from "antd";
+import {Divider, Row} from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import BasicSlider from "../components/demoSlider/DemoSlider";
@@ -47,7 +47,13 @@ const Home = () => (
 
       <CenteredImages />
 
-      <div className="p-1"></div>
+      <Divider
+        style={{
+          fontSize: "24px",
+          marginBottom: "25px",
+          fontWeight: "700",
+        }}
+      />
 
       <div
         id="part-2"
@@ -75,7 +81,7 @@ const Home = () => (
       </Divider>
       <Companies />
 
-      <div style={{ padding: "50px" }}>
+      <div style={{padding: "50px"}}>
         <Divider
           style={{
             marginBottom: "25px",
