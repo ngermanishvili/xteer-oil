@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { motion, useTransform, useViewportScroll } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import CardBg from "../../assets/capasities-scaled.jpg";
 import cardImage1 from "../../assets/xteerlogo.png";
 import cardImage2 from "../../assets/agrinolpng.png";
@@ -9,9 +9,8 @@ import CenteredImages from "../OurProducts/CenteredImages";
 import Companies from "../Companies/Companies";
 
 const About = () => {
-  const { scrollYProgress } = useViewportScroll();
-  const imgContainerYRange = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const cardsYRange = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const { scrollYProgress } = useScroll();
+  const imgContainerYRange = useTransform(scrollYProgress, [0, 4], [0, -1800]);
 
   return (
     <Wrapper>
@@ -21,29 +20,7 @@ const About = () => {
             <img className="imgcont" src={CardBg} alt="background" />
           </ImgContainer>
         </motion.div>
-        <CardContainer>
-          {/* <div style={{ backgroundColor: "#fff" }}>
-            <Companies />
-          </div> */}
-          {/* <Card
-            title="Title 2"
-            imgSrc={cardImage2}
-            description="Description 2"
-            yRange={cardsYRange}
-          />
-          <Card
-            title="Title 1"
-            imgSrc={cardImage1}
-            description="Description 1"
-            yRange={cardsYRange}
-          />
-          <Card
-            title="Title 3"
-            imgSrc={cardImage3}
-            description="Description 3"
-            yRange={cardsYRange}
-          /> */}
-        </CardContainer>
+        <CardContainer></CardContainer>
       </ParallaxContainer>
     </Wrapper>
   );

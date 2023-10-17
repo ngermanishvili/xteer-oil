@@ -39,7 +39,12 @@ export default function MobileNavbar() {
     ],
   };
   return (
-    <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
+    <Navbar
+      isBordered
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      shouldHideOnScroll
+    >
       {/* Mobile Menu Toggle Button */}
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle

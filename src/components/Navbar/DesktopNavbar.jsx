@@ -29,7 +29,7 @@ export default function DesktopNavbar() {
   return (
     <>
       <Wrapper>
-        <Navbar className="fixed" shouldHideOnScroll>
+        <Navbar className="relative" shouldHideOnScroll>
           <Link to="/" onClick={() => setSearchQuery("")}>
             <img src={logo} style={{ width: "90% " }} />
           </Link>
