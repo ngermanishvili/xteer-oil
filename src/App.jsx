@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {useMediaQuery} from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
-import FindMyOil from "./components/FindMyOil/FindMyOil";
+import OilProductsList from "./Pages/OilProductsList";
 import ProductDetail from "./Pages/Product";
 
 import Lottie from "react-lottie";
@@ -89,7 +89,7 @@ const App = () => {
                 path="find-my-oil"
                 element={
                   <Suspense fallback={<div>Loading...</div>}>
-                    <FindMyOil />
+                    <OilProductsList />
                   </Suspense>
                 }
               />

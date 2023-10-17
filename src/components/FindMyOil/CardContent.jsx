@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { tabStore } from "../../zustand/fitlerStore";
-import { Card, Pagination } from "antd";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {dataStore} from "../../zustand/store";
+import {tabStore} from "../../zustand/fitlerStore";
+import {Card, Pagination} from "antd";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const { Meta } = Card;
-import { searchStore } from "../../zustand/searchStore";
+const {Meta} = Card;
+import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import { useLocation } from "react-router-dom";
-import { SyncLoader } from "react-spinners";
-import DemoImg from "../../assets/banner.jpeg";
+import {useLocation} from "react-router-dom";
+import {SyncLoader} from "react-spinners";
 import BasicSlider from "../demoSlider/DemoSlider";
 
 const CardContent = () => {
@@ -42,7 +41,7 @@ const CardContent = () => {
     setFilteredData();
     setTab("all");
   }, [location]);
-
+  console.log(productsToDisplay);
   useEffect(() => {
     fetchData();
   }, []);
@@ -61,7 +60,6 @@ const CardContent = () => {
     smoothScrollToTop();
     setCurrentPage(page);
   };
-
   return (
     <>
       <div>
@@ -86,27 +84,40 @@ const CardContent = () => {
                 <Card
                   className="cards"
                   key={product._id}
-                  cover={
-                    <img
-                      style={{ width: "200px", height: "200px" }}
-                      alt={product.productName}
-                      src={product.imageUrl || "default_image_url"}
-                    />
-                  }
+                  bodyStyle={{width: "100%"}}
                 >
-                  <Meta
-                    title={product.productName}
-                    description={product.productLine}
-                  />
-                  <ul style={{ display: "flex" }}>
-                    {product.pdfUrls.map((viscosity, index, array) => (
-                      <li className="li" key={viscosity.viscosityGrade}>
-                        {viscosity.viscosityGrade}
-                        {index !== array.length - 1 && "/"}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="LinkContent">
+                  <div style={{width: "100%", display: "flex"}}>
+                    <div style={{width: "45%"}}>
+                      <img
+                        style={{width: "200px", height: "200px"}}
+                        alt={product.productName}
+                        src={product.imageUrl || "default_image_url"}
+                      />
+                    </div>
+                    <div style={{width: "55%", textAlign: "center"}}>
+                      <h1 style={{marginBottom: "22%", fontSize: "20px"}}>
+                        {product.productName}
+                      </h1>
+                      <Meta description={product.productLine} />
+                      <ul
+                        style={{
+                          display: "flex",
+                          gap: "10px",
+                          justifyContent: "center",
+                          width: "100%",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        {product.pdfUrls.map((viscosity, index, array) => (
+                          <li className="li" key={viscosity.viscosityGrade}>
+                            {viscosity.viscosityGrade}
+                            {index !== array.length - 1 && "/"}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div style={{width: "100%"}}>
                     <Link
                       style={{
                         marginBottom: "10px",
@@ -152,9 +163,13 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
   .cards {
-    padding: 0 20px;
-    height: 370px;
+    display: flex;
+    align-items: center;
+    height: 410px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
     transform-origin: center bottom;
@@ -167,15 +182,13 @@ const Wrapper = styled.div`
   .seeDetails {
     position: absolute;
     bottom: 0;
-    right: 15px;
-    padding: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 10px 20px;
     font-size: 1rem;
   }
   .li {
     margin-top: 4px;
-  }
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 `;
 
