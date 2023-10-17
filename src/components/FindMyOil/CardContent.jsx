@@ -1,15 +1,15 @@
-import React, {useEffect} from "react";
-import {dataStore} from "../../zustand/store";
-import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination} from "antd";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { Card, Pagination } from "antd";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const {Meta} = Card;
-import {searchStore} from "../../zustand/searchStore";
+const { Meta } = Card;
+import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import {useLocation} from "react-router-dom";
-import {SyncLoader} from "react-spinners";
+import { useLocation } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -85,7 +85,7 @@ const CardContent = () => {
                 key={product._id}
                 cover={
                   <img
-                    style={{width: "200px", height: "200px"}}
+                    style={{ width: "200px", height: "200px" }}
                     alt={product.productName}
                     src={product.imageUrl || "default_image_url"}
                   />
@@ -95,7 +95,7 @@ const CardContent = () => {
                   title={product.productName}
                   description={product.productLine}
                 />
-                <ul style={{display: "flex"}}>
+                <ul style={{ display: "flex" }}>
                   {product.pdfUrls.map((viscosity, index, array) => (
                     <li className="li" key={viscosity.viscosityGrade}>
                       {viscosity.viscosityGrade}
@@ -105,11 +105,23 @@ const CardContent = () => {
                 </ul>
                 <div className="LinkContent">
                   <Link
+                    style={{
+                      marginBottom: "10px",
+                      borderRadius: "10px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignSelf: "center",
+                      alignItems: "center",
+                      background: "#42C1E3",
+                      color: "#fff",
+                      width: "92%",
+                      marginTop: "20px",
+                    }}
                     onClick={handlePageChange}
                     className="seeDetails"
                     to={`/product/${product._id}`}
                   >
-                    See Details
+                    დეტალური ინფორმაცია
                   </Link>
                 </div>
               </Card>
@@ -137,6 +149,8 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
   .cards {
+    padding: 0 20px;
+    height: 370px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
     transform-origin: center bottom;
