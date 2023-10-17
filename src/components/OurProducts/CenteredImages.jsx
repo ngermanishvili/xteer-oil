@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  background-color: rgb(16, 45, 49);
+  background-color: #464644;
   .coll {
     display: flex;
     justify-content: center;

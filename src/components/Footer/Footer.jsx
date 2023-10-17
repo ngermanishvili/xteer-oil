@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col } from "antd";
 import styled from "styled-components";
+import MapComponent from "../findUs/Map";
 
 function Footer() {
   return (

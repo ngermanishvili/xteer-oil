@@ -3,19 +3,19 @@ import styled, { keyframes, css } from "styled-components";
 
 function Companies() {
   const row1 = [
-    "https://assets.algoexpert.io/spas/main/prod/g523bdeb478-prod/dist/images/7ae42bac3b34999c0db3.png",
-    "https://assets.algoexpert.io/spas/main/prod/g523bdeb478-prod/dist/images/b2bd91d7b87b2181ca45.png",
-    "https://assets.algoexpert.io/spas/main/prod/g523bdeb478-prod/dist/images/6591cdc0702b32310306.png",
-    "https://assets.algoexpert.io/spas/main/prod/g523bdeb478-prod/dist/images/3b7d9f4b073deb6a9b74.png",
-    "https://assets.algoexpert.io/spas/main/prod/g523bdeb478-prod/dist/images/3cd767dea94a85078ca4.png",
-    "https://assets.algoexpert.io/spas/main/prod/g523bdeb478-prod/dist/images/a2b3c3709ffedce2a22a.png",
+    "https://uglubricants.com/wp-content/uploads/2023/02/png_mn.png",
+    "https://uglubricants.com/wp-content/uploads/2023/02/png-rustavi.png",
+    "https://uglubricants.com/wp-content/uploads/2023/02/png_azot.png",
+    "https://uglubricants.com/wp-content/uploads/2023/02/png-m.png",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCCQcc5RarkB22jlpVSmjmYZ39grOapXL0AMRf0JHChELsfELFfyzEHkyZLew22-YSQvk&usqp=CAU",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsRM_fa7-xpeNSitSTX-v5zpkDJKSBFH8GC8foJ5cG&s",
   ];
 
   return (
     <AppContainer>
       <Wrapper>
         {/* <Text>GENTO TRADING</Text> */}
-        <Note>პარტნიორი კომპანიები</Note>
+        {/* <Note>პარტნიორი კომპანიები</Note> */}
         <Marquee>
           <MarqueeGroup>
             {row1.map((el, index) => (

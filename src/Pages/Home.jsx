@@ -7,6 +7,8 @@ import Companies from "../components/Companies/Companies";
 import AccordionComponent from "../components/Accordion/Accordion";
 import BasicSlider from "../components/demoSlider/DemoSlider";
 import AboutUs from "../components/AboutUs/About";
+import AboutCompany from "../components/AboutCompany/AboutCompany";
+import MapComponent from "../components/findUs/Map";
 
 const Home = () => (
   <>
@@ -20,18 +22,40 @@ const Home = () => (
       }}
     >
       <BasicSlider />
-      {/* <div className="p-5"></div> */}
+
+      <div
+        id="part-1"
+        style={{
+          width: "100%",
+          height: "auto",
+          textAlign: "center",
+          backgroundColor: "#f9f9f9",
+        }}
+      >
+        <div className="p-2"></div>
+
+        {/* <CenteredImages /> */}
+      </div>
+
+      <Divider
+        style={{
+          fontSize: "24px",
+          marginBottom: "25px",
+          fontWeight: "700",
+        }}
+      >
+        ჩვენი პროდუქცია
+      </Divider>
+      <div className="p-4"></div>
+
+      <CenteredImages />
       <Divider
         style={{
           marginBottom: "25px",
-          color: "#000",
-          fontSize: "2rem",
-          fontWeight: "800",
+          fontWeight: "700",
         }}
-      >
-        პროდუქცია
-      </Divider>
-      <CenteredImages />
+      ></Divider>
+
       <div
         id="part-2"
         style={{
@@ -41,19 +65,54 @@ const Home = () => (
           backgroundColor: "#f9f9f9",
         }}
       >
-        <div className="companies-container">
-          <Companies />
-        </div>
+        <div className="companies-container"></div>
+        <AboutUs />
       </div>
       <Divider
-        style={{ backgroundColor: "#fff", fontSize: "20px", fontWeight: "800" }}
+        orientation="center"
+        type="horizontal"
+        style={{
+          fontSize: "24px",
+          borderTop: "1px solid #003f98",
+          fontWeight: "700",
+          borderBottom: "1px solid #003f98",
+        }}
       >
-        რატომ ჩვენ?
+        პარტნიორი კომპანიები
       </Divider>
+      <Companies />
+      <div style={{ padding: "50px" }}>
+        <Divider
+          style={{
+            marginBottom: "25px",
+            fontWeight: "700",
+          }}
+        >
+          ჩვენს შესახებ
+        </Divider>
+        <AboutCompany />
+      </div>
+      <div className="p-2"></div>
+    </div>
 
-      <div className="p-5"></div>
-
-      <AboutUs />
+    <Divider
+      style={{
+        marginBottom: "25px",
+        fontWeight: "700",
+      }}
+    >
+      პარტნიორი კომპანიები
+    </Divider>
+    <div
+      id="part-2"
+      style={{
+        width: "100%",
+        height: "auto",
+        textAlign: "center",
+        backgroundColor: "#f9f9f9",
+      }}
+    >
+      <div className="companies-container"></div>
     </div>
   </>
 );

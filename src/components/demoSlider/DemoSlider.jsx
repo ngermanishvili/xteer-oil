@@ -1,15 +1,15 @@
 import HeroSlider, { Overlay, Slide } from "hero-slider";
 import styled from "styled-components";
-import Slide1 from "../../assets/banner.jpeg";
-import Slide3 from "../../assets/bannerslider1.jpg";
+import Slide1 from "../../assets/yellow-and-black-toned-construction-equipment-shot-in-reverse-light-wallpaper-2800x1050_88.jpg";
+import Slide3 from "../../assets/yellow-and-black-toned-construction-equipment-shot-in-reverse-light-wallpaper-2800x1050_88.jpg";
 import Slide2 from "../../assets/xteerbanner2.jpeg";
 // import Slide4 from "../../assets/Slide4.jpg";
 
 export default function BasicSlider() {
-  const Slide4 = "https://i.imgur.com/8IuucQZ.jpg";
+  const Slide4 = "https://wallpapercave.com/wp/wp2890804.jpg";
   return (
     <HeroSlider
-      height={"70vh"}
+      height={"80vh"}
       autoplay={{
         autoplayDebounce: 0,
         autoplayDuration: 4500,
