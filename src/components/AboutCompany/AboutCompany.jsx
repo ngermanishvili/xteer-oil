@@ -1,10 +1,12 @@
 import React from "react";
 import { Col, Row } from "antd";
 import gentoImg from "../../assets/bannertest.jpg";
+import gentoImg2 from "../../assets/asst.jpeg";
 import styled from "styled-components";
 import Companies from "../Companies/Companies";
 import CenteredImages from "../OurProducts/CenteredImages";
 import { motion } from "framer-motion";
+import { Image } from "@nextui-org/react";
 
 const AboutCompany = () => {
   return (
@@ -17,10 +19,17 @@ const AboutCompany = () => {
             transition={{ duration: 1, ease: "easeIn" }}
           >
             <ImgStyling>
-              <StyledImg
-                className="gentotrd"
+              <Image
+                className="img-fluid"
+                isZoomed
+                alt="NextUI Fruit Image with Zoom"
                 src={gentoImg}
-                alt="Company Banner"
+              />
+              <Image
+                className="img-fluid2"
+                isZoomed
+                alt="NextUI Fruit Image with Zoom"
+                src={gentoImg2}
               />
             </ImgStyling>
           </motion.div>
@@ -73,7 +82,22 @@ export default AboutCompany;
 
 const Container = styled.div`
   display: flex;
+
   color: #fff;
+
+  .img-fluid2 {
+    cursor: pointer;
+    width: 800px;
+    height: 600px;
+    padding: 10px;
+  }
+  .img-fluid {
+    cursor: pointer;
+
+    width: 400px;
+    height: 600px;
+    padding: 10px;
+  }
 `;
 
 const StyledImg = styled.img`
@@ -89,7 +113,6 @@ const Text = styled.div`
   text-align: center;
   padding: -20px 20px;
   color: #000;
-  margin-top: 100px;
 `;
 
 const Button = styled.button`
@@ -106,13 +129,12 @@ const ImgStyling = styled.div`
   justify-content: space-around;
   align-items: center;
   width: 102%;
+  max-width: 1000px;
   padding: 20px 20px;
-  border-bottom: 4px solid #424242;
-
-  border-right: 4px solid #424242;
 `;
 
 const TextStyling = styled.div`
+  margin-top: 24px;
   width: 102%;
   padding: 10px 20px;
   border-top: 3px solid #424242;

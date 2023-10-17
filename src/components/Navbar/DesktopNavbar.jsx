@@ -18,8 +18,8 @@ import {
 } from "@nextui-org/react";
 
 export default function DesktopNavbar() {
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["🌐"]));
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["🌐"]));
 
   const selectedValue = React.useMemo(
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
@@ -116,8 +116,8 @@ export default function DesktopNavbar() {
                   selectedKeys={selectedKeys}
                   onSelectionChange={setSelectedKeys}
                 >
-                  <DropdownItem key="ქართული">ქართული</DropdownItem>
-                  <DropdownItem key="English">English</DropdownItem>
+                  <DropdownItem key="GEO 🇬🇪">GEO 🇬🇪</DropdownItem>
+                  <DropdownItem key="EN 🇺🇸">EN 🇺🇸</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavbarItem>

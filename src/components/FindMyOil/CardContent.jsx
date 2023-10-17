@@ -132,7 +132,6 @@ const CardContent = () => {
             </Wrapper>
             <PaginationContainer>
               <Pagination
-                // size="small"
                 key={currentPage}
                 current={currentPage}
                 onChange={handlePageChange}
