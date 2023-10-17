@@ -4,9 +4,12 @@ import {dataStore} from "../../zustand/store";
 import styled from "styled-components";
 import ImageContent from "../ProductPage/ImageContent";
 import Badgecontent from "../ProductPage/Badge";
+
 const PdfDownloader = ({productId}) => {
   const [product, setProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [shouldRenderDropdown, setShouldRenderDropdown] = useState(false); // Use state to manage rendering
+
   const data = dataStore((state) => state.data);
 
   useEffect(() => {
@@ -18,6 +21,23 @@ const PdfDownloader = ({productId}) => {
 
   const pdfUrls = product?.pdfUrls;
 
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setShouldRenderDropdown(window.innerWidth >= 768);
+    };
+
+    // Add an event listener to handle window resize
+    window.addEventListener("resize", handleWindowResize);
+
+    // Initialize the rendering state
+    handleWindowResize();
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -25,17 +45,17 @@ const PdfDownloader = ({productId}) => {
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
-  console.log(product);
   const menu = (
     <Menu>
       {pdfUrls?.map((item, index) => (
         <Menu.Item key={index}>
           <h2>VISCOSITY GRADE - {item.viscosityGrade}</h2>
-          <Button onClick={showModal}>View PDS </Button>
+          <Button onClick={showModal}>View PDS</Button>
           <Button>Download PDS</Button>
         </Menu.Item>
       ))}
@@ -51,44 +71,48 @@ const PdfDownloader = ({productId}) => {
         />
       </ImageWrapper>
 
-      {pdfUrls && (
-        <PdfWrapper>
-          {window.innerWidth >= 1000 ? (
-            pdfUrls.map((item, index) => (
-              <div className="PdfItem" key={index}>
-                <h2>VISCOSITY GRADE - {item.viscosityGrade}</h2>
-                <div className="buttons">
-                  <Button onClick={showModal}>View PDS </Button>
-                  <Button>Download PDS</Button>
+      {pdfUrls?.length > 0 ? (
+        <>
+          <PdfWrapper>
+            {shouldRenderDropdown ? (
+              pdfUrls.map((item, index) => (
+                <div className="PdfItem" key={index}>
+                  <h2>VISCOSITY GRADE - {item.viscosityGrade}</h2>
+                  <div className="buttons">
+                    <Button onClick={showModal}>View PDS</Button>
+                    <Button>Download PDS</Button>
+                  </div>
+                  <Modal
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                  >
+                    {isModalOpen && (
+                      <iframe
+                        title="PDF Viewer"
+                        src={item.pdsUrl}
+                        width="100%"
+                        height="500px"
+                      />
+                    )}
+                  </Modal>
                 </div>
-                <Modal
-                  open={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                >
-                  {isModalOpen && (
-                    <iframe
-                      title="PDF Viewer"
-                      src={item.pdsUrl}
-                      width="100%"
-                      height="500px"
-                    />
-                  )}
-                </Modal>
-              </div>
-            ))
-          ) : (
-            <Dropdown overlay={menu} trigger={["click"]}>
-              <Button>View PDFs</Button>
-            </Dropdown>
-          )}
-        </PdfWrapper>
+              ))
+            ) : (
+              <Dropdown overlay={menu} trigger={["click"]}>
+                <Button>View PDFs</Button>
+              </Dropdown>
+            )}
+          </PdfWrapper>
+          <OtherProductInfo style={{width: "68%"}}>
+            <div>{product ? <Badgecontent product={product} /> : ""}</div>
+          </OtherProductInfo>
+        </>
+      ) : (
+        <OtherProductInfo style={{width: "68%"}}>
+          <div>{product ? <Badgecontent product={product} /> : ""}</div>
+        </OtherProductInfo>
       )}
-      <OtherProductInfo>
-        <div style={{width: product ? "68%" : "0%"}}>
-          {product ? <Badgecontent product={product} /> : ""}
-        </div>
-      </OtherProductInfo>
     </Container>
   );
 };

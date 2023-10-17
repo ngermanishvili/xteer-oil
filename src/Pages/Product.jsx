@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Breadcrumb, Layout, theme} from "antd";
-import BadgeContent from "../components/ProductPage/Badge";
-import ImageContent from "../components/ProductPage/ImageContent";
-import DownloadPdS from "../components/ProductPage/Download";
+import SingleProductInfo from "../components/ProductPage/Download";
 import {dataStore} from "../zustand/store";
 import {SyncLoader} from "react-spinners";
 const {Content} = Layout;
@@ -62,7 +60,7 @@ const ProductDetail = () => {
             {product ? (
               <>
                 <>
-                  <DownloadPdS productId={product._id} />
+                  <SingleProductInfo productId={product._id} />
                 </>
 
                 <div className="p-5"></div>
