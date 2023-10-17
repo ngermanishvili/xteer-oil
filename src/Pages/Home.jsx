@@ -1,11 +1,11 @@
 import React from "react";
-import { Divider } from "antd";
+
+import { Divider, Row } from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import BasicSlider from "../components/demoSlider/DemoSlider";
 import AboutUs from "../components/AboutUs/About";
 import AboutCompany from "../components/AboutCompany/AboutCompany";
-import MapComponent from "../components/findUs/Map";
 
 const Home = () => (
   <>
@@ -16,6 +16,7 @@ const Home = () => (
         height: "auto",
         textAlign: "center",
         backgroundColor: "#f9f9f9",
+        marginTop: "78px",
       }}
     >
       <BasicSlider />
@@ -43,15 +44,10 @@ const Home = () => (
       >
         ჩვენი პროდუქცია
       </Divider>
-      <div className="p-4"></div>
 
       <CenteredImages />
-      <Divider
-        style={{
-          marginBottom: "25px",
-          fontWeight: "700",
-        }}
-      ></Divider>
+
+      <div className="p-1"></div>
 
       <div
         id="part-2"
@@ -78,6 +74,7 @@ const Home = () => (
         პარტნიორი კომპანიები
       </Divider>
       <Companies />
+
       <div style={{ padding: "50px" }}>
         <Divider
           style={{

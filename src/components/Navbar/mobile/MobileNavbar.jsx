@@ -12,8 +12,20 @@ import {
 import { Link } from "react-router-dom";
 import gentoLogo from "../../../assets/LOGO.png";
 import { searchStore } from "../../../zustand/searchStore";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
 
 export default function MobileNavbar() {
+  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["🌐"]));
+  const selectedValue = React.useMemo(
+    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
+    [selectedKeys]
+  );
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeBugerMenu = () => setIsMenuOpen(false);
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
@@ -42,9 +54,24 @@ export default function MobileNavbar() {
           </Link>
         </NavbarBrand>
         <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            🇬🇪
-          </Button>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button variant="bordered" className="capitalize">
+                {selectedValue}
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              aria-label="Single selection example"
+              variant="flat"
+              disallowEmptySelection
+              selectionMode="single"
+              selectedKeys={selectedKeys}
+              onSelectionChange={setSelectedKeys}
+            >
+              <DropdownItem key="GEO 🇬🇪">GEO 🇬🇪</DropdownItem>
+              <DropdownItem key="EN 🇺🇸">EN 🇺🇸</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </NavbarItem>
       </NavbarContent>
 
