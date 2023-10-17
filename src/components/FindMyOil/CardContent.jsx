@@ -10,6 +10,8 @@ import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
 import { useLocation } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
+import DemoImg from "../../assets/banner.jpeg";
+import BasicSlider from "../demoSlider/DemoSlider";
 
 const CardContent = () => {
   const fetchData = dataStore((state) => state.fetchData);
@@ -61,86 +63,88 @@ const CardContent = () => {
   };
 
   return (
-    <div>
-      {loading ? (
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <SyncLoader size={18} color="dodgerblue" />
-        </div>
-      ) : (
-        <React.Fragment>
-          <Search />
-          <ItemNotFound />
-          <Wrapper>
-            {productsToDisplay.map((product) => (
-              <Card
-                className="cards"
-                key={product._id}
-                cover={
-                  <img
-                    style={{ width: "200px", height: "200px" }}
-                    alt={product.productName}
-                    src={product.imageUrl || "default_image_url"}
+    <>
+      <div>
+        {loading ? (
+          <div
+            style={{
+              width: "100%",
+              height: "100vh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <SyncLoader size={18} color="dodgerblue" />
+          </div>
+        ) : (
+          <React.Fragment>
+            <Search />
+            <ItemNotFound />
+            <Wrapper>
+              {productsToDisplay.map((product) => (
+                <Card
+                  className="cards"
+                  key={product._id}
+                  cover={
+                    <img
+                      style={{ width: "200px", height: "200px" }}
+                      alt={product.productName}
+                      src={product.imageUrl || "default_image_url"}
+                    />
+                  }
+                >
+                  <Meta
+                    title={product.productName}
+                    description={product.productLine}
                   />
-                }
-              >
-                <Meta
-                  title={product.productName}
-                  description={product.productLine}
-                />
-                <ul style={{ display: "flex" }}>
-                  {product.pdfUrls.map((viscosity, index, array) => (
-                    <li className="li" key={viscosity.viscosityGrade}>
-                      {viscosity.viscosityGrade}
-                      {index !== array.length - 1 && "/"}
-                    </li>
-                  ))}
-                </ul>
-                <div className="LinkContent">
-                  <Link
-                    style={{
-                      marginBottom: "10px",
-                      borderRadius: "10px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignSelf: "center",
-                      alignItems: "center",
-                      background: "#42C1E3",
-                      color: "#fff",
-                      width: "92%",
-                      marginTop: "20px",
-                    }}
-                    onClick={handlePageChange}
-                    className="seeDetails"
-                    to={`/product/${product._id}`}
-                  >
-                    დეტალური ინფორმაცია
-                  </Link>
-                </div>
-              </Card>
-            ))}
-          </Wrapper>
-          <PaginationContainer>
-            <Pagination
-              // size="small"
-              key={currentPage}
-              current={currentPage}
-              onChange={handlePageChange}
-              total={productsSize}
-              pageSize={itemsPerPage}
-              showSizeChanger={false}
-            />
-          </PaginationContainer>
-        </React.Fragment>
-      )}
-    </div>
+                  <ul style={{ display: "flex" }}>
+                    {product.pdfUrls.map((viscosity, index, array) => (
+                      <li className="li" key={viscosity.viscosityGrade}>
+                        {viscosity.viscosityGrade}
+                        {index !== array.length - 1 && "/"}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="LinkContent">
+                    <Link
+                      style={{
+                        marginBottom: "10px",
+                        borderRadius: "10px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignSelf: "center",
+                        alignItems: "center",
+                        background: "#42C1E3",
+                        color: "#fff",
+                        width: "92%",
+                        marginTop: "20px",
+                      }}
+                      onClick={handlePageChange}
+                      className="seeDetails"
+                      to={`/product/${product._id}`}
+                    >
+                      დეტალური ინფორმაცია
+                    </Link>
+                  </div>
+                </Card>
+              ))}
+            </Wrapper>
+            <PaginationContainer>
+              <Pagination
+                // size="small"
+                key={currentPage}
+                current={currentPage}
+                onChange={handlePageChange}
+                total={productsSize}
+                pageSize={itemsPerPage}
+                showSizeChanger={false}
+              />
+            </PaginationContainer>
+          </React.Fragment>
+        )}
+      </div>
+    </>
   );
 };
 
