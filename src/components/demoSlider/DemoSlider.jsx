@@ -9,7 +9,7 @@ export default function BasicSlider() {
   const Slide4 = "https://wallpapercave.com/wp/wp2890804.jpg";
   return (
     <HeroSlider
-      height={"80vh"}
+      height={"50vh"}
       autoplay={{
         autoplayDebounce: 0,
         autoplayDuration: 4500,

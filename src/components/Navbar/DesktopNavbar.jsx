@@ -61,8 +61,8 @@ export default function DesktopNavbar() {
           <Link to="/find-my-oil">კატალოგი</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="warning" href="#" variant="flat">
-            🇬🇪
+          <Button as={Link} color="PRIMAR" href="#" variant="light" size="lg">
+            🌐 EN
           </Button>
         </NavbarItem>
       </NavbarContent>
