@@ -168,3 +168,18 @@ navbar font color .bg-background\/70 a {
   justify-content: center;
   width: 100%;
 }
+/* // navbar bg color  */
+
+.backdrop-saturate-150 {
+  opacity: 0.85;
+  background: #fff;
+  font-size: 20px;
+  color: #000;
+  width: 100%;
+  height: 80px;
+}
+
+.backdrop-saturate-150 . {
+  padding: 0 2px;
+  font-size: 47px;
+}

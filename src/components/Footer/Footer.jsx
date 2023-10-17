@@ -9,7 +9,7 @@ function Footer() {
       id="footer"
       style={{
         flexShrink: 0,
-        backgroundColor: "rgb(0,0,0)",
+        backgroundColor: "#424242",
         right: "20",
         color: "whitesmoke",
         textAlign: "center",
