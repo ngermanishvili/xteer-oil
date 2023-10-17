@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {Breadcrumb, Layout, theme} from "antd";
-import SingleProductInfo from "../components/ProductPage/Download";
+import SingleProductLayout from "../components/ProductPage/SingleProductLayout";
 import {dataStore} from "../zustand/store";
 import {SyncLoader} from "react-spinners";
 const {Content} = Layout;
@@ -60,7 +60,7 @@ const ProductDetail = () => {
             {product ? (
               <>
                 <>
-                  <SingleProductInfo productId={product._id} />
+                  <SingleProductLayout productId={product._id} />
                 </>
 
                 <div className="p-5"></div>

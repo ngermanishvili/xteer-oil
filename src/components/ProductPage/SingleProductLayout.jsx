@@ -2,12 +2,13 @@ import React, {useState, useEffect} from "react";
 import {Modal, Button, Menu, Dropdown} from "antd";
 import {dataStore} from "../../zustand/store";
 import styled from "styled-components";
-import ImageContent from "../ProductPage/ImageContent";
-import Badgecontent from "../ProductPage/Badge";
+import ImageContent from "./ImageContent";
+import Badgecontent from "./Badge";
 
 const PdfDownloader = ({productId}) => {
   const [product, setProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [shouldRenderDropdown, setShouldRenderDropdown] = useState(false); // Use state to manage rendering
 
   const data = dataStore((state) => state.data);
@@ -50,20 +51,42 @@ const PdfDownloader = ({productId}) => {
     setIsModalOpen(false);
   };
 
-  const menu = (
-    <Menu>
-      {pdfUrls?.map((item, index) => (
-        <Menu.Item key={index}>
-          <h2>VISCOSITY GRADE - {item.viscosityGrade}</h2>
-          <Button onClick={showModal}>View PDS</Button>
-          <Button>Download PDS</Button>
-        </Menu.Item>
+  const customMenu = isDropDownOpen ? (
+    <div style={{width: "100%"}}>
+      {pdfUrls?.map((pdf, index) => (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            alignContent: "center",
+            width: "100%",
+          }}
+          key={index}
+        >
+          <h2 style={{width: "70%"}}>VISCOSITY GRADE - {pdf.viscosityGrade}</h2>
+          <div style={{width: "30%", display: "flex", flexDirection: "column"}}>
+            <Button onClick={showModal}>View PDS</Button>
+            <Button>Download PDS</Button>
+          </div>
+          <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            {isModalOpen && (
+              <iframe
+                title="PDF Viewer"
+                src={pdf.pdsUrl}
+                width="100%"
+                height="500px"
+              />
+            )}
+          </Modal>
+        </div>
       ))}
-    </Menu>
+    </div>
+  ) : (
+    <></>
   );
-
   return (
-    <Container pdfUrls={pdfUrls}>
+    <Container>
       <ImageWrapper>
         <ImageContent
           imageUrl={product?.imageUrl}
@@ -74,6 +97,7 @@ const PdfDownloader = ({productId}) => {
       {pdfUrls?.length > 0 ? (
         <>
           <PdfWrapper>
+            <h1>{product?.productName}</h1>
             {shouldRenderDropdown ? (
               pdfUrls.map((item, index) => (
                 <div className="PdfItem" key={index}>
@@ -99,14 +123,17 @@ const PdfDownloader = ({productId}) => {
                 </div>
               ))
             ) : (
-              <Dropdown overlay={menu} trigger={["click"]}>
-                <Button>View PDFs</Button>
-              </Dropdown>
+              <>
+                <Button onClick={() => setIsDropDownOpen(!isDropDownOpen)}>
+                  View PDFs
+                </Button>
+                {customMenu}
+              </>
             )}
           </PdfWrapper>
-          <OtherProductInfo style={{width: "68%"}}>
+          {/* <OtherProductInfo style={{width: "68%"}}>
             <div>{product ? <Badgecontent product={product} /> : ""}</div>
-          </OtherProductInfo>
+          </OtherProductInfo> */}
         </>
       ) : (
         <OtherProductInfo style={{width: "68%"}}>
@@ -147,9 +174,11 @@ const PdfWrapper = styled.div`
   width: 68%;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   align-self: normal;
   justify-content: space-around;
   align-items: center;
+
   .PdfItem {
     max-width: 300px;
     min-width: 185px;
