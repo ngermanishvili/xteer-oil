@@ -8,7 +8,7 @@ import cardImage3 from "../../assets/azmol.png";
 import CenteredImages from "../OurProducts/CenteredImages";
 import Companies from "../Companies/Companies";
 
-const About = () => {
+const Parallax = () => {
   const { scrollYProgress } = useScroll();
   const imgContainerYRange = useTransform(scrollYProgress, [0, 4], [0, -1800]);
 
@@ -31,8 +31,6 @@ const Card = ({ title, imgSrc, description, yRange }) => (
     <img src={imgSrc} alt={title} />
   </StyledCard>
 );
-
-export default About;
 
 const Wrapper = styled.div`
   position: relative;
@@ -130,3 +128,4 @@ const StyledCard = styled(motion.div)`
     width: 100%;
   }
 `;
+export default Parallax;

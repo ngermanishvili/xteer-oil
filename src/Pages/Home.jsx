@@ -3,7 +3,7 @@ import { Divider, Row } from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import BasicSlider from "../components/demoSlider/DemoSlider";
-import AboutUs from "../components/AboutUs/About";
+import Parallax from "../components/Parallax/Parallax";
 import AboutCompany from "../components/AboutCompany/AboutCompany";
 
 const Home = () => (
@@ -58,11 +58,12 @@ const Home = () => (
         height: "auto",
         textAlign: "center",
         backgroundColor: "#f9f9f9",
+        marginTop: "50px",
         marginBottom: "100px",
       }}
     >
       <div className="companies-container"></div>
-      <AboutUs />
+      <Parallax />
     </div>
   </div>
 );

@@ -1,14 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "antd";
 import gentoImg from "../../assets/bannertest.jpg";
 import gentoImg2 from "../../assets/asst.jpeg";
 import styled from "styled-components";
-import Companies from "../Companies/Companies";
-import CenteredImages from "../OurProducts/CenteredImages";
 import { motion } from "framer-motion";
 import { Image } from "@nextui-org/react";
 
+const companyInfo = `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et
+sed eius magni repellat. Inventore, animi eveniet. Magnam
+fugiat accusamus inventore, necessitatibus odio voluptatibus
+provident reiciendis, eius, rem quasi at dignissimos. Lorem
+ipsum dolor sit amet, consectetur adipisicing elit. Debitis
+placeat consectetur aut id! Accusamus, quod facilis nihil
+reiciendis non quas quidem iste illo rem est vero nisi et,
+saepe praesentium. Lorem, ipsum dolor sit amet consectetur
+adipisicing elit. Quam aliquam possimus vitae autem
+molestiae! Natus accusamus et, delectus iusto inventore
+deserunt vitae repudiandae provident ratione. Quis, laborum
+quidem explicabo reprehenderit mollitia nobis sequi velit
+aperiam corrupti eaque dolore illo labore eligendi aliquid
+repellat. Magnam hic deleniti ipsa atque incidunt, quibusdam
+quae illum, assumenda perspiciatis magni dicta aperiam
+dolore reprehenderit nemo expedita similique facere ut non
+quaerat laborum. Iusto consequatur laudantium voluptatibus
+quae eligendi. Expedita voluptates similique corporis nihil
+delectus odit cupiditate laudantium explicabo cum nam?
+Eligendi odio ducimus, quidem itaque, quo dolorem
+consectetur ipsam illo dolorum voluptatem id possimus hic.`;
+
 const AboutCompany = () => {
+  const [readMore, setReadMore] = useState(false);
+  const [shouldRenderDropdown, setShouldRenderDropdown] = useState(false);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setShouldRenderDropdown(window.innerWidth > 1200);
+    };
+
+    // Add an event listener to handle window resize
+    window.addEventListener("resize", handleWindowResize);
+
+    // Initialize the rendering state
+    handleWindowResize();
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
     <Container>
       <Row gutter={[16, 16]} justify="center">
@@ -19,12 +59,14 @@ const AboutCompany = () => {
             transition={{ duration: 1, ease: "easeIn" }}
           >
             <ImgStyling>
-              <Image
-                className="img-fluid"
-                isZoomed
-                alt="NextUI Fruit Image with Zoom"
-                src={gentoImg}
-              />
+              {shouldRenderDropdown && (
+                <Image
+                  className="img-fluid"
+                  isZoomed
+                  alt="NextUI Fruit Image with Zoom"
+                  src={gentoImg}
+                />
+              )}
               <Image
                 className="img-fluid2"
                 isZoomed
@@ -45,27 +87,17 @@ const AboutCompany = () => {
               <TextStyling2>
                 <TextStyling3>
                   <Text>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et
-                    sed eius magni repellat. Inventore, animi eveniet. Magnam
-                    fugiat accusamus inventore, necessitatibus odio voluptatibus
-                    provident reiciendis, eius, rem quasi at dignissimos. Lorem
-                    ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-                    placeat consectetur aut id! Accusamus, quod facilis nihil
-                    reiciendis non quas quidem iste illo rem est vero nisi et,
-                    saepe praesentium. Lorem, ipsum dolor sit amet consectetur
-                    adipisicing elit. Quam aliquam possimus vitae autem
-                    molestiae! Natus accusamus et, delectus iusto inventore
-                    deserunt vitae repudiandae provident ratione. Quis, laborum
-                    quidem explicabo reprehenderit mollitia nobis sequi velit
-                    aperiam corrupti eaque dolore illo labore eligendi aliquid
-                    repellat. Magnam hic deleniti ipsa atque incidunt, quibusdam
-                    quae illum, assumenda perspiciatis magni dicta aperiam
-                    dolore reprehenderit nemo expedita similique facere ut non
-                    quaerat laborum. Iusto consequatur laudantium voluptatibus
-                    quae eligendi. Expedita voluptates similique corporis nihil
-                    delectus odit cupiditate laudantium explicabo cum nam?
-                    Eligendi odio ducimus, quidem itaque, quo dolorem
-                    consectetur ipsam illo dolorum voluptatem id possimus hic.
+                    <p>
+                      {readMore
+                        ? companyInfo
+                        : `${companyInfo.substring(0, 500)}...`}
+                      <button
+                        style={{ color: "dodgerblue" }}
+                        onClick={() => setReadMore(!readMore)}
+                      >
+                        {readMore ? "Show less" : " Read more"}
+                      </button>
+                    </p>
                     <br /> <Button>Learn More</Button>
                   </Text>
                 </TextStyling3>
@@ -81,8 +113,7 @@ const AboutCompany = () => {
 export default AboutCompany;
 
 const Container = styled.div`
-  display: flex;
-
+ /*   */
   color: #fff;
 
   .img-fluid2 {
@@ -110,7 +141,7 @@ const StyledImg = styled.img`
 const Text = styled.div`
   font-size: 16px;
   line-height: 1.5;
-  text-align: center;
+  text-align: start;
   padding: -20px 20px;
   color: #000;
 `;
