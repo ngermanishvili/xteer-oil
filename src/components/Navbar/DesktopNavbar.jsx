@@ -138,8 +138,6 @@ export default function DesktopNavbar() {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              {/* <button onClick={() => changeLanguage("en")}>English</button>
-              <button onClick={() => changeLanguage("ru")}>Русский</button> */}
             </NavbarItem>
           </NavbarContent>
         </Navbar>
