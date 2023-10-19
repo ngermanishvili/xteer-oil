@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { Divider, Row } from "antd";
+import React from "react";
+import { Divider } from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import BasicSlider from "../components/demoSlider/DemoSlider";
 import Parallax from "../components/Parallax/Parallax";
 import AboutCompany from "../components/AboutCompany/AboutCompany";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
+import WhatWeSell from "../components/WhatWeSell/WhatWeSell";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -32,6 +32,17 @@ const Home = () => {
         {t("ourProducts")}
       </Divider>
       <CenteredImages />
+      <div style={{ padding: "50px" }}>
+        <Divider
+          style={{
+            marginBottom: "25px",
+            fontWeight: "700",
+          }}
+        >
+          {t("What we sell")}
+        </Divider>
+        <WhatWeSell />
+      </div>
       <div style={{ padding: "50px" }}>
         <Divider
           style={{
