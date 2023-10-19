@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {Breadcrumb, Layout, theme} from "antd";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Breadcrumb, Layout, theme } from "antd";
 import SingleProductLayout from "../components/ProductPage/SingleProductLayout";
-import {dataStore} from "../zustand/store";
-import {SyncLoader} from "react-spinners";
-const {Content} = Layout;
+import { dataStore } from "../zustand/store";
+import { SyncLoader } from "react-spinners";
+const { Content } = Layout;
 
 const ProductDetail = () => {
-  const {productId} = useParams();
+  const { productId } = useParams();
   const data = dataStore((state) => state.data);
   const [product, setProduct] = useState(null);
   const singleProductFilter = () => {
@@ -25,7 +25,7 @@ const ProductDetail = () => {
   }, []);
 
   const {
-    token: {colorBgContainer},
+    token: { colorBgContainer },
   } = theme.useToken();
 
   return (
@@ -36,7 +36,7 @@ const ProductDetail = () => {
         }}
       >
         <Breadcrumb
-          style={{margin: "16px 0"}}
+          style={{ margin: "16px 0" }}
           itemRender={(route, params, routes, paths) => {
             const isLastItem = routes.indexOf(route) === routes.length - 1;
             return isLastItem ? (
@@ -62,7 +62,6 @@ const ProductDetail = () => {
                 <>
                   <SingleProductLayout productId={product._id} />
                 </>
-
                 <div className="p-5"></div>
               </>
             ) : (
