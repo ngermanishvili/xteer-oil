@@ -5,30 +5,13 @@ import gentoImg2 from "../../assets/asst.jpeg";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Image } from "@nextui-org/react";
+import { useTranslation } from "react-i18next";
 
-const companyInfo = `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et
-sed eius magni repellat. Inventore, animi eveniet. Magnam
-fugiat accusamus inventore, necessitatibus odio voluptatibus
-provident reiciendis, eius, rem quasi at dignissimos. Lorem
-ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-placeat consectetur aut id! Accusamus, quod facilis nihil
-reiciendis non quas quidem iste illo rem est vero nisi et,
-saepe praesentium. Lorem, ipsum dolor sit amet consectetur
-adipisicing elit. Quam aliquam possimus vitae autem
-molestiae! Natus accusamus et, delectus iusto inventore
-deserunt vitae repudiandae provident ratione. Quis, laborum
-quidem explicabo reprehenderit mollitia nobis sequi velit
-aperiam corrupti eaque dolore illo labore eligendi aliquid
-repellat. Magnam hic deleniti ipsa atque incidunt, quibusdam
-quae illum, assumenda perspiciatis magni dicta aperiam
-dolore reprehenderit nemo expedita similique facere ut non
-quaerat laborum. Iusto consequatur laudantium voluptatibus
-quae eligendi. Expedita voluptates similique corporis nihil
-delectus odit cupiditate laudantium explicabo cum nam?
-Eligendi odio ducimus, quidem itaque, quo dolorem
-consectetur ipsam illo dolorum voluptatem id possimus hic.`;
+const companyInfo =
+  "GentoTrading, headquartered in Kutaisi, Georgia, is a prominent oil company with a rich history of serving the region's energy needs. As a leading provider of petroleum products and energy solutions, GentoTrading plays a vital role in fueling both domestic and industrial sectors in Georgia. With a commitment to quality and sustainability, the company has established itself as a trusted partner in the oil and energy industry. GentoTrading's operations encompass the supply of various petroleum products, including gasoline, diesel, and lubricants, while also focusing on innovative solutions to meet evolving energy demands. Their dedication to excellence and customer satisfaction has solidified their position as an industry leader in the region.";
 
 const AboutCompany = () => {
+  const { t, i18n } = useTranslation();
   const [readMore, setReadMore] = useState(false);
   const [shouldRenderDropdown, setShouldRenderDropdown] = useState(false);
 
@@ -89,13 +72,13 @@ const AboutCompany = () => {
                   <Text>
                     <p>
                       {readMore
-                        ? companyInfo
-                        : `${companyInfo.substring(0, 500)}...`}
+                        ? t("gentoInfo")
+                        : `${t("gentoInfo").substring(0, 500)}...`}
                       <button
                         style={{ color: "dodgerblue" }}
                         onClick={() => setReadMore(!readMore)}
                       >
-                        {readMore ? "Show less" : " Read more"}
+                        {readMore ? t("showLess") : t("readMore")}
                       </button>
                     </p>
                     <br /> <Button>Learn More</Button>
@@ -113,7 +96,7 @@ const AboutCompany = () => {
 export default AboutCompany;
 
 const Container = styled.div`
- /*   */
+  /*   */
   color: #fff;
 
   .img-fluid2 {

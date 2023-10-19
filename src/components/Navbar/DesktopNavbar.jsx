@@ -16,8 +16,12 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n"; // Import the i18n object from your i18n.js file
 
 export default function DesktopNavbar() {
+  const { t } = useTranslation();
+
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["🌐"]));
 
@@ -25,6 +29,10 @@ export default function DesktopNavbar() {
     () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
     [selectedKeys]
   );
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng); // Use the i18n object to change the language
+  };
 
   return (
     <>
@@ -51,7 +59,7 @@ export default function DesktopNavbar() {
                   lineHeight: "2px",
                 }}
               >
-                მთავარი
+                {t("main")}
               </Link>
             </NavbarItem>
             <NavbarItem>
@@ -68,7 +76,7 @@ export default function DesktopNavbar() {
                   lineHeight: "2px",
                 }}
               >
-                ჩვენ შესახებ
+                {t("aboutUs")}
               </Link>
             </NavbarItem>
             <NavbarItem>
@@ -84,7 +92,7 @@ export default function DesktopNavbar() {
                   lineHeight: "16px",
                 }}
               >
-                კონტაქტი
+                {t("contact")}
               </Link>
             </NavbarItem>
           </NavbarContent>
@@ -97,7 +105,7 @@ export default function DesktopNavbar() {
               }}
               to="/find-my-oil"
             >
-              კატალოგი
+              {t("catalog")}
             </Link>
           </NavbarItem>
           <NavbarContent justify="end">
@@ -116,8 +124,18 @@ export default function DesktopNavbar() {
                   selectedKeys={selectedKeys}
                   onSelectionChange={setSelectedKeys}
                 >
-                  <DropdownItem key="GEO 🇬🇪">GEO 🇬🇪</DropdownItem>
-                  <DropdownItem key="EN 🇺🇸">EN 🇺🇸</DropdownItem>
+                  <DropdownItem
+                    onClick={() => changeLanguage("geo")}
+                    key="GEO 🇬🇪"
+                  >
+                    GEO LANGUAGE 🇬🇪
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => changeLanguage("en")}
+                    key="EN 🇺"
+                  >
+                    RUS LANGUAGE 🇺
+                  </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavbarItem>
