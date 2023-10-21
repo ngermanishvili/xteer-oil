@@ -1,14 +1,17 @@
-import React from "react";
-
-import {Divider, Row} from "antd";
+import { useState, useEffect } from "react";
+import { Divider, Row } from "antd";
 import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
 import BasicSlider from "../components/demoSlider/DemoSlider";
-import AboutUs from "../components/AboutUs/About";
+import Parallax from "../components/Parallax/Parallax";
 import AboutCompany from "../components/AboutCompany/AboutCompany";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
-const Home = () => (
-  <>
+const Home = () => {
+  const { t, i18n } = useTranslation();
+
+  return (
     <div
       id="part-1"
       style={{
@@ -16,25 +19,9 @@ const Home = () => (
         height: "auto",
         textAlign: "center",
         backgroundColor: "#f9f9f9",
-        marginTop: "78px",
       }}
     >
       <BasicSlider />
-
-      <div
-        id="part-1"
-        style={{
-          width: "100%",
-          height: "auto",
-          textAlign: "center",
-          backgroundColor: "#f9f9f9",
-        }}
-      >
-        <div className="p-2"></div>
-
-        {/* <CenteredImages /> */}
-      </div>
-
       <Divider
         style={{
           fontSize: "24px",
@@ -42,30 +29,19 @@ const Home = () => (
           fontWeight: "700",
         }}
       >
-        ჩვენი პროდუქცია
+        {t("ourProducts")}
       </Divider>
-
       <CenteredImages />
-
-      <Divider
-        style={{
-          fontSize: "24px",
-          marginBottom: "25px",
-          fontWeight: "700",
-        }}
-      />
-
-      <div
-        id="part-2"
-        style={{
-          width: "100%",
-          height: "auto",
-          textAlign: "center",
-          backgroundColor: "#f9f9f9",
-        }}
-      >
-        <div className="companies-container"></div>
-        <AboutUs />
+      <div style={{ padding: "50px" }}>
+        <Divider
+          style={{
+            marginBottom: "25px",
+            fontWeight: "700",
+          }}
+        >
+          {t("aboutCompany")}
+        </Divider>
+        <AboutCompany />
       </div>
       <Divider
         orientation="center"
@@ -77,44 +53,25 @@ const Home = () => (
           borderBottom: "1px solid #003f98",
         }}
       >
-        პარტნიორი კომპანიები
+        {t("partnerCompanies")}
       </Divider>
       <Companies />
-
-      <div style={{padding: "50px"}}>
-        <Divider
-          style={{
-            marginBottom: "25px",
-            fontWeight: "700",
-          }}
-        >
-          ჩვენს შესახებ
-        </Divider>
-        <AboutCompany />
+      <div
+        id="part-2"
+        style={{
+          width: "100%",
+          height: "auto",
+          textAlign: "center",
+          backgroundColor: "#f9f9f9",
+          marginTop: "50px",
+          marginBottom: "100px",
+        }}
+      >
+        <div className="companies-container"></div>
+        <Parallax />
       </div>
-      <div className="p-2"></div>
     </div>
-
-    <Divider
-      style={{
-        marginBottom: "25px",
-        fontWeight: "700",
-      }}
-    >
-      პარტნიორი კომპანიები
-    </Divider>
-    <div
-      id="part-2"
-      style={{
-        width: "100%",
-        height: "auto",
-        textAlign: "center",
-        backgroundColor: "#f9f9f9",
-      }}
-    >
-      <div className="companies-container"></div>
-    </div>
-  </>
-);
+  );
+};
 
 export default Home;

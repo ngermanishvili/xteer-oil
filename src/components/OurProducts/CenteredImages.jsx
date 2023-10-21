@@ -27,17 +27,18 @@ const CenteredImages = () => (
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
   width: 100%;
   background-color: #323232;
+  @media (max-width: 600px) {
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+  }
   .coll {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 400px;
     height: 200px;
   }
   .image {
