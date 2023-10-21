@@ -5,11 +5,13 @@ import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
 import OilProductsList from "./Pages/OilProductsList";
 import ProductDetail from "./Pages/Product";
+import { SyncLoader } from "react-spinners";
 
 import Lottie from "react-lottie";
 import animationData from "./lotties/Animation.json";
 
 import Footer from "./components/Footer/Footer";
+import styled from "styled-components";
 
 // Your route components
 const Home = React.lazy(() => import("./Pages/Home"));
@@ -58,7 +60,13 @@ const App = () => {
               <Route
                 index
                 element={
-                  <Suspense fallback={<div>Loading...</div>}>
+                  <Suspense
+                    fallback={
+                      <SyncLoaderDiv>
+                        <SyncLoader size={18} color="dodgerblue" />
+                      </SyncLoaderDiv>
+                    }
+                  >
                     <Home />
                   </Suspense>
                 }
@@ -66,7 +74,13 @@ const App = () => {
               <Route
                 path="about"
                 element={
-                  <Suspense fallback={<div>Loading...</div>}>
+                  <Suspense
+                    fallback={
+                      <SyncLoaderDiv>
+                        <SyncLoader size={18} color="dodgerblue" />
+                      </SyncLoaderDiv>
+                    }
+                  >
                     <AboutUs />
                   </Suspense>
                 }
@@ -74,7 +88,13 @@ const App = () => {
               <Route
                 path="contact"
                 element={
-                  <Suspense fallback={<div>Loading...</div>}>
+                  <Suspense
+                    fallback={
+                      <SyncLoaderDiv>
+                        <SyncLoader size={18} color="dodgerblue" />
+                      </SyncLoaderDiv>
+                    }
+                  >
                     <Contact />
                   </Suspense>
                 }
@@ -82,7 +102,13 @@ const App = () => {
               <Route
                 path="/product/:productId"
                 element={
-                  <Suspense fallback={<div>Loading...</div>}>
+                  <Suspense
+                    fallback={
+                      <SyncLoaderDiv>
+                        <SyncLoader size={18} color="dodgerblue" />
+                      </SyncLoaderDiv>
+                    }
+                  >
                     <ProductDetail />
                   </Suspense>
                 }
@@ -90,7 +116,13 @@ const App = () => {
               <Route
                 path="find-my-oil"
                 element={
-                  <Suspense fallback={<div>Loading...</div>}>
+                  <Suspense
+                    fallback={
+                      <SyncLoaderDiv>
+                        <SyncLoader size={18} color="dodgerblue" />
+                      </SyncLoaderDiv>
+                    }
+                  >
                     <OilProductsList />
                   </Suspense>
                 }
@@ -103,5 +135,13 @@ const App = () => {
     </div>
   );
 };
+
+const SyncLoaderDiv = styled.div`
+  width: "100%";
+  height: "100vh";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+`;
 
 export default App;
