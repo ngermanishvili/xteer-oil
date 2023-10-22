@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Breadcrumb, Layout, theme } from "antd";
+import React, {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {Breadcrumb, Layout, theme} from "antd";
 import SingleProductLayout from "../components/ProductPage/SingleProductLayout";
-import { dataStore } from "../zustand/store";
-import { SyncLoader } from "react-spinners";
-const { Content } = Layout;
+import {dataStore} from "../zustand/store";
+import {SyncLoader} from "react-spinners";
+const {Content} = Layout;
 
 const ProductDetail = () => {
-  const { productId } = useParams();
+  const {productId} = useParams();
   const data = dataStore((state) => state.data);
   const [product, setProduct] = useState(null);
   const singleProductFilter = () => {
@@ -25,7 +25,7 @@ const ProductDetail = () => {
   }, []);
 
   const {
-    token: { colorBgContainer },
+    token: {colorBgContainer},
   } = theme.useToken();
 
   return (
@@ -36,7 +36,7 @@ const ProductDetail = () => {
         }}
       >
         <Breadcrumb
-          style={{ margin: "16px 0" }}
+          style={{margin: "16px 0"}}
           itemRender={(route, params, routes, paths) => {
             const isLastItem = routes.indexOf(route) === routes.length - 1;
             return isLastItem ? (
@@ -48,38 +48,32 @@ const ProductDetail = () => {
         />
         <Layout
           style={{
-            padding: "24px 0",
+            width: "100%",
             background: colorBgContainer,
           }}
         >
-          <Content
-            style={{
-              padding: "0 24px",
-            }}
-          >
-            {product ? (
+          {product ? (
+            <>
               <>
-                <>
-                  <SingleProductLayout productId={product._id} />
-                </>
-                <div className="p-5"></div>
+                <SingleProductLayout productId={product._id} />
               </>
-            ) : (
-              <div
-                style={{
-                  width: "100%",
-                  height: "100vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <SyncLoader size={18} color="dodgerblue" />
-              </div>
-            )}
+              <div className="p-5"></div>
+            </>
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                height: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <SyncLoader size={18} color="dodgerblue" />
+            </div>
+          )}
 
-            <div className="p-5"></div>
-          </Content>
+          <div className="p-5"></div>
         </Layout>
       </Content>
     </Layout>

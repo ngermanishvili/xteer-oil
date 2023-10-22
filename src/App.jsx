@@ -15,9 +15,8 @@ import styled from "styled-components";
 
 // Your route components
 import Home from "./Pages/Home";
-const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
-const Contact = React.lazy(() => import("./Pages/Contact"));
-
+import AboutUs from "./Pages/AboutUs";
+import Contact from "./Pages/Contact";
 const App = () => {
   const isMobile = useMediaQuery({maxWidth: 768});
   const [isLoading, setIsLoading] = useState(true);
@@ -56,34 +55,8 @@ const App = () => {
             <Routes>
               {/* Use Suspense with fallback to show a loading indicator while components load */}
               <Route index element={<Home />} />
-              <Route
-                path="about"
-                element={
-                  <Suspense
-                    fallback={
-                      <SyncLoaderDiv>
-                        <SyncLoader size={18} color="dodgerblue" />
-                      </SyncLoaderDiv>
-                    }
-                  >
-                    <AboutUs />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="contact"
-                element={
-                  <Suspense
-                    fallback={
-                      <SyncLoaderDiv>
-                        <SyncLoader size={18} color="dodgerblue" />
-                      </SyncLoaderDiv>
-                    }
-                  >
-                    <Contact />
-                  </Suspense>
-                }
-              />
+              <Route path="about" element={<AboutUs />} />
+              <Route path="contact" element={<Contact />} />
               <Route
                 path="/product/:productId"
                 element={
