@@ -14,7 +14,7 @@ import Footer from "./components/Footer/Footer";
 import styled from "styled-components";
 
 // Your route components
-const Home = React.lazy(() => import("./Pages/Home"));
+import Home from "./Pages/Home";
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
 const Contact = React.lazy(() => import("./Pages/Contact"));
 
