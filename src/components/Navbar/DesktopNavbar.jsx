@@ -8,19 +8,19 @@ import {
 } from "@nextui-org/react";
 import logo from "../../assets/LOGO.png";
 import styled from "styled-components";
-import { searchStore } from "../../zustand/searchStore.jsx";
-import { Link } from "react-router-dom";
+import {searchStore} from "../../zustand/searchStore.jsx";
+import {Link} from "react-router-dom";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import i18n from "../../i18n"; // Import the i18n object from your i18n.js file
 
 export default function DesktopNavbar() {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
   const [selectedKeys, setSelectedKeys] = React.useState(new Set(["🌐"]));
@@ -39,9 +39,9 @@ export default function DesktopNavbar() {
       <Wrapper>
         <Navbar className="relative" shouldHideOnScroll>
           <Link to="/" onClick={() => setSearchQuery("")}>
-            <img src={logo} style={{ width: "90% " }} />
+            <img src={logo} style={{width: "90% "}} />
           </Link>
-          <NavbarBrand style={{ marginRight: "200px" }}></NavbarBrand>
+          <NavbarBrand style={{marginRight: "200px"}}></NavbarBrand>
           <NavbarContent className="sm:flex gap-2 " justify="end">
             <NavbarItem>
               <Link
@@ -100,8 +100,12 @@ export default function DesktopNavbar() {
           <NavbarItem>
             <Link
               style={{
+                fontSize: "16px",
                 fontWeight: "900",
+                letterSpacing: "-0.02em",
+                textTransform: "uppercase",
                 color: "rgba(102,102,102,0.85)",
+                lineHeight: "16px",
               }}
               to="/find-my-oil"
             >

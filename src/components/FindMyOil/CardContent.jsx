@@ -60,21 +60,14 @@ const CardContent = () => {
     smoothScrollToTop();
     setCurrentPage(page);
   };
+
   return (
     <>
       <div>
         {loading ? (
-          <div
-            style={{
-              width: "100%",
-              height: "100vh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <LoaderContainer>
             <SyncLoader size={18} color="dodgerblue" />
-          </div>
+          </LoaderContainer>
         ) : (
           <React.Fragment>
             <Search />
@@ -87,56 +80,33 @@ const CardContent = () => {
                   bodyStyle={{width: "100%"}}
                 >
                   <div style={{width: "100%", display: "flex"}}>
-                    <div style={{width: "45%"}}>
+                    <ProductImage>
                       <img
-                        style={{width: "200px", height: "200px"}}
                         alt={product.productName}
                         src={product.imageUrl || "default_image_url"}
                       />
-                    </div>
-                    <div style={{width: "55%", textAlign: "center"}}>
-                      <h1 style={{marginBottom: "22%", fontSize: "20px"}}>
-                        {product.productName}
-                      </h1>
+                    </ProductImage>
+                    <ProductDetails>
+                      <ProductTitle>{product.productName}</ProductTitle>
                       <Meta description={product.productLine} />
-                      <ul
-                        style={{
-                          display: "flex",
-                          gap: "10px",
-                          justifyContent: "center",
-                          width: "100%",
-                          flexWrap: "wrap",
-                        }}
-                      >
+                      <ViscosityList>
                         {product.pdfUrls.map((viscosity, index, array) => (
-                          <li className="li" key={viscosity.viscosityGrade}>
+                          <ViscosityItem key={viscosity.viscosityGrade}>
                             {viscosity.viscosityGrade}
                             {index !== array.length - 1 && "/"}
-                          </li>
+                          </ViscosityItem>
                         ))}
-                      </ul>
-                    </div>
+                      </ViscosityList>
+                    </ProductDetails>
                   </div>
                   <div style={{width: "100%"}}>
-                    <Link
-                      style={{
-                        marginBottom: "10px",
-                        borderRadius: "10px",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignSelf: "center",
-                        alignItems: "center",
-                        background: "#42C1E3",
-                        color: "#fff",
-                        width: "92%",
-                        marginTop: "20px",
-                      }}
+                    <DetailsLink
                       onClick={handlePageChange}
                       className="seeDetails"
                       to={`/product/${product._id}`}
                     >
                       დეტალური ინფორმაცია
-                    </Link>
+                    </DetailsLink>
                   </div>
                 </Card>
               ))}
@@ -157,6 +127,65 @@ const CardContent = () => {
     </>
   );
 };
+
+const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ProductImage = styled.div`
+  width: 45%;
+  @media (max-width: 1275px) {
+    width: 60%;
+  }
+`;
+
+const ProductDetails = styled.div`
+  width: 55%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: 1275px) {
+    width: 40%;
+  }
+`;
+
+const ProductTitle = styled.h1`
+  margin-bottom: 22%;
+  font-size: 20px;
+  @media (max-width: 650px) {
+    font-size: 17px;
+  }
+`;
+
+const ViscosityList = styled.ul`
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+`;
+
+const ViscosityItem = styled.li`
+  margin-top: 4px;
+`;
+
+const DetailsLink = styled(Link)`
+  margin-bottom: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  background: #42c1e3;
+  color: #fff;
+  width: 92%;
+  margin-top: 20px;
+`;
 
 const Wrapper = styled.div`
   display: grid;
