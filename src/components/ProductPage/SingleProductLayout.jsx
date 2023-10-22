@@ -70,6 +70,7 @@ const PdfDownloader = ({productId}) => {
               pdfUrls.map((item, index) => (
                 <div className="PdfItem" key={index}>
                   <h2>VISCOSITY GRADE - {item.viscosityGrade}</h2>
+
                   <div className="buttons">
                     <Button onClick={showModal}>View PDS</Button>
                     <Button>Download PDS</Button>
