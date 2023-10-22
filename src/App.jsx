@@ -14,7 +14,7 @@ import Footer from "./components/Footer/Footer";
 import styled from "styled-components";
 
 // Your route components
-const Home = React.lazy(() => import("./Pages/Home"));
+import Home from "./Pages/Home";
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
 const Contact = React.lazy(() => import("./Pages/Contact"));
 
@@ -57,20 +57,7 @@ const App = () => {
             {isMobile ? <MobileNavbar /> : <DesktopNavbar />}
             <Routes>
               {/* Use Suspense with fallback to show a loading indicator while components load */}
-              <Route
-                index
-                element={
-                  <Suspense
-                    fallback={
-                      <SyncLoaderDiv>
-                        <SyncLoader size={18} color="dodgerblue" />
-                      </SyncLoaderDiv>
-                    }
-                  >
-                    <Home />
-                  </Suspense>
-                }
-              />
+              <Route index element={<Home />} />
               <Route
                 path="about"
                 element={
