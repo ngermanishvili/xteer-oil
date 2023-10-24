@@ -30,11 +30,7 @@ const ProductDetail = () => {
 
   return (
     <Layout>
-      <Content
-        style={{
-          padding: "0 50px",
-        }}
-      >
+  
         <Breadcrumb
           style={{margin: "16px 0"}}
           itemRender={(route, params, routes, paths) => {
@@ -75,7 +71,7 @@ const ProductDetail = () => {
 
           <div className="p-5"></div>
         </Layout>
-      </Content>
+    
     </Layout>
   );
 };
