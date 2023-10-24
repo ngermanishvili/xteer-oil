@@ -14,8 +14,6 @@ function Companies() {
   return (
     <AppContainer>
       <Wrapper>
-        {/* <Text>GENTO TRADING</Text> */}
-        {/* <Note>პარტნიორი კომპანიები</Note> */}
         <Marquee>
           <MarqueeGroup>
             {row1.map((el, index) => (
@@ -48,7 +46,8 @@ function Companies() {
 }
 
 const AppContainer = styled.div`
-  width: 95vw;
+  margin: 0 auto;
+  width: 80vw;
   height: auto;
   color: #000000;
   position: relative;
