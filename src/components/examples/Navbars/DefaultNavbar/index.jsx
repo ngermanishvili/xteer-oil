@@ -30,11 +30,19 @@ import Grow from "@mui/material/Grow";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import MuiLink from "@mui/material/Link";
+import { Button } from "@nextui-org/react";
 
 // Material Kit 2 React components
 import MKBox from "../../../MKBox";
 import MKTypography from "../../../MKTypography";
 import MKButton from "../../../MKButton";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@nextui-org/react";
 
 // Material Kit 2 React example components
 
@@ -53,6 +61,7 @@ function DefaultNavbar({
   sticky,
   relative,
   center,
+  changeLanguage,
 }) {
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
@@ -91,6 +100,9 @@ function DefaultNavbar({
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
 
+  const collapse = true; // or false based on your logic
+  const collapseAsString = collapse !== undefined ? collapse.toString() : "";
+
   const renderNavbarItems = routes.map(
     ({ name, icon, href, route, collapse }) => (
       <DefaultNavbarDropdown
@@ -99,7 +111,7 @@ function DefaultNavbar({
         icon={icon}
         href={href}
         route={route}
-        collapse={Boolean(collapse)}
+        collapse={collapseAsString} // Use collapseAsString
         onMouseEnter={({ currentTarget }) => {
           if (collapse) {
             setDropdown(currentTarget);
@@ -112,7 +124,6 @@ function DefaultNavbar({
       />
     )
   );
-
   // Render the routes on the dropdown menu
   const renderRoutes = routes.map(
     ({ name, collapse, columns, rowsPerColumn }) => {
@@ -155,6 +166,7 @@ function DefaultNavbar({
                         py={1}
                         px={0.5}
                         mt={index !== 0 ? 2 : 0}
+                        color="dark"
                       >
                         {col.name}
                       </MKTypography>
@@ -287,16 +299,9 @@ function DefaultNavbar({
                 item.name
               )}
               {item.collapse && (
-                <Icon
-                  fontSize="small"
-                  sx={{
-                    fontWeight: "normal",
-                    verticalAlign: "middle",
-                    mr: -0.5,
-                  }}
-                >
-                  keyboard_arrow_right
-                </Icon>
+                <>
+                  <span>+</span>
+                </>
               )}
             </MKTypography>
           );
@@ -537,38 +542,19 @@ function DefaultNavbar({
             {renderNavbarItems}
           </MKBox>
           <MKBox ml={{ xs: "auto", lg: 0 }}>
-            {action &&
-              (action.type === "internal" ? (
-                <MKButton
-                  component={Link}
-                  to={action.route}
-                  variant={
-                    action.color === "white" || action.color === "default"
-                      ? "contained"
-                      : "gradient"
-                  }
-                  color={action.color ? action.color : "info"}
-                  size="small"
-                >
-                  {action.label}
-                </MKButton>
-              ) : (
-                <MKButton
-                  component="a"
-                  href={action.route}
-                  target="_blank"
-                  rel="noreferrer"
-                  variant={
-                    action.color === "white" || action.color === "default"
-                      ? "contained"
-                      : "gradient"
-                  }
-                  color={action.color ? action.color : "info"}
-                  size="small"
-                >
-                  {action.label}
-                </MKButton>
-              ))}
+            <Dropdown>
+              <DropdownTrigger>
+                <Button variant="bordered">Open Menu</Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem onClick={() => changeLanguage("en")} key="new">
+                  ENG
+                </DropdownItem>
+                <DropdownItem onClick={() => changeLanguage("ka")} key="copy">
+                  Ka
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </MKBox>
           <MKBox
             display={{ xs: "inline-block", lg: "none" }}
@@ -601,13 +587,14 @@ function DefaultNavbar({
 
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {
-  brand: "Material Kit 2",
-  transparent: false,
+  brand: "GENTO TRADING",
+  transparent: true,
   light: false,
   action: false,
   sticky: false,
   relative: false,
   center: false,
+  color: "dark",
 };
 
 // Typechecking props for the DefaultNavbar

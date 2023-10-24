@@ -30,7 +30,6 @@ const MKTypography = forwardRef(
       verticalAlign,
       textGradient,
       opacity,
-      children,
       ...rest
     },
     ref
@@ -46,9 +45,7 @@ const MKTypography = forwardRef(
         opacity,
         textGradient,
       }}
-    >
-      {children}
-    </MKTypographyRoot>
+    ></MKTypographyRoot>
   )
 );
 
@@ -96,7 +93,6 @@ MKTypography.propTypes = {
     "bottom",
   ]),
   textGradient: PropTypes.bool,
-  children: PropTypes.node.isRequired,
   opacity: PropTypes.number,
 };
 

@@ -20,7 +20,6 @@ import PropTypes from "prop-types";
 
 // Custom styles for MKBox
 import MKBoxRoot from "../../components/MKBox/MKBoxRoot";
-
 const MKBox = forwardRef(
   (
     {

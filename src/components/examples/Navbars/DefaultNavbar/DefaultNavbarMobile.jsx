@@ -51,11 +51,10 @@ function DefaultNavbarMobile({ routes, open }) {
         key={name}
         name={name}
         icon={icon}
-        collapseStatus={name === collapse}
         onClick={() => handleSetCollapse(name)}
         href={href}
         route={route}
-        collapse={Boolean(navCollapse)}
+        collapse="true"
       >
         <MKBox
           sx={{ height: "15rem", maxHeight: "15rem", overflowY: "scroll" }}

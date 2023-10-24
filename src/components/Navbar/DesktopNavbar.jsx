@@ -1,163 +1,92 @@
-import React from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Button,
-} from "@nextui-org/react";
-import logo from "../../assets/LOGO.png";
-import styled from "styled-components";
-import { searchStore } from "../../zustand/searchStore.jsx";
-import { Link } from "react-router-dom";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-} from "@nextui-org/react";
+import React, { useEffect, useState } from "react";
+import MKBox from "../MKBox";
+import DefaultNavbar from "../../components/examples/Navbars/DefaultNavbar";
+import logoImage from "../../assets/images/examples/agrinol.png";
 import { useTranslation } from "react-i18next";
-import i18n from "../../i18n"; // Import the i18n object from your i18n.js file
 
-export default function DesktopNavbar() {
-  const { t } = useTranslation();
+function DesktopNavbar({ routes }) {
+  const { t, i18n } = useTranslation();
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
 
-  const setSearchQuery = searchStore((state) => state.setSearchQuery);
-  const [selectedKeys, setSelectedKeys] = React.useState(new Set(["🌐"]));
-
-  const selectedValue = React.useMemo(
-    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-    [selectedKeys]
-  );
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng); // Use the i18n object to change the language
+  const changeLanguage = (language) => {
+    i18n.changeLanguage(language);
   };
 
-  return (
-    <>
-      <Wrapper>
-        <Navbar className="relative" shouldHideOnScroll>
-          <Link to="/" onClick={() => setSearchQuery("")}>
-            <img src={logo} style={{ width: "90% " }} />
-          </Link>
-          <NavbarBrand style={{ marginRight: "200px" }}></NavbarBrand>
-          <NavbarContent className="sm:flex gap-2 " justify="end">
-            <NavbarItem>
-              <Link
-                className="linkStyle"
-                color="foreground"
-                to={"/"}
-                aria-current="page"
-                style={{
-                  marginRight: "10px",
-                  fontSize: "17px",
-                  fontWeight: "700",
-                  letterSpacing: "-0.02em",
-                  textTransform: "uppercase",
-                  color: "rgba(102,102,102,0.85)",
-                  lineHeight: "2px",
-                }}
-              >
-                {t("main")}
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link
-                color="foreground"
-                to={"/about"}
-                aria-current="page"
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "700",
-                  letterSpacing: "-0.02em",
-                  textTransform: "uppercase",
-                  color: "rgba(102,102,102,0.85)",
-                  lineHeight: "2px",
-                }}
-              >
-                {t("aboutUs")}
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link
-                color="foreground"
-                to={"/contact"}
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "700",
-                  letterSpacing: "-0.02em",
-                  textTransform: "uppercase",
-                  color: "rgba(102,102,102,0.85)",
-                  lineHeight: "16px",
-                }}
-              >
-                {t("contact")}
-              </Link>
-            </NavbarItem>
-          </NavbarContent>
+  useEffect(() => {
+    // Function to handle the scroll event
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-          <NavbarItem>
-            <Link
-              style={{
-                fontWeight: "900",
-                color: "rgba(102,102,102,0.85)",
-              }}
-              to="/find-my-oil"
-            >
-              {t("catalog")}
-            </Link>
-          </NavbarItem>
-          <NavbarContent justify="end">
-            <NavbarItem>
-              <Dropdown>
-                <DropdownTrigger>
-                  <Button variant="bordered" className="capitalize">
-                    {selectedValue}
-                  </Button>
-                </DropdownTrigger>
-                <DropdownMenu
-                  aria-label="Single selection example"
-                  variant="flat"
-                  disallowEmptySelection
-                  selectionMode="single"
-                  selectedKeys={selectedKeys}
-                  onSelectionChange={setSelectedKeys}
-                >
-                  <DropdownItem
-                    onClick={() => changeLanguage("geo")}
-                    key="GEO 🇬🇪"
-                  >
-                    GEO LANGUAGE 🇬🇪
-                  </DropdownItem>
-                  <DropdownItem
-                    onClick={() => changeLanguage("en")}
-                    key="EN 🇺"
-                  >
-                    RUS LANGUAGE 🇺
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </NavbarItem>
-          </NavbarContent>
-        </Navbar>
-      </Wrapper>
-    </>
+      // Determine the scroll direction
+      if (scrollTop > lastScrollTop) {
+        // Scrolling down, hide the navbar
+        setIsNavVisible(false);
+      } else {
+        // Scrolling up, show the navbar
+        setIsNavVisible(true);
+      }
+
+      // Update the last scroll position
+      setLastScrollTop(scrollTop);
+    };
+
+    // Attach the scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
+  return (
+    <MKBox
+      style={{
+        borderRadius: "15px",
+        position: "fixed",
+        top: isNavVisible ? "4%" : "-100px", // Adjust the value as needed
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "80%",
+        zIndex: 1000,
+        transition: "top 0.3s", // Add a smooth transition effect
+      }}
+      variant="gradient"
+      color="dark"
+      bgColor="dark"
+      shadow="sm"
+      transparent
+      py={0.25}
+      tra
+    >
+      <DefaultNavbar
+        changeLanguage={changeLanguage}
+        routes={routes.map((route) => ({
+          ...route,
+          name: t(route.name), // Translate the route name
+          color: "#344767",
+        }))}
+        action={{
+          type: "external",
+          route: "https://www.creative-tim.com/product/material-kit-react",
+          label: "free download",
+          color: "info",
+        }}
+        transparent
+        relative
+        light
+        center
+      >
+        <img
+          src={logoImage}
+          alt="Logo"
+          style={{ width: "50px", height: "50px" }}
+        />
+      </DefaultNavbar>
+    </MKBox>
   );
 }
 
-const Fonts = styled.p`
-  @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap");
-  font-family: "Cairo", sans-serif;
-`;
-
-const Wrapper = styled.div`
-  .linkStyle {
-    font-size: 16px;
-    font-weight: 800;
-    letter-spacing: "-0.02em";
-    text-transform: "uppercase";
-    color: "rgba(102,102,102,0.85)";
-    line-height: 16px;
-  }
-`;
+export default DesktopNavbar;

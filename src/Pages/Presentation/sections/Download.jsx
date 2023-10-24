@@ -1,57 +1,119 @@
-import React from "react";
+// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import MKBox from "../../../components/MKBox";
-import MKButton from "../../../components/MKButton";
-import MKTypography from "../../../components/MKTypography";
-import ProductCards from "../../../components/ProductCards/ProductCards";
+import Icon from "@mui/material/Icon";
+import Stack from "@mui/material/Stack";
 
-function Download() {
+// Material Kit 2 React components
+import MKBox from "../../../components/MKBox";
+import MKTypography from "../../../components/MKTypography";
+
+function FeaturesOne() {
   return (
-    <MKBox component="section" py={{ xs: 0, sm: 12 }}>
-      <MKBox
-        variant="gradient"
-        bgColor="dark"
-        position="relative"
-        borderRadius="xl"
-        sx={{ overflow: "hidden" }}
-      >
-        <Container sx={{ position: "relative", zIndex: 2, py: 12 }}>
-          <Grid container justifyContent="center" alignItems="center">
-            <Grid item xs={6} md={10} lg={14}>
-              <div className="content-slider">
-                <MKTypography variant="h3" color="white">
-                  Do you love this awesome
-                </MKTypography>
-                <MKTypography variant="h3" color="white" mb={1}>
-                  UI Kit for ReactJS &amp; MUI?
-                </MKTypography>
-                <MKTypography variant="body2" color="white" mb={10}>
-                  Cause if you do, it can be yours for FREE. Hit the button
-                  below to navigate to Creative Tim where you can find the
-                  Design System in HTML. Start a new project or give an old
-                  Bootstrap project a new look!
-                </MKTypography>
-                <MKButton
-                  variant="gradient"
-                  color="info"
-                  size="large"
-                  component="a"
-                  href="https://www.creative-tim.com/product/material-kit-react"
-                  sx={{ mb: 4 }}
-                >
-                  See Product
-                </MKButton>
-              </div>
-            </Grid>
-            <Grid item xs={6} md={12} lg={14}>
-              <ProductCards />
-            </Grid>
+    <MKBox component="section" py={{ xs: 3, md: 12 }}>
+      <Container>
+        <Grid container alignItems="center">
+          <Grid item xs={12} lg={5}>
+            <MKTypography variant="h3" my={1}>
+              Read More About Us
+            </MKTypography>
+            <MKTypography variant="body2" color="text" mb={2}>
+              Pain is what we go through as we become older. We get insulted by
+              others, lose trust for those others. We get back stabbed by
+              friends. It becomes harder for us to give others a hand.
+            </MKTypography>
+            <MKTypography
+              component="a"
+              href="#"
+              variant="body2"
+              color="info"
+              fontWeight="regular"
+              sx={{
+                width: "max-content",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              More about us
+              {/* <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon> */}
+            </MKTypography>
           </Grid>
-        </Container>
-      </MKBox>
+          <Grid
+            item
+            xs={12}
+            lg={6}
+            sx={{ ml: { xs: -2, lg: "auto" }, mt: { xs: 6, lg: 0 } }}
+          >
+            <Stack>
+              <MKBox display="flex" alignItems="center" p={2}>
+                <MKBox
+                  width="3rem"
+                  height="3rem"
+                  variant="gradient"
+                  bgColor="info"
+                  color="white"
+                  coloredShadow="info"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  borderRadius="xl"
+                >
+                  {/* <Icon fontSize="small">mediation</Icon> */}
+                </MKBox>
+                <MKTypography variant="body2" color="text" pl={2}>
+                  It becomes harder for us to give others a hand.
+                  <br />
+                  We get our heart broken by people we love.
+                </MKTypography>
+              </MKBox>
+              <MKBox display="flex" alignItems="center" p={2}>
+                <MKBox
+                  width="3rem"
+                  height="3rem"
+                  variant="gradient"
+                  bgColor="info"
+                  color="white"
+                  coloredShadow="info"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  borderRadius="xl"
+                >
+                  {/* <Icon fontSize="small">settings_overscan</Icon> */}
+                </MKBox>
+                <MKTypography variant="body2" color="text" pl={2}>
+                  As we live, our hearts turn colder.
+                  <br />
+                  Cause pain is what we go through as we become older.
+                </MKTypography>
+              </MKBox>
+              <MKBox display="flex" alignItems="center" p={2}>
+                <MKBox
+                  width="3rem"
+                  height="3rem"
+                  variant="gradient"
+                  bgColor="info"
+                  color="white"
+                  coloredShadow="info"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  borderRadius="xl"
+                >
+                  {/* <Icon fontSize="small">token</Icon> */}
+                </MKBox>
+                <MKTypography variant="body2" color="text" pl={2}>
+                  When we lose family over time.
+                  <br />
+                  What else could rust the heart more over time? Blackgold.
+                </MKTypography>
+              </MKBox>
+            </Stack>
+          </Grid>
+        </Grid>
+      </Container>
     </MKBox>
   );
 }
 
-export default Download;
+export default FeaturesOne;

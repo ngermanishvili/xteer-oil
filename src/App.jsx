@@ -3,18 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
-import OilProductsList from "./Pages/OilProductsList";
-import ProductDetail from "./Pages/Product";
-
 import Lottie from "react-lottie";
 import animationData from "./lotties/Animation.json";
-
 import Footer from "./components/Footer/Footer";
+import routes from "./routes";
 
-// Your route components
+// Import your route components (no need to import routes again)
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
 const Contact = React.lazy(() => import("./Pages/Contact"));
+const ProductDetail = React.lazy(() => import("./Pages/Product"));
+const OilProductsList = React.lazy(() => import("./Pages/OilProductsList"));
 
 const App = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -52,50 +51,21 @@ const App = () => {
         ) : (
           <>
             {/* Conditionally render the appropriate navigation based on screen size */}
-            {isMobile ? <MobileNavbar /> : <DesktopNavbar />}
+            {<DesktopNavbar routes={routes} />}
             <Routes>
-              {/* Use Suspense with fallback to show a loading indicator while components load */}
-              <Route
-                index
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <Home />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="about"
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <AboutUs />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="contact"
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <Contact />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="/product/:productId"
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <ProductDetail />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="find-my-oil"
-                element={
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <OilProductsList />
-                  </Suspense>
-                }
-              />
+              {routes.map((route) => (
+                <Route
+                  key={route.route}
+                  path={route.route}
+                  element={
+                    <Suspense fallback={<div>Loading...</div>}>
+                      {route.element}
+                    </Suspense>
+                  }
+                />
+              ))}
             </Routes>
+
             <Footer />
           </>
         )}

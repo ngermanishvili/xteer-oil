@@ -23,13 +23,7 @@
   justify-content: center;
   align-items: center;
 }
-navbar bg color .bg-background\/70 {
-  background-color: transparent;
-  color: #fff;
-}
-navbar font color .bg-background\/70 a {
-  color: #fff;
-}
+
 .bg-background\/70 button {
   color: #000;
 }
@@ -366,4 +360,12 @@ navbar font color .bg-background\/70 a {
 
 .content-slider {
   margin-left: 400px;
+}
+
+.css-1vt2rd0-MuiTypography-root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+  color: red;
 }
