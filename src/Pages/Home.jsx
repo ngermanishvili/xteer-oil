@@ -13,7 +13,7 @@ import Counters from "../Pages/Presentation/sections/Counters";
 import Information from "../Pages/Presentation/sections/Information";
 import Testimonials from "../Pages/Presentation/sections/Testimonials";
 import Download from "../Pages/Presentation/sections/Download";
-import bgImage from "../assets/images/examples/bgbanner2.jpeg";
+import bgImage from "../assets/images/examples/wp7902092-oil-gas-wallpapers.jpg";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import ProductCards from "../components/ProductCards/ProductCards";
@@ -24,44 +24,50 @@ const Home = () => {
   return (
     <>
       <MkBox
-        minHeight="75vh"
+        minHeight="40vw"
         width="100%"
         sx={{
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: ({
+            functions: { linearGradient, rgba },
+            palette: { gradients },
+          }) =>
+            `${linearGradient(
+              rgba(gradients.dark.main, 0.1),
+              rgba(gradients.dark.state, 0.2)
+            )}, url(${bgImage})`,
           backgroundSize: "cover",
-          backgroundPosition: "top",
+          backgroundPosition: "center",
           display: "grid",
           placeItems: "center",
         }}
       >
-        <Container>
-          <Grid container item xs={12} lg={7} justifyContent="center" mx="auto">
-            <MKTypography
-              variant="h1"
-              color="white"
-              mt={-6}
-              mb={1}
-              sx={({ breakpoints, typography: { size } }) => ({
-                [breakpoints.down("md")]: {
-                  fontSize: size["3xl"],
-                },
-              })}
-            >
-              GENTO TRADING
-            </MKTypography>
-            <MKTypography
-              variant="body1"
-              color="white"
-              textAlign="center"
-              px={{ xs: 6, lg: 12 }}
-              mt={1}
-            >
-              We are a company that is committed to the quality of our products
-              and services. &amp; Premium Lubricants Distributor in Georgia
-            </MKTypography>
-          </Grid>
-        </Container>
+        <MKTypography
+          variant="h1"
+          color="white"
+          mt={10}
+          mb={1}
+          sx={({ breakpoints, typography: { size } }) => ({
+            [breakpoints.down("md")]: {
+              fontSize: size["3xl"],
+            },
+          })}
+        >
+          GENTO TRADING
+        </MKTypography>
+        <MKTypography
+          variant="body1"
+          color="white"
+          textAlign="center"
+          px={{ xs: 6, lg: 12 }}
+          mt={1}
+        >
+          We are a company that is committed to the quality of our products and
+          services. &amp; Premium Lubricants Distributor in Georgia
+        </MKTypography>
+
+        <div className="overlay"></div>
       </MkBox>
+
       <Card
         sx={{
           p: 2,
@@ -75,6 +81,18 @@ const Home = () => {
         }}
       >
         <Testimonials />
+        <Divider
+          orientation="left"
+          style={{
+            fontSize: "24px",
+          }}
+        >
+          <MKTypography variant="h2" color="info" textGradient mb={2}>
+            პარტნიორი კომპანიები
+          </MKTypography>
+        </Divider>
+        <Companies />
+
         <Download />
       </Card>
     </>

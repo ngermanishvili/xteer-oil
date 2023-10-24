@@ -41,7 +41,7 @@ function Information() {
             პროდუქცია
           </MKTypography>
           <Grid container spacing={3} sx={{ mt: 2 }}>
-            <Grid item xs={12} md={6} lg={3}>
+            <Grid item xs={12} md={6} lg={4}>
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
@@ -64,7 +64,7 @@ function Information() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={12} md={6} lg={3}>
+            <Grid item xs={12} md={6} lg={4}>
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
@@ -88,7 +88,7 @@ function Information() {
               </div>
             </Grid>
 
-            <Grid item xs={12} md={6} lg={3}>
+            <Grid item xs={12} md={6} lg={4}>
               <div className="container">
                 <div className="card">
                   <div className="imgBx">

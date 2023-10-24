@@ -14,28 +14,18 @@ function DesktopNavbar({ routes }) {
   };
 
   useEffect(() => {
-    // Function to handle the scroll event
     const handleScroll = () => {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
-
-      // Determine the scroll direction
       if (scrollTop > lastScrollTop) {
-        // Scrolling down, hide the navbar
         setIsNavVisible(false);
       } else {
-        // Scrolling up, show the navbar
         setIsNavVisible(true);
       }
-
-      // Update the last scroll position
       setLastScrollTop(scrollTop);
     };
 
-    // Attach the scroll event listener when the component mounts
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -49,7 +39,7 @@ function DesktopNavbar({ routes }) {
         top: isNavVisible ? "4%" : "-100px", // Adjust the value as needed
         left: "50%",
         transform: "translateX(-50%)",
-        width: "80%",
+        width: "90%",
         zIndex: 1000,
         transition: "top 0.3s", // Add a smooth transition effect
       }}

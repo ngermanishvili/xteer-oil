@@ -10,7 +10,7 @@ import routes from "./routes";
 
 // Import your route components (no need to import routes again)
 const Home = React.lazy(() => import("./Pages/Home"));
-const AboutUs = React.lazy(() => import("./Pages/AboutUs"));
+const AboutUs = React.lazy(() => import("./Pages/AboutUs/AboutUs"));
 const Contact = React.lazy(() => import("./Pages/Contact"));
 const ProductDetail = React.lazy(() => import("./Pages/Product"));
 const OilProductsList = React.lazy(() => import("./Pages/OilProductsList"));
@@ -65,7 +65,6 @@ const App = () => {
                 />
               ))}
             </Routes>
-
             <Footer />
           </>
         )}
