@@ -47,8 +47,10 @@ const PdfDownloader = ({productId}) => {
           </div>
         </UpperWrapper>
         <MainDescription data={product} />
-        <Specifications data={product} />
       </Container>
+      <SpecificationsWrapper>
+        <Specifications data={product} />
+      </SpecificationsWrapper>
     </>
   );
 };
@@ -59,7 +61,7 @@ const OtherProductInfo = styled.div`
 `;
 
 const Container = styled.div`
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -68,17 +70,23 @@ const UpperWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  @media (max-width: 1160px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .imageWrapper {
-    width: 60%;
+    width: 40%;
+    @media (max-width: 768px) {
+      width: 60%;
+    }
   }
   .smallDescriptionWrapper {
-    width: 40%;
-  }
-  @media (max-width: 600px) {
-    max-width: 50%;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
+    width: 70%;
+    display: flex;
+    @media (max-width: 1160px) {
+      width: 100%;
+    }
   }
 `;
 const PdfWrapper = styled.div`
@@ -139,4 +147,8 @@ const CloseOverlayButton = styled.button`
   margin: 10px;
   border: none;
   cursor: pointer;
+`;
+const SpecificationsWrapper = styled.div`
+  width: 100%;
+  margin: 0 auto;
 `;
