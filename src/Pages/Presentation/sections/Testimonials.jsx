@@ -20,25 +20,20 @@ import Divider from "@mui/material/Divider";
 // Material Kit 2 React components
 import MKBox from "../../../components/MKBox";
 import MKTypography from "../../../components/MKTypography";
-import MKAvatar from "../../../components/MKAvatar";
 
 // Material Kit 2 React examples
-import DefaultReviewCard from "../../../components/examples/Cards/ReviewCards/DefaultReviewCard";
-import Companies from "../../../components/Companies/Companies";
-import gentoImg from "../../../assets/images/examples/agrinol.png";
-import gentoImg2 from "../../../assets/images/examples/azmol.png";
-import gentoImg3 from "../../../assets/images/examples/xteerlogo.png";
+import Places from "../../Presentation/sections/Posts";
+
 import styled from "styled-components";
-import { Button } from "antd";
-import ProductCards from "../../../components/ProductCards/ProductCards";
+import { Link } from "react-router-dom";
 
 function Information() {
   return (
     <Wrapper>
       <MKBox component="section" py={4}>
         <Grid>
-          <MKTypography variant="h2" color="info" textGradient mb={2}>
-            პროდუქცია
+          <MKTypography variant="h4" color="info" textGradient mb={2}>
+            კატალოგი
           </MKTypography>
           <Grid container spacing={3} sx={{ mt: 2 }}>
             <Grid item xs={12} md={6} lg={4}>
@@ -59,7 +54,7 @@ function Information() {
                         Repudiandae, impedit.
                       </p>
                     </div>
-                    <a href="#">დაათვალიერე</a>
+                    <Link to="/find-my-oil">დაათვალიერე</Link>
                   </div>
                 </div>
               </div>
@@ -82,7 +77,9 @@ function Information() {
                         Repudiandae, impedit.
                       </p>
                     </div>
-                    <a href="#">დაათვალიერე</a>
+                    <a href="https://aminol.az/products" target="_blank">
+                      დაათვალიერე
+                    </a>
                   </div>
                 </div>
               </div>
@@ -106,36 +103,13 @@ function Information() {
                         Repudiandae, impedit.
                       </p>
                     </div>
-                    <a href="#">დაათვალიერე</a>
+                    <Link to="/find-my-oil">დაათვალიერე</Link>
                   </div>
                 </div>
               </div>
             </Grid>
           </Grid>
-
-          {/* <MKTypography variant="h2">GENTO</MKTypography>
-          <MKTypography variant="h2" color="info" textGradient mb={2}>
-            პარტნიორი კომპანიები
-          </MKTypography>
-
-          <MKTypography textGradient color="secondary" variant="body1" mb={1}>
-            პროდუქცია
-          </MKTypography> */}
-
-          <Divider sx={{ my: 10 }} />
-          <Grid container spacing={3} justifyContent="center">
-            <Grid item xs={6} md={4} lg={10}></Grid>
-            <Grid item xs={6} md={4} lg={2}></Grid>
-            <Grid item xs={6} md={4} lg={2}></Grid>
-            <Grid item xs={6} md={4} lg={2}></Grid>
-          </Grid>
         </Grid>
-        <PartnerCompanies>
-          {/* <MKTypography variant="h2" color="info" textGradient mb={2}>
-            პარტნიორი კომპანიები
-          </MKTypography>
-          <Companies /> */}
-        </PartnerCompanies>
       </MKBox>
     </Wrapper>
   );

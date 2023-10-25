@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const BadgeContent = ({product}) => {
   const allSpecs = [];
-  for (const [property, values] of Object.entries(product.specs)) {
+  for (const [property, values] of Object.entries(product?.specs)) {
     allSpecs.push({property, values});
   }
 

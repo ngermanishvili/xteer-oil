@@ -42,10 +42,11 @@ function DesktopNavbar({ routes }) {
         width: "90%",
         zIndex: 1000,
         transition: "top 0.3s", // Add a smooth transition effect
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
       variant="gradient"
       color="dark"
-      bgColor="dark"
+      // bgColor="dark"
       shadow="sm"
       transparent
       py={0.25}

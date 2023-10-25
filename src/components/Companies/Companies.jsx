@@ -47,7 +47,7 @@ function Companies() {
 
 const AppContainer = styled.div`
   margin: 0 auto;
-  width: 80vw;
+  width: 90vw;
   height: auto;
   color: #000000;
   position: relative;

@@ -7,6 +7,7 @@ import Lottie from "react-lottie";
 import animationData from "./lotties/Animation.json";
 import Footer from "./components/Footer/Footer";
 import routes from "./routes";
+import styled from "styled-components";
 
 // Import your route components (no need to import routes again)
 const Home = React.lazy(() => import("./Pages/Home"));
@@ -72,5 +73,13 @@ const App = () => {
     </div>
   );
 };
+
+const SyncLoaderDiv = styled.div`
+  width: "100%";
+  height: "100vh";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+`;
 
 export default App;

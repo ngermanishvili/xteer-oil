@@ -48,39 +48,32 @@ const ProductDetail = () => {
         />
         <Layout
           style={{
-            padding: "24px 0",
+            width: "100%",
             background: colorBgContainer,
           }}
         >
-          <Content
-            style={{
-              padding: "0 24px",
-            }}
-          >
-            {product ? (
+          {product ? (
+            <>
               <>
-                <>
-                  <SingleProductLayout productId={product._id} />
-                </>
-
-                <div className="p-5"></div>
+                <SingleProductLayout productId={product._id} />
               </>
-            ) : (
-              <div
-                style={{
-                  width: "100%",
-                  height: "100vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <SyncLoader size={18} color="dodgerblue" />
-              </div>
-            )}
+              <div className="p-5"></div>
+            </>
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                height: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <SyncLoader size={18} color="dodgerblue" />
+            </div>
+          )}
 
-            <div className="p-5"></div>
-          </Content>
+          <div className="p-5"></div>
         </Layout>
       </Content>
     </Layout>
