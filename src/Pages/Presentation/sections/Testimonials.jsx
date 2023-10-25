@@ -14,26 +14,22 @@ Coded by www.creative-tim.com
 */
 
 // @mui material components
-import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-// Material Kit 2 React components
 import MKBox from "../../../components/MKBox";
 import MKTypography from "../../../components/MKTypography";
-
-// Material Kit 2 React examples
-import Places from "../../Presentation/sections/Posts";
-
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 function Information() {
+  const { t, i18n } = useTranslation();
+
   return (
     <Wrapper>
       <MKBox component="section" py={4}>
         <Grid>
           <MKTypography variant="h4" color="info" textGradient mb={2}>
-            კატალოგი
+            {t("Catalog")}
           </MKTypography>
           <Grid container spacing={3} sx={{ mt: 2 }}>
             <Grid item xs={12} md={6} lg={4}>
@@ -47,7 +43,7 @@ function Information() {
                   </div>
 
                   <div className="contentBx">
-                    <h2>ჰიუნდაი იქსტიერი</h2>
+                    <h2>{t("Hyundai")} </h2>
                     <div className="color">
                       <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -70,7 +66,7 @@ function Information() {
                   </div>
 
                   <div className="contentBx">
-                    <h2>ამინოლი</h2>
+                    <h2>{t("Aminol")}</h2>
                     <div className="color">
                       <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.

@@ -1,20 +1,13 @@
 import { Divider, Row } from "antd";
-import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
-// import BasicSlider from "../components/demoSlider/DemoSlider";
-// import Parallax from "../components/Parallax/Parallax";
-import AboutCompany from "../components/AboutCompany/AboutCompany";
 import { useTranslation } from "react-i18next";
-// import i18n from "../i18n";
 import MkBox from "../components/MKBox";
 import MKTypography from "../components/MKTypography";
 import Card from "@mui/material/Card";
-import Counters from "../Pages/Presentation/sections/Counters";
-import Information from "../Pages/Presentation/sections/Information";
 import Testimonials from "../Pages/Presentation/sections/Testimonials";
-import Download from "../Pages/Presentation/sections/Download";
 import bgImage from "../assets/images/examples/wp7902092-oil-gas-wallpapers.jpg";
 import Places from "./Presentation/sections/Posts";
+import styled from "styled-components";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -74,14 +67,14 @@ const Home = () => {
         }}
       >
         <Testimonials />
-
         <Divider orientation="left">
           <MKTypography variant="h4" color="alert" textGradient mb={-10}>
-            პარტნიორი კომპანიები
+            {t("PartnerCompanies")}
           </MKTypography>
         </Divider>
         <Companies />
         {/* <Download /> */}
+
         <Places />
       </Card>
     </>

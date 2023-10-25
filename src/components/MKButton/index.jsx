@@ -38,7 +38,7 @@ const MKButton = forwardRef(
 
 // Setting default values for the props of MKButton
 MKButton.defaultProps = {
-  size: "medium",
+  size: "large",
   variant: "contained",
   color: "white",
   circular: false,

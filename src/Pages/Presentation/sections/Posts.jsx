@@ -10,6 +10,7 @@ import { dataStore } from "../../../zustand/store";
 import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import { Divider } from "antd";
 import MKTypography from "../../../components/MKTypography";
+import { Link } from "react-router-dom";
 
 function Places() {
   const fetchData = dataStore((state) => state.fetchData);
@@ -50,16 +51,17 @@ function Places() {
     <>
       <Wrapper>
         <MKBox component="section" py={2}>
-          <Divider
-            orientation="center"
-            style={{
-              fontSize: "24px",
-            }}
-          >
+          {" "}
+          <Divider orientation="center">
             <MKTypography variant="h4" color="info" textGradient mb={2}>
               პროდუქცია
             </MKTypography>
           </Divider>
+          <BtnWrapper>
+            <Link className="styledLink" to="/find-my-oil">
+              მოძებნე დეტალურად კატალოგიში
+            </Link>
+          </BtnWrapper>
           <Grid container spacing={3}>
             <Swiper
               slidesPerView={1}
@@ -111,6 +113,26 @@ function Places() {
 }
 
 export default Places;
+
+const BtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .styledLink {
+    border-radius: 15px;
+    max-width: 1200px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    background-color: #257fd4;
+    color: #fff;
+    display: flex; /* Add display flex */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-decoration: none; /* Ensure text-decoration is removed for Link */
+  }
+`;
 
 const Wrapper = styled.div`
   border-radius: 15px;

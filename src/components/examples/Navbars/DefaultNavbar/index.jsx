@@ -544,14 +544,16 @@ function DefaultNavbar({
           <MKBox ml={{ xs: "auto", lg: 0 }}>
             <Dropdown>
               <DropdownTrigger>
-                <Button variant="bordered">Open Menu</Button>
+                <Button color="info">
+                  <span style={{ fontSize: "20px" }}>🌐</span>
+                </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
                 <DropdownItem onClick={() => changeLanguage("en")} key="new">
-                  ENG
+                  English
                 </DropdownItem>
                 <DropdownItem onClick={() => changeLanguage("ka")} key="copy">
-                  Ka
+                  ქართული
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
