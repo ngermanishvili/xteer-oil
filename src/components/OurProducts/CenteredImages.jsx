@@ -1,7 +1,7 @@
 import React from "react";
 import agrinolpng from "../../assets/agrinolpng.png";
 import azmolas from "../../assets/azmolas.png";
-import xteerlogo from "../../assets/xteerlogo.png";
+import xteerlogo from "../../assets/images/examples/xteerlogo.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 

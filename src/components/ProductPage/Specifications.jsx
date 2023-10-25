@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {Button} from "antd";
+import { Button } from "antd";
 const mainColor = "rgb(57, 68, 116)";
-const Specifications = ({data}) => {
+const Specifications = ({ data }) => {
   const specs = data?.specs;
 
   const renderSpecsKeys = () => {
@@ -15,7 +15,7 @@ const Specifications = ({data}) => {
         const modifiedKey = key.replace("(", " ("); // Replace "(" with " ("
         return (
           <div className="singleKey" key={modifiedKey}>
-            <p>{modifiedKey}</p> <p style={{alignSelf: "center"}}>:</p>
+            <p>{modifiedKey}</p> <p style={{ alignSelf: "center" }}>:</p>
           </div>
         );
       }
@@ -61,10 +61,8 @@ const Specifications = ({data}) => {
 
   return (
     <Container>
-      <h2 style={{alignSelf: "center", display: "block", fontSize: "40px"}}>
-        SPECIFICATIONS
-      </h2>
-      <div style={{display: "flex", gap: "20px"}}>
+      <h2 className="title">SPECIFICATIONS</h2>
+      <div style={{ display: "flex", gap: "20px" }}>
         <div className="SpecKeys">{renderSpecsKeys()}</div>
         <div className="ValuesWrapper">{renderSpecsValues()}</div>
       </div>
@@ -81,8 +79,19 @@ const Container = styled.div`
   @media (max-width: 870px) {
     overflow-x: scroll; // Use scroll instead of auto for screens below 870px
   }
+  @media (max-width: 430px) {
+    gap: 5px;
+  }
+  .title {
+    align-self: center;
+    display: block;
+    font-size: 40px;
+    margin-top: 30px;
+    @media (max-width: 1160px) {
+      font-size: 25px;
+    }
+  }
   .SpecKeys {
-    width: 25%;
     display: flex;
     flex-direction: column;
 
@@ -90,11 +99,20 @@ const Container = styled.div`
     .singleKey {
       font-size: 20px;
       width: 100%;
-      height: 100px;
+      min-width: 221px;
+      height: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
+      @media (max-width: 600px) {
+        font-size: 16px;
+      }
+      @media (max-width: 430px) {
+        min-width: 180px;
+        font-size: 13px;
+        gap: 0px;
+      }
       /* Use the main color for border */
     }
 
@@ -116,7 +134,7 @@ const Container = styled.div`
       font-size: 20px;
       gap: 20px;
       width: 100%;
-      height: 100px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-around;

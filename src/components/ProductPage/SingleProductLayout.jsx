@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from "react";
-import {Modal, Button, Menu, Dropdown} from "antd";
-import {dataStore} from "../../zustand/store";
+import React, { useState, useEffect } from "react";
+import { dataStore } from "../../zustand/store";
 import styled from "styled-components";
+//compinents
 import ImageContent from "./ImageContent";
 import SmallDescription from "./SmallDescription";
 import MainDescription from "./MainDescription";
 import Specifications from "./Specifications";
-const PdfDownloader = ({productId}) => {
+
+
+const PdfDownloader = ({ productId }) => {
   const [product, setProduct] = useState(null);
 
   const data = dataStore((state) => state.data);
@@ -18,22 +20,8 @@ const PdfDownloader = ({productId}) => {
     setProduct(singleProductFilter());
   }, [productId, data]);
 
-  const pdfUrls = product?.pdfUrls;
-
-  const CustomMenuOverlay = () => (
-    <Overlay>
-      {pdfUrls?.map((pdf, index) => (
-        <OverlayContent key={index}>
-          <h2>VISCOSITY GRADE - {pdf.viscosityGrade}</h2>
-          <Button onClick={showModal}>View PDS</Button>
-          <Button>Download PDS</Button>
-        </OverlayContent>
-      ))}
-      <CloseOverlayButton onClick={hideOverlay}>Close</CloseOverlayButton>
-    </Overlay>
-  );
   return (
-    <>
+    <Bundler>
       <Container>
         <UpperWrapper>
           <div className="imageWrapper">
@@ -51,21 +39,27 @@ const PdfDownloader = ({productId}) => {
       <SpecificationsWrapper>
         <Specifications data={product} />
       </SpecificationsWrapper>
-    </>
+    </Bundler>
   );
 };
 export default PdfDownloader;
-
-const OtherProductInfo = styled.div`
-  width: 68%;
+const Bundler = styled.div`
+  padding: 0px 50px;
+  @media (max-width: 775px) {
+    padding: 0px 0px;
+  }
 `;
-
 const Container = styled.div`
   width: 90%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  @media (max-width: 775px) {
+    margin: 0px 15px;
+    width: 90%;
+  }
 `;
+
 const UpperWrapper = styled.div`
   width: 100%;
   display: flex;

@@ -1,24 +1,22 @@
-import React, {useState, useEffect, Suspense} from "react";
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {useMediaQuery} from "react-responsive";
+import React, { useState, useEffect, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
-import OilProductsList from "./Pages/OilProductsList";
-import ProductDetail from "./Pages/Product";
-import {SyncLoader} from "react-spinners";
-
 import Lottie from "react-lottie";
 import animationData from "./lotties/Animation.json";
-
 import Footer from "./components/Footer/Footer";
+import routes from "./routes";
 import styled from "styled-components";
+// Import your route components (no need to import routes again)
+const Home = React.lazy(() => import("./Pages/Home"));
+const AboutUs = React.lazy(() => import("./Pages/AboutUs/AboutUs"));
+const Contact = React.lazy(() => import("./Pages/Contact"));
+const ProductDetail = React.lazy(() => import("./Pages/Product"));
+const OilProductsList = React.lazy(() => import("./Pages/OilProductsList"));
 
-// Your route components
-import Home from "./Pages/Home";
-import AboutUs from "./Pages/AboutUs";
-import Contact from "./Pages/Contact";
 const App = () => {
-  const isMobile = useMediaQuery({maxWidth: 768});
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [isLoading, setIsLoading] = useState(true);
   const defaultOptions = {
     loop: true,
@@ -38,12 +36,14 @@ const App = () => {
   }, []);
 
   return (
-    <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <BrowserRouter>
         {/* Conditionally render the loading screen or the app content */}
         {isLoading ? (
           <Lottie
-            style={{marginTop: "10%"}}
+            style={{ marginTop: "10%" }}
             options={defaultOptions}
             height={400}
             width={400}
@@ -51,40 +51,19 @@ const App = () => {
         ) : (
           <>
             {/* Conditionally render the appropriate navigation based on screen size */}
-            {isMobile ? <MobileNavbar /> : <DesktopNavbar />}
+            {<DesktopNavbar routes={routes} />}
             <Routes>
-              {/* Use Suspense with fallback to show a loading indicator while components load */}
-              <Route index element={<Home />} />
-              <Route path="about" element={<AboutUs />} />
-              <Route path="contact" element={<Contact />} />
-              <Route
-                path="/product/:productId"
-                element={
-                  <Suspense
-                    fallback={
-                      <SyncLoaderDiv>
-                        <SyncLoader size={18} color="dodgerblue" />
-                      </SyncLoaderDiv>
-                    }
-                  >
-                    <ProductDetail />
-                  </Suspense>
-                }
-              />
-              <Route
-                path="find-my-oil"
-                element={
-                  <Suspense
-                    fallback={
-                      <SyncLoaderDiv>
-                        <SyncLoader size={18} color="dodgerblue" />
-                      </SyncLoaderDiv>
-                    }
-                  >
-                    <OilProductsList />
-                  </Suspense>
-                }
-              />
+              {routes.map((route) => (
+                <Route
+                  key={route.route}
+                  path={route.route}
+                  element={
+                    <Suspense fallback={<div>Loading...</div>}>
+                      {route.element}
+                    </Suspense>
+                  }
+                />
+              ))}
             </Routes>
             <Footer />
           </>

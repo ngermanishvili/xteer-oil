@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
-const MainDescription = ({data}) => {
+const MainDescription = ({ data }) => {
   return (
     <Container>
       <div className="divider" />
       <div className="headerWrapper">
-        <h2 style={{alignSelf: "center", color: "black"}}>
+        <h2 style={{ alignSelf: "center", color: "black" }}>
           {data?.productName}
         </h2>
-        <p style={{alignSelf: "center"}}>{data?.description}</p>
+        <p style={{ alignSelf: "center" }}>{data?.description}</p>
       </div>
       <div>
         <span className="headings">Applications:</span>
         <ul className="listWrapper">
           {data?.applications?.map((item) => (
-            <li className="listItems" style={{listStyle: "inside"}}>
+            <li className="listItems" style={{ listStyle: "inside" }}>
               {item}
             </li>
           ))}
@@ -25,7 +25,7 @@ const MainDescription = ({data}) => {
         <span className="headings">Certifications And Application:</span>
         <ul className="listWrapper">
           {data?.certsAndApps?.map((item) => (
-            <li className="listItems" style={{listStyle: "inside"}}>
+            <li className="listItems" style={{ listStyle: "inside" }}>
               {item}
             </li>
           ))}
@@ -35,7 +35,7 @@ const MainDescription = ({data}) => {
         <span className="headings">Features And Benefits</span>
         <ul className="listWrapper">
           {data?.featuresAndBenefits?.map((item) => (
-            <li className="listItems" style={{listStyle: "inside"}}>
+            <li className="listItems" style={{ listStyle: "inside" }}>
               {item}
             </li>
           ))}
@@ -55,6 +55,10 @@ const Container = styled.div`
   flex-direction: column;
 
   .divider {
+    @media (max-width: 1160px) {
+      margin-top: 30px;
+      background-color: dodgerblue;
+    }
     margin: 0 auto;
     width: 60%;
     height: 3px;
@@ -67,7 +71,7 @@ const Container = styled.div`
       font-size: 20px;
     }
     @media (max-width: 768px) {
-      font-size: 20px; 
+      font-size: 20px;
       text-align: left;
       p {
         font-size: 15px;
