@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect, Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {Button} from "antd";
-const SmallDescription = ({data}) => {
+import { Button } from "antd";
+import DownloadPds from "./DownloadPds";
+const SmallDescription = ({ data }) => {
   return (
     <>
       <Container>
@@ -17,16 +18,17 @@ const SmallDescription = ({data}) => {
           {data?.productLine}
         </h2>
         <p>{data?.description}</p>
-        <div style={{display: "flex", gap: "20px", flexDirection: "row"}}>
+        <div style={{ display: "flex", gap: "20px", flexDirection: "row" }}>
           <span>Package Sizes : </span>
           {data?.packageSizes.map((item) => (
-            <div>
+            <div key={item}>
               <Button size="middle" type="primary">
                 {item}
               </Button>
             </div>
           ))}
         </div>
+        <DownloadPds data={data} />
       </Container>
     </>
   );
@@ -40,7 +42,7 @@ const Container = styled.div`
   justify-content: center;
   gap: 25px;
   margin: 0 auto;
-
+  margin-bottom: 30px;
   color: #555;
   span {
     color: black;
