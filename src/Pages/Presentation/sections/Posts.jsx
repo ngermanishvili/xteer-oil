@@ -95,7 +95,6 @@ function Places() {
                             type: "internal",
                             route: `/product/${item._id}`,
                             color: "info",
-                            label: "მეტის ნახვა",
                             cursor: "pointer",
                           }}
                         />
