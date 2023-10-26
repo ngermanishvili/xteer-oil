@@ -5,6 +5,7 @@ const cors = require("cors"); // Import the cors module
 const oilRoutes = require("./route");
 
 const app = express();
+app.use(cors()); // cors is a middleware and its neccessary to use it before any routes are defined in the application otherwise it will not work if u dont use corse before routes are defined in the application 
 
 const uri =
   "mongodb+srv://samxara:samxara@cluster0.j0xk7o2.mongodb.net/GentoTrading?retryWrites=true&w=majority";
