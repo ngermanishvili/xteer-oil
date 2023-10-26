@@ -4,35 +4,36 @@ import { FcDownload } from "react-icons/fc";
 import { BsEye } from "react-icons/bs";
 
 const DownloadPds = ({ data }) => {
-  console.log("pdsdata", data);
   return (
     <Container>
       <span>PDF:</span>
-      <br />
-      {data?.pdfUrls?.map((pds) => {
-        const { viscosityGrade, pdsUrl } = pds;
-        return (
-          <li key={viscosityGrade}>
-            {viscosityGrade}
-            <div>
-              <button className="download-button">
-                Download <FcDownload />
-              </button>
-              <button className="view-button">
-                View <BsEye />
-              </button>
-            </div>
-          </li>
-        );
-      })}
+      <ul>
+        {data?.pdfUrls?.map((pds) => {
+          const { viscosityGrade, pdsUrl } = pds;
+          return (
+            <li key={viscosityGrade}>
+              {viscosityGrade}
+              <div>
+                <button className="download-button">
+                  Download <FcDownload />
+                </button>
+                <button className="view-button">
+                  View <BsEye />
+                </button>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  align-items: "center";
-  list-style-type: none;
+  ul {
+    display: flex;
+  }
   li {
     margin-left: 15px;
   }
