@@ -8,8 +8,7 @@ export const dataStore = create((set) => ({
   loading: true,
   fetchData: async () => {
     try {
-      const { data } = await axios.get("http://3.87.31.172:8000/oils");
-      console.log(data);
+      const { data } = await axios.get("http://localhost:8000/oils");
       set({ data: data, error: null, loading: false });
     } catch (error) {
       console.error("Error fetching data:", error);

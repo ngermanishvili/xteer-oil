@@ -7,15 +7,24 @@ import SmallDescription from "./SmallDescription";
 import MainDescription from "./MainDescription";
 import Specifications from "./Specifications";
 
+/**
+ * Renders a component that displays a single product's information and specifications.
+ * @param {Object} props - The component props.
+ * @param {string} props.productId - The ID of the product to display.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const PdfDownloader = ({ productId }) => {
   const [product, setProduct] = useState(null);
 
+  // Get the product data from the global data store.
   const data = dataStore((state) => state.data);
 
   useEffect(() => {
+    // Filter the data to find the product with the matching ID.
     const singleProductFilter = () => {
       return data.find((item) => item._id === productId);
     };
+    // Set the product state to the filtered product data.
     setProduct(singleProductFilter());
   }, [productId, data]);
 
@@ -23,18 +32,22 @@ const PdfDownloader = ({ productId }) => {
     <Bundler>
       <Container>
         <UpperWrapper>
+          {/* Render the product image */}
           <div className="imageWrapper">
             <ImageContent
               imageUrl={product?.imageUrl}
               altText={product?.productName}
             />
           </div>
+          {/* Render the product small description */}
           <div className="smallDescriptionWrapper">
             <SmallDescription data={product} />
           </div>
         </UpperWrapper>
+        {/* Render the product main description */}
         <MainDescription data={product} />
       </Container>
+      {/* Render the product specifications */}
       <SpecificationsWrapper>
         <Specifications data={product} />
       </SpecificationsWrapper>
