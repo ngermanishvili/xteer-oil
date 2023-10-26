@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {Button} from "antd";
-import view from "../../assets/view.svg";
-import download from "../../assets/download.svg";
-const SmallDescription = ({data}) => {
-  console.log(data);
+import { Button } from "antd";
+import DownloadPds from "./DownloadPds";
+const SmallDescription = ({ data }) => {
   return (
     <>
       <Container>
@@ -30,27 +28,7 @@ const SmallDescription = ({data}) => {
             </div>
           ))}
         </div>
-        <div style={{display: "flex", gap: "20px", flexDirection: "row"}}>
-          {data?.pdfUrls?.map((item) => (
-            <div style={{width: "200px"}}>
-              <div>
-                <Button size="large">{item.viscosityGrade}</Button>
-              </div>
-              <div style={{width: "100%"}}>
-                <Button
-                  style={{width: "50px"}}
-                  icon={<img src={view} alt="view" />}
-                  type="dashed"
-                />
-                <Button
-                  icon={<img src={download} alt="view" />}
-                  size="medium"
-                  type="dashed"
-                />
-              </div>
-            </div>
-          ))}
-        </div>
+        <DownloadPds data={data} />
       </Container>
     </>
   );

@@ -1,23 +1,13 @@
-import { useState, useEffect } from "react";
 import { Divider, Row } from "antd";
-import CenteredImages from "../components/OurProducts/CenteredImages";
 import Companies from "../components/Companies/Companies";
-// import BasicSlider from "../components/demoSlider/DemoSlider";
-// import Parallax from "../components/Parallax/Parallax";
-import AboutCompany from "../components/AboutCompany/AboutCompany";
 import { useTranslation } from "react-i18next";
-// import i18n from "../i18n";
 import MkBox from "../components/MKBox";
 import MKTypography from "../components/MKTypography";
 import Card from "@mui/material/Card";
-import Counters from "../Pages/Presentation/sections/Counters";
-import Information from "../Pages/Presentation/sections/Information";
 import Testimonials from "../Pages/Presentation/sections/Testimonials";
-import Download from "../Pages/Presentation/sections/Download";
 import bgImage from "../assets/images/examples/wp7902092-oil-gas-wallpapers.jpg";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import ProductCards from "../components/ProductCards/ProductCards";
+import Places from "./Presentation/sections/Posts";
+import styled from "styled-components";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -25,7 +15,7 @@ const Home = () => {
   return (
     <>
       <MkBox
-        minHeight="40vw"
+        minHeight="70vh"
         width="100%"
         sx={{
           backgroundImage: ({
@@ -33,7 +23,7 @@ const Home = () => {
             palette: { gradients },
           }) =>
             `${linearGradient(
-              rgba(gradients.dark.main, 0.1),
+              rgba(gradients.dark.main, 0.4),
               rgba(gradients.dark.state, 0.2)
             )}, url(${bgImage})`,
           backgroundSize: "cover",
@@ -45,7 +35,7 @@ const Home = () => {
         <MKTypography
           variant="h1"
           color="white"
-          mt={10}
+          mt={12}
           mb={1}
           sx={({ breakpoints, typography: { size } }) => ({
             [breakpoints.down("md")]: {
@@ -61,19 +51,14 @@ const Home = () => {
           textAlign="center"
           px={{ xs: 6, lg: 12 }}
           mt={1}
-        >
-          We are a company that is committed to the quality of our products and
-          services. &amp; Premium Lubricants Distributor in Georgia
-        </MKTypography>
-
+        ></MKTypography>
         <div className="overlay"></div>
       </MkBox>
-
       <Card
         sx={{
           p: 2,
-          mx: { xs: 2, lg: 3 },
-          mt: -8,
+          mx: { xs: 2, lg: 4 },
+          mt: -10,
           mb: 4,
           backgroundColor: ({ palette: { white }, functions: { rgba } }) =>
             rgba(white.main, 0.8),
@@ -82,18 +67,15 @@ const Home = () => {
         }}
       >
         <Testimonials />
-        <Divider
-          orientation="left"
-          style={{
-            fontSize: "24px",
-          }}
-        >
-          <MKTypography variant="h2" color="info" textGradient mb={2}>
-            პარტნიორი კომპანიები
+        <Divider orientation="left">
+          <MKTypography variant="h4" color="alert" textGradient mb={-10}>
+            {t("PartnerCompanies")}
           </MKTypography>
         </Divider>
         <Companies />
-        <Download />
+        {/* <Download /> */}
+
+        <Places />
       </Card>
     </>
   );

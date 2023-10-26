@@ -111,7 +111,7 @@ function DefaultNavbar({
         icon={icon}
         href={href}
         route={route}
-        collapse={collapseAsString} // Use collapseAsString
+        collapse={collapseAsString}
         onMouseEnter={({ currentTarget }) => {
           if (collapse) {
             setDropdown(currentTarget);
@@ -343,13 +343,13 @@ function DefaultNavbar({
           {...TransitionProps}
           sx={{
             transformOrigin: "left top",
-            background: ({ palette: { white } }) => white.main,
+            background: ({ palette: { dark } }) => dark.main,
           }}
         >
           <MKBox borderRadius="lg">
-            <MKTypography variant="h1" color="white">
+            <MKTypography variant="h1" color="dark">
               <Icon ref={setArrowRef} sx={{ mt: -3 }}>
-                arrow_drop_up
+                ___
               </Icon>
             </MKTypography>
             <MKBox shadow="lg" borderRadius="lg" p={2} mt={2}>
@@ -479,7 +479,7 @@ function DefaultNavbar({
             background: ({ palette: { white } }) => white.main,
           }}
         >
-          <MKBox ml={2.5} mt={-2.5} borderRadius="lg">
+          <MKBox ml={2.5} mt={-2.4} borderRadius="lg">
             <MKBox shadow="lg" borderRadius="lg" py={1.5} px={1} mt={2}>
               {renderNestedRoutes}
             </MKBox>
@@ -544,14 +544,16 @@ function DefaultNavbar({
           <MKBox ml={{ xs: "auto", lg: 0 }}>
             <Dropdown>
               <DropdownTrigger>
-                <Button variant="bordered">Open Menu</Button>
+                <Button color="info">
+                  <span style={{ fontSize: "20px" }}>🌐</span>
+                </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
                 <DropdownItem onClick={() => changeLanguage("en")} key="new">
-                  ENG
+                  English
                 </DropdownItem>
                 <DropdownItem onClick={() => changeLanguage("ka")} key="copy">
-                  Ka
+                  ქართული
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
