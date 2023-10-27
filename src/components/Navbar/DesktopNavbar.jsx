@@ -34,19 +34,13 @@ function DesktopNavbar({ routes }) {
   return (
     <MKBox
       style={{
-        borderRadius: "15px",
-        position: "fixed",
-        top: isNavVisible ? "4%" : "-100px", // Adjust the value as needed
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "90%",
+        position: "relative",
+        width: "100%",
         zIndex: 1000,
-        transition: "top 0.3s", // Add a smooth transition effect
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgba(0, 0, 0, 0.9)",
       }}
       variant="gradient"
       color="dark"
-      // bgColor="dark"
       shadow="sm"
       transparent
       py={0.25}
@@ -56,7 +50,7 @@ function DesktopNavbar({ routes }) {
         changeLanguage={changeLanguage}
         routes={routes.map((route) => ({
           ...route,
-          name: t(route.name), // Translate the route name
+          name: t(route.name),
           color: "#344767",
         }))}
         action={{

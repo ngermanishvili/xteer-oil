@@ -32,6 +32,9 @@ import Divider from "@mui/material/Divider";
 import MuiLink from "@mui/material/Link";
 import { Button } from "@nextui-org/react";
 
+import { GiHamburgerMenu } from "react-icons/gi";
+import Logo from "../../../../assets/images/examples/adobegentologo5.png";
+
 // Material Kit 2 React components
 import MKBox from "../../../MKBox";
 import MKTypography from "../../../MKTypography";
@@ -72,7 +75,6 @@ function DefaultNavbar({
   const [arrowRef, setArrowRef] = useState(null);
   const [mobileNavbar, setMobileNavbar] = useState(false);
   const [mobileView, setMobileView] = useState(false);
-
   const openMobileNavbar = () => setMobileNavbar(!mobileNavbar);
 
   useEffect(() => {
@@ -348,9 +350,7 @@ function DefaultNavbar({
         >
           <MKBox borderRadius="lg">
             <MKTypography variant="h1" color="dark">
-              <Icon ref={setArrowRef} sx={{ mt: -3 }}>
-                ___
-              </Icon>
+              <GiHamburgerMenu />
             </MKTypography>
             <MKBox shadow="lg" borderRadius="lg" p={2} mt={2}>
               {renderRoutes}
@@ -525,13 +525,17 @@ function DefaultNavbar({
             py={transparent ? 1.5 : 0.75}
             pl={relative || transparent ? 0 : { xs: 0, lg: 1 }}
           >
-            <MKTypography
-              variant="button"
-              fontWeight="bold"
-              color={light ? "white" : "dark"}
-            >
-              {brand}
-            </MKTypography>
+            {Logo ? (
+              <img className="logo-img" src={Logo} alt="Logo" />
+            ) : (
+              <MKTypography
+                variant="button"
+                fontWeight="bold"
+                color={light ? "white" : "dark"}
+              >
+                {brand}
+              </MKTypography>
+            )}
           </MKBox>
           <MKBox
             color="inherit"
@@ -567,7 +571,9 @@ function DefaultNavbar({
             sx={{ cursor: "pointer" }}
             onClick={openMobileNavbar}
           >
-            <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
+            <GiHamburgerMenu fontSize="lg">
+              {mobileNavbar ? "close" : "menu"}
+            </GiHamburgerMenu>
           </MKBox>
         </MKBox>
         <MKBox
