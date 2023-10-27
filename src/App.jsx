@@ -7,13 +7,7 @@ import animationData from "./lotties/Animation.json";
 import Footer from "./components/Footer/Footer";
 import routes from "./routes";
 import styled from "styled-components";
-
-// Import your route components (no need to import routes again)
-import Home from "./Pages/Home";
-import AboutUs from "./Pages/AboutUs/AboutUs";
-import Contact from "./Pages/Contact";
-import ProductDetail from "./Pages/Product";
-import OilProductsList from "./Pages/OilProductsList";
+import ScrollToTop from "./ScrollToTop/ScrollToTop";
 
 const App = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -26,6 +20,7 @@ const App = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   useEffect(() => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
@@ -40,6 +35,9 @@ const App = () => {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <BrowserRouter>
+        {/* Include the ScrollToTop component inside the Router */}
+        <ScrollToTop />
+
         {/* Conditionally render the loading screen or the app content */}
         {isLoading ? (
           <div
@@ -53,7 +51,7 @@ const App = () => {
         ) : (
           <>
             {/* Conditionally render the appropriate navigation based on screen size */}
-            {<DesktopNavbar routes={routes} />}
+            {isMobile ? <MobileNavbar /> : <DesktopNavbar routes={routes} />}
             <Routes>
               {routes.map((route) => (
                 <Route
