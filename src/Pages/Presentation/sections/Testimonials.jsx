@@ -38,7 +38,7 @@ function Information() {
                   <div className="imgBx">
                     <img
                       src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png"
-                      alt="nike-air-shoe"
+                    
                     />
                   </div>
 
@@ -61,7 +61,7 @@ function Information() {
                   <div className="imgBx">
                     <img
                       src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png"
-                      alt="nike-air-shoe"
+                  
                     />
                   </div>
 
@@ -87,7 +87,7 @@ function Information() {
                   <div className="imgBx">
                     <img
                       src="https://www.hyundai-lube-me.com/wp-content/uploads/2020/02/logo-seo.png"
-                      alt="nike-air-shoe"
+                    
                     />
                   </div>
 
