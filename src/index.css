@@ -379,7 +379,7 @@ body {
 
 .overlay {
   position: absolute;
-  top: 0;
+  top: -30%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -394,4 +394,9 @@ body {
 .MuiBox-root .css-yhb49f {
   background-color: transparent;
   color: #fff;
+}
+
+/* Global Media for Text */
+@media (max-width: 500px) {
+
 }

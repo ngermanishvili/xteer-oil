@@ -44,6 +44,9 @@ const Container = styled.div`
   margin: 0 auto;
   margin-bottom: 30px;
   color: #555;
+  @media (max-width: 1160px) {
+    margin-bottom: 0px;
+  }
   span {
     color: black;
     font-weight: 800;
