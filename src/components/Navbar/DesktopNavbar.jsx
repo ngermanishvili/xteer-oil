@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import MKBox from "../MKBox";
 import DefaultNavbar from "../../components/examples/Navbars/DefaultNavbar";
 import logoImage from "../../assets/images/examples/agrinol.png";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 
-function DesktopNavbar({ routes }) {
-  const { t, i18n } = useTranslation();
+function DesktopNavbar({routes}) {
+  const {t, i18n} = useTranslation();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
@@ -42,9 +42,8 @@ function DesktopNavbar({ routes }) {
       variant="gradient"
       color="dark"
       shadow="sm"
-      transparent
+      transparent={true}
       py={0.25}
-      tra
     >
       <DefaultNavbar
         changeLanguage={changeLanguage}
@@ -59,7 +58,7 @@ function DesktopNavbar({ routes }) {
           label: "free download",
           color: "info",
         }}
-        transparent
+        transparent={true}
         relative
         light
         center
@@ -67,7 +66,7 @@ function DesktopNavbar({ routes }) {
         <img
           src={logoImage}
           alt="Logo"
-          style={{ width: "50px", height: "50px" }}
+          style={{width: "50px", height: "50px"}}
         />
       </DefaultNavbar>
     </MKBox>

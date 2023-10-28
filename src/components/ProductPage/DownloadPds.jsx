@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Modal } from "antd";
+import React, {useState} from "react";
+import {Modal} from "antd";
 import styled from "styled-components";
-import { FcDownload } from "react-icons/fc";
-import { BsEye } from "react-icons/bs";
+import {FcDownload} from "react-icons/fc";
+import {BsEye} from "react-icons/bs";
 import PdfViewer from "./PdfViewer";
 
-const DownloadPds = ({ data }) => {
+const DownloadPds = ({data}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPdfUrl, setSelectedPdfUrl] = useState(null);
 
@@ -30,19 +30,19 @@ const DownloadPds = ({ data }) => {
     <Container>
       <span>PDF:</span>
       <br />
-      <ul style={{ display: "flex", gap: "20px" }}>
+      <ul style={{display: "flex", gap: "20px"}}>
         {data?.pdfUrls?.map((pds) => {
-          const { viscosityGrade, pdsUrl } = pds;
+          const {viscosityGrade, pdsUrl} = pds;
           return (
             <li key={viscosityGrade}>
               <div className="buttonWrapper">
                 <p>{viscosityGrade}</p>
                 <button className="download-button">
-                  <span style={{ color: "#3d3c3c" }}>Download</span>{" "}
+                  <span style={{color: "#3d3c3c"}}>Download</span>{" "}
                   <FcDownload />
                 </button>
                 <button onClick={() => openPdf(pdsUrl)} className="view-button">
-                  <span style={{ color: "#3d3c3c" }}>View</span> <BsEye />
+                  <span style={{color: "#3d3c3c"}}>View</span> <BsEye />
                 </button>
                 <Modal
                   title="დეტალური ინფორმაცია"
