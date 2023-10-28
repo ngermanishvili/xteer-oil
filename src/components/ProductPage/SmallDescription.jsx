@@ -2,24 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "antd";
 import DownloadPds from "./DownloadPds";
+import { useTranslation } from "react-i18next";
 const SmallDescription = ({ data }) => {
+  const { t } = useTranslation();
   return (
     <>
       <Container>
         <h2>
-          <span>Product Name :</span> {data?.productName}
+          <span> {t("ProductName")}</span> {data?.productName}
         </h2>
         <h3>
-          <span>Category : </span>
+          <span> {t("Category")} </span>
           {data?.category}
         </h3>
         <h2>
-          <span>Product Line : </span>
+          <span> {t("ProductLine")} </span>
           {data?.productLine}
         </h2>
         <p>{data?.description}</p>
         <div style={{ display: "flex", gap: "20px", flexDirection: "row" }}>
-          <span>Package Sizes : </span>
+          <span> {t("PackageSizes")}</span>
           {data?.packageSizes.map((item) => (
             <div key={item}>
               <Button size="middle" type="primary">

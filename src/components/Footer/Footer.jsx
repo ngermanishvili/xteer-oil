@@ -1,43 +1,38 @@
 import PropTypes from "prop-types";
-// @mui material components
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-
-// @mui icons
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import GitHubIcon from "@mui/icons-material/GitHub";
 
 // Material Kit 2 React components
 import MKBox from "../../components/MKBox";
 import MKTypography from "../../components/MKTypography";
+import { useTranslation } from "react-i18next";
 
 function Footer({ company, links, socials, light }) {
-  const { href, name } = company;
+  const { t } = useTranslation();
+  const { to, name } = company; // Change href to to
 
   const year = new Date().getFullYear();
 
   const renderLinks = links.map((link) => (
     <MKTypography
       key={link.name}
-      component={Link}
-      href={link.href}
+      component={Link} // Change component to Link
+      to={link.to} // Change href to to
       variant="body2"
       color={light ? "white" : "secondary"}
       fontWeight="regular"
     >
-      {link.name}
+      {t(link.name)} {/* Translate the link name */}
     </MKTypography>
   ));
 
   const renderSocials = socials.map((social) => (
     <MKTypography
       key={social.link}
-      component={Link}
-      href={social.link}
+      component={Link} // Change component to Link
+      to={social.to} // Change href to to
       variant="body2"
       color={light ? "white" : "secondary"}
       fontWeight="regular"
@@ -74,16 +69,16 @@ function Footer({ company, links, socials, light }) {
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <MKTypography variant="body2" color={light ? "white" : "secondary"}>
-            Gento Trading &copy; {year} All rights reserved.{" "}
+            {t("GentoTradingFooter")} &copy; {year} {t("AllRightsReserved")}
             <MKTypography
-              component={Link}
-              href={href}
+              component={Link} // Change component to Link
+              to={to} // Change href to to
               target="_blank"
               rel="noreferrer"
               variant="body2"
               color={light ? "white" : "secondary"}
             >
-              {name}
+              {t(name)} {/* Translate the company name */}
             </MKTypography>
             .
           </MKTypography>
@@ -95,25 +90,20 @@ function Footer({ company, links, socials, light }) {
 
 // Setting default values for the props of CenteredFooter
 Footer.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "" },
+  company: { to: "/", name: "" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "მთავარი" },
+    { to: "/", name: "Main" },
     {
-      href: "https://www.creative-tim.com/presentation",
-      name: "ჩვენს შესახებ",
+      to: "/about",
+      name: "About us",
     },
-    { href: "https://www.creative-tim.com/presentation", name: "კონტაქტი" },
-    { href: "https://www.creative-tim.com/templates/react", name: "კატალოგი" },
+    { to: "/contact", name: "Contact" },
+    { to: "/find-my-oil", name: "Catalog" },
   ],
   socials: [
     {
       icon: <FacebookIcon fontSize="small" />,
-      link: "https://www.facebook.com/CreativeTim/",
-    },
-
-    {
-      icon: <InstagramIcon fontSize="small" />,
-      link: "https://www.instagram.com/creativetimofficial/",
+      to: "https://www.facebook.com/lukservice.ge/",
     },
   ],
   light: false,

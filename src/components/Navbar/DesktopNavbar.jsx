@@ -34,10 +34,15 @@ function DesktopNavbar({ routes }) {
   return (
     <MKBox
       style={{
-        position: "relative",
-        width: "100%",
+        borderRadius: "15px",
+        position: "fixed",
+        top: isNavVisible ? "4%" : "-100px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "90%",
         zIndex: 1000,
-        backgroundColor: "rgba(0, 0, 0, 0.9)",
+        transition: "top 0.3s",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
       variant="gradient"
       color="dark"
