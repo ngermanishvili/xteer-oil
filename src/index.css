@@ -398,5 +398,11 @@ body {
 
 /* Global Media for Text */
 @media (max-width: 500px) {
+}
 
+.logo-img {
+  width: 100px;
+  height: 100px;
+  height: auto;
+  object-fit: cover;
 }
