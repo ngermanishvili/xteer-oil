@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { tabStore } from "../../zustand/fitlerStore";
-import { Card, Pagination } from "antd";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {dataStore} from "../../zustand/store";
+import {tabStore} from "../../zustand/fitlerStore";
+import {Card, Pagination} from "antd";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const { Meta } = Card;
-import { searchStore } from "../../zustand/searchStore";
+const {Meta} = Card;
+import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import { useLocation } from "react-router-dom";
-import { SyncLoader } from "react-spinners";
+import {useLocation} from "react-router-dom";
+import {SyncLoader} from "react-spinners";
 import BasicSlider from "../demoSlider/DemoSlider";
 
 const CardContent = () => {
@@ -62,6 +62,20 @@ const CardContent = () => {
     setCurrentPage(page);
   };
 
+  const handleDetailsLinkClick = (Event, productId) => {
+    // Open in a new tab when CTRL is pressed
+    const linkTarget = Event.keyDown === 17 ? "_blank" : "_self";
+    return (
+      <DetailsLink
+        className="seeDetails"
+        to={`/product/${productId}`}
+        target={linkTarget}
+      >
+        დეტალური ინფორმაცია
+      </DetailsLink>
+    );
+  };
+
   return (
     <>
       <div>
@@ -78,9 +92,9 @@ const CardContent = () => {
                 <Card
                   className="cards"
                   key={product._id}
-                  bodyStyle={{ width: "100%" }}
+                  bodyStyle={{width: "100%"}}
                 >
-                  <div style={{ width: "100%", display: "flex" }}>
+                  <div style={{width: "100%", display: "flex"}}>
                     <ProductImage>
                       <img
                         alt={product.productName}
@@ -100,14 +114,8 @@ const CardContent = () => {
                       </ViscosityList>
                     </ProductDetails>
                   </div>
-                  <div style={{ width: "100%" }}>
-                    <DetailsLink
-                      onClick={handlePageChange}
-                      className="seeDetails"
-                      to={`/product/${product._id}`}
-                    >
-                      დეტალური ინფორმაცია
-                    </DetailsLink>
+                  <div style={{width: "100%"}}>
+                    {handleDetailsLinkClick(Event, product._id)}
                   </div>
                 </Card>
               ))}

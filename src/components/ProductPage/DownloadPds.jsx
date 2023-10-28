@@ -74,9 +74,7 @@ const Container = styled.div`
     justify-content: center;
     gap: 20px;
   }
-  @media (max-width: 1542px) {
-    overflow-x: scroll; // Use scroll instead of auto for screens below 870px
-  }
+  
   li {
     margin-left: 15px;
     min-height: 200px;
