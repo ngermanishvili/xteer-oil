@@ -42,7 +42,7 @@ const CardContent = () => {
     setFilteredData();
     setTab("all");
   }, [location]);
-  console.log(productsToDisplay);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -60,6 +60,20 @@ const CardContent = () => {
   const handlePageChange = (page) => {
     smoothScrollToTop();
     setCurrentPage(page);
+  };
+
+  const handleDetailsLinkClick = (Event, productId) => {
+    // Open in a new tab when CTRL is pressed
+    const linkTarget = Event.keyDown === 17 ? "_blank" : "_self";
+    return (
+      <DetailsLink
+        className="seeDetails"
+        to={`/product/${productId}`}
+        target={linkTarget}
+      >
+        დეტალური ინფორმაცია
+      </DetailsLink>
+    );
   };
 
   return (
@@ -101,13 +115,7 @@ const CardContent = () => {
                     </ProductDetails>
                   </div>
                   <div style={{ width: "100%" }}>
-                    <DetailsLink
-                      onClick={handlePageChange}
-                      className="seeDetails"
-                      to={`/product/${product._id}`}
-                    >
-                      დეტალური ინფორმაცია
-                    </DetailsLink>
+                    {handleDetailsLinkClick(Event, product._id)}
                   </div>
                 </Card>
               ))}
