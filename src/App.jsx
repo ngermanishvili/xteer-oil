@@ -1,20 +1,19 @@
-import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect, Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import MobileNavbar from "./components/Navbar/mobile/MobileNavbar";
-import Lottie from "react-lottie";
 import animationData from "./lotties/Animation.json";
 import Footer from "./components/Footer/Footer";
 import routes from "./routes";
 import styled from "styled-components";
 
 // Import your route components (no need to import routes again)
-const Home = React.lazy(() => import("./Pages/Home"));
-const AboutUs = React.lazy(() => import("./Pages/AboutUs/AboutUs"));
-const Contact = React.lazy(() => import("./Pages/Contact"));
-const ProductDetail = React.lazy(() => import("./Pages/Product"));
-const OilProductsList = React.lazy(() => import("./Pages/OilProductsList"));
+import Home from "./Pages/Home";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import Contact from "./Pages/Contact";
+import ProductDetail from "./Pages/Product";
+import OilProductsList from "./Pages/OilProductsList";
 
 const App = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -31,7 +30,7 @@ const App = () => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 4000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -43,11 +42,13 @@ const App = () => {
       <BrowserRouter>
         {/* Conditionally render the loading screen or the app content */}
         {isLoading ? (
-          <Lottie
-            style={{ marginTop: "10%" }}
-            options={defaultOptions}
-            height={400}
-            width={400}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "100vh",
+            }}
           />
         ) : (
           <>

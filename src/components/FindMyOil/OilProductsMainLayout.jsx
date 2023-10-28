@@ -1,17 +1,17 @@
 import React from "react";
-import {Layout, theme} from "antd";
+import { Layout, theme } from "antd";
 import CardContent from "./CardContent";
 import TabSelector from "./TabSelector";
 import DemoImg from "../../assets/banner.jpeg";
-import {Divider} from "antd";
+import { Divider } from "antd";
 
-const {Content} = Layout;
+const { Content } = Layout;
 const MainLayout = () => {
   const {
-    token: {colorBgContainer},
+    token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{marginTop: "2.5%"}}>
+    <Layout style={{ marginTop: "2.5%" }}>
       <Layout>
         <div
           id="part-1"
@@ -25,7 +25,7 @@ const MainLayout = () => {
             backgroundColor: "#f9f9f9",
           }}
         >
-          <img src={DemoImg} alt="asd" />
+          <img src={DemoImg} alt="Banner Image" />
         </div>
 
         <Content

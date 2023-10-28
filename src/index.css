@@ -179,7 +179,7 @@ body {
   height: 80px;
 }
 
-.backdrop-saturate-150 . {
+.backdrop-saturate-150 {
   padding: 0 2px;
   font-size: 47px;
 }
@@ -379,7 +379,7 @@ body {
 
 .overlay {
   position: absolute;
-  top: 0;
+  top: -30%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -394,4 +394,15 @@ body {
 .MuiBox-root .css-yhb49f {
   background-color: transparent;
   color: #fff;
+}
+
+/* Global Media for Text */
+@media (max-width: 500px) {
+}
+
+.logo-img {
+  width: 100px;
+  height: 100px;
+  height: auto;
+  object-fit: cover;
 }

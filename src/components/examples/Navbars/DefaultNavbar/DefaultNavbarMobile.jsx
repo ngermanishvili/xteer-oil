@@ -32,8 +32,13 @@ import MKTypography from "../../../../components/MKTypography";
 // Material Kit 2 React example components
 import DefaultNavbarDropdown from "../../../examples/Navbars/DefaultNavbar/DefaultNavbarDropdown";
 
-function DefaultNavbarMobile({ routes, open }) {
+function DefaultNavbarMobile({ routes, open, closeMobileNavbar }) {
   const [collapse, setCollapse] = useState("");
+
+  const handleRouteClick = (route) => {
+    // Call the closeMobileNavbar function to close the mobile navbar
+    closeMobileNavbar();
+  };
 
   const handleSetCollapse = (name) =>
     collapse === name ? setCollapse(false) : setCollapse(name);
