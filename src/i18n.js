@@ -11,13 +11,14 @@ i18n
     .use(initReactI18next)
     .init({
         fallbackLng: 'en',
-        debug: true,
+        debug: false,
         interpolation: {
             escapeValue: false,
         },
         backend: {
             loadPath: '/locales/{{lng}}/{{lng}}.json',
         },
+
     });
 
 export default i18n;

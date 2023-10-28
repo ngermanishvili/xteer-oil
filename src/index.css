@@ -8,6 +8,9 @@
   box-sizing: border-box;
   font-family: "Cairo", sans-serif;
 }
+body {
+  background-color: #f0f2f5;
+}
 
 .heading {
   color: white;
@@ -105,9 +108,12 @@
 .swiper {
   width: 100%;
   height: auto;
+  margin-top: 50px;
 }
 
 .swiper-slide {
+  border-radius: 10px;
+  padding: 10px 20px;
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -383,4 +389,9 @@
     0,
     0.5
   ); /* Adjust the 0.5 for the desired darkness */
+}
+
+.MuiBox-root .css-yhb49f {
+  background-color: transparent;
+  color: #fff;
 }

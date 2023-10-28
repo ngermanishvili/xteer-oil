@@ -8,6 +8,7 @@ import animationData from "./lotties/Animation.json";
 import Footer from "./components/Footer/Footer";
 import routes from "./routes";
 import styled from "styled-components";
+
 // Import your route components (no need to import routes again)
 const Home = React.lazy(() => import("./Pages/Home"));
 const AboutUs = React.lazy(() => import("./Pages/AboutUs/AboutUs"));
@@ -30,7 +31,7 @@ const App = () => {
     // Simulate a 5-second delay before setting isLoading to false
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 4000);
 
     return () => clearTimeout(timer);
   }, []);

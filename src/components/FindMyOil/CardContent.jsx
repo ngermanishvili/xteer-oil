@@ -1,18 +1,19 @@
-import React, {useEffect} from "react";
-import {dataStore} from "../../zustand/store";
-import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination} from "antd";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { Card, Pagination } from "antd";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const {Meta} = Card;
-import {searchStore} from "../../zustand/searchStore";
+const { Meta } = Card;
+import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import {useLocation} from "react-router-dom";
-import {SyncLoader} from "react-spinners";
+import { useLocation } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 import BasicSlider from "../demoSlider/DemoSlider";
 
 const CardContent = () => {
+  // if u want to see fetched items u need to use this hook and pass it to the component and hoook name is fetchData and it is in store.js and i cant see the items becouse i dont have access to the database so if u want to see the items u need to pass it to the component and use it foe example give me a code
   const fetchData = dataStore((state) => state.fetchData);
   const loading = dataStore((state) => state.loading);
   const currentTab = tabStore((state) => state.currentTab);
@@ -77,9 +78,9 @@ const CardContent = () => {
                 <Card
                   className="cards"
                   key={product._id}
-                  bodyStyle={{width: "100%"}}
+                  bodyStyle={{ width: "100%" }}
                 >
-                  <div style={{width: "100%", display: "flex"}}>
+                  <div style={{ width: "100%", display: "flex" }}>
                     <ProductImage>
                       <img
                         alt={product.productName}
@@ -99,7 +100,7 @@ const CardContent = () => {
                       </ViscosityList>
                     </ProductDetails>
                   </div>
-                  <div style={{width: "100%"}}>
+                  <div style={{ width: "100%" }}>
                     <DetailsLink
                       onClick={handlePageChange}
                       className="seeDetails"
