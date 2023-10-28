@@ -42,7 +42,7 @@ const CardContent = () => {
     setFilteredData();
     setTab("all");
   }, [location]);
-  console.log(productsToDisplay);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -114,7 +114,7 @@ const CardContent = () => {
                       </ViscosityList>
                     </ProductDetails>
                   </div>
-                  <div style={{width: "100%"}}>
+                  <div style={{ width: "100%" }}>
                     {handleDetailsLinkClick(Event, product._id)}
                   </div>
                 </Card>
