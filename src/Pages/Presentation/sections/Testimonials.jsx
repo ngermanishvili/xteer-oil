@@ -20,6 +20,9 @@ import MKTypography from "../../../components/MKTypography";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import XteerLogo from "../../../assets/images/examples/xteer-logo.png";
+import AminolLogo from "../../../assets/images/examples/aminol.png";
+import AzmolLogo from "../../../assets/images/examples/azmol.png";
 
 function Information() {
   const { t, i18n } = useTranslation();
@@ -36,10 +39,7 @@ function Information() {
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img
-                      src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png"
-                      alt="nike-air-shoe"
-                    />
+                    <img src={XteerLogo} alt="nike-air-shoe" />
                   </div>
 
                   <div className="contentBx">
@@ -50,7 +50,7 @@ function Information() {
                         Repudiandae, impedit.
                       </p>
                     </div>
-                    <Link to="/find-my-oil">დაათვალიერე</Link>
+                    <Link to="/find-my-oil">{t("SeeCatalog")}</Link>
                   </div>
                 </div>
               </div>
@@ -59,10 +59,7 @@ function Information() {
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img
-                      src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png"
-                      alt="nike-air-shoe"
-                    />
+                    <img src={AminolLogo} alt="nike-air-shoe" />
                   </div>
 
                   <div className="contentBx">
@@ -74,7 +71,7 @@ function Information() {
                       </p>
                     </div>
                     <a href="https://aminol.az/products" target="_blank">
-                      დაათვალიერე
+                      {t("SeeWebsite")}
                     </a>
                   </div>
                 </div>
@@ -85,21 +82,18 @@ function Information() {
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img
-                      src="https://www.hyundai-lube-me.com/wp-content/uploads/2020/02/logo-seo.png"
-                      alt="nike-air-shoe"
-                    />
+                    <img src={AzmolLogo} alt="nike-air-shoe" />
                   </div>
 
                   <div className="contentBx">
-                    <h2>ჰიუნდაი იქსტიერი</h2>
+                    <h2>{t("Azmol")}</h2>
                     <div className="color">
                       <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Repudiandae, impedit.
                       </p>
                     </div>
-                    <Link to="/find-my-oil">დაათვალიერე</Link>
+                    <Link to="/find-my-oil">{t("SeeWebsite")}</Link>
                   </div>
                 </div>
               </div>
