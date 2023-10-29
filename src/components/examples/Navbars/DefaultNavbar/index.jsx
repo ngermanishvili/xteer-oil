@@ -312,6 +312,7 @@ function DefaultNavbar({
     }
   );
 
+  // to change background color to white  of the dropdown navbar when burger is clicked i need to add this code to the div with the class name of "MuiPaper-root MuiMenu-paper MuiPopover-paper MuiPaper-elevation8 MuiPaper-rounded" in the index.html file: style="background-color: white !important;" and when i need to change navbar item color to black i need to add this code to the div with the class name of "MuiTypography-root MuiTypography-body1 MuiTypography-displayBlock MuiTypography-colorText" in the index.html file: style="color: black !important;"
   // Routes dropdown menu
   const dropdownMenu = (
     <Popper

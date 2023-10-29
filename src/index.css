@@ -392,6 +392,8 @@ body {
   ); /* Adjust the 0.5 for the desired darkness */
 }
 
+/* // burgerbar Styling */
+
 .MuiBox-root .css-yhb49f {
   background-color: transparent;
   color: #fff;
@@ -406,4 +408,26 @@ body {
   height: 100px;
   height: auto;
   object-fit: cover;
+}
+
+.MuiDrawer-paper .MuiList-root .MuiListItem-root .MuiTypography-root {
+  color: white !important;
+}
+.css-129xe1v-MuiTypography-root {
+  color: white !important;
+}
+.css-vib9bs {
+  flex-direction: column;
+  width: calc(100% + 1.625rem);
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: -16px;
+  opacity: 1;
+  background: transparent;
+  color: #344767;
+  border-radius: none;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
