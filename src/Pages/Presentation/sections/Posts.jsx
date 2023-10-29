@@ -11,8 +11,10 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import { Divider } from "antd";
 import MKTypography from "../../../components/MKTypography";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Places() {
+  const { t } = useTranslation();
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
 
@@ -54,12 +56,12 @@ function Places() {
           {" "}
           <Divider orientation="center">
             <MKTypography variant="h4" color="info" textGradient mb={2}>
-              პროდუქცია
+              {t("Production")}
             </MKTypography>
           </Divider>
           <BtnWrapper>
             <Link className="styledLink" to="/find-my-oil">
-              მოძებნე დეტალურად კატალოგიში
+              {t("FindDetailedProduct")}
             </Link>
           </BtnWrapper>
           <Grid container spacing={3}>
@@ -96,6 +98,7 @@ function Places() {
                             route: `/product/${item._id}`,
                             color: "info",
                             cursor: "pointer",
+                            label: t("ViewProduct"),
                           }}
                         />
                       </Grid>

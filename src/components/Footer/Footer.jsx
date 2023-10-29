@@ -1,43 +1,39 @@
 import PropTypes from "prop-types";
-// @mui material components
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-
-// @mui icons
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import PinterestIcon from "@mui/icons-material/Pinterest";
-import GitHubIcon from "@mui/icons-material/GitHub";
-
+import styled from "styled-components";
 // Material Kit 2 React components
 import MKBox from "../../components/MKBox";
 import MKTypography from "../../components/MKTypography";
+import { useTranslation } from "react-i18next";
+import Logo2 from "../../assets/images/examples/adobegentologo6.png";
 
 function Footer({ company, links, socials, light }) {
-  const { href, name } = company;
+  const { t } = useTranslation();
+  const { to, name } = company;
 
   const year = new Date().getFullYear();
 
-  const renderLinks = links.map((link) => (
+  const renderLinks = links.map((link, index) => (
     <MKTypography
-      key={link.name}
+      key={index} // Use index as a unique key
       component={Link}
-      href={link.href}
+      to={link.to}
       variant="body2"
       color={light ? "white" : "secondary"}
       fontWeight="regular"
     >
-      {link.name}
+      {t(link.name)}
     </MKTypography>
   ));
 
-  const renderSocials = socials.map((social) => (
+  const renderSocials = socials.map((social, index) => (
     <MKTypography
-      key={social.link}
+      key={index} // Use index as a unique key
       component={Link}
-      href={social.link}
+      to={social.to}
       variant="body2"
       color={light ? "white" : "secondary"}
       fontWeight="regular"
@@ -48,6 +44,9 @@ function Footer({ company, links, socials, light }) {
 
   return (
     <MKBox component="footer" py={6}>
+      <Wrapper>
+        <ImageWrapper src={Logo2} alt="gento" />
+      </Wrapper>
       <Grid container justifyContent="center">
         <Grid item xs={10} lg={8}>
           <Stack
@@ -74,16 +73,16 @@ function Footer({ company, links, socials, light }) {
         </Grid>
         <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
           <MKTypography variant="body2" color={light ? "white" : "secondary"}>
-            Gento Trading &copy; {year} All rights reserved.{" "}
+            {t("GentoTradingFooter")} &copy; {year} {t("AllRightsReserved")}
             <MKTypography
               component={Link}
-              href={href}
+              to={to}
               target="_blank"
               rel="noreferrer"
               variant="body2"
               color={light ? "white" : "secondary"}
             >
-              {name}
+              {t(name)}
             </MKTypography>
             .
           </MKTypography>
@@ -92,28 +91,22 @@ function Footer({ company, links, socials, light }) {
     </MKBox>
   );
 }
-
 // Setting default values for the props of CenteredFooter
 Footer.defaultProps = {
-  company: { href: "https://www.creative-tim.com/", name: "" },
+  company: { to: "/", name: "" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "მთავარი" },
+    { to: "/", name: "Main" },
     {
-      href: "https://www.creative-tim.com/presentation",
-      name: "ჩვენს შესახებ",
+      to: "/about",
+      name: "About us",
     },
-    { href: "https://www.creative-tim.com/presentation", name: "კონტაქტი" },
-    { href: "https://www.creative-tim.com/templates/react", name: "კატალოგი" },
+    { to: "/contact", name: "Contact" },
+    { to: "/find-my-oil", name: "Catalog" },
   ],
   socials: [
     {
       icon: <FacebookIcon fontSize="small" />,
-      link: "https://www.facebook.com/CreativeTim/",
-    },
-
-    {
-      icon: <InstagramIcon fontSize="small" />,
-      link: "https://www.instagram.com/creativetimofficial/",
+      to: "https://www.facebook.com/lukservice.ge/",
     },
   ],
   light: false,
@@ -128,3 +121,28 @@ Footer.propTypes = {
 };
 
 export default Footer;
+
+const Wrapper = styled.div`
+  display: flex;
+  position: relative;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const ImageWrapper = styled.img`
+  position: absolute;
+  top: -120px;
+  left: 2%;
+  width: 200px;
+
+  @media (max-width: 960px) {
+    position: static;
+    width: 100px;
+    position: absolute;
+    top: -120px;
+    margin-right: 10px;
+  }
+`;

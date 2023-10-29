@@ -11,7 +11,7 @@ import ScrollToTop from "./ScrollToTop/ScrollToTop";
 // Import your route components (no need to import routes again)
 import Home from "./Pages/Home";
 import AboutUs from "./Pages/AboutUs/AboutUs";
-import Contact from "./Pages/Contact";
+import Contact from "./Pages/ContactUs/Contact";
 import ProductDetail from "./Pages/Product";
 import OilProductsList from "./Pages/OilProductsList";
 
@@ -40,7 +40,7 @@ const App = () => {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <BrowserRouter>
-      <ScrollToTop />
+        <ScrollToTop />
         {/* Conditionally render the loading screen or the app content */}
         {isLoading ? (
           <div

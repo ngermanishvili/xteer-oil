@@ -7,7 +7,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Cairo", sans-serif;
+  font-size: 18px;
 }
+
 body {
   background-color: #f0f2f5;
 }
@@ -391,12 +393,13 @@ body {
   ); /* Adjust the 0.5 for the desired darkness */
 }
 
+/* // burgerbar Styling */
+
 .MuiBox-root .css-yhb49f {
   background-color: transparent;
   color: #fff;
 }
 
-/* Global Media for Text */
 @media (max-width: 500px) {
 }
 
@@ -405,4 +408,37 @@ body {
   height: 100px;
   height: auto;
   object-fit: cover;
+}
+
+.MuiDrawer-paper .MuiList-root .MuiListItem-root .MuiTypography-root {
+  color: white;
+}
+
+.css-129xe1v-MuiTypography-root {
+  /* color: white !important; */
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.css-vib9bs {
+  flex-direction: column;
+  width: calc(100% + 1.625rem);
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: -16px;
+  opacity: 1;
+  background: transparent;
+  color: #344767;
+  border-radius: none;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-pdfPagecanvas {
+  width: 340px !important;
+}
+.ant-btn .css-dev-only-do-not-override-pr0fja .ant-btn-primary {
+  color: #000;
 }

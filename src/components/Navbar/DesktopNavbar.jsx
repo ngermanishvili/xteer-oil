@@ -34,17 +34,21 @@ function DesktopNavbar({ routes }) {
   return (
     <MKBox
       style={{
-        position: "relative",
-        width: "100%",
+        borderRadius: "15px",
+        position: "fixed",
+        top: isNavVisible ? "4%" : "-100px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "90%",
         zIndex: 1000,
-        backgroundColor: "rgba(0, 0, 0, 0.9)",
+        transition: "top 0.3s",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
       }}
       variant="gradient"
       color="dark"
       shadow="sm"
-      transparent
+      transparent="true"
       py={0.25}
-      tra
     >
       <DefaultNavbar
         changeLanguage={changeLanguage}
@@ -59,10 +63,10 @@ function DesktopNavbar({ routes }) {
           label: "free download",
           color: "info",
         }}
-        transparent
         relative
         light
         center
+        transparent={true}
       >
         <img
           src={logoImage}
