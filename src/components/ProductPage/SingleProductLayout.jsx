@@ -57,7 +57,7 @@ const PdfDownloader = ({ productId }) => {
 export default PdfDownloader;
 const Bundler = styled.div`
   padding: 0px 50px;
-  margin-top: 8%;
+  margin-top: 12%;
   @media (max-width: 775px) {
     padding: 0px 0px;
   }
