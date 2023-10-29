@@ -98,6 +98,7 @@ function Places() {
                             route: `/product/${item._id}`,
                             color: "info",
                             cursor: "pointer",
+                            label: t("ViewProduct"),
                           }}
                         />
                       </Grid>

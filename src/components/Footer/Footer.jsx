@@ -12,28 +12,28 @@ import Logo2 from "../../assets/images/examples/adobegentologo6.png";
 
 function Footer({ company, links, socials, light }) {
   const { t } = useTranslation();
-  const { to, name } = company; // Change href to to
+  const { to, name } = company;
 
   const year = new Date().getFullYear();
 
-  const renderLinks = links.map((link) => (
+  const renderLinks = links.map((link, index) => (
     <MKTypography
-      key={link.name}
-      component={Link} // Change component to Link
-      to={link.to} // Change href to to
+      key={index} // Use index as a unique key
+      component={Link}
+      to={link.to}
       variant="body2"
       color={light ? "white" : "secondary"}
       fontWeight="regular"
     >
-      {t(link.name)} {/* Translate the link name */}
+      {t(link.name)}
     </MKTypography>
   ));
 
-  const renderSocials = socials.map((social) => (
+  const renderSocials = socials.map((social, index) => (
     <MKTypography
-      key={social.link}
-      component={Link} // Change component to Link
-      to={social.to} // Change href to to
+      key={index} // Use index as a unique key
+      component={Link}
+      to={social.to}
       variant="body2"
       color={light ? "white" : "secondary"}
       fontWeight="regular"
@@ -75,14 +75,14 @@ function Footer({ company, links, socials, light }) {
           <MKTypography variant="body2" color={light ? "white" : "secondary"}>
             {t("GentoTradingFooter")} &copy; {year} {t("AllRightsReserved")}
             <MKTypography
-              component={Link} // Change component to Link
-              to={to} // Change href to to
+              component={Link}
+              to={to}
               target="_blank"
               rel="noreferrer"
               variant="body2"
               color={light ? "white" : "secondary"}
             >
-              {t(name)} {/* Translate the company name */}
+              {t(name)}
             </MKTypography>
             .
           </MKTypography>
@@ -91,7 +91,6 @@ function Footer({ company, links, socials, light }) {
     </MKBox>
   );
 }
-
 // Setting default values for the props of CenteredFooter
 Footer.defaultProps = {
   company: { to: "/", name: "" },

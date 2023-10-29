@@ -68,10 +68,11 @@ const Home = () => {
       >
         <Testimonials />
         <Divider orientation="left">
-          <MKTypography variant="h4" color="alert" textGradient mb={-10}>
+          <MKTypography variant="h4" color="warning" textGradient mb={-10}>
             {t("PartnerCompanies")}
           </MKTypography>
         </Divider>
+
         <Companies />
         {/* <Download /> */}
 

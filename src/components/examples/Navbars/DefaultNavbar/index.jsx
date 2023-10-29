@@ -38,12 +38,10 @@ import Logo from "../../../../assets/images/examples/adobegentologo5.png";
 // Material Kit 2 React components
 import MKBox from "../../../MKBox";
 import MKTypography from "../../../MKTypography";
-import MKButton from "../../../MKButton";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
 } from "@nextui-org/react";
 
@@ -592,6 +590,8 @@ function DefaultNavbar({
     </Container>
   );
 }
+
+// If you want to write it to the DOM, pass a string instead: transparent="true" or transparent={value.toString()}. to fix the error: Warning: Received `true` for a non-boolean attribute `transparent`. for example in src/Pages/Home.jsx: <DefaultNavbar transparent="true" /> or <DefaultNavbar transparent={value.toString()} />
 
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {

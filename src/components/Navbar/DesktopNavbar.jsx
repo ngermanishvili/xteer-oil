@@ -47,9 +47,8 @@ function DesktopNavbar({ routes }) {
       variant="gradient"
       color="dark"
       shadow="sm"
-      transparent
+      transparent="true"
       py={0.25}
-      tra
     >
       <DefaultNavbar
         changeLanguage={changeLanguage}
@@ -64,10 +63,10 @@ function DesktopNavbar({ routes }) {
           label: "free download",
           color: "info",
         }}
-        transparent
         relative
         light
         center
+        transparent={true}
       >
         <img
           src={logoImage}
