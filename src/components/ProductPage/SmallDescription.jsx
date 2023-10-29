@@ -4,6 +4,7 @@ import { Button } from "antd";
 import DownloadPds from "./DownloadPds";
 import { useTranslation } from "react-i18next";
 import MKTypography from "../../components/MKTypography";
+import { Divider } from "antd";
 
 const SmallDescription = ({ data }) => {
   const { t } = useTranslation();
@@ -11,17 +12,30 @@ const SmallDescription = ({ data }) => {
     <>
       <Container>
         <MKTypography variant="body2">
-          <MKTypography variant="h4"> {t("ProductName")}</MKTypography>{" "}
+          <MKTypography variant="p">
+            {" "}
+            {t("ProductName")} &nbsp;:&nbsp;&nbsp;&nbsp;
+          </MKTypography>
           {data?.productName}
         </MKTypography>
+        <Divider />
+
         <MKTypography variant="body2">
-          <MKTypography variant="h4"> {t("Category")} </MKTypography>
+          <MKTypography variant="p" color="info">
+            {t("Category")}&nbsp; :&nbsp;&nbsp;&nbsp;{" "}
+          </MKTypography>
           {data?.category}
         </MKTypography>
+        <Divider />
+
         <MKTypography variant="body2">
-          <MKTypography variant="h4"> {t("ProductLine")} </MKTypography>
+          <MKTypography variant="p">
+            {t("ProductLine")}&nbsp;:&nbsp;&nbsp;&nbsp;
+          </MKTypography>
           {data?.productLine}
         </MKTypography>
+        <Divider />
+
         <MKTypography variant="body2">{data?.description}</MKTypography>
         <div style={{ display: "flex", gap: "20px", flexDirection: "row" }}>
           <MKTypography
@@ -39,6 +53,7 @@ const SmallDescription = ({ data }) => {
             {" "}
             {t("PackageSizes")}
           </MKTypography>
+
           {data?.packageSizes.map((item) => (
             <div key={item}>
               <Button size="middle" type="primary">
@@ -47,7 +62,6 @@ const SmallDescription = ({ data }) => {
             </div>
           ))}
         </div>
-        <DownloadPds data={data} />
       </Container>
     </>
   );

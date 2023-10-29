@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button } from "antd";
 const mainColor = "rgb(57, 68, 116)";
 import { useTranslation } from "react-i18next";
+import DownloadPds from "./DownloadPds";
 const Specifications = ({ data }) => {
   const { t } = useTranslation();
   const specs = data?.specs;
@@ -71,6 +72,7 @@ const Specifications = ({ data }) => {
         <div className="SpecKeys">{renderSpecsKeys()}</div>
         <div className="ValuesWrapper">{renderSpecsValues()}</div>
       </div>
+      <DownloadPds data={data} />
     </Container>
   );
 };

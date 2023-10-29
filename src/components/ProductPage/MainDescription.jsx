@@ -1,68 +1,54 @@
+import { Divider } from "antd";
 import React from "react";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
-import MKTypography from "../../components/MKTypography";
+import DownloadPds from "./DownloadPds";
 
 const MainDescription = ({ data }) => {
-  const { t } = useTranslation();
   return (
     <Container>
-      <div className="divider" />
       <div className="headerWrapper">
-        <MKTypography
-          variant="h2"
-          style={{ alignSelf: "center", color: "black" }}
-        >
+        <h2 style={{ alignSelf: "center", color: "black" }}>
           {data?.productName}
-        </MKTypography>
-        <MKTypography variant="body2" style={{ alignSelf: "center" }}>
-          {data?.description}
-        </MKTypography>
+        </h2>
+        <p style={{ alignSelf: "center" }}>{data?.description}</p>
       </div>
+      <Divider />
+
       <div>
-        <MKTypography variant="body4" className="headings">
-          {t("Applications")}
-        </MKTypography>
+        <span className="headings">Applications:</span>
         <ul className="listWrapper">
           {data?.applications?.map((item) => (
-            <MKTypography
-              variant="body2"
-              className="listItems"
-              style={{ listStyle: "inside" }}
-            >
+            <li className="listItems" style={{ listStyle: "inside" }}>
               {item}
-            </MKTypography>
+            </li>
           ))}
         </ul>
       </div>
+      <Divider />
+
       <div>
-        <span className="headings">{t("CertsAndApps")}</span>
+        <span className="headings">Certifications And Application:</span>
         <ul className="listWrapper">
           {data?.certsAndApps?.map((item) => (
-            <MKTypography
-              variant="body2"
-              className="listItems"
-              style={{ listStyle: "inside" }}
-            >
+            <li className="listItems" style={{ listStyle: "inside" }}>
               {item}
-            </MKTypography>
+            </li>
           ))}
         </ul>
       </div>
+      <Divider />
+
       <div>
-        <span className="headings">{t("FeaturesAndBenefits")}</span>
+        <span className="headings">Features And Benefits</span>
         <ul className="listWrapper">
           {data?.featuresAndBenefits?.map((item) => (
-            <MKTypography
-              variant="body2"
-              className="listItems"
-              style={{ listStyle: "inside" }}
-            >
+            <li className="listItems" style={{ listStyle: "inside" }}>
               {item}
-            </MKTypography>
+            </li>
           ))}
         </ul>
       </div>
+      <Divider />
     </Container>
   );
 };
@@ -79,7 +65,6 @@ const Container = styled.div`
   .divider {
     @media (max-width: 1160px) {
       margin-top: 30px;
-      background-color: dodgerblue;
     }
     margin: 0 auto;
     width: 60%;

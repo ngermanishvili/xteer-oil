@@ -9,6 +9,7 @@
   font-family: "Cairo", sans-serif;
   font-size: 18px;
 }
+
 body {
   background-color: #f0f2f5;
 }
@@ -410,8 +411,7 @@ body {
 }
 
 .MuiDrawer-paper .MuiList-root .MuiListItem-root .MuiTypography-root {
-  color: white !important;
-  font-size: 21px;
+  color: white;
 }
 .css-129xe1v-MuiTypography-root {
   color: white !important;
