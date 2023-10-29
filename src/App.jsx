@@ -40,7 +40,7 @@ const App = () => {
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >
       <BrowserRouter>
-      <ScrollToTop />
+        <ScrollToTop />
         {/* Conditionally render the loading screen or the app content */}
         {isLoading ? (
           <div

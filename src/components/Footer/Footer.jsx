@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import FacebookIcon from "@mui/icons-material/Facebook";
-
+import styled from "styled-components";
 // Material Kit 2 React components
 import MKBox from "../../components/MKBox";
 import MKTypography from "../../components/MKTypography";
 import { useTranslation } from "react-i18next";
+import Logo2 from "../../assets/images/examples/adobegentologo6.png";
 
 function Footer({ company, links, socials, light }) {
   const { t } = useTranslation();
@@ -43,6 +44,9 @@ function Footer({ company, links, socials, light }) {
 
   return (
     <MKBox component="footer" py={6}>
+      <Wrapper>
+        <ImageWrapper src={Logo2} alt="gento" />
+      </Wrapper>
       <Grid container justifyContent="center">
         <Grid item xs={10} lg={8}>
           <Stack
@@ -118,3 +122,28 @@ Footer.propTypes = {
 };
 
 export default Footer;
+
+const Wrapper = styled.div`
+  display: flex;
+  position: relative;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const ImageWrapper = styled.img`
+  position: absolute;
+  top: -120px;
+  left: 2%;
+  width: 200px;
+
+  @media (max-width: 960px) {
+    position: static;
+    width: 100px;
+    position: absolute;
+    top: -120px;
+    margin-right: 10px;
+  }
+`;
