@@ -28,7 +28,7 @@ const DownloadPds = ({ data }) => {
 
   return (
     <Container>
-      <span>PDF:</span>
+      {data?.pdfUrls[0] ? <span>PDF:</span> : ""}
       <br />
       <ul style={{ display: "flex", gap: "20px" }}>
         {data?.pdfUrls?.map((pds) => {
@@ -55,10 +55,11 @@ const DownloadPds = ({ data }) => {
           onOk={handleOk}
           onCancel={handleCancel}
           width={800}
+          title="დეტალური ინფორმაცია"
           okButtonProps={{
             style: {
               /* display: "none", მგონი ზედმეტია ქენსელიც და ოქეიც თუ აღარ გვენდომება ოქეი ამოშალე კომენტარი ლომო */
-              color: "black",
+              color: "rgb(31,31,31)",
               border: "1px solid rgb(217, 217, 217)",
             },
           }}

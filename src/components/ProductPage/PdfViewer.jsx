@@ -19,7 +19,7 @@ const PdfViewer = ({ pdfUrl }) => {
           <Page
             className="w-full max-w-screen-md mx-auto"
             devicePixelRatio={2}
-            scale={isMobile ? 0.6 : 1.2}
+            scale={isMobile ? 0.57 : 1.2}
             renderAnnotationLayer={false}
             renderTextLayer={false}
             key={`page_${index + 1}`}
