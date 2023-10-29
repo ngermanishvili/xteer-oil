@@ -413,11 +413,13 @@ body {
 .MuiDrawer-paper .MuiList-root .MuiListItem-root .MuiTypography-root {
   color: white;
 }
+
 .css-129xe1v-MuiTypography-root {
-  color: white !important;
+  /* color: white !important; */
   font-size: 21px;
   font-weight: 800;
 }
+
 .css-vib9bs {
   flex-direction: column;
   width: calc(100% + 1.625rem);

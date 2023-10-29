@@ -34,8 +34,6 @@ import { Button } from "@nextui-org/react";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import Logo from "../../../../assets/images/examples/adobegentologo5.png";
-
-// Material Kit 2 React components
 import MKBox from "../../../MKBox";
 import MKTypography from "../../../MKTypography";
 import {
@@ -45,12 +43,8 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 
-// Material Kit 2 React example components
-
 import DefaultNavbarDropdown from "../DefaultNavbar/DefaultNavbarDropdown";
 import DefaultNavbarMobile from "../DefaultNavbar/DefaultNavbarMobile";
-
-// Material Kit 2 React base styles
 import breakpoints from "../../../../assets/theme/base/breakpoints";
 
 function DefaultNavbar({
@@ -86,9 +80,9 @@ function DefaultNavbar({
         setMobileNavbar(false);
       }
     }
-
     window.addEventListener("resize", displayMobileNavbar);
     displayMobileNavbar();
+
     // Remove event listener on cleanup
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
@@ -305,8 +299,6 @@ function DefaultNavbar({
     }
   );
 
-  // to change background color to white  of the dropdown navbar when burger is clicked i need to add this code to the div with the class name of "MuiPaper-root MuiMenu-paper MuiPopover-paper MuiPaper-elevation8 MuiPaper-rounded" in the index.html file: style="background-color: white !important;" and when i need to change navbar item color to black i need to add this code to the div with the class name of "MuiTypography-root MuiTypography-body1 MuiTypography-displayBlock MuiTypography-colorText" in the index.html file: style="color: black !important;"
-  // Routes dropdown menu
   const dropdownMenu = (
     <Popper
       anchorEl={dropdown}
