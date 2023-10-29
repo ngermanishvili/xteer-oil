@@ -42,7 +42,7 @@ function DesktopNavbar({ routes }) {
         width: "90%",
         zIndex: 1000,
         transition: "top 0.3s",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
       }}
       variant="gradient"
       color="dark"
