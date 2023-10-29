@@ -399,7 +399,6 @@ body {
   color: #fff;
 }
 
-/* Global Media for Text */
 @media (max-width: 500px) {
 }
 
@@ -412,6 +411,7 @@ body {
 
 .MuiDrawer-paper .MuiList-root .MuiListItem-root .MuiTypography-root {
   color: white !important;
+  font-size: 21px;
 }
 .css-129xe1v-MuiTypography-root {
   color: white !important;
