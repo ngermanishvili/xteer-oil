@@ -3,25 +3,42 @@ import styled from "styled-components";
 import { Button } from "antd";
 import DownloadPds from "./DownloadPds";
 import { useTranslation } from "react-i18next";
+import MKTypography from "../../components/MKTypography";
+
 const SmallDescription = ({ data }) => {
   const { t } = useTranslation();
   return (
     <>
       <Container>
-        <h2>
-          <span> {t("ProductName")}</span> {data?.productName}
-        </h2>
-        <h3>
-          <span> {t("Category")} </span>
+        <MKTypography variant="body2">
+          <MKTypography variant="h4"> {t("ProductName")}</MKTypography>{" "}
+          {data?.productName}
+        </MKTypography>
+        <MKTypography variant="body2">
+          <MKTypography variant="h4"> {t("Category")} </MKTypography>
           {data?.category}
-        </h3>
-        <h2>
-          <span> {t("ProductLine")} </span>
+        </MKTypography>
+        <MKTypography variant="body2">
+          <MKTypography variant="h4"> {t("ProductLine")} </MKTypography>
           {data?.productLine}
-        </h2>
-        <p>{data?.description}</p>
+        </MKTypography>
+        <MKTypography variant="body2">{data?.description}</MKTypography>
         <div style={{ display: "flex", gap: "20px", flexDirection: "row" }}>
-          <span> {t("PackageSizes")}</span>
+          <MKTypography
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              ml: 0.375,
+
+              "& .material-icons-round": {
+                ml: -0.375,
+              },
+            }}
+            variant="body2"
+          >
+            {" "}
+            {t("PackageSizes")}
+          </MKTypography>
           {data?.packageSizes.map((item) => (
             <div key={item}>
               <Button size="middle" type="primary">
@@ -42,14 +59,16 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 25px;
-  margin: 0 auto;
+  gap: 20px;
+  margin: 0 20px;
   margin-bottom: 30px;
   color: #555;
+
   @media (max-width: 1160px) {
     margin-bottom: 0px;
   }
   span {
+    gap: 20;
     color: black;
     font-weight: 800;
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import MKTypography from "../../components/MKTypography";
 
 const MainDescription = ({ data }) => {
   const { t } = useTranslation();
@@ -8,18 +9,29 @@ const MainDescription = ({ data }) => {
     <Container>
       <div className="divider" />
       <div className="headerWrapper">
-        <h2 style={{ alignSelf: "center", color: "black" }}>
+        <MKTypography
+          variant="h2"
+          style={{ alignSelf: "center", color: "black" }}
+        >
           {data?.productName}
-        </h2>
-        <p style={{ alignSelf: "center" }}>{data?.description}</p>
+        </MKTypography>
+        <MKTypography variant="body2" style={{ alignSelf: "center" }}>
+          {data?.description}
+        </MKTypography>
       </div>
       <div>
-        <span className="headings">{t("Applications")}</span>
+        <MKTypography variant="body4" className="headings">
+          {t("Applications")}
+        </MKTypography>
         <ul className="listWrapper">
           {data?.applications?.map((item) => (
-            <li className="listItems" style={{ listStyle: "inside" }}>
+            <MKTypography
+              variant="body2"
+              className="listItems"
+              style={{ listStyle: "inside" }}
+            >
               {item}
-            </li>
+            </MKTypography>
           ))}
         </ul>
       </div>
@@ -27,9 +39,13 @@ const MainDescription = ({ data }) => {
         <span className="headings">{t("CertsAndApps")}</span>
         <ul className="listWrapper">
           {data?.certsAndApps?.map((item) => (
-            <li className="listItems" style={{ listStyle: "inside" }}>
+            <MKTypography
+              variant="body2"
+              className="listItems"
+              style={{ listStyle: "inside" }}
+            >
               {item}
-            </li>
+            </MKTypography>
           ))}
         </ul>
       </div>
@@ -37,9 +53,13 @@ const MainDescription = ({ data }) => {
         <span className="headings">{t("FeaturesAndBenefits")}</span>
         <ul className="listWrapper">
           {data?.featuresAndBenefits?.map((item) => (
-            <li className="listItems" style={{ listStyle: "inside" }}>
+            <MKTypography
+              variant="body2"
+              className="listItems"
+              style={{ listStyle: "inside" }}
+            >
               {item}
-            </li>
+            </MKTypography>
           ))}
         </ul>
       </div>

@@ -39,7 +39,7 @@ function Information() {
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img src={XteerLogo} alt="nike-air-shoe" />
+                    <img src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png" />
                   </div>
 
                   <div className="contentBx">

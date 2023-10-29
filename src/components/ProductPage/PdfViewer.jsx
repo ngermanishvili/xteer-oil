@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 
-const PdfViewer = ({pdfUrl}) => {
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+const PdfViewer = ({ pdfUrl }) => {
+  const [numPages, setNumPages] = useState(null);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
   return (
-    <iframe
-      title="PDF Viewer"
-      src={pdfUrl}
-      width="100%"
-      height="500px" // You can adjust the height as needed
-    ></iframe>
+    <div>
+      <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+        {Array.from(new Array(numPages), (el, index) => (
+          <Page key={`page_${index + 1}`} pageNumber={index + 1} width={300} />
+        ))}
+      </Document>
+    </div>
   );
 };
 

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Modal } from "antd";
+import { Divider, Modal } from "antd";
 import styled from "styled-components";
 import { FcDownload } from "react-icons/fc";
 import { BsEye } from "react-icons/bs";
 import PdfViewer from "./PdfViewer";
+import MKTypography from "../MKTypography";
 
 const DownloadPds = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,37 +28,73 @@ const DownloadPds = ({ data }) => {
   };
 
   return (
-    <Container>
-      <span>PDF:</span>
-      <br />
-      <ul style={{ display: "flex", gap: "20px" }}>
-        {data?.pdfUrls?.map((pds) => {
-          const { viscosityGrade, pdsUrl } = pds;
-          return (
-            <li key={viscosityGrade}>
-              <div className="buttonWrapper">
-                <p>{viscosityGrade}</p>
-                <button className="download-button">
-                  <span style={{ color: "#3d3c3c" }}>Download</span>{" "}
-                  <FcDownload />
-                </button>
-                <button onClick={() => openPdf(pdsUrl)} className="view-button">
-                  <span style={{ color: "#3d3c3c" }}>View</span> <BsEye />
-                </button>
-                <Modal
-                  title="დეტალური ინფორმაცია"
-                  open={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                >
-                  {selectedPdfUrl && <PdfViewer pdfUrl={selectedPdfUrl} />}
-                </Modal>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </Container>
+    <>
+      <Divider />
+      <MKTypography color="info" variant="h6">
+        პროდუქტის PDS ფაილი
+      </MKTypography>
+      <Container>
+        <br />
+        <ul style={{ display: "flex" }}>
+          {data?.pdfUrls?.map((pds) => {
+            const { viscosityGrade, pdsUrl } = pds;
+            return (
+              <li key={viscosityGrade}>
+                <div className="buttonWrapper">
+                  <p>{viscosityGrade}</p>
+                </div>
+
+                <div className="button-flex">
+                  <a
+                    className="download-button"
+                    href={pdsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span
+                      style={{
+                        fontWeight: "400",
+                        fontSize: "16px",
+                        color: "#3d3c3c",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Download
+                    </span>
+
+                    <FcDownload />
+                  </a>
+                  <button
+                    onClick={() => openPdf(pdsUrl)}
+                    className="view-button"
+                  >
+                    <span
+                      style={{
+                        fontWeight: "400",
+                        fontSize: "16px",
+                        color: "#3d3c3c",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      View
+                    </span>{" "}
+                    <BsEye />
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        <Modal
+          title="დეტალური ინფორმაცია"
+          visible={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          {selectedPdfUrl && <PdfViewer pdfUrl={selectedPdfUrl} />}
+        </Modal>
+      </Container>
+    </>
   );
 };
 
@@ -68,14 +105,26 @@ const Container = styled.div`
   overflow-x: auto;
   gap: 10px;
   .buttonWrapper {
-    width: 150px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
   }
+  .button-flex {
+    display: flex;
+    width: 100%;
+    min-width: 400px;
+    gap: 10px;
+  }
+  @media (max-width: 768px) {
+    .button-flex {
+      flex-direction: column;
+      min-width: 150px;
+    }
+  }
   @media (max-width: 1542px) {
-    overflow-x: scroll; // Use scroll instead of auto for screens below 870px
+    overflow-x: auto;
   }
   li {
     margin-left: 15px;
