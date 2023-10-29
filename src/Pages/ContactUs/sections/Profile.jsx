@@ -26,7 +26,6 @@ function Profile() {
         backgroundColor: "#424242",
         height: "150px",
       }}
-      bgColor="dark"
       component="section"
       py={{ xs: 6, sm: 12, md: 15 }}
     >

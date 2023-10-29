@@ -12,31 +12,23 @@ const Contact = () => {
   return (
     <>
       <ContactContainer>
-        <MKBox bgColor="white">
-          <MKBox
-            minHeight="10rem"
-            width="100%"
-            sx={{
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              display: "grid",
-              placeItems: "center",
-            }}
-          />
+        <MKBox bgColor="transparent">
           <Card
             sx={{
               p: 2,
               mx: { xs: 2, lg: 3 },
-              mt: -8,
+              mt: 7,
               mb: 4,
               backgroundColor: ({ palette: { white }, functions: { rgba } }) =>
                 rgba(white.main, 0.8),
               backdropFilter: "saturate(200%) blur(30px)",
               boxShadow: ({ boxShadows: { xxl } }) => xxl,
             }}
-          >
-            <Profile />
-          </Card>
+          ></Card>
+          <Profile />
+          <div style={{ backgroundColor: "white" }}>
+            <Companies />
+          </div>
         </MKBox>
         <ImageContainer>
           <ContactInfo>
@@ -76,9 +68,7 @@ const Contact = () => {
             </GoogleMapContainer>
           </ContactInfo>
         </ImageContainer>
-        <CompaniesSliderContainer>
-          <Companies />
-        </CompaniesSliderContainer>
+        <CompaniesSliderContainer></CompaniesSliderContainer>
       </ContactContainer>
     </>
   );
