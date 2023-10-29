@@ -435,3 +435,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.react-pdfPagecanvas {
+  width: 340px !important;
+}
+.ant-btn .css-dev-only-do-not-override-pr0fja .ant-btn-primary {
+  color: #000;
+}

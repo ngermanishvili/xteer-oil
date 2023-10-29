@@ -66,6 +66,7 @@ const DownloadPds = ({ data }) => {
                     <span style={{ color: "#3d3c3c" }}>View</span> <BsEye />
                   </button>
                   <Modal
+                    width={750}
                     title="დეტალური ინფორმაცია"
                     open={isModalOpen}
                     onOk={handleOk}
