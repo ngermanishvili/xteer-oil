@@ -31,7 +31,6 @@ const Specifications = ({ data }) => {
     }
 
     const valueItemKeys = Object.entries(specs).map(([key, values]) => {
-      console.log(values);
       const valueButtons = values.map((item, index) => {
         if (item !== "-") {
           return (

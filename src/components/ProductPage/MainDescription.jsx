@@ -15,7 +15,11 @@ const MainDescription = ({ data }) => {
         <span className="headings">Applications:</span>
         <ul className="listWrapper">
           {data?.applications?.map((item) => (
-            <li className="listItems" style={{ listStyle: "inside" }}>
+            <li
+              key={item}
+              className="listItems"
+              style={{ listStyle: "inside" }}
+            >
               {item}
             </li>
           ))}
@@ -25,7 +29,11 @@ const MainDescription = ({ data }) => {
         <span className="headings">Certifications And Application:</span>
         <ul className="listWrapper">
           {data?.certsAndApps?.map((item) => (
-            <li className="listItems" style={{ listStyle: "inside" }}>
+            <li
+              key={item}
+              className="listItems"
+              style={{ listStyle: "inside" }}
+            >
               {item}
             </li>
           ))}
@@ -35,7 +43,11 @@ const MainDescription = ({ data }) => {
         <span className="headings">Features And Benefits</span>
         <ul className="listWrapper">
           {data?.featuresAndBenefits?.map((item) => (
-            <li className="listItems" style={{ listStyle: "inside" }}>
+            <li
+              key={item}
+              className="listItems"
+              style={{ listStyle: "inside" }}
+            >
               {item}
             </li>
           ))}
