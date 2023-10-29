@@ -85,7 +85,7 @@ const UpperWrapper = styled.div`
   .imageWrapper {
     width: 40%;
     @media (max-width: 768px) {
-      width: 60%;
+      width: 100%;
     }
   }
   .smallDescriptionWrapper {

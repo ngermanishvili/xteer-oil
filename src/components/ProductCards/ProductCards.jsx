@@ -124,7 +124,7 @@ function ProductCards() {
   return (
     <Card>
       <div className="heading-content">
-        <h2>hyundai xteer</h2>
+  
       </div>
       <div className="photo">
         <img

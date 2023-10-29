@@ -1,19 +1,3 @@
-/* import React from "react";
-
-const PdfViewer = ({pdfUrl}) => {
-  return (
-    <iframe
-      title="PDF Viewer"
-      src={pdfUrl}
-      width="100%"
-      height="500px"
-    ></iframe>
-  );
-};
-
-export default PdfViewer;
- */
-
 import React, { useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -24,7 +8,7 @@ const PdfViewer = ({ pdfUrl }) => {
   return (
     <div>
       <Document file={pdfUrl}>
-        <Page pageNumber={1} width={300} />
+        <Page pageNumber={1} width={300} renderTextLayer={false} />
       </Document>
     </div>
   );

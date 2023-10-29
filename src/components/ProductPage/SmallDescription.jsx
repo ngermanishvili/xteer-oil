@@ -7,7 +7,7 @@ const SmallDescription = ({ data }) => {
     <>
       <Container>
         <h2>
-          <span>Product Name :</span> {data?.productName}
+          <span>Product :</span> {data?.productName}
         </h2>
         <h3>
           <span>Category : </span>
@@ -49,7 +49,7 @@ const Container = styled.div`
   }
   span {
     color: black;
-    font-weight: 800;
+    font-weight: 700;
   }
   @media (max-width: 1160px) {
     font-size: 18px;
