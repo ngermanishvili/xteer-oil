@@ -18,12 +18,13 @@ const PdfViewer = ({ pdfUrl }) => {
         {Array.from(new Array(numPages), (el, index) => (
           <Page
             className="w-full max-w-screen-md mx-auto"
-            devicePixelRatio={1.3}
+            devicePixelRatio={1}
             scale={isMobile ? 0.6 : 1.2}
             renderAnnotationLayer={false}
             renderTextLayer={false}
             key={`page_${index + 1}`}
             pageNumber={index + 1}
+            renderMode="canvas"
           />
         ))}
       </Document>
