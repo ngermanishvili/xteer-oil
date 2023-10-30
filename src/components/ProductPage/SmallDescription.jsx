@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "antd";
-import { useTranslation } from "react-i18next";
+import {Button} from "antd";
+import {useTranslation} from "react-i18next";
 
 import DownloadPds from "./DownloadPds";
-const SmallDescription = ({ data }) => {
-  const { t } = useTranslation();
+const SmallDescription = ({data}) => {
+  const {t} = useTranslation();
   return (
     <>
       <Container>
@@ -21,17 +21,28 @@ const SmallDescription = ({ data }) => {
           {data?.productLine}
         </h2>
         <p>{data?.description}</p>
-        <div style={{ display: "flex", gap: "20px", flexDirection: "row" }}>
-          <span>
+        <div style={{display: "flex", gap: "20px", flexDirection: "row"}}>
+          <span style={{minWidth: "130px"}}>
             <b>{t("PackageSizes")}&nbsp; :&nbsp;</b>
           </span>
-          {data?.packageSizes.map((item) => (
-            <div key={item}>
-              <Button size="middle" type="primary">
-                {item}
-              </Button>
-            </div>
-          ))}
+          <div
+            style={{
+              display: "flex",
+              gap: "20px",
+              flexDirection: "row",
+              flexWrap: "nowrap",
+              overflowX: "auto",
+              overflowY: "hidden",
+            }}
+          >
+            {data?.packageSizes.map((item) => (
+              <div key={item}>
+                <Button size="middle" type="primary">
+                  {item}
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
         <DownloadPds data={data} />
       </Container>
