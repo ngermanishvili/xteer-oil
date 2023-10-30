@@ -22,7 +22,7 @@ const SmallDescription = ({ data }) => {
       </h2>
       <p>{data?.description}</p>
       <FlexContainer>
-        <SpanMinWidth>{t("PackageSizes")}&nbsp; :</SpanMinWidth>
+        <span className="packageSize">{t("PackageSizes")}&nbsp; :</span>
         <PackageSizesContainer>
           {data?.packageSizes.map((item) => (
             <div key={item}>
@@ -37,10 +37,7 @@ const SmallDescription = ({ data }) => {
     </Container>
   );
 };
-const SpanMinWidth = styled.span`
-  min-width: 155px !important;
-  font-size: 17px;
-`;
+
 const Container = styled.div`
   width: 100%;
   font-size: 18px;
@@ -70,6 +67,14 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  .packageSize {
+    min-width: 155px !important;
+    font-size: 18px;
+    @media (max-width: 450px) {
+      min-width: 155px !important;
+      font-size: 17px;
+    }
+  }
 `;
 
 const PackageSizesContainer = styled.div`
