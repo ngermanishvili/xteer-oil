@@ -237,6 +237,12 @@ body {
     top: 70%;
   }
 }
+@media screen and (min-width: 370px) {
+  .container .card:after {
+    font-size: 4em;
+    top: 70%;
+  }
+}
 @media screen and (max-width: 1024px) {
   .container .card:after {
     font-size: 5em;

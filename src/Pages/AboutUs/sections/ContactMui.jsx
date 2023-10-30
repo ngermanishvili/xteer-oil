@@ -11,8 +11,8 @@ import Companies from "../../../components/Companies/Companies";
 
 function ContactMui() {
   return (
-    <MKBox>
-      <Wrapper>
+    <Wrapper>
+      <MKBox>
         <Grid container item>
           <MKBox
             width="100%"
@@ -165,8 +165,8 @@ function ContactMui() {
             </Grid>
           </MKBox>
         </Grid>
-      </Wrapper>
-    </MKBox>
+      </MKBox>
+    </Wrapper>
   );
 }
 

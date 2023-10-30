@@ -17,5 +17,24 @@ export default AboutUs;
 const Wrapper = styled.div`
   width: 100%;
   height: auto;
-  margin-top: 8%;
+  margin-top: 10%;
+
+  @media (max-width: 1200px) {
+    margin-top: 12%;
+  }
+
+  @media (max-width: 1000px) {
+    margin-top: 12%;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 15%;
+  }
+
+  @media (max-width: 420px) {
+    margin-top: 20%;
+  }
+  @media (max-width: 420px) {
+    margin-top: 20%;
+  }
 `;

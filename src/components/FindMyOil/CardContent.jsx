@@ -1,12 +1,12 @@
-import React, {useEffect} from "react";
-import {dataStore} from "../../zustand/store";
-import {tabStore} from "../../zustand/fitlerStore";
-import {Card, Pagination} from "antd";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { dataStore } from "../../zustand/store";
+import { tabStore } from "../../zustand/fitlerStore";
+import { Card, Pagination } from "antd";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const {Meta} = Card;
-import {searchStore} from "../../zustand/searchStore";
+const { Meta } = Card;
+import { searchStore } from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
 import { useLocation } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
@@ -72,7 +72,7 @@ const CardContent = () => {
         to={`/product/${productId}`}
         target={linkTarget}
       >
-        დეტალური ინფორმაცია
+        {t("seeDetails")}
       </DetailsLink>
     );
   };
@@ -93,9 +93,9 @@ const CardContent = () => {
                 <Card
                   className="cards"
                   key={product._id}
-                  bodyStyle={{width: "100%"}}
+                  bodyStyle={{ width: "100%" }}
                 >
-                  <div style={{width: "100%", display: "flex"}}>
+                  <div style={{ width: "100%", display: "flex" }}>
                     <ProductImage>
                       <img
                         alt={product.productName}
@@ -191,14 +191,14 @@ const DetailsLink = styled(Link)`
   justify-content: center;
   align-self: center;
   align-items: center;
-  background: #0046e6c7;
+  background: #4281d6;
   color: #fff;
   width: 92%;
   margin-top: 20px;
   transition: background 0.5s, color 0.5s, transform 0.5s;
   transition: background 0.5s, color 0.5s, transform 0.5s;
   &:hover {
-    background: #42c1e3;
+    background: #186ede;
     color: whitesmoke;
   }
 `;

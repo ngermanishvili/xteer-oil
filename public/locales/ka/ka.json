@@ -18,7 +18,7 @@
   "Industrial Lubricants": "ინდუსტრია",
   "Marine Lubricants": "მარინა",
   "DetailedInformation": "დეტალური ინფორმაცია",
-  "ProductName": "პროდუქტის სახელი",
+  "ProductName": "დასახელება",
   "Category": "კატეგორია",
   "ProductLine": "პროდუქტის ხაზი",
   "PackageSizes": "პაკეტის ზომები",
@@ -27,5 +27,8 @@
   "FeaturesAndBenefits": "მახასიათებლები და  ხარისხი",
   "Specifications": "სპეციფიკაციები",
   "GentoTradingFooter": "ჯენტო ტრეიდინგი",
-  "AllRightsReserved": "ყველა უფლება დაცულია"
+  "AllRightsReserved": "ყველა უფლება დაცულია",
+  "seeDetails": "დეტალური ინფორმაცია",
+  "DownloadPdf": "გადმოწერა",
+  "ViewPdf": "ნახვა"
 }

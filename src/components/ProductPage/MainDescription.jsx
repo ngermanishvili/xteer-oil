@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 const MainDescription = ({ data }) => {
+  const { t } = useTranslation();
   return (
     <Container>
       <div className="divider" />
@@ -12,7 +14,7 @@ const MainDescription = ({ data }) => {
         <p style={{ alignSelf: "center" }}>{data?.description}</p>
       </div>
       <div>
-        <span className="headings">Applications:</span>
+        <span className="headings">{t("Applications")}</span>
         <ul className="listWrapper">
           {data?.applications?.map((item) => (
             <li
@@ -26,7 +28,7 @@ const MainDescription = ({ data }) => {
         </ul>
       </div>
       <div>
-        <span className="headings">Certifications And Application:</span>
+        <span className="headings">{t("CertsAndApps")}</span>
         <ul className="listWrapper">
           {data?.certsAndApps?.map((item) => (
             <li
@@ -40,7 +42,7 @@ const MainDescription = ({ data }) => {
         </ul>
       </div>
       <div>
-        <span className="headings">Features And Benefits</span>
+        <span className="headings">{t("FeaturesAndBenefits")}</span>
         <ul className="listWrapper">
           {data?.featuresAndBenefits?.map((item) => (
             <li

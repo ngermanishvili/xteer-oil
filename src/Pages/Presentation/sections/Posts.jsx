@@ -137,7 +137,7 @@ const BtnWrapper = styled.div`
     width: 100%;
     height: auto;
     padding: 10px;
-    background-color: #257fd4;
+    background-color: #4281d6;
     color: #fff;
     display: flex; /* Add display flex */
     justify-content: center; /* Center horizontally */
