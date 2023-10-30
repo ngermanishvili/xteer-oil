@@ -22,7 +22,7 @@ const SmallDescription = ({ data }) => {
       </h2>
       <p>{data?.description}</p>
       <FlexContainer>
-        <span style={{ minWidth: "145px" }}>{t("PackageSizes")}&nbsp; :</span>
+        <span style={{ minWidth: "155px" }}>{t("PackageSizes")}&nbsp; :</span>
         <PackageSizesContainer>
           {data?.packageSizes.map((item) => (
             <div key={item}>
