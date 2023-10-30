@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import MKBox from "../MKBox";
 import DefaultNavbar from "../../components/examples/Navbars/DefaultNavbar";
 import logoImage from "../../assets/images/examples/agrinol.png";
-import { useTranslation } from "react-i18next";
-
-function DesktopNavbar({ routes }) {
-  const { t, i18n } = useTranslation();
+import {useTranslation} from "react-i18next";
+import {useMediaQuery} from "react-responsive";
+function DesktopNavbar({routes}) {
+  const {t, i18n} = useTranslation();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
@@ -31,15 +31,17 @@ function DesktopNavbar({ routes }) {
     };
   }, [lastScrollTop]);
 
+  const isMobile = useMediaQuery({maxWidth: 992});
+
   return (
     <MKBox
       style={{
-        borderRadius: "15px",
+        borderRadius: isMobile ? "0px" : "15px",
         position: "fixed",
-        top: isNavVisible ? "4%" : "-100px",
+        top: isMobile ? "0" : isNavVisible ? "4%" : "-100px",
         left: "50%",
         transform: "translateX(-50%)",
-        width: "90%",
+        width: isMobile ? "100%" : "90%",
         zIndex: 1000,
         transition: "top 0.3s",
         backgroundColor: "rgba(0, 0, 0, 0.8)",
@@ -71,7 +73,7 @@ function DesktopNavbar({ routes }) {
         <img
           src={logoImage}
           alt="Logo"
-          style={{ width: "50px", height: "50px" }}
+          style={{width: "50px", height: "50px"}}
         />
       </DefaultNavbar>
     </MKBox>

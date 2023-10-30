@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
 import styled from "styled-components";
-import { FcDownload } from "react-icons/fc";
-import { BsEye } from "react-icons/bs";
+import {FcDownload} from "react-icons/fc";
+import {BsEye} from "react-icons/bs";
 import PdfViewer from "./PdfViewer";
 
-const DownloadPds = ({ data }) => {
+const DownloadPds = ({data}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPdfUrl, setSelectedPdfUrl] = useState(null);
 

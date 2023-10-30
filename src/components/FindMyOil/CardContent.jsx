@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { tabStore } from "../../zustand/fitlerStore";
-import { Card, Pagination } from "antd";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {dataStore} from "../../zustand/store";
+import {tabStore} from "../../zustand/fitlerStore";
+import {Card, Pagination} from "antd";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const { Meta } = Card;
-import { searchStore } from "../../zustand/searchStore";
+const {Meta} = Card;
+import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
 import { useLocation } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
@@ -93,9 +93,9 @@ const CardContent = () => {
                 <Card
                   className="cards"
                   key={product._id}
-                  bodyStyle={{ width: "100%" }}
+                  bodyStyle={{width: "100%"}}
                 >
-                  <div style={{ width: "100%", display: "flex" }}>
+                  <div style={{width: "100%", display: "flex"}}>
                     <ProductImage>
                       <img
                         alt={product.productName}
@@ -208,7 +208,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
   @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   }
   .cards {
     display: flex;

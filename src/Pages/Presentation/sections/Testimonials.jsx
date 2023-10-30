@@ -17,16 +17,16 @@ Coded by www.creative-tim.com
 import Grid from "@mui/material/Grid";
 import MKBox from "../../../components/MKBox";
 import MKTypography from "../../../components/MKTypography";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import XteerLogo from "../../../assets/images/examples/xteer-logo.png";
 import AminolLogo from "../../../assets/images/examples/aminol.png";
 import AzmolLogo from "../../../assets/images/examples/azmol.png";
-import { Divider } from "antd";
+import {Divider} from "antd";
 
 function Information() {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
 
   return (
     <Wrapper>
@@ -37,7 +37,7 @@ function Information() {
               {t("Catalog")}
             </MKTypography>
           </Divider>
-          <Grid container spacing={3} sx={{ mt: 2 }}>
+          <Grid container spacing={3} sx={{mt: 2}}>
             <Grid item xs={12} md={6} lg={4}>
               <div className="container">
                 <div className="card">
@@ -65,7 +65,9 @@ function Information() {
                   <div className="contentBx">
                     <h2>{t("Azmol")}</h2>
                     <div className="color">
-                      <p>AZMOL British Petrochemicals</p>
+                      <p style={{marginBottom: "30px"}}>
+                        AZMOL British Petrochemicals
+                      </p>
                     </div>
                     <Link to="/find-my-oil">{t("SeeWebsite")}</Link>
                   </div>
@@ -82,7 +84,9 @@ function Information() {
                   <div className="contentBx">
                     <h2>{t("Aminol")}</h2>
                     <div className="color">
-                      <p>Aminol manufactures lubricants</p>
+                      <p style={{marginBottom: "30px"}}>
+                        Aminol manufactures lubricants
+                      </p>
                     </div>
                     <a href="https://aminol.az/products" target="_blank">
                       {t("SeeWebsite")}
