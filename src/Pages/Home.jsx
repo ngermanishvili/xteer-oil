@@ -67,11 +67,12 @@ const Home = () => {
         }}
       >
         <Testimonials />
-        <Divider orientation="left">
+        <Divider orientation="center">
           <MKTypography variant="h4" color="info" textGradient mb={-10}>
             {t("PartnerCompanies")}
           </MKTypography>
         </Divider>
+
         <Companies />
         {/* <Download /> */}
 

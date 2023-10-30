@@ -28,7 +28,7 @@ const DownloadPds = ({data}) => {
 
   return (
     <Container>
-      <span>PDF:</span>
+      {data?.pdfUrls[0] ? <span>PDF:</span> : ""}
       <br />
       <ul style={{display: "flex", gap: "20px"}}>
         {data?.pdfUrls?.map((pds) => {
@@ -44,26 +44,37 @@ const DownloadPds = ({data}) => {
                 <button onClick={() => openPdf(pdsUrl)} className="view-button">
                   <span style={{color: "#3d3c3c"}}>View</span> <BsEye />
                 </button>
-                <Modal
-                  title="დეტალური ინფორმაცია"
-                  open={isModalOpen}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                >
-                  {selectedPdfUrl && <PdfViewer pdfUrl={selectedPdfUrl} />}
-                </Modal>
               </div>
             </li>
           );
         })}
       </ul>
+      {selectedPdfUrl && (
+        <Modal
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          width={800}
+          title="დეტალური ინფორმაცია"
+          okButtonProps={{
+            style: {
+              /* display: "none", მგონი ზედმეტია ქენსელიც და ოქეიც თუ აღარ გვენდომება ოქეი ამოშალე კომენტარი ლომო */
+              color: "rgb(31,31,31)",
+              border: "1px solid rgb(217, 217, 217)",
+            },
+          }}
+        >
+          <PdfViewerContainer>
+            <PdfViewer pdfUrl={selectedPdfUrl} />
+          </PdfViewerContainer>
+        </Modal>
+      )}
     </Container>
   );
 };
 
 const Container = styled.div`
   display: flex;
-  align-items: "center";
   list-style-type: none;
   overflow-x: auto;
   gap: 10px;
@@ -74,7 +85,9 @@ const Container = styled.div`
     justify-content: center;
     gap: 20px;
   }
-  
+  @media (max-width: 1542px) {
+    overflow-x: auto;
+  }
   li {
     margin-left: 15px;
     min-height: 200px;
@@ -87,12 +100,12 @@ const Container = styled.div`
     display: flex;
     justify-content: space-around;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle box shadow */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Add smooth transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
     margin-bottom: 10px;
     &:hover {
-      background-color: skyblue; /* Change background color to white on hover */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly more noticeable shadow on hover */
+      background-color: skyblue;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
   }
   button {
@@ -104,4 +117,12 @@ const Container = styled.div`
   }
 `;
 
+const PdfViewerContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+`;
 export default DownloadPds;

@@ -1,7 +1,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const mongoose = require("mongoose");
-const cors = require("cors"); // Import the cors module
+const cors = require("cors");
 const oilRoutes = require("./route");
 
 const app = express();

@@ -3,7 +3,7 @@ import MKBox from "../MKBox";
 import DefaultNavbar from "../../components/examples/Navbars/DefaultNavbar";
 import logoImage from "../../assets/images/examples/agrinol.png";
 import {useTranslation} from "react-i18next";
-
+import {useMediaQuery} from "react-responsive";
 function DesktopNavbar({routes}) {
   const {t, i18n} = useTranslation();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -31,18 +31,25 @@ function DesktopNavbar({routes}) {
     };
   }, [lastScrollTop]);
 
+  const isMobile = useMediaQuery({maxWidth: 992});
+
   return (
     <MKBox
       style={{
-        position: "relative",
-        width: "100%",
+        borderRadius: isMobile ? "0px" : "15px",
+        position: "fixed",
+        top: isMobile ? "0" : isNavVisible ? "4%" : "-100px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: isMobile ? "100%" : "90%",
         zIndex: 1000,
-        backgroundColor: "rgba(0, 0, 0, 0.9)",
+        transition: "top 0.3s",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
       }}
       variant="gradient"
       color="dark"
       shadow="sm"
-      transparent={true}
+      transparent="true"
       py={0.25}
     >
       <DefaultNavbar
@@ -58,10 +65,10 @@ function DesktopNavbar({routes}) {
           label: "free download",
           color: "info",
         }}
-        transparent={true}
         relative
         light
         center
+        transparent={true}
       >
         <img
           src={logoImage}

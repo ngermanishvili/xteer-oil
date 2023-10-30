@@ -34,25 +34,17 @@ import { Button } from "@nextui-org/react";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import Logo from "../../../../assets/images/examples/adobegentologo5.png";
-
-// Material Kit 2 React components
 import MKBox from "../../../MKBox";
 import MKTypography from "../../../MKTypography";
-import MKButton from "../../../MKButton";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
 } from "@nextui-org/react";
 
-// Material Kit 2 React example components
-
 import DefaultNavbarDropdown from "../DefaultNavbar/DefaultNavbarDropdown";
 import DefaultNavbarMobile from "../DefaultNavbar/DefaultNavbarMobile";
-
-// Material Kit 2 React base styles
 import breakpoints from "../../../../assets/theme/base/breakpoints";
 
 function DefaultNavbar({
@@ -88,14 +80,7 @@ function DefaultNavbar({
         setMobileNavbar(false);
       }
     }
-
-    /** 
-     The event listener that's calling the displayMobileNavbar function when 
-     resizing the window.
-    */
     window.addEventListener("resize", displayMobileNavbar);
-
-    // Call the displayMobileNavbar function to set the state with the initial value.
     displayMobileNavbar();
 
     // Remove event listener on cleanup
@@ -314,7 +299,6 @@ function DefaultNavbar({
     }
   );
 
-  // Routes dropdown menu
   const dropdownMenu = (
     <Popper
       anchorEl={dropdown}
@@ -592,6 +576,8 @@ function DefaultNavbar({
     </Container>
   );
 }
+
+// If you want to write it to the DOM, pass a string instead: transparent="true" or transparent={value.toString()}. to fix the error: Warning: Received `true` for a non-boolean attribute `transparent`. for example in src/Pages/Home.jsx: <DefaultNavbar transparent="true" /> or <DefaultNavbar transparent={value.toString()} />
 
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {

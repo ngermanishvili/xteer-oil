@@ -11,7 +11,7 @@ const MainLayout = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{ marginTop: "2.5%" }}>
+    <Layout>
       <Layout>
         <div
           id="part-1"

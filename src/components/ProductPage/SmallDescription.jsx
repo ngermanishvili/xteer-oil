@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import {Button} from "antd";
+import { Button } from "antd";
 import DownloadPds from "./DownloadPds";
-const SmallDescription = ({data}) => {
+const SmallDescription = ({ data }) => {
   return (
     <>
       <Container>
         <h2>
-          <span>Product Name :</span> {data?.productName}
+          <span>Product :</span> {data?.productName}
         </h2>
         <h3>
           <span>Category : </span>
@@ -18,24 +18,15 @@ const SmallDescription = ({data}) => {
           {data?.productLine}
         </h2>
         <p>{data?.description}</p>
-        <div
-          style={{
-            display: "flex",
-            gap: "20px",
-            flexDirection: "row",
-            flexWrap: "nowrap",
-          }}
-        >
-          <span style={{minWidth: "130px"}}>Package Sizes : </span>
-          <div className="packageSizesWrapper">
-            {data?.packageSizes.map((item) => (
-              <div key={item}>
-                <Button size="middle" type="primary">
-                  {item}
-                </Button>
-              </div>
-            ))}
-          </div>
+        <div style={{ display: "flex", gap: "20px", flexDirection: "row" }}>
+          <span>Package Sizes : </span>
+          {data?.packageSizes.map((item) => (
+            <div key={item}>
+              <Button size="middle" type="primary">
+                {item}
+              </Button>
+            </div>
+          ))}
         </div>
         <DownloadPds data={data} />
       </Container>
@@ -51,21 +42,14 @@ const Container = styled.div`
   justify-content: center;
   gap: 25px;
   margin: 0 auto;
-
   margin-bottom: 30px;
-  .packageSizesWrapper {
-    width: 70%;
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
   color: #555;
   @media (max-width: 1160px) {
     margin-bottom: 0px;
   }
   span {
     color: black;
-    font-weight: 800;
+    font-weight: 700;
   }
   @media (max-width: 1160px) {
     font-size: 18px;

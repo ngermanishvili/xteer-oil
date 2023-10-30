@@ -10,25 +10,11 @@ import {dataStore} from "../../../zustand/store";
 import {Navigation, Autoplay, Pagination} from "swiper/modules";
 import {Divider} from "antd";
 import MKTypography from "../../../components/MKTypography";
-import {Link} from "react-router-dom";
-import barrel1 from "../../../assets/barel1.png";
-import barrel2 from "../../../assets/barel2.webp";
-import barrel3 from "../../../assets/barel3.jpg";
-import barrel4 from "../../../assets/barel4.png";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Places() {
-  const arrayOfProductBarrels = [
-    {src: barrel4, title: "Hyundai"},
-    {src: barrel2, title: "Agrinol"},
-    {src: barrel3, title: "Aminol"},
-    {src: barrel1, title: "Azmol"},
-  ];
-  const arrayOfProductBarrels2 = [
-    {src: barrel2, title: "Agrinol"},
-    {src: barrel1, title: "Azmol"},
-    {src: barrel3, title: "Aminol"},
-    {src: barrel4, title: "Hyundai"},
-  ];
+  const { t } = useTranslation();
   const fetchData = dataStore((state) => state.fetchData);
   const data = dataStore((state) => state.data);
 
@@ -70,10 +56,14 @@ function Places() {
           {" "}
           <Divider orientation="center">
             <MKTypography variant="h4" color="info" textGradient mb={2}>
-              პროდუქცია
+              {t("Production")}
             </MKTypography>
           </Divider>
-          <BtnWrapper></BtnWrapper>
+          <BtnWrapper>
+            <Link className="styledLink" to="/find-my-oil">
+              {t("FindDetailedProduct")}
+            </Link>
+          </BtnWrapper>
           <Grid container spacing={3}>
             <Swiper
               slidesPerView={1}
@@ -89,56 +79,32 @@ function Places() {
               modules={[Autoplay, Pagination, Navigation]}
             >
               {groupedData.map((group, index) => (
-                <>
-                  <SwiperSlide
-                    key={index}
-                    style={{
-                      backgroundColor: "transparent",
-                      padding: "10px 50px ",
-                    }}
-                  >
-                    <Grid container spacing={14}>
-                      {arrayOfProductBarrels.map((item, id) => (
-                        <Grid key={item.title} item xs={12} sm={6} lg={3}>
-                          <TransparentBlogCard
-                            image={item.src}
-                            title={item.title}
-                            action={{
-                              type: "internal",
-                              route: `/product}`,
-                              color: "info",
-                              cursor: "pointer",
-                            }}
-                          />
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </SwiperSlide>
-                  <SwiperSlide
-                    key={index}
-                    style={{
-                      backgroundColor: "transparent",
-                      padding: "10px 50px ",
-                    }}
-                  >
-                    <Grid container spacing={14}>
-                      {arrayOfProductBarrels2.map((item, id) => (
-                        <Grid key={item.title} item xs={12} sm={6} lg={3}>
-                          <TransparentBlogCard
-                            image={item.src}
-                            title={item.title}
-                            action={{
-                              type: "internal",
-                              route: `/product}`,
-                              color: "info",
-                              cursor: "pointer",
-                            }}
-                          />
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </SwiperSlide>
-                </>
+                <SwiperSlide
+                  key={index}
+                  style={{
+                    backgroundColor: "transparent",
+                    padding: "10px 50px ",
+                  }}
+                >
+                  <Grid container spacing={14}>
+                    {group.map((item) => (
+                      <Grid key={item._id} item xs={12} sm={6} lg={3}>
+                        <TransparentBlogCard
+                          image={item.imageUrl}
+                          title={truncateText(item.productName, 30)}
+                          description={truncateDescription(item.description)}
+                          action={{
+                            type: "internal",
+                            route: `/product/${item._id}`,
+                            color: "info",
+                            cursor: "pointer",
+                            label: t("ViewProduct"),
+                          }}
+                        />
+                      </Grid>
+                    ))}
+                  </Grid>
+                </SwiperSlide>
               ))}
             </Swiper>
           </Grid>

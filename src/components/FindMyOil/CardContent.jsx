@@ -8,12 +8,13 @@ import Search from "./Search";
 const {Meta} = Card;
 import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import {useLocation} from "react-router-dom";
-import {SyncLoader} from "react-spinners";
-import BasicSlider from "../demoSlider/DemoSlider";
+import { useLocation } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
+import { useTranslation } from "react-i18next";
 
 const CardContent = () => {
   // if u want to see fetched items u need to use this hook and pass it to the component and hoook name is fetchData and it is in store.js and i cant see the items becouse i dont have access to the database so if u want to see the items u need to pass it to the component and use it foe example give me a code
+  const { t } = useTranslation();
   const fetchData = dataStore((state) => state.fetchData);
   const loading = dataStore((state) => state.loading);
   const currentTab = tabStore((state) => state.currentTab);
@@ -201,7 +202,7 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
   @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   }
   .cards {
     display: flex;

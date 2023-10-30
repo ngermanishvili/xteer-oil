@@ -20,6 +20,10 @@ import MKTypography from "../../../components/MKTypography";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import XteerLogo from "../../../assets/images/examples/xteer-logo.png";
+import AminolLogo from "../../../assets/images/examples/aminol.png";
+import AzmolLogo from "../../../assets/images/examples/azmol.png";
+import { Divider } from "antd";
 
 function Information() {
   const { t, i18n } = useTranslation();
@@ -28,29 +32,25 @@ function Information() {
     <Wrapper>
       <MKBox component="section" py={4}>
         <Grid>
-          <MKTypography variant="h4" color="info" textGradient mb={2}>
-            {t("Catalog")}
-          </MKTypography>
+          <Divider>
+            <MKTypography variant="h4" color="info" textGradient mb={2}>
+              {t("Catalog")}
+            </MKTypography>
+          </Divider>
           <Grid container spacing={3} sx={{ mt: 2 }}>
             <Grid item xs={12} md={6} lg={4}>
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img
-                      src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png"
-                    
-                    />
+                    <img src={XteerLogo} />
                   </div>
 
                   <div className="contentBx">
                     <h2>{t("Hyundai")} </h2>
                     <div className="color">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae, impedit.
-                      </p>
+                      <p>დაათვალიერე hyundai xteer პროდუქცია ჩვენს კატალოგში</p>
                     </div>
-                    <Link to="/find-my-oil">დაათვალიერე</Link>
+                    <Link to="/find-my-oil">{t("SeeCatalog")}</Link>
                   </div>
                 </div>
               </div>
@@ -59,47 +59,34 @@ function Information() {
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img
-                      src="https://aminol.ir/wp-content/uploads/2018/12/970917-AMINOL-CIC-LOGO-no-bg-redline-no-caption.png"
-                  
-                    />
+                    <img src={AzmolLogo} alt="nike-air-shoe" />
+                  </div>
+
+                  <div className="contentBx">
+                    <h2>{t("Azmol")}</h2>
+                    <div className="color">
+                      <p>AZMOL British Petrochemicals</p>
+                    </div>
+                    <Link to="/find-my-oil">{t("SeeWebsite")}</Link>
+                  </div>
+                </div>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <div className="container">
+                <div className="card">
+                  <div className="imgBx">
+                    <img src={AminolLogo} alt="nike-air-shoe" />
                   </div>
 
                   <div className="contentBx">
                     <h2>{t("Aminol")}</h2>
                     <div className="color">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae, impedit.
-                      </p>
+                      <p>Aminol manufactures lubricants</p>
                     </div>
                     <a href="https://aminol.az/products" target="_blank">
-                      დაათვალიერე
+                      {t("SeeWebsite")}
                     </a>
-                  </div>
-                </div>
-              </div>
-            </Grid>
-
-            <Grid item xs={12} md={6} lg={4}>
-              <div className="container">
-                <div className="card">
-                  <div className="imgBx">
-                    <img
-                      src="https://www.hyundai-lube-me.com/wp-content/uploads/2020/02/logo-seo.png"
-                    
-                    />
-                  </div>
-
-                  <div className="contentBx">
-                    <h2>ჰიუნდაი იქსტიერი</h2>
-                    <div className="color">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae, impedit.
-                      </p>
-                    </div>
-                    <Link to="/find-my-oil">დაათვალიერე</Link>
                   </div>
                 </div>
               </div>
