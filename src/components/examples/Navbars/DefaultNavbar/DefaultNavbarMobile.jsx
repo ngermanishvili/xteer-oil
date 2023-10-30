@@ -10,11 +10,6 @@ import DefaultNavbarDropdown from "../../../examples/Navbars/DefaultNavbar/Defau
 function DefaultNavbarMobile({ routes, open, closeMobileNavbar }) {
   const [collapse, setCollapse] = useState("");
 
-  const handleRouteClick = (route) => {
-    // Call the closeMobileNavbar function to close the mobile navbar
-    closeMobileNavbar();
-  };
-
   const handleSetCollapse = (name) =>
     collapse === name ? setCollapse(false) : setCollapse(name);
 
@@ -33,7 +28,10 @@ function DefaultNavbarMobile({ routes, open, closeMobileNavbar }) {
         key={name}
         name={name}
         icon={icon}
-        onClick={() => handleSetCollapse(name)}
+        onClick={() => {
+          handleSetCollapse(name);
+          closeMobileNavbar(); // Call closeMobileNavbar to close the mobile menu
+        }}
         href={href}
         route={route}
         collapse="true"

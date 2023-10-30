@@ -69,6 +69,10 @@ function DefaultNavbar({
   const [mobileView, setMobileView] = useState(false);
   const openMobileNavbar = () => setMobileNavbar(!mobileNavbar);
 
+  const closeMobileNavbar = () => {
+    setMobileNavbar(false);
+  };
+
   useEffect(() => {
     // A function that sets the display state for the DefaultNavbarMobile.
     function displayMobileNavbar() {
@@ -567,7 +571,11 @@ function DefaultNavbar({
           px={transparent ? 2 : 0}
         >
           {mobileView && (
-            <DefaultNavbarMobile routes={routes} open={mobileNavbar} />
+            <DefaultNavbarMobile
+              closeMobileNavbar={closeMobileNavbar}
+              routes={routes}
+              open={mobileNavbar}
+            />
           )}
         </MKBox>
       </MKBox>

@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "antd";
+import { useTranslation } from "react-i18next";
+import MKTypography from "../../components/MKTypography";
+import { Divider } from "antd";
+
 import DownloadPds from "./DownloadPds";
 const SmallDescription = ({ data }) => {
   return (

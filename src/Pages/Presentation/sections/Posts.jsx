@@ -1,59 +1,61 @@
 import Grid from "@mui/material/Grid";
 import MKBox from "../../../components/MKBox";
-import { useEffect } from "react";
-import TransparentBlogCard from "../../../components/examples/Cards/BlogCards/TransparentBlogCard";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
 import { dataStore } from "../../../zustand/store";
-import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import { Divider } from "antd";
 import MKTypography from "../../../components/MKTypography";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import SwiperXteer1 from "../../../assets/images/swiper/XTeer+Gasoline+Ultra+Protection+0W30.jpg";
+import SwiperXteer2 from "../../../assets/images/swiper/XTeer+GL-5+SAE+140.jpg";
+import SwiperXteer3 from "../../../assets/images/swiper/XTeer+HD+3000+20W50.jpg";
+import SwiperXteer4 from "../../../assets/images/swiper/XTeer+HYD+AW.jpg";
+
+import SwiperAzmool from "../../../assets/images/swiper/azmol1.png";
+import SwiperAzmool2 from "../../../assets/images/swiper/azmol2.png";
+import SwiperAzmool3 from "../../../assets/images/swiper/azmol3.png";
+import SwiperAzmool4 from "../../../assets/images/swiper/azmol4.png";
+import Aminol1 from "../../../assets/images/swiper/aminol1.jpeg";
+import Aminol2 from "../../../assets/images/swiper/aminol2.jpeg";
+import Aminol3 from "../../../assets/images/swiper/aminiol3.jpeg";
+import Aminol4 from "../../../assets/images/swiper/aminol4.jpeg";
+
+// import required modules
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 
 function Places() {
   const { t } = useTranslation();
-  const fetchData = dataStore((state) => state.fetchData);
-  const data = dataStore((state) => state.data);
 
+  const [slidesPerView, setSlidesPerView] = useState(4);
+
+  const updateSlidesPerView = () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 768) {
+      setSlidesPerView(1); // Set to 1 for mobile screens
+    } else if (screenWidth >= 768 && screenWidth <= 1024) {
+      setSlidesPerView(2); // Set to 2 for screens between 768px and 1024px
+    } else {
+      setSlidesPerView(4); // Set to 4 for larger screens
+    }
+  };
   useEffect(() => {
-    const fetchDataAndLogData = async () => {
-      await fetchData();
+    window.addEventListener("resize", updateSlidesPerView);
+    updateSlidesPerView();
+    return () => {
+      window.removeEventListener("resize", updateSlidesPerView);
     };
-
-    fetchDataAndLogData();
   }, []);
-
-  const maxItems = Math.min(40, data.length); // Set to a maximum of 40 items
-  const groupedData = [];
-
-  for (let i = 0; i < maxItems; i += 4) {
-    const group = data.slice(i, i + 4);
-    groupedData.push(group);
-  }
-
-  // Function to truncate the description
-  const truncateDescription = (description) => {
-    if (description.length <= 30) {
-      return description;
-    }
-    return description.slice(0, 48) + "…";
-  };
-
-  const truncateText = (text, maxLength) => {
-    if (text.length <= maxLength) {
-      return text;
-    }
-    return text.slice(0, maxLength) + "…";
-  };
 
   return (
     <>
       <Wrapper>
         <MKBox component="section" py={2}>
-          {" "}
           <Divider orientation="center">
             <MKTypography variant="h4" color="info" textGradient mb={2}>
               {t("Production")}
@@ -66,47 +68,55 @@ function Places() {
           </BtnWrapper>
           <Grid container spacing={3}>
             <Swiper
-              slidesPerView={1}
+              slidesPerView={slidesPerView} // Use the dynamic slidesPerView
+              spaceBetween={30}
+              freeMode={true}
+              modules={[Autoplay, FreeMode, Pagination]}
+              className="mySwiper"
+              loop={true} // Add loop prop
               autoplay={{
-                delay: 5000,
+                delay: 3000,
                 disableOnInteraction: false,
               }}
-              speed={1000}
-              loop={true}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Autoplay, Pagination, Navigation]}
             >
-              {groupedData.map((group, index) => (
-                <SwiperSlide
-                  key={index}
-                  style={{
-                    backgroundColor: "transparent",
-                    padding: "10px 50px ",
-                  }}
-                >
-                  <Grid container spacing={14}>
-                    {group.map((item) => (
-                      <Grid key={item._id} item xs={12} sm={6} lg={3}>
-                        <TransparentBlogCard
-                          image={item.imageUrl}
-                          title={truncateText(item.productName, 30)}
-                          description={truncateDescription(item.description)}
-                          action={{
-                            type: "internal",
-                            route: `/product/${item._id}`,
-                            color: "info",
-                            cursor: "pointer",
-                            label: t("ViewProduct"),
-                          }}
-                        />
-                      </Grid>
-                    ))}
-                  </Grid>
-                </SwiperSlide>
-              ))}
+              <SwiperSlide>
+                <img src={SwiperXteer1} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={SwiperXteer2} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={SwiperXteer3} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={SwiperXteer4} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img className="azmol1" src={SwiperAzmool} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img className="azmol2" src={SwiperAzmool2} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={SwiperAzmool3} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={SwiperAzmool4} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img className="aminol" src={Aminol1} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img className="aminol" src={Aminol2} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img className="aminol" src={Aminol3} alt="" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img className="aminol" src={Aminol4} alt="" />
+              </SwiperSlide>
             </Swiper>
+            <Divider />
           </Grid>
         </MKBox>
       </Wrapper>
@@ -137,6 +147,6 @@ const BtnWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  border-radius: 15px;
-  padding: 0 20px;
+  width: 100%;
+  height: 650px;
 `;
