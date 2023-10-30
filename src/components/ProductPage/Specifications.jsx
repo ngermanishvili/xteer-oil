@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "antd";
+import { Button, Divider } from "antd";
 import { useTranslation } from "react-i18next";
-
 const Specifications = ({ data }) => {
   const { t } = useTranslation();
+
   const specs = data?.specs;
 
   const renderSpecsKeys = () => {
@@ -63,13 +63,13 @@ const Specifications = ({ data }) => {
 
   return (
     <Container>
-      <h2 className="title">
-        <span>{t("Specifications")}</span>
-      </h2>
+      <Divider />
+      <h2 style={{ fontSize: "28px" }}>{t("Specifications")}</h2>
       <div style={{ display: "flex", gap: "20px" }}>
         <div className="SpecKeys">{renderSpecsKeys()}</div>
         <div className="ValuesWrapper">{renderSpecsValues()}</div>
       </div>
+      <Divider />
     </Container>
   );
 };
@@ -98,6 +98,7 @@ const Container = styled.div`
   .SpecKeys {
     display: flex;
     flex-direction: column;
+    min-width: 260px;
 
     /* Use the main color for border */
     .singleKey {
