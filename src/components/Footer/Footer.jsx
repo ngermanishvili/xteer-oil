@@ -134,7 +134,7 @@ const Wrapper = styled.div`
 
 const ImageWrapper = styled.img`
   position: absolute;
-  top: -120px;
+  top: -100px;
   left: 2%;
   width: 200px;
 
