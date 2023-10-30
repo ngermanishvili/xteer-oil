@@ -22,7 +22,7 @@ const SmallDescription = ({ data }) => {
       </h2>
       <p>{data?.description}</p>
       <FlexContainer>
-        <span className="packageSize">{t("PackageSizes")}&nbsp; :</span>
+        <span style={{ minWidth: "170px" }}>{t("PackageSizes")}&nbsp; :</span>
         <PackageSizesContainer>
           {data?.packageSizes.map((item) => (
             <div key={item}>
@@ -67,14 +67,6 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  .packageSize {
-    min-width: 155px !important;
-    font-size: 18px;
-    @media (max-width: 450px) {
-      min-width: 155px !important;
-      font-size: 17px;
-    }
-  }
 `;
 
 const PackageSizesContainer = styled.div`
