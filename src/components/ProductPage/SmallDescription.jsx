@@ -22,7 +22,7 @@ const SmallDescription = ({data}) => {
         </h2>
         <p>{data?.description}</p>
         <div style={{display: "flex", gap: "10px", flexDirection: "row"}}>
-          <span style={{minWidth: "150px"}}>
+          <span style={{minWidth: "170px"}}>
             <b>{t("PackageSizes")}&nbsp; :&nbsp;</b>
           </span>
           <div
