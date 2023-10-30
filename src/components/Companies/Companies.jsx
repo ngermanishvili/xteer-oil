@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled, {keyframes, css} from "styled-components";
 
 function Companies() {
   const row1 = [
@@ -19,10 +19,7 @@ function Companies() {
             {row1.map((el, index) => (
               <ImageGroup key={index}>
                 <Image>
-                  <img
-                    style={{ width: "100%", objectFit: "contain" }}
-                    src={el}
-                  />
+                  <img style={{width: "100%", objectFit: "contain"}} src={el} />
                 </Image>
               </ImageGroup>
             ))}
@@ -31,10 +28,7 @@ function Companies() {
             {row1.map((el, index) => (
               <ImageGroup key={index}>
                 <Image src={el}>
-                  <img
-                    style={{ width: "100%", objectFit: "contain" }}
-                    src={el}
-                  />
+                  <img style={{width: "100%", objectFit: "contain"}} src={el} />
                 </Image>
               </ImageGroup>
             ))}
@@ -152,7 +146,7 @@ const MarqueeGroup = styled.div`
   animation: ${scrollX} 30s linear infinite; // increased the animation duration
 
   @media (max-width: 600px) {
-    animation: ${scrollX} 10s linear infinite;
+    animation: ${scrollX} 20s linear infinite;
   }
 `;
 const MarqueeGroup2 = styled.div`
