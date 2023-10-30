@@ -191,14 +191,14 @@ const DetailsLink = styled(Link)`
   justify-content: center;
   align-self: center;
   align-items: center;
-  background: #42c1e3;
+  background: #0046e6c7;
   color: #fff;
   width: 92%;
   margin-top: 20px;
   transition: background 0.5s, color 0.5s, transform 0.5s;
   transition: background 0.5s, color 0.5s, transform 0.5s;
   &:hover {
-    background: #0046e6c7;
+    background: #42c1e3;
     color: whitesmoke;
   }
 `;
