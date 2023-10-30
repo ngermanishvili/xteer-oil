@@ -22,7 +22,7 @@ const SmallDescription = ({ data }) => {
       </h2>
       <p>{data?.description}</p>
       <FlexContainer>
-        <span style={{ minWidth: "155px" }}>{t("PackageSizes")}&nbsp; :</span>
+        <SpanMinWidth>{t("PackageSizes")}&nbsp; :</SpanMinWidth>
         <PackageSizesContainer>
           {data?.packageSizes.map((item) => (
             <div key={item}>
@@ -37,7 +37,10 @@ const SmallDescription = ({ data }) => {
     </Container>
   );
 };
-
+const SpanMinWidth = styled.span`
+  min-width: 155px !important;
+  font-size: 17px;
+`;
 const Container = styled.div`
   width: 100%;
   font-size: 18px;
