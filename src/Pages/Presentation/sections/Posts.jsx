@@ -57,7 +57,7 @@ function Places() {
       <Wrapper>
         <MKBox component="section" py={2}>
           <Divider orientation="center">
-            <MKTypography variant="h4" color="info" textGradient mb={2}>
+            <MKTypography variant="h6" color="info" textGradient mb={2}>
               {t("Production")}
             </MKTypography>
           </Divider>

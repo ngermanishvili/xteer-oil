@@ -1,6 +1,6 @@
-import {Divider, Row} from "antd";
+import { Divider, Row } from "antd";
 import Companies from "../components/Companies/Companies";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 import MkBox from "../components/MKBox";
 import MKTypography from "../components/MKTypography";
 import Card from "@mui/material/Card";
@@ -10,7 +10,7 @@ import Places from "./Presentation/sections/Posts";
 import styled from "styled-components";
 
 const Home = () => {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -19,8 +19,8 @@ const Home = () => {
         width="100%"
         sx={{
           backgroundImage: ({
-            functions: {linearGradient, rgba},
-            palette: {gradients},
+            functions: { linearGradient, rgba },
+            palette: { gradients },
           }) =>
             `${linearGradient(
               rgba(gradients.dark.main, 0.4),
@@ -37,7 +37,7 @@ const Home = () => {
           color="white"
           mt={12}
           mb={1}
-          sx={({breakpoints, typography: {size}}) => ({
+          sx={({ breakpoints, typography: { size } }) => ({
             [breakpoints.down("md")]: {
               fontSize: size["3xl"],
             },
@@ -49,7 +49,7 @@ const Home = () => {
           variant="body1"
           color="white"
           textAlign="center"
-          px={{xs: 6, lg: 12}}
+          px={{ xs: 6, lg: 12 }}
           mt={1}
         ></MKTypography>
         <div className="overlay"></div>
@@ -57,18 +57,18 @@ const Home = () => {
       <Card
         sx={{
           p: 2,
-          mx: {xs: 2, lg: 4},
+          mx: { xs: 2, lg: 4 },
           mt: -10,
           mb: 4,
-          backgroundColor: ({palette: {white}, functions: {rgba}}) =>
+          backgroundColor: ({ palette: { white }, functions: { rgba } }) =>
             rgba(white.main, 0.8),
           backdropFilter: "saturate(200%) blur(30px)",
-          boxShadow: ({boxShadows: {xxl}}) => xxl,
+          boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
         <Testimonials />
         <Divider orientation="center">
-          <MKTypography variant="h4" color="info" textGradient mb={-10}>
+          <MKTypography variant="h6" color="info" textGradient mb={-10}>
             {t("PartnerCompanies")}
           </MKTypography>
         </Divider>
