@@ -21,14 +21,14 @@ const SmallDescription = ({data}) => {
           {data?.productLine}
         </h2>
         <p>{data?.description}</p>
-        <div style={{display: "flex", gap: "20px", flexDirection: "row"}}>
-          <span style={{minWidth: "130px"}}>
+        <div style={{display: "flex", gap: "10px", flexDirection: "row"}}>
+          <span style={{minWidth: "150px"}}>
             <b>{t("PackageSizes")}&nbsp; :&nbsp;</b>
           </span>
           <div
             style={{
               display: "flex",
-              gap: "20px",
+              gap: "10px",
               flexDirection: "row",
               flexWrap: "nowrap",
               overflowX: "auto",

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, Divider } from "antd";
-import { useTranslation } from "react-i18next";
-const Specifications = ({ data }) => {
-  const { t } = useTranslation();
+import {Button, Divider} from "antd";
+import {useTranslation} from "react-i18next";
+const Specifications = ({data}) => {
+  const {t} = useTranslation();
 
   const specs = data?.specs;
 
@@ -17,7 +17,7 @@ const Specifications = ({ data }) => {
         const modifiedKey = key.replace("(", " ("); // Replace "(" with " ("
         return (
           <div className="singleKey" key={modifiedKey}>
-            <p>{modifiedKey}</p> <p style={{ alignSelf: "center" }}>:</p>
+            <p>{modifiedKey}</p> <p style={{alignSelf: "center"}}>:</p>
           </div>
         );
       }
@@ -62,15 +62,21 @@ const Specifications = ({ data }) => {
   };
 
   return (
-    <Container>
+    <>
       <Divider />
-      <h2 style={{ fontSize: "28px" }}>{t("Specifications")}</h2>
-      <div style={{ display: "flex", gap: "20px" }}>
-        <div className="SpecKeys">{renderSpecsKeys()}</div>
-        <div className="ValuesWrapper">{renderSpecsValues()}</div>
-      </div>
-      <Divider />
-    </Container>
+      <h2 style={{fontSize: "28px", margin: "0 auto", width: "90%"}}>
+        {t("Specifications")}
+      </h2>
+      
+
+      <Container>
+        <div style={{display: "flex", gap: "20px"}}>
+          <div className="SpecKeys">{renderSpecsKeys()}</div>
+          <div className="ValuesWrapper">{renderSpecsValues()}</div>
+        </div>
+        <Divider />
+      </Container>
+    </>
   );
 };
 const Container = styled.div`
