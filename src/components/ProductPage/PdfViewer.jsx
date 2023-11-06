@@ -20,7 +20,11 @@ const PdfViewer = ({ pdfUrl }) => {
     const observer = new ResizeObserver(calculateScale);
     observer.observe(containerRef.current);
 
-    return () => observer.unobserve(containerRef.current);
+    /* return () => observer.unobserve(containerRef.current); */
+    return () => {
+      // Clean up the ResizeObserver when the component is unmounted
+      observer.disconnect();
+    };
   }, []);
 
   function onDocumentLoadSuccess({ numPages }) {

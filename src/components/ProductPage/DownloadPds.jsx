@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { FcDownload } from "react-icons/fc";
 import { BsEye } from "react-icons/bs";
 import PdfViewer from "./PdfViewer";
-
+import { useTranslation } from "react-i18next";
 const DownloadPds = ({ data }) => {
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPdfUrl, setSelectedPdfUrl] = useState(null);
 
@@ -26,6 +27,10 @@ const DownloadPds = ({ data }) => {
     showModal();
   };
 
+  const downloadPdf = (pdfUrl) => {
+    window.open(pdfUrl, "_blank");
+  };
+
   return (
     <Container>
       {data?.pdfUrls[0] ? <span>PDF:</span> : ""}
@@ -37,12 +42,16 @@ const DownloadPds = ({ data }) => {
             <li key={viscosityGrade}>
               <div className="buttonWrapper">
                 <p>{viscosityGrade}</p>
-                <button className="download-button">
-                  <span style={{ color: "#3d3c3c" }}>Download</span>{" "}
+                <button
+                  className="download-button"
+                  onClick={() => downloadPdf(pdsUrl)}
+                >
+                  <span style={{ color: "#3d3c3c" }}>{t("DownloadPdf")}</span>
                   <FcDownload />
                 </button>
                 <button onClick={() => openPdf(pdsUrl)} className="view-button">
-                  <span style={{ color: "#3d3c3c" }}>View</span> <BsEye />
+                  <span style={{ color: "#3d3c3c" }}>{t("ViewPdf")}</span>
+                  <BsEye />
                 </button>
               </div>
             </li>
