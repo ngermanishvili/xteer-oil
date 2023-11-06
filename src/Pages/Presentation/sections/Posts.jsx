@@ -1,13 +1,13 @@
 import Grid from "@mui/material/Grid";
 import MKBox from "../../../components/MKBox";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import styled from "styled-components";
-import { dataStore } from "../../../zustand/store";
-import { Divider } from "antd";
+import {dataStore} from "../../../zustand/store";
+import {Divider} from "antd";
 import MKTypography from "../../../components/MKTypography";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import {Swiper, SwiperSlide} from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
@@ -26,10 +26,10 @@ import Aminol3 from "../../../assets/images/swiper/aminiol3.jpeg";
 import Aminol4 from "../../../assets/images/swiper/aminol4.jpeg";
 
 // import required modules
-import { Autoplay, FreeMode, Pagination } from "swiper/modules";
+import {Autoplay, FreeMode, Pagination} from "swiper/modules";
 
 function Places() {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   const [slidesPerView, setSlidesPerView] = useState(4);
 
@@ -56,14 +56,10 @@ function Places() {
     <>
       <Wrapper>
         <MKBox component="section" py={2}>
-          <Divider orientation="center">
-            <MKTypography variant="h6" color="info" textGradient mb={2}>
-              {t("Production")}
-            </MKTypography>
-          </Divider>
+          <Divider orientation="center"></Divider>
           <BtnWrapper>
             <Link className="styledLink" to="/find-my-oil">
-              {t("FindDetailedProduct")}
+              {t("Production")}
             </Link>
           </BtnWrapper>
           <Grid container spacing={3}>
@@ -133,8 +129,8 @@ const BtnWrapper = styled.div`
   align-items: center;
   .styledLink {
     border-radius: 15px;
-    max-width: 1200px;
-    width: 100%;
+    max-width: 250px;
+    width: 50%;
     height: auto;
     padding: 10px;
     background-color: #4281d6;
