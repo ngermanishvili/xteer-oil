@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
+import React, {useState, useEffect} from "react";
+import {Document, Page, pdfjs} from "react-pdf";
 import ResizeObserver from "resize-observer-polyfill";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-const PdfViewer = ({ pdfUrl }) => {
+const PdfViewer = ({pdfUrl}) => {
   const [numPages, setNumPages] = useState(null);
   const [scale, setScale] = useState(1);
   const containerRef = React.useRef();
@@ -20,10 +20,13 @@ const PdfViewer = ({ pdfUrl }) => {
     const observer = new ResizeObserver(calculateScale);
     observer.observe(containerRef.current);
 
-    return () => observer.unobserve(containerRef.current);
+    return () => {
+      // Clean up the ResizeObserver when the component is unmounted
+      observer.disconnect();
+    };
   }, []);
 
-  function onDocumentLoadSuccess({ numPages }) {
+  function onDocumentLoadSuccess({numPages}) {
     setNumPages(numPages);
   }
 

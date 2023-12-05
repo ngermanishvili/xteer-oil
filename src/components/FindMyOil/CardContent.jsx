@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import { dataStore } from "../../zustand/store";
-import { tabStore } from "../../zustand/fitlerStore";
-import { Card, Pagination } from "antd";
-import { Link } from "react-router-dom";
+import React, {useEffect} from "react";
+import {dataStore} from "../../zustand/store";
+import {tabStore} from "../../zustand/fitlerStore";
+import {Card, Pagination} from "antd";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 import Search from "./Search";
-const { Meta } = Card;
-import { searchStore } from "../../zustand/searchStore";
+const {Meta} = Card;
+import {searchStore} from "../../zustand/searchStore";
 import ItemNotFound from "./ItemNotFound";
-import { useLocation } from "react-router-dom";
-import { SyncLoader } from "react-spinners";
-import { useTranslation } from "react-i18next";
+import {useLocation} from "react-router-dom";
+import {SyncLoader} from "react-spinners";
+import {useTranslation} from "react-i18next";
 
 const CardContent = () => {
   // if u want to see fetched items u need to use this hook and pass it to the component and hoook name is fetchData and it is in store.js and i cant see the items becouse i dont have access to the database so if u want to see the items u need to pass it to the component and use it foe example give me a code
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   const fetchData = dataStore((state) => state.fetchData);
   const loading = dataStore((state) => state.loading);
   const currentTab = tabStore((state) => state.currentTab);
@@ -64,6 +64,8 @@ const CardContent = () => {
   };
 
   const handleDetailsLinkClick = (Event, productId) => {
+    localStorage.setItem("currentPage", currentPage);
+
     // Open in a new tab when CTRL is pressed
     const linkTarget = Event.keyDown === 17 ? "_blank" : "_self";
     return (
@@ -76,7 +78,7 @@ const CardContent = () => {
       </DetailsLink>
     );
   };
-
+  const savedPage = localStorage.getItem("currentPage");
   return (
     <>
       <div>
@@ -93,9 +95,9 @@ const CardContent = () => {
                 <Card
                   className="cards"
                   key={product._id}
-                  bodyStyle={{ width: "100%" }}
+                  bodyStyle={{width: "100%"}}
                 >
-                  <div style={{ width: "100%", display: "flex" }}>
+                  <div style={{width: "100%", display: "flex"}}>
                     <ProductImage>
                       <img
                         alt={product.productName}
@@ -115,7 +117,7 @@ const CardContent = () => {
                       </ViscosityList>
                     </ProductDetails>
                   </div>
-                  <div style={{ width: "100%" }}>
+                  <div style={{width: "100%"}}>
                     {handleDetailsLinkClick(Event, product._id)}
                   </div>
                 </Card>
@@ -124,7 +126,7 @@ const CardContent = () => {
             <PaginationContainer>
               <Pagination
                 key={currentPage}
-                current={currentPage}
+                current={savedPage}
                 onChange={handlePageChange}
                 total={productsSize}
                 pageSize={itemsPerPage}
