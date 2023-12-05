@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { FcSearch } from "react-icons/fc";
 import { searchStore } from "../../zustand/searchStore";
-
+import { useTranslation } from "react-i18next";
 const SearchComponent = () => {
+  const { t } = useTranslation();
   const searchQuery = searchStore((state) => state.searchQuery);
   const setSearchQuery = searchStore((state) => state.setSearchQuery);
   const setFilteredData = searchStore((state) => state.setFilteredData);
@@ -23,7 +24,7 @@ const SearchComponent = () => {
     <CustomInputContainer>
       <CustomSearchInput
         type="text"
-        placeholder="მოძებნე პროდუქცია"
+        placeholder={t("FindDetailedProduct")}
         value={searchQuery}
         onKeyUp={handleSearch}
         onChange={handleChange}
