@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {keyframes, css} from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 function Companies() {
   const row1 = [
@@ -9,6 +9,8 @@ function Companies() {
     "https://uglubricants.com/wp-content/uploads/2023/02/png-m.png",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCCQcc5RarkB22jlpVSmjmYZ39grOapXL0AMRf0JHChELsfELFfyzEHkyZLew22-YSQvk&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsRM_fa7-xpeNSitSTX-v5zpkDJKSBFH8GC8foJ5cG&s",
+    "https://oilproducts.s3.amazonaws.com/download.png",
+    "https://oilproducts.s3.amazonaws.com/download.jpeg",
   ];
 
   return (
@@ -19,7 +21,10 @@ function Companies() {
             {row1.map((el, index) => (
               <ImageGroup key={index}>
                 <Image>
-                  <img style={{width: "100%", objectFit: "contain"}} src={el} />
+                  <img
+                    style={{ width: "100%", objectFit: "contain" }}
+                    src={el}
+                  />
                 </Image>
               </ImageGroup>
             ))}
@@ -28,7 +33,10 @@ function Companies() {
             {row1.map((el, index) => (
               <ImageGroup key={index}>
                 <Image src={el}>
-                  <img style={{width: "100%", objectFit: "contain"}} src={el} />
+                  <img
+                    style={{ width: "100%", objectFit: "contain" }}
+                    src={el}
+                  />
                 </Image>
               </ImageGroup>
             ))}
@@ -77,7 +85,7 @@ const Note = styled.div`
 
 const Marquee = styled.div`
   display: flex;
-  width: 1500px;
+  width: 2100px;
   overflow-x: hidden;
   user-select: none;
 
@@ -94,17 +102,16 @@ const ImageGroup = styled.div`
   align-items: center;
   justify-content: center;
   padding: 10px;
-  width: 1500px; // increased the width
-  margin-left: 50px; // increased the margin
-  margin-right: 50px; // increased the margin
+  width: 2100px; // increased the width
+  margin-left: 90px; // increased the margin
+  margin-right: 90px; // increased the margin
 
   padding: 5px;
-  width: 160px;
+  width: 180px;
   margin-left: 30px;
   margin-right: 30px;
 
   @media (max-width: 600px) {
-    width: 120px;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -117,8 +124,8 @@ const Image = styled.div`
   border-radius: 0.5rem;
 
   @media (max-width: 600px) {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 100%;
+    max-height: 100%;
   }
 `;
 
@@ -146,7 +153,7 @@ const MarqueeGroup = styled.div`
   animation: ${scrollX} 30s linear infinite; // increased the animation duration
 
   @media (max-width: 600px) {
-    animation: ${scrollX} 20s linear infinite;
+    animation: ${scrollX} 22s linear infinite;
   }
 `;
 const MarqueeGroup2 = styled.div`

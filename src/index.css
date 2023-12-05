@@ -496,6 +496,7 @@ body {
 
 .video-content {
   padding: 100px; /* Default padding value */
+  text-align: center;
 }
 
 @media (max-width: 768px) {

@@ -6,12 +6,16 @@ const VideoPlayer = () => {
     <>
       <div
         style={{
+          marginTop: "30px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       ></div>
       <div className="video-content">
+        <h2 style={{ padding: "15px", fontSize: "24px", font: "bold" }}>
+          ვიდეოს აღწერა შეგვიძლია დავიტანოთ აქ
+        </h2>
         <div className="player-wrapper">
           <ReactPlayer
             className="react-player"

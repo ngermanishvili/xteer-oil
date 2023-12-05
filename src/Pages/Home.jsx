@@ -75,10 +75,10 @@ const Home = () => {
         </Divider>
 
         <Companies />
-        <VideoPlayer />
         {/* <Download /> */}
 
         <Places />
+        <VideoPlayer />
       </Card>
     </>
   );

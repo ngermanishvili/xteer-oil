@@ -8,6 +8,7 @@ import styled from "styled-components";
 // Images
 import bgImage from "../../../assets/images/examples/wp7902092-oil-gas-wallpapers.jpg";
 import Companies from "../../../components/Companies/Companies";
+import ReactPlayer from "react-player";
 
 function ContactMui() {
   return (
@@ -152,7 +153,30 @@ function ContactMui() {
                   <MKBox pt={0.5} pb={3} px={2}>
                     <Grid container>
                       <Grid item xs={12} pr={1} mb={6}>
-                        აქ უნდა იყოს კომპანიის შესახებ ინფორმაცია
+                        <div style={{}}></div>
+                        <div className="video-content">
+                          <h2
+                            style={{
+                              padding: "15px",
+                              fontSize: "24px",
+                              font: "bold",
+                            }}
+                          >
+                            ვიდეოს აღწერა შეგვიძლია დავიტანოთ აქ
+                          </h2>
+                          <div className="player-wrapper">
+                            <ReactPlayer
+                              className="react-player"
+                              url="https://oilproducts.s3.amazonaws.com/yt5s.io-UG+Lubricants-(1080p).mp4"
+                              width="100%"
+                              height="100%"
+                              controls
+                            />
+                          </div>
+                          <div
+                            style={{ textAlign: "center", marginTop: "10px" }}
+                          ></div>
+                        </div>
                       </Grid>
                       <Grid item xs={12} pr={1} mb={6}>
                         აქ უნდა იყოს კომპანიის შესახებ ინფორმაცია
