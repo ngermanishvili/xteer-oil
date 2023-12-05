@@ -8,6 +8,7 @@ import Testimonials from "../Pages/Presentation/sections/Testimonials";
 import bgImage from "../assets/images/examples/wp7902092-oil-gas-wallpapers.jpg";
 import Places from "./Presentation/sections/Posts";
 import styled from "styled-components";
+import VideoPlayer from "../components/videoplayer/VideoPlayer";
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -74,6 +75,7 @@ const Home = () => {
         </Divider>
 
         <Companies />
+        <VideoPlayer />
         {/* <Download /> */}
 
         <Places />

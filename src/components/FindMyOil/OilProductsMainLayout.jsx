@@ -4,9 +4,11 @@ import CardContent from "./CardContent";
 import TabSelector from "./TabSelector";
 import DemoImg from "../../assets/banner.jpeg";
 import { Divider } from "antd";
+import { useTranslation } from "react-i18next";
 
 const { Content } = Layout;
 const MainLayout = () => {
+  const { t } = useTranslation();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -43,7 +45,7 @@ const MainLayout = () => {
               fontWeight: "700",
             }}
           >
-            ფილტრი
+            {t("Filter")}
           </Divider>
           <TabSelector />
           <CardContent />

@@ -480,3 +480,33 @@ body {
 .bzGhta {
   gap: 30px;
 }
+
+.player-wrapper {
+  position: relative;
+  padding-top: 50.25%; /* Player ratio: 100 / (1280 / 720) */
+  background-color: #000;
+  cursor: pointer;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-content {
+  padding: 100px; /* Default padding value */
+}
+
+@media (max-width: 768px) {
+  .video-content {
+    padding: 0px; /* Default padding value */
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Apply padding of 100px on iPad */
+  .video-content {
+    padding: 50px; /* Default padding value */
+  }
+}
