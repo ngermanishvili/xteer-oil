@@ -6,11 +6,12 @@ const oilRoutes = require("./route");
 
 const app = express();
 app.use(cors());
+const PORT = process.env.PORT || 8000;
+
 
 const uri =
   "mongodb+srv://samxara:samxara@cluster0.j0xk7o2.mongodb.net/GentoTrading?retryWrites=true&w=majority";
 
-require('events').EventEmitter.defaultMaxListeners = 25; // Or a number higher than the current count
 
 const connect = async () => {
   try {
@@ -20,7 +21,7 @@ const connect = async () => {
     });
     console.log("Connected to MongoDB");
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    console.error("Error connecting to Mo ngoDB:", error);
     process.exit(1);
   }
 };
@@ -30,6 +31,6 @@ connect();
 app.use("/oils", oilRoutes);
 module.exports.handler = serverless(app);
 
-app.listen(8000, () => {
-  console.log("Server started on port 8000!!");
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}!!`);
 });
