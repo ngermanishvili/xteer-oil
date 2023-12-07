@@ -10,6 +10,8 @@ app.use(cors());
 const uri =
   "mongodb+srv://samxara:samxara@cluster0.j0xk7o2.mongodb.net/GentoTrading?retryWrites=true&w=majority";
 
+require('events').EventEmitter.defaultMaxListeners = 25; // Or a number higher than the current count
+
 const connect = async () => {
   try {
     await mongoose.connect(uri, {
