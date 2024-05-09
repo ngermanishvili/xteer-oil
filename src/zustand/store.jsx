@@ -9,7 +9,7 @@ export const dataStore = create((set) => ({
   fetchData: async () => {
     try {
       const { data } = await axios.get(
-        "https://gento-deploy-7625b1fb9d5c.herokuapp.com/oils"
+        "https://gentoback.onrender.com/oils/oils"
       );
       set({ data: data, error: null, loading: false });
     } catch (error) {
