@@ -42,7 +42,7 @@ function Information() {
               <div className="container">
                 <div className="card">
                   <div className="imgBx">
-                    <img src={XteerLogo} />
+                    <img src={XteerLogo} alt="asdas" />
                   </div>
 
                   <div className="contentBx">
