@@ -20,7 +20,7 @@ import MKTypography from "../../../components/MKTypography";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import XteerLogo from "../../../assets/images/examples/xteer-logo.png";
+import XteerLogo from "../../../assets/images/examples/xteerlogo.png";
 import AminolLogo from "../../../assets/images/examples/aminol.png";
 import AzmolLogo from "../../../assets/images/examples/azmol.png";
 import { Divider } from "antd";
