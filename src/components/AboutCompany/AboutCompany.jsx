@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Image } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
-
+//
 const companyInfo =
   "GentoTrading, headquartered in Kutaisi, Georgia, is a prominent oil company with a rich history of serving the region's energy needs. As a leading provider of petroleum products and energy solutions, GentoTrading plays a vital role in fueling both domestic and industrial sectors in Georgia. With a commitment to quality and sustainability, the company has established itself as a trusted partner in the oil and energy industry. GentoTrading's operations encompass the supply of various petroleum products, including gasoline, diesel, and lubricants, while also focusing on innovative solutions to meet evolving energy demands. Their dedication to excellence and customer satisfaction has solidified their position as an industry leader in the region.";
 
